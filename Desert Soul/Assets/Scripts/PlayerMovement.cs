@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 8f;
     [SerializeField] private float jumpPower = 16f;
     private bool isFacingRight = true;
+    [SerializeField] private float baseGravity = 2f;
+    [SerializeField] private float gravLimit = 10f;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -32,18 +34,22 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
+    //ground check :3
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
+    //read the function
     private void Move()
     {
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
+    //juming!! Yippee!!
     private void Jump()
     {
+        //gets player input and jumps if they are grounded
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
@@ -53,5 +59,23 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
+
+        //makes player decend faster the longer they are falling
+        if (rb.velocity.y < 0 && rb.gravityScale < gravLimit)
+        {
+            rb.gravityScale = rb.gravityScale + 0.005f;
+        }
+
+        //sets the players gravity back to normal after they reach the ground
+        if (IsGrounded())
+        {
+            rb.gravityScale = baseGravity;
+        }
+
+        //meant to gve more hang time at the peak of jump, not working atm
+        /*if (!IsGrounded() && Mathf.Abs(rb.velocity.y) < 0.1)
+        {
+            rb.gravityScale = baseGravity * 0.5f;
+        }*/
     }
 }
