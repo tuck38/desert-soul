@@ -7,6 +7,7 @@ public class Attack : MonoBehaviour
 
     [SerializeField] private GameObject weapon;
     [SerializeField] private float swingTime = 1f;
+    [SerializeField] private int damage = 1;
     private float swingTimeLeft;
     private bool isAttacking = false;
 
@@ -27,13 +28,18 @@ public class Attack : MonoBehaviour
         return isAttacking;
     }
 
+    public int getDamage()
+    {
+        return damage;
+    }
+
     private void Swing()
     {
         if (Input.GetKey(KeyCode.Mouse0) && swingTimeLeft <= 0 && Input.GetKey(KeyCode.UpArrow))
         {
             isAttacking = true;
             weapon.transform.eulerAngles = new Vector3(0f, 0f, 90f);
-            weapon.transform.localPosition = new Vector3(0f, 0.9f, 0f);
+            weapon.transform.localPosition = new Vector3(0f, 1f, 0f);
             weapon.GetComponent<BoxCollider2D>().enabled = true;
             weapon.GetComponent<SpriteRenderer>().enabled = true;
             swingTimeLeft = swingTime;
@@ -55,9 +61,20 @@ public class Attack : MonoBehaviour
         {
             isAttacking = false;
             weapon.transform.eulerAngles = new Vector3(0f, 0f, 0f);
-            weapon.transform.localPosition = new Vector3(0.9f, 0f, 0f);
+            weapon.transform.localPosition = new Vector3(1f, 0f, 0f);
             weapon.GetComponent<BoxCollider2D>().enabled = false;
             weapon.GetComponent<SpriteRenderer>().enabled = false;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision != null)
+        {
+            if (collision.gameObject.tag == "Hitbox")
+            {
+                collision.gameObject.GetComponent<EnemyProperties>().takeDamage(damage);
+            }
         }
     }
 }
