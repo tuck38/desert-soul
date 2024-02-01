@@ -8,13 +8,15 @@ public class Attack : MonoBehaviour
     [SerializeField] private GameObject weapon;
     [SerializeField] private float swingTime = 1f;
     [SerializeField] private int damage = 1;
+    private bool swingDown = false;
+    private PlayerMovement movement;
     private float swingTimeLeft;
     private bool isAttacking = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        movement = gameObject.GetComponentInParent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,11 @@ public class Attack : MonoBehaviour
     public bool getAttacking()
     {
         return isAttacking;
+    }
+
+    public bool getSwingDown()
+    {
+        return swingDown;
     }
 
     public int getDamage()
@@ -40,6 +47,17 @@ public class Attack : MonoBehaviour
             isAttacking = true;
             weapon.transform.eulerAngles = new Vector3(0f, 0f, 90f);
             weapon.transform.localPosition = new Vector3(0f, 1f, 0f);
+            weapon.GetComponent<BoxCollider2D>().enabled = true;
+            weapon.GetComponent<SpriteRenderer>().enabled = true;
+            swingTimeLeft = swingTime;
+        }
+
+        if (Input.GetKey(KeyCode.Mouse0) && swingTimeLeft <= 0 && Input.GetKey(KeyCode.DownArrow) && !movement.IsGrounded())
+        {
+            isAttacking = true;
+            swingDown = true;
+            weapon.transform.eulerAngles = new Vector3(0f, 0f, -90f);
+            weapon.transform.localPosition = new Vector3(0f, -1f, 0f);
             weapon.GetComponent<BoxCollider2D>().enabled = true;
             weapon.GetComponent<SpriteRenderer>().enabled = true;
             swingTimeLeft = swingTime;
@@ -60,6 +78,7 @@ public class Attack : MonoBehaviour
         else
         {
             isAttacking = false;
+            swingDown = false;
             weapon.transform.eulerAngles = new Vector3(0f, 0f, 0f);
             weapon.transform.localPosition = new Vector3(1f, 0f, 0f);
             weapon.GetComponent<BoxCollider2D>().enabled = false;
@@ -67,6 +86,8 @@ public class Attack : MonoBehaviour
         }
     }
 
+
+    //Useless, look in EnemyProperties script!!!
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision != null)

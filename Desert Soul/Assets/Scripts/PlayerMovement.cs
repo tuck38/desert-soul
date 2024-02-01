@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     [SerializeField] private float speed = 8f;
     [SerializeField] private float jumpPower = 16f;
+    [SerializeField] private float launchPower = 10f;
     private bool isFacingRight = true;
     [SerializeField] private float baseGravity = 2f;
     [SerializeField] private float gravLimit = 10f;
@@ -15,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    [SerializeField] private Attack weapon;
+    private Attack weapon;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //ground check :3
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
@@ -93,5 +94,11 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.gravityScale = baseGravity * 0.5f;
         }*/
+    }
+
+    //Launches player upwards in the event of a downward strike
+    public void Launch()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, launchPower);
     }
 }

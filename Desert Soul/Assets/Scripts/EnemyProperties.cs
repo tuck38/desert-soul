@@ -53,6 +53,11 @@ public class EnemyProperties : MonoBehaviour
             {
                 takeDamage(collision.gameObject.GetComponent<Attack>().getDamage());
                 Knockback(collision.gameObject);
+
+                if(collision.gameObject.GetComponent<Attack>().getSwingDown())
+                {
+                     collision.gameObject.GetComponentInParent<PlayerMovement>().Launch();
+                }
             }
         }
     }
