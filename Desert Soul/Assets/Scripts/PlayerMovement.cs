@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float horizontal;
+    private Vector2 horizontal;
+    private float vertical;
     [SerializeField] private float speed = 8f;
     [SerializeField] private float jumpPower = 16f;
     [SerializeField] private float launchPower = 10f;
@@ -16,7 +18,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    [SerializeField] private PlayerInputActions playerControls;
+    [SerializeField] private InputAction move;
+    [SerializeField] private InputAction look;
+    [SerializeField]private InputAction swing;
+
     private Attack weapon;
+
+    private void Awake()
+    {
+          playerControls = new PlayerInputActions();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +41,22 @@ public class PlayerMovement : MonoBehaviour
     {
         Jump();
         Flip();
-        horizontal = Input.GetAxisRaw("Horizontal");
+        horizontal = move.ReadValue<Vector2>();
+        vertical = look.ReadValue<float>();
+        weapon.setSwingVert(vertical);
+    }
+
+    private void OnEnable()
+    {
+        move = playerControls.Player.Move;
+        move.Enable();
+        look.Enable();
+    }
+
+    private void OnDisable()
+    {
+        move.Disable();
+        look.Disable();
     }
 
     private void FixedUpdate()
@@ -39,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
+        if (isFacingRight && horizontal.x < 0f || !isFacingRight && horizontal.x > 0f)
         {
             if (!weapon.getAttacking())
             {
@@ -60,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
     //read the function
     private void Move()
     {
-        rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontal.x * speed, rb.velocity.y);
     }
 
     //juming!! Yippee!!

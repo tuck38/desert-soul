@@ -126,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
   swingTime: 1
+  damage: 1
 --- !u!1 &8482653379262811867
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,6 +141,7 @@ GameObject:
   - component: {fileID: 8482653379262811876}
   - component: {fileID: 8482653379262811878}
   - component: {fileID: 8482653379262811873}
+  - component: {fileID: 6561945778447888702}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -229,6 +231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   jumpPower: 16
+  launchPower: 6
   baseGravity: 2
   gravLimit: 10
   rb: {fileID: 8482653379262811878}
@@ -236,7 +239,48 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  weapon: {fileID: 0}
+  move:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 66647216-1d08-455a-a376-0338aabf3744
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: L/R
+      m_Id: ea247460-28cb-4365-a763-89647c371eb5
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 977ed14a-5086-4f34-990b-41a56614a229
+      m_Path: <Keyboard>/j
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 7319bdff-0d53-473d-b712-fe1644a1a108
+      m_Path: <Keyboard>/l
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
+    m_Flags: 0
+  swing:
+    m_Name: Swing
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 53da665e-2f11-4ddb-903b-51b2c77f5b08
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!114 &8482653379262811876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,3 +340,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6561945778447888702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8482653379262811867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: 0}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
