@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Attack : MonoBehaviour
 {
@@ -13,6 +15,16 @@ public class Attack : MonoBehaviour
     private PlayerMovement movement;
     private float swingTimeLeft;
     private bool isAttacking = false;
+    private float attack = 0;
+
+    [SerializeField] private PlayerInputActions playerControls;
+    [SerializeField] private InputAction swing;
+
+
+    private void Awake()
+    {
+        playerControls = new PlayerInputActions();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +35,19 @@ public class Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        attack = swing.ReadValue<float>();
         Swing();
+    }
+
+    private void OnEnable()
+    {
+       swing = playerControls.Player.Swing;
+       swing.Enable();
+    }
+
+    private void OnDisable()
+    {
+        swing.Disable();
     }
 
     public bool getAttacking()
@@ -50,47 +74,49 @@ public class Attack : MonoBehaviour
     private void Swing()
     {
 
-            if (Input.GetKey(KeyCode.Mouse0) && swingTimeLeft <= 0 && swingVert > 0f)
-            {
-                isAttacking = true;
-                weapon.transform.eulerAngles = new Vector3(0f, 0f, 90f);
-                weapon.transform.localPosition = new Vector3(0f, 1f, 0f);
-                weapon.GetComponent<BoxCollider2D>().enabled = true;
-                weapon.GetComponent<SpriteRenderer>().enabled = true;
-                swingTimeLeft = swingTime;
-            }
+        if (attack > 0 && swingTimeLeft <= 0 && swingVert > 0f)
+        {
+            isAttacking = true;
+            weapon.transform.eulerAngles = new Vector3(0f, 0f, 90f);
+            weapon.transform.localPosition = new Vector3(0f, 1f, 0f);
+            weapon.GetComponent<BoxCollider2D>().enabled = true;
+            weapon.GetComponent<SpriteRenderer>().enabled = true;
+            swingTimeLeft = swingTime;
+        }
 
-            if (Input.GetKey(KeyCode.Mouse0) && swingTimeLeft <= 0 && swingVert < 0f && !movement.IsGrounded())
-            {
-                isAttacking = true;
-                swingDown = true;
-                weapon.transform.eulerAngles = new Vector3(0f, 0f, -90f);
-                weapon.transform.localPosition = new Vector3(0f, -1f, 0f);
-                weapon.GetComponent<BoxCollider2D>().enabled = true;
-                weapon.GetComponent<SpriteRenderer>().enabled = true;
-                swingTimeLeft = swingTime;
-            }
-        
-        if (Input.GetKey(KeyCode.Mouse0) && swingTimeLeft <= 0)
+        if (attack > 0 && swingTimeLeft <= 0 && swingVert < 0f && !movement.IsGrounded())
+        {
+            isAttacking = true;
+            swingDown = true;
+            weapon.transform.eulerAngles = new Vector3(0f, 0f, -90f);
+            weapon.transform.localPosition = new Vector3(0f, -1f, 0f);
+            weapon.GetComponent<BoxCollider2D>().enabled = true;
+            weapon.GetComponent<SpriteRenderer>().enabled = true;
+            swingTimeLeft = swingTime;
+        }
+
+        if (attack > 0 && swingTimeLeft <= 0)
         {
             isAttacking = true;
             weapon.GetComponent<BoxCollider2D>().enabled = true;
             weapon.GetComponent<SpriteRenderer>().enabled = true;
             swingTimeLeft = swingTime;
         }
-
-        if (swingTimeLeft > 0)
+        if (isAttacking)
         {
-            swingTimeLeft -= Time.deltaTime;
-        }
-        else
-        {
-            isAttacking = false;
-            swingDown = false;
-            weapon.transform.eulerAngles = new Vector3(0f, 0f, 0f);
-            weapon.transform.localPosition = new Vector3(1f, 0f, 0f);
-            weapon.GetComponent<BoxCollider2D>().enabled = false;
-            weapon.GetComponent<SpriteRenderer>().enabled = false;
+            if (swingTimeLeft > 0)
+            {
+                swingTimeLeft -= Time.deltaTime;
+            }
+            else
+            {
+                isAttacking = false;
+                swingDown = false;
+                weapon.transform.eulerAngles = new Vector3(0f, 0f, 0f);
+                weapon.transform.localPosition = new Vector3(1f, 0f, 0f);
+                weapon.GetComponent<BoxCollider2D>().enabled = false;
+                weapon.GetComponent<SpriteRenderer>().enabled = false;
+            }
         }
     }
 

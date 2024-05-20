@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerInputActions playerControls;
     [SerializeField] private InputAction move;
     [SerializeField] private InputAction look;
-    [SerializeField]private InputAction swing;
 
     private Attack weapon;
 
