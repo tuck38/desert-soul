@@ -5,6 +5,7 @@ public class EnemyBase : MonoBehaviour
 
     [SerializeField] private int MAXHealth;
     private int currentHealth;
+    [SerializeField] private int damage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -30,6 +31,11 @@ public class EnemyBase : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    public int GetDamage()
+    { 
+        return damage; 
     }
 
     private void Die()

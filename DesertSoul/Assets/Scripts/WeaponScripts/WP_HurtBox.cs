@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WP_HitBox : MonoBehaviour
+public class WP_HurtBox : MonoBehaviour
 {
 
     public AttackBase currentAttack;

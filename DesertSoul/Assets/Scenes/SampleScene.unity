@@ -1286,14 +1286,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponSprite: {fileID: 0}
+  animator: {fileID: 1418844845}
   Attacks:
   - {fileID: 11400000, guid: 41bbf6f51f680684dbd8f03b1a70cf49, type: 2}
   - {fileID: 11400000, guid: 9b08601c5a1c205469ed9b7787554542, type: 2}
   combo: 
-  ComboTimer: 0
-  animator: {fileID: 1418844845}
   projectileSpawn: {fileID: 0}
-  HitBox: {fileID: 0}
+  HurtBox: {fileID: 0}
 --- !u!114 &1418844851 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5643392107775045682, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
@@ -1774,7 +1773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777614080903263568, guid: 451cb56d1f806504ea791a2232a386e4, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1110454475813013432, guid: 451cb56d1f806504ea791a2232a386e4, type: 3}
       propertyPath: m_LocalPosition.x
