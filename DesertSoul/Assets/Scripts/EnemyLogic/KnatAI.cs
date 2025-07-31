@@ -44,9 +44,9 @@ public class KnatAI : MonoBehaviour
 
     private void MoveTo()
     {
-        float dist = Vector2.Distance(transform.position, nextPoint.position);
-        Vector2 dir = nextPoint.position - transform.position;
+        //float dist = Vector2.Distance(transform.position, nextPoint.position);
+        //Vector2 dir = nextPoint.position - transform.position;
 
-        transform.position = Vector2.MoveTowards(this.transform.position, nextPoint.position, speed * Time.deltaTime);
+        //transform.position = Vector2.MoveTowards(this.transform.position, nextPoint.position, speed * Time.deltaTime);
     }
 }

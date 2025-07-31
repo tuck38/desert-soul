@@ -4,11 +4,12 @@ public class Player_HitBox : MonoBehaviour
 {
 
     [SerializeField] private PlayerProp prop;
+    [SerializeField] private PlayerMove player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //replace assigned variable with getcomponents
     }
 
     // Update is called once per frame
@@ -25,6 +26,8 @@ public class Player_HitBox : MonoBehaviour
             if (enemy != null)
             {
                 prop.TakeDamage(enemy.GetDamage());
+                player.Knockback(collision.gameObject);
+                player.SetIFrames();
             }
         }
     }

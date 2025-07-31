@@ -173,7 +173,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 8
   jumpPower: 28
-  launchPower: 10
   baseGravity: 3
   gravLimit: 10
   rb: {fileID: 7767278961558348056}
@@ -201,6 +200,9 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   heldWeapon: {fileID: 5643392107775045682}
+  launchPower: 500
+  launchTime: 0
+  launchTotalTime: 0
 --- !u!50 &7767278961558348056
 Rigidbody2D:
   serializedVersion: 5
@@ -422,6 +424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prop: {fileID: 3960449730630822904}
+  player: {fileID: 0}
 --- !u!1 &4065219306024451000
 GameObject:
   m_ObjectHideFlags: 0
