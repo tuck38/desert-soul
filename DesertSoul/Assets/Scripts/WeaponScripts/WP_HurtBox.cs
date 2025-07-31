@@ -11,16 +11,14 @@ public class WP_HurtBox : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("hmm");
         if (collision.gameObject.tag == "Enemy")
         {
             EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
             if(enemy != null && currentAttack != null)
             {
                 enemy.TakeDamage(currentAttack.getDamage());
-                Debug.Log("?");
             }
         }
     }
