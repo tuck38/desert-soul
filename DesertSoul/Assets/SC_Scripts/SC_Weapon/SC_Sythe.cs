@@ -4,15 +4,19 @@ using NUnit.Framework;
 using UnityEngine;
 using Unity.VisualScripting;
 
-public class WeaponBase : MonoBehaviour
+public class SC_Sythe : MonoBehaviour
 {
+    /*Script originally created to allow player to engage with a combat system, changed to allow for simple 1 off 
+    attacks until combat sysem is more nailed down*/
+    
+    //Script where the attacks are executed, and communication with the animator occures
 
     [SerializeField] private SpriteRenderer WeaponSprite;
 
     [SerializeField] private Animator animator;
 
     //List of attacks for current weapon
-    [SerializeField] protected List<AttackBase> Attacks;
+    [SerializeField] protected List<SC_Attack_Base> Attacks;
     //List that holds the chain of moves that hav been executed
     [SerializeField] protected List<AttackType> combo;
     //depricated 
@@ -21,7 +25,7 @@ public class WeaponBase : MonoBehaviour
     //projectile spawn in front of player, used if attack uses spawned objects (such as bullets)
     [SerializeField] private GameObject projectileSpawn;
 
-    [SerializeField] private WP_HurtBox HurtBox;
+    [SerializeField] private SC_HurtBox HurtBox;
 
     //each attack has a timer assosiated with them that is set as soon as the attack is executed
     private float currentAttackLength;
@@ -48,12 +52,12 @@ public class WeaponBase : MonoBehaviour
     //upon input by player, executes an attack based on the current combo and attack input
     public void AddAttack(AttackType attack)
     {
-        bool match = true;
+        //bool match = true;
 
         //iterates through the weapons list of attacks on the weapon, and tests their
         //requirments against the current combo list to find the correct attack to be
         //executed based on the next input
-        for(int i = 0; i < Attacks.Count; i++)
+        /*for(int i = 0; i < Attacks.Count; i++)
         {
             if (Attacks[i].getAttackType() == attack)
             {
@@ -87,9 +91,18 @@ public class WeaponBase : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
+
+        animator.SetInteger("Attack", Attacks[0].getID());
+        HurtBox.currentAttack = Attacks[0];
+        isAttacking = true;
+        attackTimer = 0f;
+        currentAttackLength = Attacks[0].getTime();
+        animator.SetBool("isAttacking", isAttacking);
+        Attacks[0].doAttack(projectileSpawn.transform);
+
         //if no moves are found that equal the current combo, clear the combo and run the function again to preform a basic move
-        EndCombo();
+        //EndCombo();
         //AddAttack(attack, anim);
         return;
     }

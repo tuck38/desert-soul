@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerProp : MonoBehaviour
+//This script is used to keep track of health, possible materials, and other recources that may be introduced
+public class SC_Player_Prop : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;

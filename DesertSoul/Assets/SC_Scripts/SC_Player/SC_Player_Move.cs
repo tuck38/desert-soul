@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMove : MonoBehaviour
+//Handles player movement, sprite rotation, knockback, IFrames, and attacking
+public class SC_Player_Move : MonoBehaviour
 {
 
     private Vector2 horizontal;
@@ -22,7 +23,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private InputAction move;
     [SerializeField] private InputAction look;
 
-    [SerializeField] public WeaponBase heldWeapon;
+    [SerializeField] public SC_Sythe sythe;
 
     //Knockback Vars
     [SerializeField] private float launchPower;
@@ -144,8 +145,15 @@ public class PlayerMove : MonoBehaviour
 
     private void Jump()
     {
+
+        //short hop code
+        if (Input.GetButtonUp("Jump") && !IsGrounded())
+        {
+            rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.05f));
+        }
+
         //Gets player input and jumps if grounded
-        if(Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.linearVelocity = new(rb.linearVelocity.x, jumpPower);
         }
@@ -172,13 +180,13 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.GetButtonDown("PrimaryAttack"))
         {
-            heldWeapon.AddAttack(AttackType.primary);
+            sythe.AddAttack(AttackType.primary);
 
         }
 
         if (Input.GetButtonDown("SecondaryAttack"))
         {
-            heldWeapon.AddAttack(AttackType.secondary);
+            sythe.AddAttack(AttackType.secondary);
         }
     }
 

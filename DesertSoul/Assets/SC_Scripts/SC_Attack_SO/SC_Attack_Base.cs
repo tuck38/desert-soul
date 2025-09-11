@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class AttackBase : ScriptableObject
+public class SC_Attack_Base : ScriptableObject
 {
+    //SO For different attacks, used for old combo system but can be easily adjusted so keeping it around
+
     [SerializeField] protected List<AttackType> requirments;
     [SerializeField] private int damage;
     [SerializeField] private float AtkTime;
@@ -26,6 +28,7 @@ public class AttackBase : ScriptableObject
     {
         if (type == AttackType.primary)
         {
+            //Have this adjust animator instead because that handles hitboxes, and adjust code in SC_Sythe
             //dohitboxstuff
         }
         else if (type == AttackType.secondary)

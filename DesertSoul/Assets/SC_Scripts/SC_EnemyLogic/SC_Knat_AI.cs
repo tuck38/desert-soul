@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class KnatAI : MonoBehaviour
+public class SC_Knat_AI : MonoBehaviour
 {
+    //TEMPORARY TO TEST OUT STUFF
+
     [SerializeField] GameObject player;
     [SerializeField] float speed;
 

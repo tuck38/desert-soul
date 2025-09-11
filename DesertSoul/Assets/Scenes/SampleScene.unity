@@ -2107,6 +2107,10 @@ PrefabInstance:
       value: -0.014925405
       objectReference: {fileID: 0}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: sythe
+      value: 
+      objectReference: {fileID: 1418844851}
+    - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: hitbox
       value: 
       objectReference: {fileID: 1121478416}

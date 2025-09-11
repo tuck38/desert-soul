@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class WP_HurtBox : MonoBehaviour
+public class SC_HurtBox : MonoBehaviour
 {
+    //Sythe hurtbox, self explanitory 
 
-    public AttackBase currentAttack;
+    public SC_Attack_Base currentAttack;
 
     // Update is called once per frame
     void Update()
@@ -15,7 +16,7 @@ public class WP_HurtBox : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
+            SC_Enemy_Base enemy = collision.gameObject.GetComponent<SC_Enemy_Base>();
             if(enemy != null && currentAttack != null)
             {
                 enemy.TakeDamage(currentAttack.getDamage());

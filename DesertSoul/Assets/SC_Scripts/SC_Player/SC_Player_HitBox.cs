@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Player_HitBox : MonoBehaviour
+public class SC_Player_HitBox : MonoBehaviour
 {
 
-    [SerializeField] private PlayerProp prop;
-    [SerializeField] private PlayerMove player;
+    [SerializeField] private SC_Player_Prop prop;
+    [SerializeField] private SC_Player_Move player;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +22,7 @@ public class Player_HitBox : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            EnemyBase enemy = collision.gameObject.GetComponent<EnemyBase>();
+            SC_Enemy_Base enemy = collision.gameObject.GetComponent<SC_Enemy_Base>();
             if (enemy != null)
             {
                 prop.TakeDamage(enemy.GetDamage());
