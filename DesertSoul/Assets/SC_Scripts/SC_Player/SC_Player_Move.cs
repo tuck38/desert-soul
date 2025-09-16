@@ -13,6 +13,10 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private float baseGravity = 2f;
     [SerializeField] private float gravLimit = 10f;
 
+    [SerializeField] private float coyoteTime = 0.2f;
+    private float coyoteTimeCounter;
+    
+
     [SerializeField] private Rigidbody2D rb;
     private Animator anim;
     [SerializeField] private Transform groundCheck;
@@ -146,16 +150,28 @@ public class SC_Player_Move : MonoBehaviour
     private void Jump()
     {
 
+        //coyote time code
+        if(IsGrounded())
+        {
+            coyoteTimeCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteTimeCounter -= Time.deltaTime;
+        }
+
         //short hop code
+        //temp(?)
         if (Input.GetButtonUp("Jump") && !IsGrounded())
         {
-            rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.05f));
+            rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
         }
 
         //Gets player input and jumps if grounded
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0f)
         {
             rb.linearVelocity = new(rb.linearVelocity.x, jumpPower);
+            coyoteTimeCounter = 0f;
         }
 
         if(Input.GetButtonDown("Jump") && rb.linearVelocity.y > 0f)
