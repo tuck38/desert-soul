@@ -11,7 +11,7 @@ public class SC_Player_Prop : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        GameManager.Instance.newScene();
     }
 
     // Update is called once per frame

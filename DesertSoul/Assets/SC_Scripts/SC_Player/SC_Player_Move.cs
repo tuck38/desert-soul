@@ -50,6 +50,7 @@ public class SC_Player_Move : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
     }
 
