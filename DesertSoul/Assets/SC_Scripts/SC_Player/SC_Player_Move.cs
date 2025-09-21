@@ -42,6 +42,8 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private float IframeTotal;
     [SerializeField] private BoxCollider2D hitbox;
 
+    private bool playerInControl = true;
+
     private void Awake()
     {
         playerControls = new PlayerInputActions();
@@ -78,17 +80,27 @@ public class SC_Player_Move : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move();
-        spriteRotation();
+        if (playerInControl)
+        {
+            Move(horizontal, speed);
+            spriteRotation(horizontal);
+        }
     }
 
-    private void Move()
+    public void SetCanMove(bool canMove)
     {
-        if(horizontal.x < 0)
+        playerInControl = canMove;
+    }
+
+    //made this public bc I forget how protected works
+    //will change later
+    public void Move(Vector2 movement, float speed)
+    {
+        if(movement.x < 0)
         {
             anim.SetBool("isWalking", true);
         }
-        else if(horizontal.x > 0)
+        else if(movement.x > 0)
         {
             anim.SetBool("isWalking", true);
         }
@@ -100,7 +112,7 @@ public class SC_Player_Move : MonoBehaviour
         //if getting knocked back, player cannot move
         if (launchTime <= 0)
         {
-            rb.linearVelocity = new Vector2(horizontal.x * speed, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(movement.x * speed, rb.linearVelocity.y);
         }
         else
         {
@@ -139,9 +151,9 @@ public class SC_Player_Move : MonoBehaviour
         }
     }
 
-    private void spriteRotation()
+    private void spriteRotation(Vector2 movement)
     {
-        if (horizontal.x < 0 && isFacingRight || horizontal.x > 0 && !isFacingRight)
+        if (movement.x < 0 && isFacingRight || movement.x > 0 && !isFacingRight)
         {
             isFacingRight = !isFacingRight;
             transform.Rotate(new Vector3(0, 180, 0));

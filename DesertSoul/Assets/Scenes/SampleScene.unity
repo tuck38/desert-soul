@@ -2316,7 +2316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1243749701929299577, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_TagString
-      value: Hurtbox
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1691440002245027248, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_Size.x
