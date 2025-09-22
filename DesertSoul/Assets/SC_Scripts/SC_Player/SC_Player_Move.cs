@@ -82,8 +82,7 @@ public class SC_Player_Move : MonoBehaviour
     {
         if (playerInControl)
         {
-            Move(horizontal, speed);
-            spriteRotation(horizontal);
+            Move(horizontal, speed, true);
         }
     }
 
@@ -94,9 +93,10 @@ public class SC_Player_Move : MonoBehaviour
 
     //made this public bc I forget how protected works
     //will change later
-    public void Move(Vector2 movement, float speed)
+    public void Move(Vector2 movement, float speed, bool useGravity)
     {
-        if(movement.x < 0)
+        spriteRotation(movement);
+        if (movement.x < 0)
         {
             anim.SetBool("isWalking", true);
         }
@@ -112,7 +112,14 @@ public class SC_Player_Move : MonoBehaviour
         //if getting knocked back, player cannot move
         if (launchTime <= 0)
         {
-            rb.linearVelocity = new Vector2(movement.x * speed, rb.linearVelocity.y);
+            if (useGravity)
+            {
+                rb.linearVelocity = new Vector2(movement.x * speed, rb.linearVelocity.y);
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(movement.x * speed, movement.y * speed);
+            }
         }
         else
         {

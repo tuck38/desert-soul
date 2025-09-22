@@ -175,6 +175,7 @@ MonoBehaviour:
   jumpPower: 28
   baseGravity: 3
   gravLimit: 10
+  coyoteTime: 0.2
   rb: {fileID: 7767278961558348056}
   groundCheck: {fileID: 8727176915732031999}
   groundLayer:
@@ -199,10 +200,16 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  heldWeapon: {fileID: 5643392107775045682}
+  sythe: {fileID: 0}
   launchPower: 500
   launchTime: 0
   launchTotalTime: 0
+  launchFromRight: 0
+  flickerSpeed: 0
+  flickerSpeedTotal: 0
+  Iframes: 0
+  IframeTotal: 0
+  hitbox: {fileID: 1691440002245027248}
 --- !u!50 &7767278961558348056
 Rigidbody2D:
   serializedVersion: 5

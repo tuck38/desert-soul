@@ -30,15 +30,12 @@ public class GameManager : MonoBehaviour
     public void newScene()
     {
         player = GameObject.Find("Player");
-
         List<SC_Door> doors = new List<SC_Door>(FindObjectsByType<SC_Door>(FindObjectsSortMode.None));
         foreach (SC_Door door in doors)
         {
-            //Debug.Log(newDoor);
-            //Debug.Log(door.doorDir);
-            player.transform.position = door.spawn.transform.position;
             if (door.doorDir == newDoor)
             {
+                door.SetDoorActive(false);
                 player.transform.position = door.spawn.transform.position;
                 break;
             }
@@ -47,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadNewLevel(string scene, SC_Enum_Doors doorDir)
     {
-
+        //Gets the source door direction and finds the destination door in the next room
         //I hate this one
         switch (doorDir)
         {
