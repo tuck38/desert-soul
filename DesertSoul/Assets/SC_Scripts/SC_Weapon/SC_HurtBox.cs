@@ -22,5 +22,13 @@ public class SC_HurtBox : MonoBehaviour
                 enemy.TakeDamage(currentAttack.getDamage());
             }
         }
+        if (collision.gameObject.tag == "ResourceNode")
+        {
+            SC_ResourceNode node = collision.gameObject.GetComponent<SC_ResourceNode>();
+            if (node != null && currentAttack != null)
+            {
+                node.TakeDamage(currentAttack.getDamage());
+            }
+        }
     }
 }

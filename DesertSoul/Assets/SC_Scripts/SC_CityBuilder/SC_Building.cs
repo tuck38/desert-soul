@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
 public class SC_Building : MonoBehaviour
@@ -25,6 +26,11 @@ public class SC_Building : MonoBehaviour
     public void Unlock()
     {
         unlocked = true;
+    }
+
+    private void OnMouseDown()
+    {
+        SceneManager.LoadScene("BuildingTest");
     }
 
 }

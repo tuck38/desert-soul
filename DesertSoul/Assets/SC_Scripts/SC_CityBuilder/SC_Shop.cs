@@ -16,6 +16,20 @@ public class SC_Shop : MonoBehaviour
 
     private SC_Building buildingToPlace;
 
+    static List<SC_Building> buildingsPlaced;
+    static List<Vector3> buildingsPlacedLocation;
+
+    private void Start()
+    {
+        if (buildingsPlaced == null) buildingsPlaced = new List<SC_Building>();
+        if (buildingsPlacedLocation == null) buildingsPlacedLocation = new List<Vector3>();
+
+        for (int i = 0; i < buildingsPlaced.Count; i++)
+        {
+            Instantiate(buildingsPlaced[i], buildingsPlacedLocation[i],Quaternion.identity, buildingParent);
+        }
+    }
+
     private void Update()
     {
         if(Input.GetMouseButtonDown(0) && buildingToPlace != null) CheckForValidGridCell();
@@ -27,7 +41,8 @@ public class SC_Shop : MonoBehaviour
     /// <param name="building"></param>
     public void SelectBuildingToSpawn(SC_Building building)
     {
-        SC_ResourceTestScript.OnResourcesAmountChanged(building.MaterialCost.x * -1, building.MaterialCost.y * -1);
+        SC_ResourceTestScript.OnResourcesAmountChanged.Invoke(ResouceTypes.STONE, building.MaterialCost.x * -1);
+        SC_ResourceTestScript.OnResourcesAmountChanged.Invoke(ResouceTypes.TWINE, building.MaterialCost.y * -1);
         buildingToPlace = building;
         purchaseCursor.gameObject.SetActive(true);
         purchaseCursor.GetComponent<SpriteRenderer>().sprite = building.BuildingSprite;
@@ -66,7 +81,7 @@ public class SC_Shop : MonoBehaviour
             buttons[i].transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = buildings[i].MaterialCost.y.ToString();
 
             if (!buildings[i].Unlocked) buttons[i].interactable = false;
-            else if (buildings[i].MaterialCost.x > SC_ResourceTestScript.amountOfBrown || buildings[i].MaterialCost.y > SC_ResourceTestScript.amountOfPurple) buttons[i].interactable = false;
+            else if (buildings[i].MaterialCost.x > SC_ResourceTestScript.amountOfType1 || buildings[i].MaterialCost.y > SC_ResourceTestScript.amountOfType2) buttons[i].interactable = false;
             else buttons[i].interactable = true;
         }
     }
@@ -105,6 +120,8 @@ public class SC_Shop : MonoBehaviour
                 if (usableCells.Count == buildingToPlace.Dimensions.x * buildingToPlace.Dimensions.y)
                 {
                     Instantiate(buildingToPlace, closestGridCell.transform.position, Quaternion.identity, buildingParent);
+                    buildingsPlaced.Add(buildingToPlace);
+                    buildingsPlacedLocation.Add(closestGridCell.transform.position);
                     buildingToPlace = null;
                     foreach(SC_GridCell cell in usableCells)
                     {
@@ -117,6 +134,8 @@ public class SC_Shop : MonoBehaviour
             else
             {
                 Instantiate(buildingToPlace, closestGridCell.transform.position, Quaternion.identity, buildingParent);
+                buildingsPlaced.Add(buildingToPlace);
+                buildingsPlacedLocation.Add(closestGridCell.transform.position);
                 buildingToPlace = null;
                 closestGridCell.isOccupied = true;
                 purchaseCursor.gameObject.SetActive(false);
