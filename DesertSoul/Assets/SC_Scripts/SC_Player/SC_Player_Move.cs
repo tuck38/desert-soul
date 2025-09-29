@@ -27,7 +27,8 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private InputAction move;
     [SerializeField] private InputAction look;
 
-    [SerializeField] public SC_Sythe sythe;
+     private SC_Sythe sythe;
+     private SC_Drill drill;
 
     //Knockback Vars
     [SerializeField] private float launchPower;
@@ -54,6 +55,8 @@ public class SC_Player_Move : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        sythe = GetComponent<SC_Sythe>();
+        drill = GetComponent<SC_Drill>();
     }
 
     // Update is called once per frame
@@ -222,7 +225,7 @@ public class SC_Player_Move : MonoBehaviour
 
         if (Input.GetButtonDown("SecondaryAttack"))
         {
-            sythe.AddAttack(AttackType.secondary);
+            drill.Drill(true, isFacingRight);
         }
     }
 
