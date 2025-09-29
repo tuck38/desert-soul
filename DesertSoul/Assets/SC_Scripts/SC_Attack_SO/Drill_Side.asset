@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Drill_Side
   m_EditorClassIdentifier: 
   requirments: 
-  damage: 5
-  AtkTime: 3
+  damage: 1
+  AtkTime: 0.05
   type: 1
   attackID: 0
   projectile: {fileID: 0}
+  carry: 1

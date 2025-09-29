@@ -6,7 +6,14 @@ public class SC_HurtBox : MonoBehaviour
 
     public SC_Attack_Base currentAttack;
 
-    // Update is called once per frame
+    [SerializeField] private Transform carryPoint;
+
+
+    private void Start()
+    {
+        
+    }
+
     void Update()
     {
         
@@ -19,7 +26,7 @@ public class SC_HurtBox : MonoBehaviour
             SC_Enemy_Base enemy = collision.gameObject.GetComponent<SC_Enemy_Base>();
             if(enemy != null && currentAttack != null)
             {
-                enemy.TakeDamage(currentAttack.getDamage());
+                enemy.TakeDamage(currentAttack, carryPoint);
             }
         }
         if (collision.gameObject.tag == "ResourceNode")

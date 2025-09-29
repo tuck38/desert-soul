@@ -9,7 +9,7 @@ public class SC_Player_HitBox : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //replace assigned variable with getcomponents
+        
     }
 
     // Update is called once per frame

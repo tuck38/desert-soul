@@ -14,6 +14,8 @@ public class SC_Attack_Base : ScriptableObject
     [SerializeField] private int attackID;
     [SerializeField] private GameObject projectile;
 
+    [SerializeField] private bool carry;
+
     public AttackType getAttackType()
     {
         return type;
@@ -42,6 +44,10 @@ public class SC_Attack_Base : ScriptableObject
         return damage;
     }
 
+    public bool shouldCarry()
+    { 
+        return carry;
+    }
     public int getID()
     { 
         return attackID; 

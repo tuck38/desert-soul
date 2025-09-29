@@ -2368,6 +2368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAttack: {fileID: 0}
+  joint: {fileID: 0}
 --- !u!1001 &422360616264871149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2501,6 +2502,10 @@ PrefabInstance:
       propertyPath: MAXHealth
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8411677008114127136, guid: e51224ec3e6acce45aa98b96543524f5, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 633f5b7157de3794d907d9cc2859f9e8, type: 2}
     - target: {fileID: 8411677008114127136, guid: e51224ec3e6acce45aa98b96543524f5, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -2707,7 +2712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1110454475813013432, guid: 451cb56d1f806504ea791a2232a386e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.1462631
+      value: 2.0000973
       objectReference: {fileID: 0}
     - target: {fileID: 1110454475813013432, guid: 451cb56d1f806504ea791a2232a386e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2878,6 +2883,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hurtbox
       objectReference: {fileID: 0}
+    - target: {fileID: 4403367757889873212, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 2.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403367757889873212, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: -2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4706023726402285121, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_IsTrigger
       value: 1
@@ -2978,7 +2991,9 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4403367757889873212, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+    - {fileID: 2872208027127569999, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
