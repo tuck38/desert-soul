@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requirments: 
   damage: 2
-  AtkTime: 0.5
   type: 0
   attackID: 0
   projectile: {fileID: 0}
+  clip: {fileID: 7400000, guid: 890f8b8f2f5f3914aa163d9b917a64d8, type: 2}
+  carry: 0

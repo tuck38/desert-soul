@@ -355,7 +355,8 @@ MonoBehaviour:
   drillSpeed: 20
   drillCooldown: 1
   hurtbox: {fileID: 6557361794270610141}
-  attack: {fileID: 11400000, guid: 10d518c8f2bbea9438963b037798ab3e, type: 2}
+  attackSide: {fileID: 11400000, guid: 10d518c8f2bbea9438963b037798ab3e, type: 2}
+  attackDown: {fileID: 11400000, guid: 1cc43f3d653ac3d4f978853a40dc7042, type: 2}
 --- !u!1 &3659587814947956846
 GameObject:
   m_ObjectHideFlags: 0

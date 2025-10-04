@@ -9,12 +9,15 @@ public class SC_Attack_Base : ScriptableObject
 
     [SerializeField] protected List<AttackType> requirments;
     [SerializeField] private int damage;
-    [SerializeField] private float AtkTime;
+    [SerializeField] private float atkTime;
     [SerializeField] private AttackType type;
     [SerializeField] private int attackID;
     [SerializeField] private GameObject projectile;
+    [SerializeField] private AnimationClip clip;
 
     [SerializeField] private bool carry;
+
+
 
     public AttackType getAttackType()
     {
@@ -53,8 +56,13 @@ public class SC_Attack_Base : ScriptableObject
         return attackID; 
     }
 
+    public void setTime(float time)
+    {
+        atkTime = time;
+    }
+
     public float getTime()
     {
-        return AtkTime;
+        return atkTime;
     }
 }

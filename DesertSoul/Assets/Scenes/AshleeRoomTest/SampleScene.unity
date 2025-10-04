@@ -2368,7 +2368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAttack: {fileID: 0}
-  joint: {fileID: 0}
+  carryPoint: {fileID: 0}
 --- !u!1001 &422360616264871149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2444,11 +2444,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 130365717139953516, guid: e51224ec3e6acce45aa98b96543524f5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.54
+      value: -4.35
       objectReference: {fileID: 0}
     - target: {fileID: 130365717139953516, guid: e51224ec3e6acce45aa98b96543524f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.47
+      value: -3.28
       objectReference: {fileID: 0}
     - target: {fileID: 130365717139953516, guid: e51224ec3e6acce45aa98b96543524f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2712,7 +2712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1110454475813013432, guid: 451cb56d1f806504ea791a2232a386e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0000973
+      value: 1.6999779
       objectReference: {fileID: 0}
     - target: {fileID: 1110454475813013432, guid: 451cb56d1f806504ea791a2232a386e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2833,11 +2833,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2448919803125031715, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: drillSpeed
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2448919803125031715, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: timeDrillin
-      value: 0.2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2448919803125031715, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: drillCooldown

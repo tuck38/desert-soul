@@ -9,18 +9,20 @@ public class SC_Drill : MonoBehaviour
 
 
     [SerializeField] private int damage;
-    [SerializeField] private float timeDrillin = .2f;
+    [SerializeField] private float timeDrillin = .5f;
     [SerializeField] private float drillSpeed = 5f;
     [SerializeField] private float drillCooldown = 1f;
     [SerializeField] private SC_HurtBox hurtbox;
-    [SerializeField] private SC_Attack_Base attack;
+    [SerializeField] private SC_Attack_Base attackSide;
+    [SerializeField] private SC_Attack_Base attackDown;
 
 
 
-    private float currentDrillCooldown = 0f; 
+    private float currentDrillCooldown = 0f;  
     private float currentTimeDrillin = 0f;
 
     private bool drillin = false;
+    private bool drillinDown = false;
 
     private bool playerGrounded;
 
@@ -52,9 +54,12 @@ public class SC_Drill : MonoBehaviour
             {
                 //done drillin
                 drillin = false;
-                animator.SetBool("Drill", false);
+                animator.SetBool("DrillSide", false);
+                animator.SetBool("DrillDown", false);
+                drillinDown = false;
                 currentDrillCooldown = drillCooldown;
                 playerMove.SetCanMove(true);
+                hurtbox.StopEnemyLock();
             }
         }
         else
@@ -74,9 +79,10 @@ public class SC_Drill : MonoBehaviour
 
         if(isGrounded & currentDrillCooldown <= 0)
         {
-            animator.SetBool("Drill", true);
+            animator.SetBool("DrillSide", true);
             drillin = true;
-            hurtbox.currentAttack = attack;
+            attackSide.setTime(timeDrillin);
+            hurtbox.currentAttack = attackSide;
             currentTimeDrillin = 0f;
             playerMove.SetCanMove(false);
             if (isFacingRight)
@@ -87,6 +93,17 @@ public class SC_Drill : MonoBehaviour
             {
                 shmovement = new Vector2(-1, 0);
             }
+        }
+        else if (!isGrounded && currentDrillCooldown <= 0)
+        {
+            animator.SetBool("DrillDown", true);
+            drillin = true;
+            drillinDown = true;
+            attackDown.setTime(timeDrillin);
+            hurtbox.currentAttack = attackDown;
+            currentTimeDrillin = 0f;
+            playerMove.SetCanMove(false);
+            shmovement = new Vector2(0, -1);
         }
     }
 }

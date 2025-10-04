@@ -12,7 +12,10 @@ public class SC_Enemy_Base : MonoBehaviour
     private Rigidbody2D rb;
 
     bool locked;
-    float lockTime;
+
+    private float lockTimer = 0.5f;
+    private float currentLockTimer = 0f;
+    private bool lockCooldown;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -29,36 +32,38 @@ public class SC_Enemy_Base : MonoBehaviour
         {
             Die();
         }
-        if (locked)
+
+        if(currentLockTimer > 0)
         {
-            gameObject.transform.position = lockPoint.position;
+            currentLockTimer -= Time.deltaTime;
+            if (currentLockTimer <= 0)
+            {
+                lockCooldown = false;
+            }
         }
 
-        if(lockTime > 0)
+        if (locked)
         {
-            lockTime -= Time.deltaTime;
-        }
-        else
-        {
-            locked = false;
+            gameObject.transform.position = new Vector3(lockPoint.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         }
     }
 
     //takes damage and returns true if the attack killed the enemy
     public bool TakeDamage(SC_Attack_Base attack, Transform carryPoint)
     {
-        currentHealth -= attack.getDamage();
-        if (currentHealth <= 0)
+        if (!locked)
         {
-            return true;
-        }
-        if (attack.shouldCarry())
-        {
-            locked = true;
-            lockPoint = carryPoint;
-            lockTime = attack.getTime();
-            Debug.Log("go away spongebob");
+            currentHealth -= attack.getDamage();
+            if (currentHealth <= 0)
+            {
+                return true;
+            }
 
+            if (attack.shouldCarry() && !lockCooldown)
+            {
+                locked = true;
+                lockPoint = carryPoint;
+            }
         }
         return false;
     }
@@ -66,6 +71,16 @@ public class SC_Enemy_Base : MonoBehaviour
     public int GetDamage()
     { 
         return damage; 
+    }
+    
+    public void setLocked(bool shouldLock)
+    {
+        locked = shouldLock;
+        if (!locked)
+        {
+            lockCooldown = true;
+            currentLockTimer = lockTimer;
+        }
     }
 
     private void Die()

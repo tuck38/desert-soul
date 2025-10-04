@@ -43,7 +43,7 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private float IframeTotal;
     [SerializeField] private BoxCollider2D hitbox;
 
-    private bool playerInControl = true;
+    private bool playerInControl;
 
     private void Awake()
     {
@@ -57,6 +57,8 @@ public class SC_Player_Move : MonoBehaviour
         anim = GetComponent<Animator>();
         sythe = GetComponent<SC_Sythe>();
         drill = GetComponent<SC_Drill>();
+
+        playerInControl = true;
     }
 
     // Update is called once per frame
@@ -225,7 +227,7 @@ public class SC_Player_Move : MonoBehaviour
 
         if (Input.GetButtonDown("SecondaryAttack"))
         {
-            drill.Drill(true, isFacingRight);
+            drill.Drill(IsGrounded(), isFacingRight);
         }
     }
 

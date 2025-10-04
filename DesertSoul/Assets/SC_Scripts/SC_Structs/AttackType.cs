@@ -5,5 +5,8 @@ public enum AttackType
 {
     primary,
     secondary,
-    special,
+    drillSide,
+    drillDown,
+    hook,
+    spear,
 }
