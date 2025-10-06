@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - ResourceUI
   - ResourceNode
+  - DrillableTerrain
   layers:
   - Default
   - TransparentFX

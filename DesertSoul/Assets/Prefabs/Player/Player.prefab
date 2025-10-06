@@ -352,7 +352,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 5
   timeDrillin: 0.5
-  drillSpeed: 20
+  sideDrillSpeed: 5
+  downDrillSpeed: 13
   drillCooldown: 1
   hurtbox: {fileID: 6557361794270610141}
   attackSide: {fileID: 11400000, guid: 10d518c8f2bbea9438963b037798ab3e, type: 2}

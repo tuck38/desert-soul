@@ -54,5 +54,16 @@ public class SC_HurtBox : MonoBehaviour
                 node.TakeDamage(currentAttack.getDamage());
             }
         }
+        if (collision.gameObject.tag == "DrillableTerrain")
+        {
+            SC_Drillable_Terrain terrain = collision.gameObject.GetComponent<SC_Drillable_Terrain>();
+            if (terrain != null && currentAttack != null)
+            {
+                if(currentAttack.getAttackType() == AttackType.drillDown)
+                {
+                    terrain.BreakTerrain();
+                }
+            }
+        }
     }
 }

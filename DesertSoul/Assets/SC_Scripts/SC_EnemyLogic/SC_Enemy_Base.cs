@@ -17,6 +17,12 @@ public class SC_Enemy_Base : MonoBehaviour
     private float currentLockTimer = 0f;
     private bool lockCooldown;
 
+    //Launch Vars
+    private bool launchFromRight = true;
+    [SerializeField] private float launchTime;
+    [SerializeField] private float totalLaunchTime;
+    [SerializeField] private float launchPower;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -46,6 +52,22 @@ public class SC_Enemy_Base : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(lockPoint.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         }
+
+        //knockback timer 
+        if(launchTime > 0)
+        {         
+            //This system works for now, but doesent use gravity and feels floaty
+            if (launchFromRight)
+            {
+                rb.linearVelocity = new Vector2(-launchPower, launchPower);
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(launchPower, launchPower);
+            }
+
+            launchTime -= Time.deltaTime;
+        }
     }
 
     //takes damage and returns true if the attack killed the enemy
@@ -68,6 +90,28 @@ public class SC_Enemy_Base : MonoBehaviour
         return false;
     }
 
+    public void Knockback(GameObject player)
+    {
+
+        //method 1
+        //Vector3 dirVect = gameObject.transform.position - enemy.transform.position;
+        //dirVect.Normalize();
+        //rb.AddForce(dirVect * launchPower, ForceMode2D.Impulse);
+        //rb.linearVelocity = dirVect * launchPower;
+
+        //method 2
+        launchTime = totalLaunchTime;
+
+        if (player.transform.position.x >= transform.position.x)
+        {
+            launchFromRight = true;
+        }
+        else if (player.transform.position.x < transform.position.x)
+        {
+            launchFromRight = false;
+        }
+    }
+
     public int GetDamage()
     { 
         return damage; 
@@ -80,6 +124,7 @@ public class SC_Enemy_Base : MonoBehaviour
         {
             lockCooldown = true;
             currentLockTimer = lockTimer;
+            launchTime = totalLaunchTime;
         }
     }
 

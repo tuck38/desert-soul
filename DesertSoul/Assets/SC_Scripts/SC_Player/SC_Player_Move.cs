@@ -227,6 +227,7 @@ public class SC_Player_Move : MonoBehaviour
 
         if (Input.GetButtonDown("SecondaryAttack"))
         {
+            
             drill.Drill(IsGrounded(), isFacingRight);
         }
     }

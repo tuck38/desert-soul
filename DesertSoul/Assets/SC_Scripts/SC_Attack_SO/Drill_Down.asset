@@ -18,5 +18,5 @@ MonoBehaviour:
   type: 3
   attackID: 0
   projectile: {fileID: 0}
-  clip: {fileID: 0}
+  clip: {fileID: 7400000, guid: 839ae047e44fff0479cd2e7a3a970a2e, type: 2}
   carry: 0

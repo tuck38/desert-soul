@@ -10,7 +10,8 @@ public class SC_Drill : MonoBehaviour
 
     [SerializeField] private int damage;
     [SerializeField] private float timeDrillin = .5f;
-    [SerializeField] private float drillSpeed = 5f;
+    [SerializeField] private float sideDrillSpeed = 5f;
+    [SerializeField] private float downDrillSpeed = 5f;
     [SerializeField] private float drillCooldown = 1f;
     [SerializeField] private SC_HurtBox hurtbox;
     [SerializeField] private SC_Attack_Base attackSide;
@@ -48,7 +49,14 @@ public class SC_Drill : MonoBehaviour
             if (currentTimeDrillin <= timeDrillin)
             {
                 currentTimeDrillin += Time.deltaTime;
-                playerMove.Move(shmovement, drillSpeed, false);
+                if (drillinDown)
+                {
+                    playerMove.Move(shmovement, downDrillSpeed, false);
+                }
+                else
+                {
+                    playerMove.Move(shmovement, sideDrillSpeed, false);
+                }
             }
             else
             {
