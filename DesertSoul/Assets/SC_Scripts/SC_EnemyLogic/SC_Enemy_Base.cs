@@ -19,9 +19,15 @@ public class SC_Enemy_Base : MonoBehaviour
 
     //Launch Vars
     private bool launchFromRight = true;
-    [SerializeField] private float launchTime;
+    private float launchTime = 0;
     [SerializeField] private float totalLaunchTime;
     [SerializeField] private float launchPower;
+
+    [SerializeField] private float decelerationMult = 0.95f;
+    private bool decelerationEnabled = false;
+
+    //REFERENCE GOTTEN AFTER PLAYER HITS ENEMY
+    private GameObject player;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,6 +40,7 @@ public class SC_Enemy_Base : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (currentHealth <= 0)
         {
             Die();
@@ -59,14 +66,23 @@ public class SC_Enemy_Base : MonoBehaviour
             //This system works for now, but doesent use gravity and feels floaty
             if (launchFromRight)
             {
-                rb.linearVelocity = new Vector2(-launchPower, launchPower);
+                rb.linearVelocity = new Vector2(-launchPower, launchPower / 2);
             }
             else
             {
-                rb.linearVelocity = new Vector2(launchPower, launchPower);
+                rb.linearVelocity = new Vector2(launchPower, launchPower / 2);
             }
 
             launchTime -= Time.deltaTime;
+            if(launchTime <= 0)
+            {
+               decelerationEnabled = true;
+            }
+        }
+
+        if (decelerationEnabled)
+        {
+            decelerate();
         }
     }
 
@@ -90,7 +106,7 @@ public class SC_Enemy_Base : MonoBehaviour
         return false;
     }
 
-    public void Knockback(GameObject player)
+    private void Knockback()
     {
 
         //method 1
@@ -116,6 +132,11 @@ public class SC_Enemy_Base : MonoBehaviour
     { 
         return damage; 
     }
+
+    public void SetPlayer(GameObject player)
+    {
+        this.player = player;
+    }
     
     public void setLocked(bool shouldLock)
     {
@@ -124,7 +145,20 @@ public class SC_Enemy_Base : MonoBehaviour
         {
             lockCooldown = true;
             currentLockTimer = lockTimer;
-            launchTime = totalLaunchTime;
+            Knockback();
+        }
+    }
+
+    private void decelerate()
+    {
+        Debug.Log(rb.linearVelocity.x);
+        rb.linearVelocity = new Vector2 (rb.linearVelocityX * decelerationMult, rb.linearVelocityY);
+        Debug.Log(rb.linearVelocity.x);
+
+        if (rb.linearVelocity.x <= 0.2 && rb.linearVelocity.x >= -0.2)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+            decelerationEnabled = false;
         }
     }
 

@@ -2503,12 +2503,20 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4838837970292445619, guid: e51224ec3e6acce45aa98b96543524f5, type: 3}
+      propertyPath: launchDist
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838837970292445619, guid: e51224ec3e6acce45aa98b96543524f5, type: 3}
       propertyPath: launchPower
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4838837970292445619, guid: e51224ec3e6acce45aa98b96543524f5, type: 3}
       propertyPath: totalLaunchTime
-      value: 0.2
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4838837970292445619, guid: e51224ec3e6acce45aa98b96543524f5, type: 3}
+      propertyPath: decelerationMult
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 8411677008114127136, guid: e51224ec3e6acce45aa98b96543524f5, type: 3}
       propertyPath: m_Material
