@@ -10,6 +10,7 @@ TagManager:
   - ResourceUI
   - ResourceNode
   - DrillableTerrain
+  - Hazard
   layers:
   - Default
   - TransparentFX
