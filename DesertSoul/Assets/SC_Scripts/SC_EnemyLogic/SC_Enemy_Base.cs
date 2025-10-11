@@ -151,9 +151,7 @@ public class SC_Enemy_Base : MonoBehaviour
 
     private void decelerate()
     {
-        Debug.Log(rb.linearVelocity.x);
         rb.linearVelocity = new Vector2 (rb.linearVelocityX * decelerationMult, rb.linearVelocityY);
-        Debug.Log(rb.linearVelocity.x);
 
         if (rb.linearVelocity.x <= 0.2 && rb.linearVelocity.x >= -0.2)
         {
