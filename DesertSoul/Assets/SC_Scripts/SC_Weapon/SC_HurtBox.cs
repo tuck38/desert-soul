@@ -66,5 +66,9 @@ public class SC_HurtBox : MonoBehaviour
                 }
             }
         }
+        if(collision.gameObject.tag == "Fruit")
+        {
+            collision.gameObject.GetComponent<SC_Fruit>().FruitHit();
+        }
     }
 }

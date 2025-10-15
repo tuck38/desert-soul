@@ -1,8 +1,15 @@
 using UnityEngine;
 
+public enum NPCTypes
+{
+    MINER,
+    FARMER
+}
+
 public class SC_NPCTest : MonoBehaviour
 {
-
+    [SerializeField] NPCTypes npcType;
+    [SerializeField] string npcName;
     [SerializeField] GameObject dialogue;
     [SerializeField] GameObject winnerDialogue;
     [SerializeField] GameObject loserDialogue;
@@ -12,7 +19,7 @@ public class SC_NPCTest : MonoBehaviour
         SC_BallCupGame.OnGameOver += MinigameOver;
     }
 
-    private void OnDisable()
+    private void OnDisable() 
     {
         SC_BallCupGame.OnGameOver -= MinigameOver;
     }
@@ -22,9 +29,9 @@ public class SC_NPCTest : MonoBehaviour
         dialogue.SetActive(true);
     }
 
-    private void OnTriggerEnter2D()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        dialogue.SetActive(true);
+        if(collision.tag == "Player") dialogue.SetActive(true);
     }
 
     public void CloseDialogue()

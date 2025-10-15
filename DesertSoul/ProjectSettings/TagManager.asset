@@ -10,6 +10,7 @@ TagManager:
   - ResourceUI
   - ResourceNode
   - DrillableTerrain
+  - Fruit
   layers:
   - Default
   - TransparentFX
