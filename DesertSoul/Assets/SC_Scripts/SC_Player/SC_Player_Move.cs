@@ -103,10 +103,12 @@ public class SC_Player_Move : MonoBehaviour
         spriteRotation(movement);
         if (movement.x < 0)
         {
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             anim.SetBool("isWalking", true);
         }
         else if(movement.x > 0)
         {
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             anim.SetBool("isWalking", true);
         }
         else
@@ -174,9 +176,8 @@ public class SC_Player_Move : MonoBehaviour
 
     private void Jump()
     {
-
         //coyote time code
-        if(IsGrounded())
+        if (IsGrounded())
         {
             coyoteTimeCounter = coyoteTime;
         }
@@ -189,18 +190,21 @@ public class SC_Player_Move : MonoBehaviour
         //temp(?)
         if (Input.GetButtonUp("Jump") && !IsGrounded())
         {
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
         }
 
         //Gets player input and jumps if grounded
         if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0f)
         {
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             rb.linearVelocity = new(rb.linearVelocity.x, jumpPower);
             coyoteTimeCounter = 0f;
         }
 
         if(Input.GetButtonDown("Jump") && rb.linearVelocity.y > 0f)
         {
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
 
@@ -221,13 +225,14 @@ public class SC_Player_Move : MonoBehaviour
     {
         if (Input.GetButtonDown("PrimaryAttack"))
         {
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             sythe.AddAttack(AttackType.primary);
 
         }
 
         if (Input.GetButtonDown("SecondaryAttack"))
         {
-            
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             drill.Drill(IsGrounded(), isFacingRight);
         }
     }

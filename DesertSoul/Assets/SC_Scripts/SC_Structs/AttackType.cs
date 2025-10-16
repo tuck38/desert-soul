@@ -9,4 +9,5 @@ public enum AttackType
     drillDown,
     hook,
     spear,
+    all,
 }

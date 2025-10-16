@@ -4,6 +4,7 @@ using UnityEngine;
 public class SC_ResourceNode : MonoBehaviour
 {
     [SerializeField] ResouceTypes type;
+    [SerializeField] AttackType attackTypeThatCanBreakNode;
     [SerializeField] int amountPerHit;
     [SerializeField] int healthTotal;
 
@@ -26,5 +27,10 @@ public class SC_ResourceNode : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public AttackType AttackTypeToBreakNode()
+    {
+        return attackTypeThatCanBreakNode;
     }
 }

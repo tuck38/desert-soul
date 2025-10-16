@@ -50,7 +50,8 @@ public class SC_HurtBox : MonoBehaviour
         if (collision.gameObject.tag == "ResourceNode")
         {
             SC_ResourceNode node = collision.gameObject.GetComponent<SC_ResourceNode>();
-            if (node != null && currentAttack != null)
+            bool canBreak = node.AttackTypeToBreakNode() == currentAttack.getAttackType() || node.AttackTypeToBreakNode() == AttackType.all;
+            if (node != null && currentAttack != null && canBreak)
             {
                 node.TakeDamage(currentAttack.getDamage());
             }
