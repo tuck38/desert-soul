@@ -45,6 +45,8 @@ public class SC_Player_Move : MonoBehaviour
 
     private bool playerInControl;
 
+    private bool jumping;
+
     private void Awake()
     {
         playerControls = new PlayerInputActions();
@@ -58,6 +60,7 @@ public class SC_Player_Move : MonoBehaviour
         sythe = GetComponent<SC_Sythe>();
         drill = GetComponent<SC_Drill>();
 
+        jumping = false;
         playerInControl = true;
     }
 
@@ -188,22 +191,25 @@ public class SC_Player_Move : MonoBehaviour
 
         //short hop code
         //temp(?)
-        if (Input.GetButtonUp("Jump") && !IsGrounded())
+        if (Input.GetButtonUp("Jump") && !IsGrounded() && jumping == true)
         {
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
+            jumping = false;
         }
 
         //Gets player input and jumps if grounded
-        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0f)
+        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0f && IsGrounded())
         {
+            jumping = true;
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             rb.linearVelocity = new(rb.linearVelocity.x, jumpPower);
             coyoteTimeCounter = 0f;
         }
 
-        if(Input.GetButtonDown("Jump") && rb.linearVelocity.y > 0f)
+        if(Input.GetButtonDown("Jump") && rb.linearVelocity.y > 0f && IsGrounded())
         {
+            jumping = true;
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
