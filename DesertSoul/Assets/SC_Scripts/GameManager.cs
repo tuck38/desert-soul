@@ -1,10 +1,28 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System;
+
+public enum TimeOfDay
+{
+    MORNING,
+    MIDDAY,
+    NIGHT
+}
 
 public class GameManager : MonoBehaviour
 {
+    public static Action<TimeOfDay> OnTimeOfDayChanged;
 
+    [Header("Day/Night System Variables")]
+    [SerializeField] float dayNightClockSpeed = 1f;
+    [SerializeField] float minTime = 0f;
+    [SerializeField] float maxTime = 24f;
+    [Tooltip("Indexes in this array correspond to the indexes attached to the values in the TimeOfDay enum")]
+    [SerializeField] float[] timeOfDayStartTimes;
+
+    static float dayTimer;
+    static TimeOfDay currentTime;
 
     public static GameManager Instance {  get; private set; }
 
@@ -23,6 +41,29 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        dayTimer += Time.deltaTime * dayNightClockSpeed;
+        if (dayTimer >= maxTime) dayTimer -= maxTime;
+        UpdateTimeOfDay();
+        Debug.Log($"Current Time: {dayTimer}, Time Of Day: {currentTime}");
+    }
+
+    private void UpdateTimeOfDay()
+    {
+        TimeOfDay newTime = currentTime;
+
+        if (dayTimer >= timeOfDayStartTimes[(int)TimeOfDay.NIGHT]) newTime = TimeOfDay.NIGHT;
+        else if (dayTimer >= timeOfDayStartTimes[(int)TimeOfDay.MIDDAY]) newTime = TimeOfDay.MIDDAY;
+        else if (dayTimer >= timeOfDayStartTimes[(int)TimeOfDay.MORNING]) newTime = TimeOfDay.MORNING;
+
+        if (newTime != currentTime)
+        {
+            currentTime = newTime;
+            OnTimeOfDayChanged?.Invoke(currentTime);
         }
     }
 
