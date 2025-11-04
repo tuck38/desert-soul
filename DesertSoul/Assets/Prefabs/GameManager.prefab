@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584767316667bd344a2e0f7600b1aa2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayNightClockSpeed: 1
+  minTime: 0
+  maxTime: 24
+  timeOfDayStartTimes:
+  - 0
+  - 6
+  - 12

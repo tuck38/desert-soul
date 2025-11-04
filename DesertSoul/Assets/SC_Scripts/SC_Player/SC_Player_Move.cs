@@ -9,7 +9,7 @@ public class SC_Player_Move : MonoBehaviour
     private float vertical;
     [SerializeField] private float speed = 8f;
     [SerializeField] private float jumpPower = 16f;
-    private bool isFacingRight = true;
+    public bool isFacingRight = true;
     [SerializeField] private float baseGravity = 2f;
     [SerializeField] private float gravLimit = 10f;
 
@@ -43,6 +43,10 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private float IframeTotal;
     [SerializeField] private BoxCollider2D hitbox;
 
+    //Camera Vars
+    [SerializeField] private GameObject cameraFollowGameObject;
+    private SC_Camera_FollowObject cameraFollowObject;
+
     private bool playerInControl;
 
     private bool jumping;
@@ -59,6 +63,8 @@ public class SC_Player_Move : MonoBehaviour
         anim = GetComponent<Animator>();
         sythe = GetComponent<SC_Sythe>();
         drill = GetComponent<SC_Drill>();
+
+        cameraFollowObject = cameraFollowGameObject.GetComponent<SC_Camera_FollowObject>();
 
         jumping = false;
         playerInControl = true;
@@ -174,6 +180,8 @@ public class SC_Player_Move : MonoBehaviour
         {
             isFacingRight = !isFacingRight;
             transform.Rotate(new Vector3(0, 180, 0));
+
+            cameraFollowObject.Turn();
         }
     }
 
