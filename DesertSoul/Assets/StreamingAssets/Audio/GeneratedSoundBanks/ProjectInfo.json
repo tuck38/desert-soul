@@ -1,0 +1,36 @@
+{
+ "ProjectInfo": {
+  "Project": {
+   "Name": "DesertSoul_WwiseProject",
+   "GUID": "{F2FC443C-E125-4957-8C49-3228DD8AEC14}",
+   "Generator": "2024.1.9.8920"
+  },
+  "CacheRoot": "../../../../DesertSoul_WwiseProject/.cache",
+  "Platforms": [
+   {
+    "Name": "Mac",
+    "GUID": "{E48A311F-C1C9-4462-A321-D47AC27E4F86}",
+    "BasePlatform": "Mac",
+    "BasePlatformGUID": "{9C6217D5-DD11-4795-87C1-6CE02853C540}",
+    "Path": "../../../../DesertSoul_WwiseProject/GeneratedSoundBanks/Mac"
+   },
+   {
+    "Name": "Windows",
+    "GUID": "{59310A88-7B8C-49E0-B7AE-9FBAE1999B4D}",
+    "BasePlatform": "Windows",
+    "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
+    "Path": "../../../../DesertSoul_WwiseProject/GeneratedSoundBanks/Windows"
+   }
+  ],
+  "Languages": [
+   {
+    "Name": "English(US)",
+    "Id": "684519430",
+    "GUID": "{870C35A0-F3FE-4027-A169-4003D4CF0949}",
+    "Default": "true",
+    "UseAsStandIn": "true"
+   }
+  ],
+  "FileHash": "{4911B38A-032D-3738-F5C2-510D6CD6EF24}"
+ }
+}

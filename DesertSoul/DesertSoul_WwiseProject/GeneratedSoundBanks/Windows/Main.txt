@@ -1,0 +1,7 @@
+Event	ID	Name			Wwise Object Path	Notes
+	454106841	Play_Dungeon_Area1			\Default Work Unit\Play_Dungeon_Area1	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	430690571	Dungeon_Area1	C:\Users\jmzav\OneDrive\Documents\GitHub\desert-soul\DesertSoul\DesertSoul_WwiseProject\.cache\C7\{C7E813BC-F144-795C-0EAA-8971E0ACE2F6}.wem		\Interactive Music Hierarchy\Default Work Unit\Dungeon_Area1\Dungeon_Area1		21168096
+	865838165	Dungeon_Area1	C:\Users\jmzav\OneDrive\Documents\GitHub\desert-soul\DesertSoul\DesertSoul_WwiseProject\.cache\3C\{3C733DF3-FFB9-32BB-9A61-D4608281D0F7}.wem		\Actor-Mixer Hierarchy\Default Work Unit\Dungeon_Area1		21168096
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Play_Dungeon_Area1" ID="{BA7FFC38-9F89-40FE-A19D-6E1E6C7FF0C7}">
+					<ChildrenList>
+						<Action Name="" ID="{FE606DBD-8A6D-4A69-84D5-2FA6A83CCE7A}" ShortID="220668254">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dungeon_Area1" ID="{68B11B31-E5D8-4024-B081-31C8C20AF0D6}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

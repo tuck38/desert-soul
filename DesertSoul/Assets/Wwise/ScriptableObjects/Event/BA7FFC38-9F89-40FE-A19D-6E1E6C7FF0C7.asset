@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d2371fb6588434d80c074a49469e95, type: 3}
+  m_Name: BA7FFC38-9F89-40FE-A19D-6E1E6C7FF0C7
+  m_EditorClassIdentifier: AK.Wwise.Unity.API.WwiseTypes::WwiseEventReference
+  objectName: Play_Dungeon_Area1
+  id: 454106841
+  guid: BA7FFC38-9F89-40FE-A19D-6E1E6C7FF0C7
+  IsInUserDefinedSoundBank: 1
