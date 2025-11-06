@@ -322,13 +322,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   defaultSpeed: 2
-  chasePlayerSpeed: 3
   stopDistancePlatformEdge: 0.5
-  stopDistancePlayer: 0.75
-  timeBetweenApproachingPlayerAndAttacking: 1
-  timeBetweenAttacks: 0.2
   point1: {fileID: 0}
   point2: {fileID: 0}
+  timeBetweenAttacks: 0.2
+  chasePlayerSpeed: 3
+  stopDistancePlayer: 1.2
+  timeBetweenApproachingPlayerAndAttacking: 1
   defaultColor: {r: 0.1764706, g: 0.8392157, b: 0.06666667, a: 1}
   approachColor: {r: 1, g: 0.99997795, b: 0, a: 1}
   windUpColor: {r: 1, g: 0.5758062, b: 0, a: 1}

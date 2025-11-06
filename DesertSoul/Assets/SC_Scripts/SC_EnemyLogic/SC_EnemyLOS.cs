@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SC_EnemyLOS : MonoBehaviour
 {
-    [SerializeField] SC_RattleSnake enemy;
+    [SerializeField] SC_Enemy_Attack_Base enemy;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

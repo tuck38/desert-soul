@@ -77,7 +77,7 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
             {
                 nextPoint = point2;
                 isGoingOne = false;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180)); 
+                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
             }
             else
             {

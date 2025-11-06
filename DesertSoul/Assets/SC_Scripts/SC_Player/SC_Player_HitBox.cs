@@ -30,5 +30,17 @@ public class SC_Player_HitBox : MonoBehaviour
                 player.SetIFrames();
             }
         }
+        else if (collision.gameObject.tag == "Dungball")
+        {
+            SC_Dungball enemy = collision.gameObject.GetComponent<SC_Dungball>();
+            if (enemy.IsFullyFormed())
+            {
+                Debug.Log($"{collision.gameObject.name}");
+                prop.TakeDamage(enemy.GetDamage());
+                Destroy(enemy.transform.parent.gameObject);
+                player.Knockback(collision.transform.gameObject);
+                player.SetIFrames();
+            }
+        }
     }
 }

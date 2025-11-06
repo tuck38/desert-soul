@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         dayTimer += Time.deltaTime * dayNightClockSpeed;
         if (dayTimer >= maxTime) dayTimer -= maxTime;
         UpdateTimeOfDay();
-        Debug.Log($"Current Time: {dayTimer}, Time Of Day: {currentTime}");
+        //Debug.Log($"Current Time: {dayTimer}, Time Of Day: {currentTime}");
     }
 
     private void UpdateTimeOfDay()

@@ -4,10 +4,14 @@ using UnityEngine;
 public class SC_Dungbeetle : SC_Enemy_Attack_Base
 {
     [Header("Dungbeetle Values")]
-    [SerializeField] GameManager dungBallPrefab;
+    [SerializeField] GameObject dungBallPrefab;
     [SerializeField] SC_Dungball currentDungball;
     [SerializeField] float attackRange;
     [SerializeField] float dungballInitialForceStrength;
+
+    [SerializeField] Color defaultColor;
+    [SerializeField] Color playerDetectedColor;
+    [SerializeField] Color attackColor;
 
     bool isAttacking = false;
     bool isBallFullyFormed = true;
@@ -19,24 +23,28 @@ public class SC_Dungbeetle : SC_Enemy_Attack_Base
         currentState = EnemyState.WANDERING;
         nextPoint = point1;
         isGoingOne = true;
-        dungBallDefaultPosition = currentDungball.transform.localPosition;
+        dungBallDefaultPosition = currentDungball.transform.parent.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
+        isBallFullyFormed = currentDungball.IsFullyFormed();
         CheckPos();
         switch (currentState)
         {
             case EnemyState.NONE:
                 break;
             case EnemyState.ATTACK:
+                GetComponent<SpriteRenderer>().color = attackColor;
                 if (!isAttacking && isBallFullyFormed) StartCoroutine("AttackCoroutine");
                 break;
             case EnemyState.DETECT_PLAYER:
+                GetComponent<SpriteRenderer>().color = playerDetectedColor;
                 CheckDistanceFromPlayer();
                 break;
             case EnemyState.WANDERING:
+                GetComponent<SpriteRenderer>().color = defaultColor;
                 if (!isAttacking) MoveTo();
                 break;
         }
@@ -44,13 +52,25 @@ public class SC_Dungbeetle : SC_Enemy_Attack_Base
 
     protected override IEnumerator AttackCoroutine()
     {
-        currentDungball.transform.parent = null;
-        currentDungball.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, dungballInitialForceStrength));
+        currentDungball.transform.parent.parent = null;
+        currentDungball.GetComponent<Rigidbody2D>().AddForce(transform.right * dungballInitialForceStrength);
         isBallFullyFormed = false;
         currentState = EnemyState.WANDERING;
-        currentDungball = Instantiate(dungBallPrefab, dungBallDefaultPosition, Quaternion.identity, transform).GetComponent<SC_Dungball>();
-        currentDungball.transform.localPosition = dungBallDefaultPosition;
+        currentDungball = Instantiate(dungBallPrefab, dungBallDefaultPosition, Quaternion.identity, transform).transform.GetChild(0).GetComponent<SC_Dungball>();
+        currentDungball.transform.parent.localPosition = dungBallDefaultPosition;
         yield return new WaitForSeconds(0f);
+    }
+
+    public override void PlayerDetected(GameObject playerObj)
+    {
+        Debug.Log("Player detected");
+        if(isBallFullyFormed)
+        {
+            player = playerObj;
+            preLockOnPoint = nextPoint;
+            nextPoint = player.transform;
+            currentState = EnemyState.DETECT_PLAYER;
+        }
     }
 
     private void CheckDistanceFromPlayer()

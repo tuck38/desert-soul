@@ -12,6 +12,7 @@ TagManager:
   - DrillableTerrain
   - Hazard
   - Fruit
+  - Dungball
   layers:
   - Default
   - TransparentFX
