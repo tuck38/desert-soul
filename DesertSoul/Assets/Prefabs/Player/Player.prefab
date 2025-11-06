@@ -175,10 +175,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6063f15ba224c4041b6c2f0a46ffc8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
-  jumpPower: 38
-  baseGravity: 4
-  gravLimit: 10
+  speed: 8
+  jumpPower: 29
+  isFacingRight: 1
+  baseGravity: 3
+  gravLimit: 3
   coyoteTime: 0.2
   rb: {fileID: 7767278961558348056}
   groundCheck: {fileID: 8727176915732031999}
@@ -213,6 +214,7 @@ MonoBehaviour:
   Iframes: 0
   IframeTotal: 2
   hitbox: {fileID: 1691440002245027248}
+  cameraFollowGameObject: {fileID: 0}
 --- !u!50 &7767278961558348056
 Rigidbody2D:
   serializedVersion: 5
