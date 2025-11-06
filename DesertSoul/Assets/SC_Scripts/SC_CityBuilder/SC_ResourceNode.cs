@@ -11,6 +11,16 @@ public class SC_ResourceNode : MonoBehaviour
     int currentHealth;
     SpriteRenderer spriteRenderer;
 
+    private void OnEnable()
+    {
+        GameManager.OnTimeOfDayChanged += ResetResourceNode;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnTimeOfDayChanged -= ResetResourceNode;
+    }
+
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -23,14 +33,20 @@ public class SC_ResourceNode : MonoBehaviour
         currentHealth -= dmg;
         SC_ResourceTestScript.OnResourcesAmountChanged?.Invoke(type, amountPerHit);
         spriteRenderer.color = Color.Lerp(Color.white, Color.black, currentHealth / healthTotal);
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-        }
+        if (currentHealth <= 0) spriteRenderer.enabled = false;
     }
 
     public AttackType AttackTypeToBreakNode()
     {
         return attackTypeThatCanBreakNode;
+    }
+
+    private void ResetResourceNode(TimeOfDay timeOfDay)
+    {
+        if (timeOfDay != TimeOfDay.MORNING) return;
+
+        currentHealth = healthTotal;
+        spriteRenderer.color = Color.white;
+        spriteRenderer.enabled = true;
     }
 }
