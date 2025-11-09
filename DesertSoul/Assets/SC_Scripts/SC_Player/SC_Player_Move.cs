@@ -7,15 +7,26 @@ public class SC_Player_Move : MonoBehaviour
 
     private Vector2 horizontal;
     private float vertical;
+
+    //Move Variables
     [SerializeField] private float speed = 8f;
-    [SerializeField] private float jumpPower = 16f;
-    public bool isFacingRight = true;
+
+    //Jump Variables
+    [SerializeField] private float maxJumpHeight = 8f;
+    [SerializeField] private float minJumpHeight = 2f;
+    private float currentJumpHeight = 0f;
+    private float startJumpHeight = 0f;
+    [SerializeField] private float jumpPower = 29f;
+    private bool falling = false;
+
+    //Gravity
     [SerializeField] private float baseGravity = 2f;
-    [SerializeField] private float gravLimit = 10f;
+    [SerializeField] private float fallingGravLimit = 10f;
 
     [SerializeField] private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
-    
+
+    public bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
     private Animator anim;
@@ -207,23 +218,34 @@ public class SC_Player_Move : MonoBehaviour
         }
 
         //Gets player input and jumps if grounded
-        if (Input.GetButtonDown("Jump") && coyoteTimeCounter > 0f && IsGrounded())
+        if (Input.GetButtonDown("Jump") && (IsGrounded() || coyoteTimeCounter > 0f) )
         {
             jumping = true;
+            startJumpHeight = gameObject.transform.position.y;
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             rb.linearVelocity = new(rb.linearVelocity.x, jumpPower);
             coyoteTimeCounter = 0f;
         }
 
-        if(Input.GetButtonDown("Jump") && rb.linearVelocity.y > 0f && IsGrounded())
+        if(maxJumpHeight <= gameObject.transform.position.y - startJumpHeight)
         {
-            jumping = true;
+            Debug.Log("Max Jump");
+            falling = true;
+        }
+
+        if(minJumpHeight <= gameObject.transform.position.y - startJumpHeight)
+        {
+            Debug.Log("minJump");
+        }
+
+        if(Input.GetButtonDown("Jump") && rb.linearVelocity.y > 0f)
+        {
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
         }
 
         //makes player decend faster the longer they are falling
-        if(rb.linearVelocity.y < 0 && rb.gravityScale < gravLimit)
+        if(rb.linearVelocity.y < 0 && rb.gravityScale < fallingGravLimit)
         {
             rb.gravityScale = rb.gravityScale + 0.005f;
         }
