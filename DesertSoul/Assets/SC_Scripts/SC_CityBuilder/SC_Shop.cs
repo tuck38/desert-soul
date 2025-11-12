@@ -7,20 +7,24 @@ using TMPro;
 public class SC_Shop : MonoBehaviour
 {
     [SerializeField] GameObject shopUIParent;
-    [SerializeField] GameObject enableShopButtonParent;
+    //[SerializeField] GameObject enableShopButtonParent;
     [SerializeField] Transform buildingParent;
     [SerializeField] SC_MouseTracker purchaseCursor;
     [SerializeField] SC_GridMaker grid;
     [SerializeField] List<SC_Building> buildings;
     [SerializeField] List<Button> buttons;
+    [SerializeField] KeyCode OpenShopKey;
 
     private SC_Building buildingToPlace;
 
     static List<SC_Building> buildingsPlaced;
     static List<Vector3> buildingsPlacedLocation;
 
+    SC_Player_Prop playerResourceInfo;
+
     private void Start()
     {
+        playerResourceInfo = GameObject.Find("Player").GetComponent<SC_Player_Prop>();
         if (buildingsPlaced == null) buildingsPlaced = new List<SC_Building>();
         if (buildingsPlacedLocation == null) buildingsPlacedLocation = new List<Vector3>();
 
@@ -33,6 +37,7 @@ public class SC_Shop : MonoBehaviour
     private void Update()
     {
         if(Input.GetMouseButtonDown(0) && buildingToPlace != null) CheckForValidGridCell();
+        if(Input.GetKeyDown(OpenShopKey)) OpenShopUI();
     }
 
     /// <summary>
@@ -41,8 +46,8 @@ public class SC_Shop : MonoBehaviour
     /// <param name="building"></param>
     public void SelectBuildingToSpawn(SC_Building building)
     {
-        SC_ResourceTestScript.OnResourcesAmountChanged.Invoke(ResouceTypes.STONE, building.MaterialCost.x * -1);
-        SC_ResourceTestScript.OnResourcesAmountChanged.Invoke(ResouceTypes.TWINE, building.MaterialCost.y * -1);
+        SC_Player_Prop.OnResourcesAmountChanged.Invoke(ResouceTypes.STONE, building.MaterialCost.x * -1);
+        SC_Player_Prop.OnResourcesAmountChanged.Invoke(ResouceTypes.TWINE, building.MaterialCost.y * -1);
         buildingToPlace = building;
         purchaseCursor.gameObject.SetActive(true);
         purchaseCursor.GetComponent<SpriteRenderer>().sprite = building.BuildingSprite;
@@ -56,7 +61,7 @@ public class SC_Shop : MonoBehaviour
     {
         CheckShopUnlocks();
         shopUIParent.SetActive(true);
-        enableShopButtonParent.SetActive(false);
+        //enableShopButtonParent.SetActive(false);
         grid.gameObject.SetActive(true);
     }
 
@@ -66,7 +71,7 @@ public class SC_Shop : MonoBehaviour
     public void CloseShopUI()
     {
         shopUIParent.SetActive(false);
-        enableShopButtonParent.SetActive(true);
+        //enableShopButtonParent.SetActive(true);
         grid.gameObject.SetActive(false);
     }
 
@@ -81,7 +86,7 @@ public class SC_Shop : MonoBehaviour
             buttons[i].transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = buildings[i].MaterialCost.y.ToString();
 
             if (!buildings[i].Unlocked) buttons[i].interactable = false;
-            else if (buildings[i].MaterialCost.x > SC_ResourceTestScript.amountOfType1 || buildings[i].MaterialCost.y > SC_ResourceTestScript.amountOfType2) buttons[i].interactable = false;
+            else if (buildings[i].MaterialCost.x > playerResourceInfo.stoneMaterialCount || buildings[i].MaterialCost.y > playerResourceInfo.twineMaterialCount) buttons[i].interactable = false;
             else buttons[i].interactable = true;
         }
     }

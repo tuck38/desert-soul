@@ -31,7 +31,7 @@ public class SC_ResourceNode : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         currentHealth -= dmg;
-        SC_ResourceTestScript.OnResourcesAmountChanged?.Invoke(type, amountPerHit);
+        SC_Player_Prop.OnResourcesAmountChanged?.Invoke(type, amountPerHit);
         spriteRenderer.color = Color.Lerp(Color.white, Color.black, currentHealth / healthTotal);
         if (currentHealth <= 0) spriteRenderer.enabled = false;
     }

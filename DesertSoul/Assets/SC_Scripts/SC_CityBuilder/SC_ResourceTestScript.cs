@@ -12,8 +12,6 @@ public enum ResouceTypes
 
 public class SC_ResourceTestScript : MonoBehaviour
 {
-    public static Action<ResouceTypes, int> OnResourcesAmountChanged;
-
     public static int amountOfType1 { get; private set; }
     public static int amountOfType2 { get; private set; }
     public static int amountOfType3 { get; private set; }
@@ -38,8 +36,8 @@ public class SC_ResourceTestScript : MonoBehaviour
 
     void OnEnable()
     {
-        OnResourcesAmountChanged += UpdateResources;
-        if(!runOnce)
+        //OnResourcesAmountChanged += UpdateResources;
+        /*if(!runOnce)
         {
             UpdateResources(ResouceTypes.STONE, 1000);
             UpdateResources(ResouceTypes.TWINE, 900);
@@ -53,19 +51,19 @@ public class SC_ResourceTestScript : MonoBehaviour
             UpdateResources(ResouceTypes.TWINE, 0);
             UpdateResources(ResouceTypes.FRUIT, 0);
             UpdateResources(ResouceTypes.ICE, 0);
-        }
+        }*/
     }
 
     void OnDisable()
     {
-        OnResourcesAmountChanged -= UpdateResources;
+        //OnResourcesAmountChanged -= UpdateResources;
     }
 
     /// <summary>
     /// Update the total amount of resources available to spend based on input
     /// </summary>
-    /// <param name="numBrownSpent"></param>
-    /// <param name="numPurpleSpent"></param>
+    /// <param name="resourceType"></param>
+    /// <param name="amountOfResouceChanged"></param>
     void UpdateResources(ResouceTypes resourceType, int amountOfResouceChanged)
     {
         switch(resourceType)

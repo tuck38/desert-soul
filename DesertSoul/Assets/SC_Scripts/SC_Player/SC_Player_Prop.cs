@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
@@ -6,6 +7,8 @@ using UnityEngine.SceneManagement;
 //This script is used to keep track of health, possible materials, and other recources that may be introduced
 public class SC_Player_Prop : MonoBehaviour
 {
+    public static Action<ResouceTypes, int> OnResourcesAmountChanged;
+
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
 
@@ -26,6 +29,23 @@ public class SC_Player_Prop : MonoBehaviour
     private SpriteRenderer sprite;
     private Color originalColor;
 
+    [SerializeField] public int stoneMaterialCount { get; private set; }
+    [SerializeField] public int twineMaterialCount { get; private set; }
+    [SerializeField] public int fruitMaterialCount { get; private set; }
+    [SerializeField] public int iceMaterialCount { get; private set; }
+
+    bool materialTest = true;
+
+
+    private void OnEnable()
+    {
+        OnResourcesAmountChanged += UpdateResources;
+    }
+
+    private void OnDisable()
+    {
+        OnResourcesAmountChanged -= UpdateResources;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -36,6 +56,14 @@ public class SC_Player_Prop : MonoBehaviour
        
         sprite = gameObject.GetComponent<SpriteRenderer>();
         originalColor = sprite.color;
+
+        if (materialTest)
+        {
+            UpdateResources(ResouceTypes.STONE, 1000);
+            UpdateResources(ResouceTypes.TWINE, 900);
+            UpdateResources(ResouceTypes.FRUIT, 50);
+            UpdateResources(ResouceTypes.ICE, 10);
+        }
     }
 
     // Update is called once per frame
@@ -112,5 +140,29 @@ public class SC_Player_Prop : MonoBehaviour
         sprite.color = Color.red;
         yield return new WaitForSeconds(duration);
         sprite.color = originalColor;
+    }
+
+    /// <summary>
+    /// Update the total amount of resources available to spend based on input
+    /// </summary>
+    /// <param name="resourceType"></param>
+    /// <param name="amountOfResouceChanged"></param>
+    void UpdateResources(ResouceTypes resourceType, int amountOfResouceChanged)
+    {
+        switch (resourceType)
+        {
+            case ResouceTypes.STONE:
+                stoneMaterialCount += amountOfResouceChanged;
+                break;
+            case ResouceTypes.TWINE:
+                twineMaterialCount += amountOfResouceChanged;
+                break;
+            case ResouceTypes.FRUIT:
+                fruitMaterialCount += amountOfResouceChanged;
+                break;
+            case ResouceTypes.ICE:
+                iceMaterialCount += amountOfResouceChanged;
+                break;
+        }
     }
 }
