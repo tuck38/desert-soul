@@ -37,7 +37,6 @@ public class SC_Player_HitBox : MonoBehaviour
             {
                 Debug.Log($"{collision.gameObject.name}");
                 prop.TakeDamage(enemy.GetDamage());
-                Destroy(enemy.transform.parent.gameObject);
                 player.Knockback(collision.transform.gameObject);
                 player.SetIFrames();
             }

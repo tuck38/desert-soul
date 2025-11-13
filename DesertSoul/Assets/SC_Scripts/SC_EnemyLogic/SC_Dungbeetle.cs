@@ -16,6 +16,7 @@ public class SC_Dungbeetle : SC_Enemy_Attack_Base
     bool isAttacking = false;
     bool isBallFullyFormed = true;
     Vector3 dungBallDefaultPosition;
+    Vector3 dungBallParentPosition;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,7 +24,8 @@ public class SC_Dungbeetle : SC_Enemy_Attack_Base
         currentState = EnemyState.WANDERING;
         nextPoint = point1;
         isGoingOne = true;
-        dungBallDefaultPosition = currentDungball.transform.parent.localPosition;
+        dungBallDefaultPosition = currentDungball.transform.localPosition;
+        dungBallParentPosition = currentDungball.transform.parent.localPosition;
     }
 
     // Update is called once per frame
@@ -48,28 +50,37 @@ public class SC_Dungbeetle : SC_Enemy_Attack_Base
                 if (!isAttacking) MoveTo();
                 break;
         }
+        if(!currentDungball)
+        {
+            currentDungball = Instantiate(dungBallPrefab, dungBallParentPosition, Quaternion.identity, transform).transform.GetChild(0).GetComponent<SC_Dungball>();
+            //currentDungball.transform.localPosition = dungBallDefaultPosition;
+            currentDungball.transform.parent.localPosition = dungBallParentPosition;
+        }
     }
 
     protected override IEnumerator AttackCoroutine()
     {
         currentDungball.transform.parent.parent = null;
+        currentDungball.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         currentDungball.GetComponent<Rigidbody2D>().AddForce(transform.right * dungballInitialForceStrength);
         isBallFullyFormed = false;
         currentState = EnemyState.WANDERING;
-        currentDungball = Instantiate(dungBallPrefab, dungBallDefaultPosition, Quaternion.identity, transform).transform.GetChild(0).GetComponent<SC_Dungball>();
-        currentDungball.transform.parent.localPosition = dungBallDefaultPosition;
+        currentDungball = null;
         yield return new WaitForSeconds(0f);
     }
 
     public override void PlayerDetected(GameObject playerObj)
     {
-        Debug.Log("Player detected");
-        if(isBallFullyFormed)
+        if (currentState == EnemyState.WANDERING)
         {
-            player = playerObj;
-            preLockOnPoint = nextPoint;
-            nextPoint = player.transform;
-            currentState = EnemyState.DETECT_PLAYER;
+            Debug.Log("Player detected");
+            if (isBallFullyFormed)
+            {
+                player = playerObj;
+                preLockOnPoint = nextPoint;
+                nextPoint = player.transform;
+                currentState = EnemyState.DETECT_PLAYER;
+            }
         }
     }
 

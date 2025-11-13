@@ -329,7 +329,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0.2
   dungBallPrefab: {fileID: 4696058634898599746, guid: 90afd43cf66b3fb4d866d8a140261654, type: 3}
   currentDungball: {fileID: 2429927235256165880}
-  attackRange: 4
+  attackRange: 5
   dungballInitialForceStrength: 500
   defaultColor: {r: 0.8392157, g: 0.06666667, b: 0.42745098, a: 1}
   playerDetectedColor: {r: 1, g: 0.725698, b: 0, a: 1}

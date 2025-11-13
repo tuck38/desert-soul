@@ -57,11 +57,14 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
 
     public virtual void PlayerDetected(GameObject playerObj)
     {
-        Debug.Log("Player detected");
-        player = playerObj;
-        preLockOnPoint = nextPoint;
-        nextPoint = player.transform;
-        currentState = EnemyState.DETECT_PLAYER;
+        if(currentState == EnemyState.WANDERING)
+        {
+            Debug.Log("Player detected");
+            player = playerObj;
+            preLockOnPoint = nextPoint;
+            nextPoint = player.transform;
+            currentState = EnemyState.DETECT_PLAYER;
+        }
     }
 
     public virtual void PlayerLost()

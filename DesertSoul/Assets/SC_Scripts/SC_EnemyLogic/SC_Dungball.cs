@@ -49,13 +49,18 @@ public class SC_Dungball : MonoBehaviour
         return isFullyFormed;
     }
 
+    public void DamageBall()
+    {
+        Destroy(transform.parent.gameObject);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("End Fall?");
+        //Debug.Log("End Fall?");
         if (startedFall)
         {
-            Debug.Log("End Fall!");
-            finalFallYPos = parent.position.y;
+            //Debug.Log("End Fall!");
+            finalFallYPos = transform.position.y;
             if (initialFallYPos - finalFallYPos > maxFallHeight) Destroy(gameObject);
             startedFall = false;
         }
@@ -63,11 +68,11 @@ public class SC_Dungball : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        Debug.Log("Start Fall?");
-        if (!startedFall && (LayerMask)collision.gameObject.layer == groundLayer)
+        //Debug.Log("Start Fall?");
+        if (!startedFall && ((groundLayer.value & (1 << collision.gameObject.layer)) != 0))
         {
-            Debug.Log("Start Fall!");
-            initialFallYPos = parent.position.y;
+            //Debug.Log("Start Fall!");
+            initialFallYPos = transform.position.y;
             startedFall = true;
         }
     }

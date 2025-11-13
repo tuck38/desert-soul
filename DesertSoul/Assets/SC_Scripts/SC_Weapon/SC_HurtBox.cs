@@ -47,7 +47,7 @@ public class SC_HurtBox : MonoBehaviour
                 enemy.SetPlayer(gameObject.gameObject);
             }
         }
-        if (collision.gameObject.tag == "ResourceNode")
+        else if (collision.gameObject.tag == "ResourceNode")
         {
             SC_ResourceNode node = collision.gameObject.GetComponent<SC_ResourceNode>();
             bool canBreak = node.AttackTypeToBreakNode() == currentAttack.getAttackType() || node.AttackTypeToBreakNode() == AttackType.all;
@@ -56,7 +56,7 @@ public class SC_HurtBox : MonoBehaviour
                 node.TakeDamage(currentAttack.getDamage());
             }
         }
-        if (collision.gameObject.tag == "DrillableTerrain")
+        else if (collision.gameObject.tag == "DrillableTerrain")
         {
             SC_Drillable_Terrain terrain = collision.gameObject.GetComponent<SC_Drillable_Terrain>();
             if (terrain != null && currentAttack != null)
@@ -67,9 +67,17 @@ public class SC_HurtBox : MonoBehaviour
                 }
             }
         }
-        if(collision.gameObject.tag == "Fruit")
+        else if(collision.gameObject.tag == "Fruit")
         {
             collision.gameObject.GetComponent<SC_Fruit>().FruitHit();
+        }
+        else if (collision.gameObject.tag == "Dungball")
+        {
+            SC_Dungball dungball = collision.gameObject.GetComponent<SC_Dungball>();
+            if (dungball != null && (currentAttack.getAttackType() == AttackType.drillSide || currentAttack.getAttackType() == AttackType.drillDown))
+            {
+                dungball.DamageBall();
+            }
         }
     }
 }
