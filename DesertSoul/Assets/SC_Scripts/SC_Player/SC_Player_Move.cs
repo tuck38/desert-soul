@@ -9,21 +9,40 @@ public class SC_Player_Move : MonoBehaviour
     private float vertical;
 
     //Move Variables
-    [SerializeField] private float speed = 8f;
+    [Tooltip("How much the players speed increases every frame, up to the max")]
+    [SerializeField] private float moveAcceleration = 1f;
+    [Tooltip("The maximum speed the player can move")]
+    [SerializeField] private float maxSpeed = 8f;
+    [Tooltip("How fast the player moves at base, before acceleration")]
+    [SerializeField] private float minSpeed = 4f;
+    private float currentSpeed;
+    bool moving = false;
 
     //Jump Variables
+    [Tooltip("How far the player can go up before they fall if the jump button is held")]
     [SerializeField] private float maxJumpHeight = 8f;
+    [Tooltip("How mfar the player must go up before they fall if the jump button is released during the jump")]
     [SerializeField] private float minJumpHeight = 2f;
+    [Tooltip("How fast the player will go up upon the jump button being pressed")]
+    [SerializeField] private float jumpVelocity = 8f;
+
+    //vars the keep track of jump state
     private float currentJumpHeight = 0f;
     private float startJumpHeight = 0f;
-    [SerializeField] private float jumpPower = 29f;
     private bool falling = false;
     private bool stopJump = false;
 
     //Gravity
+    [Tooltip("The base gravity acting upon the player, reset after they are grounded")]
     [SerializeField] private float baseGravity = 2f;
+
+    //fastfall
+    [Tooltip("The factor of how much the gravity increases on the player as they are falling")]
+    [SerializeField] private float gravModifier = 0.005f;
+    [Tooltip("How fast the player will go up upon the jump button being pressed")]
     [SerializeField] private float fallingGravLimit = 10f;
 
+    [Tooltip("The time the player has to jump after leaving an edge")]
     [SerializeField] private float coyoteTime = 0.2f;
     private float coyoteTimeCounter;
 
@@ -44,20 +63,22 @@ public class SC_Player_Move : MonoBehaviour
 
     //Knockback Vars
     [SerializeField] private float launchPower;
-    [SerializeField] private float launchTime;
+    private float launchTime;
     [SerializeField] private float launchTotalTime;
     [SerializeField] private bool launchFromRight;
 
     //Iframe Vars
-    [SerializeField] private float flickerSpeed;
+    private float flickerSpeed = 0;
     [SerializeField] private float flickerSpeedTotal;
-    [SerializeField] private float Iframes;
+    private float Iframes = 0;
     [SerializeField] private float IframeTotal;
     [SerializeField] private BoxCollider2D hitbox;
 
     //Camera Vars
     [SerializeField] private GameObject cameraFollowGameObject;
     private SC_Camera_FollowObject cameraFollowObject;
+
+
 
     private bool playerInControl;
 
@@ -80,6 +101,9 @@ public class SC_Player_Move : MonoBehaviour
 
         jumping = false;
         playerInControl = true;
+
+        flickerSpeed = flickerSpeedTotal;
+        currentSpeed = minSpeed;
     }
 
     // Update is called once per frame
@@ -108,7 +132,7 @@ public class SC_Player_Move : MonoBehaviour
     {
         if (playerInControl)
         {
-            Move(horizontal, speed, true);
+            Move(horizontal, currentSpeed, true);
         }
     }
 
@@ -121,19 +145,24 @@ public class SC_Player_Move : MonoBehaviour
     //will change later
     public void Move(Vector2 movement, float speed, bool useGravity)
     {
+        Debug.Log(currentSpeed);
         spriteRotation(movement);
         if (movement.x < 0)
         {
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+            moving = true;
             anim.SetBool("isWalking", true);
         }
         else if(movement.x > 0)
         {
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+            moving = true;
             anim.SetBool("isWalking", true);
         }
         else
         {
+            moving = false;
+            currentSpeed = minSpeed;
             anim.SetBool("isWalking", false);
         }
 
@@ -184,6 +213,11 @@ public class SC_Player_Move : MonoBehaviour
             sprite.enabled = true;
             hitbox.enabled = true;
         }
+
+        if (currentSpeed < maxSpeed)
+        {
+            currentSpeed += moveAcceleration;
+        }
     }
 
     private void spriteRotation(Vector2 movement)
@@ -219,19 +253,19 @@ public class SC_Player_Move : MonoBehaviour
         }
 
         //Gets player input and jumps if grounded
-        if (Input.GetButtonDown("Jump") && (IsGrounded() || coyoteTimeCounter > 0f) )
+        if ((Input.GetButtonDown("Jump") || Input.GetButton("Jump")) && (IsGrounded() || coyoteTimeCounter > 0f) )
         {
             stopJump = false;
             jumping = true;
             startJumpHeight = gameObject.transform.position.y;
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-            rb.linearVelocity = new(rb.linearVelocity.x, 1 * jumpPower);
+            rb.linearVelocity = new(rb.linearVelocity.x, 1 * jumpVelocity);
             coyoteTimeCounter = 0f;
         }
 
         if(jumping)
         {
-            rb.linearVelocity = new(rb.linearVelocity.x, 1 * jumpPower);
+            rb.linearVelocity = new(rb.linearVelocity.x, 1 * jumpVelocity);
         }
 
         if (transform.position.y - startJumpHeight >= minJumpHeight && stopJump)
@@ -253,7 +287,7 @@ public class SC_Player_Move : MonoBehaviour
         //makes player decend faster the longer they are falling
         if(rb.linearVelocity.y < 0 && rb.gravityScale < fallingGravLimit)
         {
-            rb.gravityScale = rb.gravityScale + 0.005f;
+            rb.gravityScale = rb.gravityScale + gravModifier;
         }
 
         //sets player gravity back to normal after being grounded
