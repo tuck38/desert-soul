@@ -18,6 +18,7 @@ public class SC_Player_Move : MonoBehaviour
     private float startJumpHeight = 0f;
     [SerializeField] private float jumpPower = 29f;
     private bool falling = false;
+    private bool stopJump = false;
 
     //Gravity
     [SerializeField] private float baseGravity = 2f;
@@ -213,29 +214,34 @@ public class SC_Player_Move : MonoBehaviour
         if (Input.GetButtonUp("Jump") && !IsGrounded() && jumping == true)
         {
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-            rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
-            jumping = false;
+            //rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
+            stopJump = true;
         }
 
         //Gets player input and jumps if grounded
         if (Input.GetButtonDown("Jump") && (IsGrounded() || coyoteTimeCounter > 0f) )
         {
+            stopJump = false;
             jumping = true;
             startJumpHeight = gameObject.transform.position.y;
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-            rb.linearVelocity = new(rb.linearVelocity.x, jumpPower);
+            rb.linearVelocity = new(rb.linearVelocity.x, 1 * jumpPower);
             coyoteTimeCounter = 0f;
         }
 
-        if(maxJumpHeight <= gameObject.transform.position.y - startJumpHeight)
+        if(jumping)
         {
-            Debug.Log("Max Jump");
-            falling = true;
+            rb.linearVelocity = new(rb.linearVelocity.x, 1 * jumpPower);
         }
 
-        if(minJumpHeight <= gameObject.transform.position.y - startJumpHeight)
+        if (transform.position.y - startJumpHeight >= minJumpHeight && stopJump)
         {
-            Debug.Log("minJump");
+            jumping = false;
+        }
+
+        if (transform.position.y - startJumpHeight >= maxJumpHeight)
+        {
+            jumping = false;
         }
 
         if(Input.GetButtonDown("Jump") && rb.linearVelocity.y > 0f)
@@ -253,6 +259,7 @@ public class SC_Player_Move : MonoBehaviour
         //sets player gravity back to normal after being grounded
         if(IsGrounded())
         {
+            stopJump = false;
             rb.gravityScale = baseGravity;
         }
     }

@@ -525,6 +525,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: jumpPower
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: maxJumpHeight
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: minJumpHeight
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5833686746517925851, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: BoundingShape2D
       value: 
