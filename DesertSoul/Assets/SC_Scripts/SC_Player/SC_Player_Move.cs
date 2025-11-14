@@ -9,8 +9,11 @@ public class SC_Player_Move : MonoBehaviour
     private float vertical;
 
     //Move Variables
-    [Tooltip("How much the players speed increases every frame, up to the max")]
+    [Tooltip("How much the players speed increases every x seconds, up to the max")]
     [SerializeField] private float moveAcceleration = 1f;
+    [Tooltip("How many seconds before move acceleration is applied to the player")]
+    [SerializeField] private float moveAccelerationTimer = 0.2f;
+    private float currentMoveAccelerationTimer;
     [Tooltip("The maximum speed the player can move")]
     [SerializeField] private float maxSpeed = 8f;
     [Tooltip("How fast the player moves at base, before acceleration")]
@@ -25,6 +28,7 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private float minJumpHeight = 2f;
     [Tooltip("How fast the player will go up upon the jump button being pressed")]
     [SerializeField] private float jumpVelocity = 8f;
+    private float lastYValue;
 
     //vars the keep track of jump state
     private float currentJumpHeight = 0f;
@@ -104,13 +108,14 @@ public class SC_Player_Move : MonoBehaviour
 
         flickerSpeed = flickerSpeedTotal;
         currentSpeed = minSpeed;
+        currentMoveAccelerationTimer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         Attack();
-        Jump();
+        JumpInputs();
         horizontal = move.ReadValue<Vector2>();
         vertical = look.ReadValue<float>();
     }
@@ -132,6 +137,7 @@ public class SC_Player_Move : MonoBehaviour
     {
         if (playerInControl)
         {
+            Jump();
             Move(horizontal, currentSpeed, true);
         }
     }
@@ -145,7 +151,6 @@ public class SC_Player_Move : MonoBehaviour
     //will change later
     public void Move(Vector2 movement, float speed, bool useGravity)
     {
-        Debug.Log(currentSpeed);
         spriteRotation(movement);
         if (movement.x < 0)
         {
@@ -162,6 +167,7 @@ public class SC_Player_Move : MonoBehaviour
         else
         {
             moving = false;
+            currentMoveAccelerationTimer = 0;
             currentSpeed = minSpeed;
             anim.SetBool("isWalking", false);
         }
@@ -214,9 +220,21 @@ public class SC_Player_Move : MonoBehaviour
             hitbox.enabled = true;
         }
 
-        if (currentSpeed < maxSpeed)
+        if (currentSpeed < maxSpeed && moving == true)
         {
-            currentSpeed += moveAcceleration;
+            if(currentMoveAccelerationTimer < moveAccelerationTimer)
+            {
+                currentMoveAccelerationTimer += Time.deltaTime;
+            }
+            else
+            {
+                currentSpeed += moveAcceleration;
+                if(currentSpeed > maxSpeed)
+                {
+                    currentSpeed = maxSpeed;
+                }
+                currentMoveAccelerationTimer = 0;
+            }
         }
     }
 
@@ -231,10 +249,31 @@ public class SC_Player_Move : MonoBehaviour
         }
     }
 
+    private void JumpInputs()
+    {
+        if (!Input.GetButton("Jump") && !IsGrounded() && jumping == true)
+        {
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+            //rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
+            stopJump = true;
+        }
+
+        //Gets player input and jumps if grounded
+        if (Input.GetButtonDown("Jump") && (IsGrounded() || coyoteTimeCounter > 0f) && !jumping)
+        {
+            stopJump = false;
+            jumping = true;
+            startJumpHeight = gameObject.transform.position.y;
+            lastYValue = gameObject.transform.position.y;
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+            coyoteTimeCounter = 0f;
+        }
+    }
+
     private void Jump()
     {
         //coyote time code
-        if (IsGrounded())
+        if (IsGrounded() && !jumping)
         {
             coyoteTimeCounter = coyoteTime;
         }
@@ -243,27 +282,19 @@ public class SC_Player_Move : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
-        //short hop code
-        //temp(?)
-        if (Input.GetButtonUp("Jump") && !IsGrounded() && jumping == true)
+        if (lastYValue.ToString("F2") == gameObject.transform.position.y.ToString("F2"))
         {
-            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-            //rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
-            stopJump = true;
+            if (!IsGrounded())
+            {
+                
+                stopJump = true;
+                jumping = false;
+            }
         }
+        lastYValue = gameObject.transform.position.y;
 
-        //Gets player input and jumps if grounded
-        if ((Input.GetButtonDown("Jump") || Input.GetButton("Jump")) && (IsGrounded() || coyoteTimeCounter > 0f) )
-        {
-            stopJump = false;
-            jumping = true;
-            startJumpHeight = gameObject.transform.position.y;
-            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-            rb.linearVelocity = new(rb.linearVelocity.x, 1 * jumpVelocity);
-            coyoteTimeCounter = 0f;
-        }
 
-        if(jumping)
+        if (jumping)
         {
             rb.linearVelocity = new(rb.linearVelocity.x, 1 * jumpVelocity);
         }
