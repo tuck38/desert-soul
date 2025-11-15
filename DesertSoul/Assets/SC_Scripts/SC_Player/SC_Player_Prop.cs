@@ -10,7 +10,9 @@ public class SC_Player_Prop : MonoBehaviour
     public static Action<ResouceTypes, int> OnResourcesAmountChanged;
 
     [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
+    [Tooltip("Exists to visualize current health in inspector, modifying in inspector won't change player's current health")]
+    [SerializeField] private int currentHealthProxy;
+    public static int currentHealth { get; private set; } = int.MinValue;
 
     //Sun Beam Variables, putting here for now
     [SerializeField] private int maxSunStacks;
@@ -29,10 +31,10 @@ public class SC_Player_Prop : MonoBehaviour
     private SpriteRenderer sprite;
     private Color originalColor;
 
-    [SerializeField] public int stoneMaterialCount { get; private set; }
-    [SerializeField] public int twineMaterialCount { get; private set; }
-    [SerializeField] public int fruitMaterialCount { get; private set; }
-    [SerializeField] public int iceMaterialCount { get; private set; }
+    public static int stoneMaterialCount { get; private set; } = 0;
+    public static int twineMaterialCount { get; private set; } = 0;
+    public static int fruitMaterialCount { get; private set; } = 0;
+    public static int iceMaterialCount { get; private set; } = 0;
 
     bool materialTest = true;
 
@@ -50,6 +52,12 @@ public class SC_Player_Prop : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Debug.Log($"Health {currentHealth}, Materials {stoneMaterialCount} {twineMaterialCount} {fruitMaterialCount} {iceMaterialCount}");
+        if (currentHealth == int.MinValue)
+        {
+            currentHealth = maxHealth;
+            currentHealthProxy = currentHealth;
+        }
         sunStackDamageTimer = sunStackDamageFrequency;
         sunStackTimer = sunStackRemovalFrequency;
         GameManager.Instance.newScene();
@@ -84,11 +92,13 @@ public class SC_Player_Prop : MonoBehaviour
         if (currentHealth > dmg)
         {
             currentHealth = currentHealth - dmg;
+            currentHealthProxy = currentHealth;
             //TODO: update health UI
         }
         else
         {
             //TODO: Good for now but change this to restarting from save
+            currentHealth = int.MinValue;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             
         }

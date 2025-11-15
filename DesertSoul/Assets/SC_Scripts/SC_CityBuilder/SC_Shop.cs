@@ -86,7 +86,7 @@ public class SC_Shop : MonoBehaviour
             buttons[i].transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = buildings[i].MaterialCost.y.ToString();
 
             if (!buildings[i].Unlocked) buttons[i].interactable = false;
-            else if (buildings[i].MaterialCost.x > playerResourceInfo.stoneMaterialCount || buildings[i].MaterialCost.y > playerResourceInfo.twineMaterialCount) buttons[i].interactable = false;
+            else if (buildings[i].MaterialCost.x > SC_Player_Prop.stoneMaterialCount || buildings[i].MaterialCost.y > SC_Player_Prop.twineMaterialCount) buttons[i].interactable = false;
             else buttons[i].interactable = true;
         }
     }
