@@ -122,6 +122,7 @@ public class SC_Player_Move : MonoBehaviour
 
     private void OnEnable()
     {
+        SC_Shop.OnToggleShop += SetCanMove;
         move = playerControls.Player.Move;
         move.Enable();
         look.Enable();
@@ -129,6 +130,7 @@ public class SC_Player_Move : MonoBehaviour
 
     private void OnDisable()
     {
+        SC_Shop.OnToggleShop -= SetCanMove;
         move.Disable();
         look.Disable();
     }

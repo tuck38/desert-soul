@@ -151,7 +151,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 10
   m_Sprite: {fileID: -7986019571225177006, guid: dba403e8b84b7de44a5e674fa85f9da2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -175,12 +175,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6063f15ba224c4041b6c2f0a46ffc8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 8
-  jumpPower: 29
-  isFacingRight: 1
+  moveAcceleration: 1
+  moveAccelerationTimer: 0.2
+  maxSpeed: 8
+  minSpeed: 4
+  maxJumpHeight: 8
+  minJumpHeight: 2
+  jumpVelocity: 8
   baseGravity: 3
-  gravLimit: 3
+  gravModifier: 0.005
+  fallingGravLimit: 10
   coyoteTime: 0.2
+  isFacingRight: 1
   rb: {fileID: 7767278961558348056}
   groundCheck: {fileID: 8727176915732031999}
   groundLayer:
@@ -206,12 +212,9 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   launchPower: 6
-  launchTime: 0
   launchTotalTime: 0.2
   launchFromRight: 0
-  flickerSpeed: 0
   flickerSpeedTotal: 0.5
-  Iframes: 0
   IframeTotal: 2
   hitbox: {fileID: 1691440002245027248}
   cameraFollowGameObject: {fileID: 0}
@@ -342,7 +345,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 10
+  currentHealthProxy: 0
   maxSunStacks: 100
   sunStacksBeforeDamage: 50
   sunStackRemovalFrequency: 0.2

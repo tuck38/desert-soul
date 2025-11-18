@@ -52,7 +52,7 @@ public class SC_Player_Prop : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log($"Health {currentHealth}, Materials {stoneMaterialCount} {twineMaterialCount} {fruitMaterialCount} {iceMaterialCount}");
+        //Debug.Log($"Health {currentHealth}, Materials {stoneMaterialCount} {twineMaterialCount} {fruitMaterialCount} {iceMaterialCount}");
         if (currentHealth == int.MinValue)
         {
             currentHealth = maxHealth;

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,6 +12,7 @@ public class SC_Building : MonoBehaviour
     [SerializeField] bool isMulticell;
     [Tooltip("The numbers of cells along the x and y axis the building fills, only needed if isMulticell is true")]
     [SerializeField] Vector2Int dimensions;
+    [SerializeField] List<Collider2D> buildingColliders;
 
     public string BuildingName { get => buildingName; }
     public Sprite BuildingSprite { get => GetComponent<SpriteRenderer>().sprite; }
@@ -18,6 +20,8 @@ public class SC_Building : MonoBehaviour
     public bool Unlocked { get => unlocked; }
     public bool IsMulticell { get => isMulticell; }
     public Vector2Int Dimensions { get => dimensions; }
+
+    bool isBuildingActive = false;
 
     /// <summary>
     /// Unlock Building in Shop
@@ -28,9 +32,16 @@ public class SC_Building : MonoBehaviour
         unlocked = true;
     }
 
-    private void OnMouseDown()
+    /// <summary>
+    /// Toggle the activation of building colliders and NPCs
+    /// </summary>
+    public void ToggleBuildingActive()
     {
-        SceneManager.LoadScene("BuildingTest");
+        isBuildingActive = !isBuildingActive;
+        foreach (var collider in buildingColliders)
+        {
+            collider.enabled = isBuildingActive;
+            collider.gameObject.GetComponent<SpriteRenderer>().enabled = isBuildingActive;
+        }
     }
-
 }

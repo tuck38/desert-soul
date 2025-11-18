@@ -6,6 +6,8 @@ using TMPro;
 
 public class SC_Shop : MonoBehaviour
 {
+    public static Action<bool> OnToggleShop;
+
     [SerializeField] GameObject shopUIParent;
     //[SerializeField] GameObject enableShopButtonParent;
     [SerializeField] Transform buildingParent;
@@ -15,16 +17,18 @@ public class SC_Shop : MonoBehaviour
     [SerializeField] List<Button> buttons;
     [SerializeField] KeyCode OpenShopKey;
 
+    [Header("Shop Camera Values")]
+    [SerializeField] SC_Camera cameraScript;
+    [SerializeField] Transform shopCameraTrackingTarget;
+    [SerializeField] float shopCameraDistance;
+
     private SC_Building buildingToPlace;
 
     static List<SC_Building> buildingsPlaced;
     static List<Vector3> buildingsPlacedLocation;
 
-    SC_Player_Prop playerResourceInfo;
-
     private void Start()
     {
-        playerResourceInfo = GameObject.Find("Player").GetComponent<SC_Player_Prop>();
         if (buildingsPlaced == null) buildingsPlaced = new List<SC_Building>();
         if (buildingsPlacedLocation == null) buildingsPlacedLocation = new List<Vector3>();
 
@@ -46,8 +50,8 @@ public class SC_Shop : MonoBehaviour
     /// <param name="building"></param>
     public void SelectBuildingToSpawn(SC_Building building)
     {
-        SC_Player_Prop.OnResourcesAmountChanged.Invoke(ResouceTypes.STONE, building.MaterialCost.x * -1);
-        SC_Player_Prop.OnResourcesAmountChanged.Invoke(ResouceTypes.TWINE, building.MaterialCost.y * -1);
+        SC_Player_Prop.OnResourcesAmountChanged?.Invoke(ResouceTypes.STONE, building.MaterialCost.x * -1);
+        SC_Player_Prop.OnResourcesAmountChanged?.Invoke(ResouceTypes.TWINE, building.MaterialCost.y * -1);
         buildingToPlace = building;
         purchaseCursor.gameObject.SetActive(true);
         purchaseCursor.GetComponent<SpriteRenderer>().sprite = building.BuildingSprite;
@@ -63,6 +67,8 @@ public class SC_Shop : MonoBehaviour
         shopUIParent.SetActive(true);
         //enableShopButtonParent.SetActive(false);
         grid.gameObject.SetActive(true);
+        OnToggleShop?.Invoke(false);
+        cameraScript.SetShopView(shopCameraTrackingTarget, shopCameraDistance);
     }
 
     /// <summary>
@@ -73,6 +79,8 @@ public class SC_Shop : MonoBehaviour
         shopUIParent.SetActive(false);
         //enableShopButtonParent.SetActive(true);
         grid.gameObject.SetActive(false);
+        OnToggleShop?.Invoke(true);
+        cameraScript.DefaultView();
     }
 
     /// <summary>
@@ -124,7 +132,9 @@ public class SC_Shop : MonoBehaviour
                 List<SC_GridCell> usableCells = CheckAdjacentCells(closestGridCell, buildingToPlace.Dimensions);
                 if (usableCells.Count == buildingToPlace.Dimensions.x * buildingToPlace.Dimensions.y)
                 {
-                    Instantiate(buildingToPlace, closestGridCell.transform.position, Quaternion.identity, buildingParent);
+                    //Debug.Log($"{usableCells[usableCells.Count - 1].transform.position - closestGridCell.transform.position}, {closestGridCell.transform.position - usableCells[usableCells.Count - 1].transform.position}");
+                    Vector3 spawnPosition = closestGridCell.transform.position + ((usableCells[usableCells.Count - 1].transform.position - closestGridCell.transform.position) / 2.0f);
+                    Instantiate(buildingToPlace, spawnPosition, Quaternion.identity, buildingParent);
                     buildingsPlaced.Add(buildingToPlace);
                     buildingsPlacedLocation.Add(closestGridCell.transform.position);
                     buildingToPlace = null;
@@ -167,7 +177,7 @@ public class SC_Shop : MonoBehaviour
             previousIndex = -1;
             for (int xIndex = 0; xIndex < buildingDimensions.x; xIndex++)
             {
-                int nextIndex = selectedCellIndex + (xIndex * gridArrayMovement.x) + (yIndex * grid.GridDimensions.y * gridArrayMovement.y);
+                int nextIndex = selectedCellIndex + (xIndex * gridArrayMovement.x) + (yIndex * grid.GridDimensions.x * gridArrayMovement.y);
                 int modDiff = (previousIndex % grid.GridDimensions.x) - (nextIndex % grid.GridDimensions.x);
                 if (nextIndex >= 0 && nextIndex < grid.GetGrid().Count)
                 {
@@ -175,6 +185,7 @@ public class SC_Shop : MonoBehaviour
                     {
                         if (!grid.GetGrid()[nextIndex].isOccupied)
                         {
+                            Debug.Log(grid.GetGrid()[nextIndex].name);
                             cells.Add(grid.GetGrid()[nextIndex]);
                         }
                     }
