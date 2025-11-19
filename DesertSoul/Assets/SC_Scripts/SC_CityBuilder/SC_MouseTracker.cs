@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SC_MouseTracker : MonoBehaviour
 {
@@ -17,5 +18,8 @@ public class SC_MouseTracker : MonoBehaviour
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         transform.position = mousePosition;
+
+        //Vector3 screenPoint = Camera.main.WorldToScreenPoint(worldPosition);
+        //Mouse.current.WarpCursorPosition(screenPoint);
     }
 }

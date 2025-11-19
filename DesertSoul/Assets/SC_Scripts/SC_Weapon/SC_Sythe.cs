@@ -32,6 +32,16 @@ public class SC_Sythe : MonoBehaviour
 
     private bool isAttacking;
 
+    private void OnEnable()
+    {
+        SC_UpgradeNode.OnNodeUnlocked += ApplyUpgrade;
+    }
+
+    private void OnDisable()
+    {
+        SC_UpgradeNode.OnNodeUnlocked -= ApplyUpgrade;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -128,5 +138,37 @@ public class SC_Sythe : MonoBehaviour
     public List<AttackType> GetCombo()
     {
         return combo;
+    }
+
+    /// <summary>
+    /// Apply upgrade based on unlocked node / passed in upgrade type
+    /// </summary>
+    /// <param name="weaponType"></param>
+    /// <param name="weaponUpgrade"></param>
+    private void ApplyUpgrade(WeaponTypes weaponType, WeaponUpgrades weaponUpgrade)
+    {
+        if (weaponType != WeaponTypes.SCYTHE) return;
+
+        switch(weaponUpgrade)
+        {
+            case WeaponUpgrades.IncreaseDamage:
+                // Scythe damage + 0.5 (default is 1)
+                break;
+            case WeaponUpgrades.IncreaseMaterialsGathered:
+                // Material nodes gathered with Scythe + 10%
+                break;
+            case WeaponUpgrades.IncreaseBossDamage:
+                // Scythe damage vs Boss + 0.5
+                break;
+            case WeaponUpgrades.IncreaseNumberOfAttacks:
+                // Adds one additional slice to the player’s primary attack. The player can press the attack button one additional time after the initial press to perform this second slice. This only applies to the player’s neutral, left, and right attacks. Hitting an enemy with any hits greater than one autolocks the player and the enemy together, halting momentum. This upgrade stacks.
+                break;
+            case WeaponUpgrades.ChanceAtDoubleReward:
+                // Enemies slain using the scythe have a chance at dropping x2 money (10% chance) Does not apply to bosses.
+                break;
+            case WeaponUpgrades.ChanceAtHealingFromAttack:
+                // Dealing damage to enemies using the scythe has a chance of healing the player. (3% chance to recover 1 HP on-hit)
+                break;
+        }
     }
 }

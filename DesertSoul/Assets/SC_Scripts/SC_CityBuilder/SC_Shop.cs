@@ -16,6 +16,8 @@ public class SC_Shop : MonoBehaviour
     [SerializeField] List<SC_Building> buildings;
     [SerializeField] List<Button> buttons;
     [SerializeField] KeyCode OpenShopKey;
+    [Tooltip("Used when clicking to place a building. This value alters the allowed distance from the center of a cell for the click to be registered")]
+    [SerializeField] float distanceFromCenterOfCellAllowance = 1.0f;
 
     [Header("Shop Camera Values")]
     [SerializeField] SC_Camera cameraScript;
@@ -23,6 +25,11 @@ public class SC_Shop : MonoBehaviour
     [SerializeField] float shopCameraDistance;
 
     private SC_Building buildingToPlace;
+
+    private List<SC_Building> tentativlyPlacedBuildings = new List<SC_Building>();
+    private List<SC_GridCell> tentativlyAllocatedGridCells = new List<SC_GridCell>();
+    private List<SC_Building> tentativlyPlacedBuildingPrefabs = new List<SC_Building>();
+    private List<Vector3> tentativlyPlacedBuildingSpawnPoint = new List<Vector3>();
 
     static List<SC_Building> buildingsPlaced;
     static List<Vector3> buildingsPlacedLocation;
@@ -81,6 +88,41 @@ public class SC_Shop : MonoBehaviour
         grid.gameObject.SetActive(false);
         OnToggleShop?.Invoke(true);
         cameraScript.DefaultView();
+
+        foreach (var cell in tentativlyAllocatedGridCells)
+        {
+            cell.isOccupied = false;
+        }
+        foreach (var building in tentativlyPlacedBuildings)
+        {
+            Destroy(building.gameObject);
+        }
+
+        tentativlyAllocatedGridCells.Clear();
+        tentativlyPlacedBuildings.Clear();
+        tentativlyPlacedBuildingPrefabs.Clear();
+        tentativlyPlacedBuildingSpawnPoint.Clear();
+    }
+
+    /// <summary>
+    /// Finalize building placement
+    /// </summary>
+    public void FinalizeBuild()
+    {
+        buildingsPlaced.AddRange(tentativlyPlacedBuildingPrefabs);
+        buildingsPlacedLocation.AddRange(tentativlyPlacedBuildingSpawnPoint);
+        
+        Color buildingColor;
+        foreach (var building in tentativlyPlacedBuildings)
+        {
+            buildingColor = building.GetComponent<SpriteRenderer>().color;
+            building.GetComponent<SpriteRenderer>().color = new Color(buildingColor.r, buildingColor.g, buildingColor.b, 1f);
+        }
+
+        tentativlyAllocatedGridCells.Clear();
+        tentativlyPlacedBuildings.Clear();
+        tentativlyPlacedBuildingPrefabs.Clear();
+        tentativlyPlacedBuildingSpawnPoint.Clear();
     }
 
     /// <summary>
@@ -117,7 +159,7 @@ public class SC_Shop : MonoBehaviour
             }
         }
 
-        if (closestDistance > 1)
+        if (closestDistance > distanceFromCenterOfCellAllowance)
         {
             buildingToPlace = null;
             purchaseCursor.gameObject.SetActive(false);
@@ -134,13 +176,18 @@ public class SC_Shop : MonoBehaviour
                 {
                     //Debug.Log($"{usableCells[usableCells.Count - 1].transform.position - closestGridCell.transform.position}, {closestGridCell.transform.position - usableCells[usableCells.Count - 1].transform.position}");
                     Vector3 spawnPosition = closestGridCell.transform.position + ((usableCells[usableCells.Count - 1].transform.position - closestGridCell.transform.position) / 2.0f);
-                    Instantiate(buildingToPlace, spawnPosition, Quaternion.identity, buildingParent);
-                    buildingsPlaced.Add(buildingToPlace);
-                    buildingsPlacedLocation.Add(closestGridCell.transform.position);
+
+                    SC_Building spawnedBuilding = Instantiate(buildingToPlace, spawnPosition, Quaternion.identity, buildingParent);
+                    tentativlyPlacedBuildings.Add(spawnedBuilding);
+                    Color buildingColor = spawnedBuilding.GetComponent<SpriteRenderer>().color;
+                    spawnedBuilding.GetComponent<SpriteRenderer>().color = new Color(buildingColor.r, buildingColor.g, buildingColor.b, 0.5f);
+                    tentativlyPlacedBuildingPrefabs.Add(buildingToPlace);
+                    tentativlyPlacedBuildingSpawnPoint.Add(spawnPosition);
                     buildingToPlace = null;
                     foreach(SC_GridCell cell in usableCells)
                     {
                         cell.isOccupied = true;
+                        tentativlyAllocatedGridCells.Add(cell);
                     }
                     purchaseCursor.gameObject.SetActive(false);
                     Cursor.visible = true;
@@ -148,11 +195,15 @@ public class SC_Shop : MonoBehaviour
             }
             else
             {
-                Instantiate(buildingToPlace, closestGridCell.transform.position, Quaternion.identity, buildingParent);
-                buildingsPlaced.Add(buildingToPlace);
-                buildingsPlacedLocation.Add(closestGridCell.transform.position);
+                SC_Building spawnedBuilding = Instantiate(buildingToPlace, closestGridCell.transform.position, Quaternion.identity, buildingParent);
+                tentativlyPlacedBuildings.Add(spawnedBuilding);
+                Color buildingColor = spawnedBuilding.GetComponent<SpriteRenderer>().color;
+                spawnedBuilding.GetComponent<SpriteRenderer>().color = new Color(buildingColor.r, buildingColor.g, buildingColor.b, 0.5f);
+                tentativlyPlacedBuildingPrefabs.Add(buildingToPlace);
+                tentativlyPlacedBuildingSpawnPoint.Add(closestGridCell.transform.position);
                 buildingToPlace = null;
                 closestGridCell.isOccupied = true;
+                tentativlyAllocatedGridCells.Add(closestGridCell);
                 purchaseCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
             }
@@ -185,7 +236,7 @@ public class SC_Shop : MonoBehaviour
                     {
                         if (!grid.GetGrid()[nextIndex].isOccupied)
                         {
-                            Debug.Log(grid.GetGrid()[nextIndex].name);
+                            //Debug.Log(grid.GetGrid()[nextIndex].name);
                             cells.Add(grid.GetGrid()[nextIndex]);
                         }
                     }

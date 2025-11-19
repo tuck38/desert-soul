@@ -32,6 +32,15 @@ public class SC_Drill : MonoBehaviour
     //:3
     private Vector2 shmovement;
 
+    private void OnEnable()
+    {
+        SC_UpgradeNode.OnNodeUnlocked += ApplyUpgrade;
+    }
+
+    private void OnDisable()
+    {
+        SC_UpgradeNode.OnNodeUnlocked -= ApplyUpgrade;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -85,7 +94,7 @@ public class SC_Drill : MonoBehaviour
 
         playerGrounded = isGrounded;
 
-        if(isGrounded & currentDrillCooldown <= 0)
+        if (isGrounded & currentDrillCooldown <= 0)
         {
             animator.SetBool("DrillSide", true);
             drillin = true;
@@ -112,6 +121,41 @@ public class SC_Drill : MonoBehaviour
             currentTimeDrillin = 0f;
             playerMove.SetCanMove(false);
             shmovement = new Vector2(0, -1);
+        }
+    }
+
+    /// <summary>
+    /// Apply upgrade based on unlocked node / passed in upgrade type
+    /// </summary>
+    /// <param name="weaponType"></param>
+    /// <param name="weaponUpgrade"></param>
+    private void ApplyUpgrade(WeaponTypes weaponType, WeaponUpgrades weaponUpgrade)
+    {
+        if (weaponType != WeaponTypes.DRILL) return;
+
+        switch (weaponUpgrade)
+        {
+            case WeaponUpgrades.IncreaseDamage:
+                // Drill damage + 0.5
+                break;
+            case WeaponUpgrades.IncreaseMaterialsGathered:
+                // Material nodes gathered with Drill + 10%
+                break;
+            case WeaponUpgrades.IncreaseAttackDistance:
+                // Max drill distance + 0.5 seconds
+                break;
+            case WeaponUpgrades.IncreaseAttackTravelSpeed:
+                // Drill travel speed + 10%
+                break;
+            case WeaponUpgrades.BounceOffTerrain:
+                // The player is able to use the airborne drill attack to bounce off of specific terrain.
+                break;
+            case WeaponUpgrades.DrillGroundAttackIncreaseDamageZones:
+                // The drill’s ground attack now deals damage upon contact, and at the end of the attack
+                break;
+            case WeaponUpgrades.LaunchEnemies:
+                // The player launches enemies in an upward arc upon contact with the drill ground attack (at the end of drill animation)
+                break;
         }
     }
 }
