@@ -4248,7 +4248,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527549514}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -4673,6 +4673,7 @@ MonoBehaviour:
   - {fileID: 708958258}
   - {fileID: 1534237860}
   OpenShopKey: 121
+  distanceFromCenterOfCellAllowance: 1
   cameraScript: {fileID: 2062207943}
   shopCameraTrackingTarget: {fileID: 294215769}
   shopCameraDistance: 12
