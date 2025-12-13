@@ -4,7 +4,7 @@ using UnityEngine;
 public class SC_Camera_FollowObject : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private float rotationTime = 0.5f;
+    [SerializeField] private float rotationTime = 1f;
 
     private SC_Player_Move player;
     private bool isFacingRight;
