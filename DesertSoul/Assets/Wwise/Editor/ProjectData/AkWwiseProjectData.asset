@@ -111,8 +111,8 @@ MonoBehaviour:
         guid: 38fc7fba899ffe40a19d6e1e6c7ff0c7
       Path: Events\Default Work Unit\Play_Dungeon_Area1
       maxAttenuation: 0
-      maxDuration: -1
-      minDuration: -1
+      maxDuration: 120
+      minDuration: 120
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
