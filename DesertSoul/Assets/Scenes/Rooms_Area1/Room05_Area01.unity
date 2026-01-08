@@ -119,6 +119,120 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &135715596
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.647848
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.026944
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138404081270967708, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_Name
+      value: RattleSnake (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+--- !u!1001 &185575404
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.666245
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.008545
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138404081270967708, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_Name
+      value: RattleSnake (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
 --- !u!1001 &281484261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,11 +425,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.3878846
+      value: 1.000006
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.6839
+      value: -9.325541
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.z
@@ -591,6 +705,63 @@ MonoBehaviour:
   scalingFactor: 1
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
+--- !u!1001 &975745025
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 29.708828
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -19.188602
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138404081270967708, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_Name
+      value: RattleSnake (3)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
 --- !u!1001 &989475231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -656,6 +827,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5b945606a7489340be61eb8c45e9f50, type: 3}
+--- !u!1001 &1463015540
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.901457
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -14.086965
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138404081270967708, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_Name
+      value: RattleSnake (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
 --- !u!1001 &1690494228
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58173,6 +58401,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
+--- !u!1001 &1774434085
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.465867
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -11.035903
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138404081270967708, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_Name
+      value: RattleSnake
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
 --- !u!1 &2064996012
 GameObject:
   m_ObjectHideFlags: 0
@@ -58240,3 +58525,8 @@ SceneRoots:
   - {fileID: 1690494228}
   - {fileID: 989475231}
   - {fileID: 848784684}
+  - {fileID: 1774434085}
+  - {fileID: 1463015540}
+  - {fileID: 185575404}
+  - {fileID: 975745025}
+  - {fileID: 135715596}
