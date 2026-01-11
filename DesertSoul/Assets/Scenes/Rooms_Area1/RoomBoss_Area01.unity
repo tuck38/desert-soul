@@ -119,6 +119,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &359646142
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -18.624191
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -30.777103
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138404081270967708, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_Name
+      value: RattleSnake
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
 --- !u!1001 &699514616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.495782
+      value: -7.0268917
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
@@ -623,6 +680,63 @@ MonoBehaviour:
   scalingFactor: 1
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
+--- !u!1001 &916278212
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.8002725
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -30.854311
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5258718324675181584, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6138404081270967708, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
+      propertyPath: m_Name
+      value: RattleSnake (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 171b4014fd75a314b93c4ea20449368d, type: 3}
 --- !u!1001 &1380828299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16184,7 +16298,7 @@ PrefabInstance:
     - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[0].m_Data
       value: 
-      objectReference: {fileID: 1754461940, guid: d6061a1c4918c454890316920703451c, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[1].m_Data
       value: 
@@ -16192,7 +16306,7 @@ PrefabInstance:
     - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[2].m_Data
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1754461940, guid: d6061a1c4918c454890316920703451c, type: 3}
     - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[3].m_Data
       value: 
@@ -16691,7 +16805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[0].m_RefCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[1].m_RefCount
@@ -16699,7 +16813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[2].m_RefCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[3].m_RefCount
@@ -40940,6 +41054,10 @@ PrefabInstance:
     - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
       propertyPath: m_Tiles.Array.data[1153].second.m_TileSpriteIndex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
+      propertyPath: m_Tiles.Array.data[1154].second.m_TileSpriteIndex
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3245412641412783970, guid: 7152d7cad57ae3a46b0a43a75b2a625c, type: 3}
       propertyPath: m_Tiles.Array.data[1155].second.m_TileMatrixIndex
@@ -80049,3 +80167,5 @@ SceneRoots:
   - {fileID: 699514616}
   - {fileID: 1948246829}
   - {fileID: 1965350694}
+  - {fileID: 359646142}
+  - {fileID: 916278212}

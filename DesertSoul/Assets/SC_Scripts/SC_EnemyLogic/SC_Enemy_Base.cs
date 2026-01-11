@@ -29,6 +29,9 @@ public class SC_Enemy_Base : MonoBehaviour
     //REFERENCE GOTTEN AFTER PLAYER HITS ENEMY
     private GameObject player;
 
+    //spawner stuff, temp, use events later
+    SC_WaveRoom roomSpawned;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -106,6 +109,11 @@ public class SC_Enemy_Base : MonoBehaviour
         return false;
     }
 
+    public void setMommaSpawner(SC_WaveRoom lockRoom)
+    {
+        roomSpawned = lockRoom;
+    }
+
     private void Knockback()
     {
 
@@ -160,8 +168,13 @@ public class SC_Enemy_Base : MonoBehaviour
         }
     }
 
+
     private void Die()
     {
+        if(roomSpawned != null)
+        {
+            roomSpawned.checkWave();
+        }
         Destroy(gameObject);
     }
 }
