@@ -112,7 +112,7 @@ public class SC_Door : MonoBehaviour
                 movePlayer = false;
                 if (collision.gameObject.tag == "Player")
                 {
-                    GameManager.Instance.LoadNewLevel(nextScene, doorDir);
+                    GameManager.Instance.LoadNewLevel(nextScene, doorDir, true, false);
                 }
             }
             //Player moving out from a door into a new room

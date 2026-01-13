@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System;
+using Unity.VisualScripting;
 
 public enum TimeOfDay
 {
@@ -29,6 +30,9 @@ public class GameManager : MonoBehaviour
     private GameObject player;
 
     SC_Enum_Doors newDoor;
+
+    bool isDoor = false;
+    bool isFastTravel = false;
    
     private void Awake()
     {
@@ -71,6 +75,8 @@ public class GameManager : MonoBehaviour
     public void newScene()
     {
         player = GameObject.Find("Player");
+        if(isDoor)
+        {
         List<SC_Door> doors = new List<SC_Door>(FindObjectsByType<SC_Door>(FindObjectsSortMode.None));
         foreach (SC_Door door in doors)
         {
@@ -81,12 +87,22 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
+        }
+        else if(isFastTravel)
+        {
+            SC_FastTravel fastTravel = FindAnyObjectByType<SC_FastTravel>();
+            player.transform.position = fastTravel.transform.position;
+        }
     }
 
-    public void LoadNewLevel(string scene, SC_Enum_Doors doorDir)
+    public void LoadNewLevel(string scene, SC_Enum_Doors doorDir, bool door, bool fastTravel)
     {
         //Gets the source door direction and finds the destination door in the next room
         //I hate this one
+        if(door)
+        {
+            isDoor = door;
+            isFastTravel = fastTravel;
         switch (doorDir)
         {
             case SC_Enum_Doors.Left:
@@ -132,6 +148,12 @@ public class GameManager : MonoBehaviour
             default:
                 newDoor = SC_Enum_Doors.Left;
                 break;
+        }
+        }
+        else
+        {
+            isDoor = door;
+            isFastTravel = fastTravel;
         }
         //this is like ACTUALLY painful to look at
         //Toby Fox core

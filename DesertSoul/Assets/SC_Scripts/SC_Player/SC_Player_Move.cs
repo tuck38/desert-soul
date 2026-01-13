@@ -88,6 +88,8 @@ public class SC_Player_Move : MonoBehaviour
 
     private bool jumping;
 
+    private bool interacting = false;
+
     private void Awake()
     {
         playerControls = new PlayerInputActions();
@@ -270,6 +272,17 @@ public class SC_Player_Move : MonoBehaviour
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             coyoteTimeCounter = 0f;
         }
+
+        if(Input.GetButtonDown("Interact"))
+        {
+            Debug.Log("interacting");
+            interacting = true;
+        }
+
+        if(Input.GetButtonUp("Interact"))
+        {
+            interacting = false;
+        }
     }
 
     private void Jump()
@@ -345,6 +358,13 @@ public class SC_Player_Move : MonoBehaviour
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             drill.Drill(IsGrounded(), isFacingRight);
         }
+    }
+
+
+    //will make event in future
+    public bool IsInteracting()
+    {
+        return interacting;
     }
 
     public bool IsGrounded()
