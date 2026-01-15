@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 //Handles player movement, sprite rotation, knockback, IFrames, and attacking
 public class SC_Player_Move : MonoBehaviour
@@ -82,7 +83,11 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private GameObject cameraFollowGameObject;
     private SC_Camera_FollowObject cameraFollowObject;
 
+    //UI
+    [SerializeField] GameObject UI;
+    [SerializeField] Text stoneAmount;
 
+    bool InUI;
 
     private bool playerInControl;
 
@@ -275,13 +280,25 @@ public class SC_Player_Move : MonoBehaviour
 
         if(Input.GetButtonDown("Interact"))
         {
-            Debug.Log("interacting");
             interacting = true;
         }
 
         if(Input.GetButtonUp("Interact"))
         {
             interacting = false;
+        }
+
+        if(Input.GetButtonDown("Menu") && InUI == false)
+        {
+            InUI = true;
+            UI.SetActive(true);
+
+        }
+
+        if(Input.GetButtonUp("Menu") && InUI == true)
+        {
+            InUI = false;
+            UI.SetActive(false);
         }
     }
 

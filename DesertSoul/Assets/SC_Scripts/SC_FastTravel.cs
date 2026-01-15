@@ -70,7 +70,7 @@ public class SC_FastTravel : MonoBehaviour
         {
             player = collision.GetComponent<SC_Player_Move>();
             playerInRange = true;
-            //interactButton.GetComponent<SpriteRenderer>() = true;
+            interactButton.SetActive(true);
         }
     }
 
@@ -79,7 +79,7 @@ public class SC_FastTravel : MonoBehaviour
         if(collision.tag == "Player")
         {
             playerInRange = false;
-            //interactButton.GetComponent<SpriteRenderer>() = true;
+            interactButton.SetActive(false);
             holding = false;
             currentButtonHoldTime = 0f;
         }
