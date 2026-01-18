@@ -32,6 +32,8 @@ public class SC_Sythe : MonoBehaviour
 
     private bool isAttacking;
 
+    [Header("Wwise Events")]
+    public AK.Wwise.Event sytheAttack;
     private void OnEnable()
     {
         SC_UpgradeNode.OnNodeUnlocked += ApplyUpgrade;
@@ -108,6 +110,8 @@ public class SC_Sythe : MonoBehaviour
         currentAttackLength = Attacks[0].getTime();
         animator.SetBool("isAttacking", isAttacking);
         Attacks[0].doAttack(projectileSpawn.transform);
+        // Sythe sound attack
+        sytheAttack.Post(gameObject);
 
         //if no moves are found that equal the current combo, clear the combo and run the function again to preform a basic move
         //EndCombo();

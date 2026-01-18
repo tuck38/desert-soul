@@ -13,7 +13,8 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID PLAY_DUNGEON_AREA1 = 454106841U;
+        static const AkUniqueID PLAY_MX_DUNGEON_AREA1 = 3296999183U;
+        static const AkUniqueID PLAY_SX_PLAYER_SCYTHE_SWING_V3 = 3835067211U;
     } // namespace EVENTS
 
     namespace BANKS

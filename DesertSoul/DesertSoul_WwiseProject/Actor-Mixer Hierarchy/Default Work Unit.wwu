@@ -3,7 +3,63 @@
 	<AudioObjects>
 		<WorkUnit Name="Default Work Unit" ID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}" PersistMode="Standalone">
 			<ChildrenList>
-				<Sound Name="Dungeon_Area1" ID="{68B11B31-E5D8-4024-B081-31C8C20AF0D6}" ShortID="421315822">
+				<Folder Name="mx_Dungeon" ID="{065D62F6-333F-43FD-AC90-482C816AB8F3}" ShortID="183693327">
+					<ChildrenList>
+						<Sound Name="mx_Dungeon_Area1" ID="{6E23A8CC-4452-43F6-A496-0F10B44412BE}" ShortID="260073814">
+							<PropertyList>
+								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{4ECAD9D4-730D-46FC-BD0E-EEED73458E71}">
+												<PropertyList>
+													<Property Name="Max" Type="Real64" Value="1775"/>
+													<Property Name="Min" Type="Real64" Value="-1750"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3B4F9FBC-D2C2-4F15-B0BA-683D0ADB58A6}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{8F96897D-11C8-4C29-BB83-2CA2AD056DEB}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="mx_Dungeon_Area1" ID="{6DE56091-01F7-4B31-9299-6AF3D7661663}">
+									<Language>SFX</Language>
+									<AudioFile>mx_Dungeon_Area1.wav</AudioFile>
+									<MediaIDList>
+										<MediaID ID="852720596"/>
+									</MediaIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="mx_Dungeon_Area1" ID="{6DE56091-01F7-4B31-9299-6AF3D7661663}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+					</ChildrenList>
+				</Folder>
+				<Sound Name="sx_player_scythe_swing_v3" ID="{0DA825B3-AED1-42A2-8F2E-949BC7E638F8}" ShortID="817838078">
+					<PropertyList>
+						<Property Name="Pitch" Type="int32">
+							<ModifierList>
+								<ModifierInfo>
+									<Modifier Name="" ID="{236833F3-F1A8-433B-A023-FF7BB1DFD399}">
+										<PropertyList>
+											<Property Name="Enabled" Type="bool" Value="True"/>
+											<Property Name="Max" Type="Real64" Value="875"/>
+											<Property Name="Min" Type="Real64" Value="-1200"/>
+										</PropertyList>
+									</Modifier>
+								</ModifierInfo>
+							</ModifierList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
 							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{3B4F9FBC-D2C2-4F15-B0BA-683D0ADB58A6}"/>
@@ -13,16 +69,16 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<AudioFileSource Name="Dungeon_Area1" ID="{4B05F32E-CDF5-44D4-AFCB-EE3692811738}">
+						<AudioFileSource Name="sx_player_scythe_swing_v3" ID="{A1D4F159-4594-48A7-9B8B-877619CFB1B6}">
 							<Language>SFX</Language>
-							<AudioFile>Dungeon_Area1.wav</AudioFile>
+							<AudioFile>sx_player_scythe_swing_v3.wav</AudioFile>
 							<MediaIDList>
-								<MediaID ID="865838165"/>
+								<MediaID ID="632076456"/>
 							</MediaIDList>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Dungeon_Area1" ID="{4B05F32E-CDF5-44D4-AFCB-EE3692811738}" Platform="Linked"/>
+						<ActiveSource Name="sx_player_scythe_swing_v3" ID="{A1D4F159-4594-48A7-9B8B-877619CFB1B6}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>

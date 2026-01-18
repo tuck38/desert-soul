@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d63f9afb718f4a8d106d19165eb651
     GuidInternal: 
-    m_lastTime: -8584353449783207824
+    m_lastTime: -8584328419714043518
     List:
     - name: Main
       guid: 7d68801fd2a6ac4b8d6f80c734f8106d
@@ -94,11 +94,11 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
     GuidInternal: 
-    m_lastTime: -8584353449792301556
+    m_lastTime: -8584328419714164797
     List:
-    - name: Play_Dungeon_Area1
-      guid: 38fc7fba899ffe40a19d6e1e6c7ff0c7
-      id: 454106841
+    - name: mx
+      guid: 9e72d49037a19243bd8ca89cedd572eb
+      id: 1685527054
       PathAndIcons:
       - ElementName: Events
         ObjectType: 5
@@ -106,13 +106,70 @@ MonoBehaviour:
       - ElementName: Default Work Unit
         ObjectType: 12
         guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
-      - ElementName: Play_Dungeon_Area1
-        ObjectType: 3
-        guid: 38fc7fba899ffe40a19d6e1e6c7ff0c7
-      Path: Events\Default Work Unit\Play_Dungeon_Area1
+      - ElementName: mx
+        ObjectType: 4
+        guid: 9e72d49037a19243bd8ca89cedd572eb
+      Path: Events\Default Work Unit\mx
       maxAttenuation: 0
-      maxDuration: 120
-      minDuration: 120
+      maxDuration: -1
+      minDuration: -1
+    - name: Play_mx_Dungeon_Area1
+      guid: 95776617228b4e4cbfcfb3bff65c011e
+      id: 3296999183
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: mx
+        ObjectType: 4
+        guid: 9e72d49037a19243bd8ca89cedd572eb
+      - ElementName: Play_mx_Dungeon_Area1
+        ObjectType: 3
+        guid: 95776617228b4e4cbfcfb3bff65c011e
+      Path: Events\Default Work Unit\mx\Play_mx_Dungeon_Area1
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_sx_player_scythe_swing_v3
+      guid: f861694b62321444addb4f071599ddba
+      id: 3835067211
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: sx
+        ObjectType: 4
+        guid: 0118f18e4eb7354a8e15073b1c25e454
+      - ElementName: Play_sx_player_scythe_swing_v3
+        ObjectType: 3
+        guid: f861694b62321444addb4f071599ddba
+      Path: Events\Default Work Unit\sx\Play_sx_player_scythe_swing_v3
+      maxAttenuation: 0
+      maxDuration: 2.4148753
+      minDuration: 0.72838944
+    - name: sx
+      guid: 0118f18e4eb7354a8e15073b1c25e454
+      id: 1584861564
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: sx
+        ObjectType: 4
+        guid: 0118f18e4eb7354a8e15073b1c25e454
+      Path: Events\Default Work Unit\sx
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     PathAndIcons:
@@ -170,7 +227,7 @@ MonoBehaviour:
     m_lastTime: -8584353449783171169
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 06000000070000000c0000000d0000000f00000012000000
+  ExpandedWaapiItemIds: 050000000600000007000000080000000b0000000c0000000d0000000f00000012000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

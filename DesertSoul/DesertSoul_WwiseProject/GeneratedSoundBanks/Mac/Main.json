@@ -10,7 +10,7 @@
     "Type": "User",
     "GUID": "{1F80687D-A6D2-4BAC-8D6F-80C734F8106D}",
     "Language": "SFX",
-    "Hash": "{5A038B46-0C87-B801-EF81-B3C04580EEFB}",
+    "Hash": "{59C1422A-4142-99AF-9702-FA77FDAD2D27}",
     "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
     "ShortName": "Main",
     "Path": "Main.bnk",
@@ -24,32 +24,52 @@
       "CachePath": "C7/{C7E813BC-F144-795C-0EAA-8971E0ACE2F6}.wem"
      },
      {
-      "Id": "865838165",
+      "Id": "632076456",
       "Language": "SFX",
       "Streaming": "false",
       "Location": "Memory",
-      "ShortName": "Dungeon_Area1.wav",
-      "CachePath": "3C/{3C733DF3-FFB9-32BB-9A61-D4608281D0F7}.wem"
+      "ShortName": "sx_player_scythe_swing_v3.wav",
+      "CachePath": "6D/{6D98A7A3-24BD-7A1E-2522-A4F78733EAAB}.wem"
+     },
+     {
+      "Id": "852720596",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "mx_Dungeon_Area1.wav",
+      "CachePath": "59/{59DEBA80-38BF-7B05-7A77-92DA850267C7}.wem"
      }
     ],
     "Events": [
      {
-      "Id": "454106841",
-      "Name": "Play_Dungeon_Area1",
-      "ObjectPath": "\\Events\\Default Work Unit\\Play_Dungeon_Area1",
-      "GUID": "{BA7FFC38-9F89-40FE-A19D-6E1E6C7FF0C7}",
-      "DurationType": "OneShot",
-      "DurationMin": "120",
-      "DurationMax": "120",
+      "Id": "3296999183",
+      "Name": "Play_mx_Dungeon_Area1",
+      "ObjectPath": "\\Events\\Default Work Unit\\mx\\Play_mx_Dungeon_Area1",
+      "GUID": "{17667795-8B22-4C4E-BFCF-B3BFF65C011E}",
+      "DurationType": "Infinite",
       "MediaRefs": [
        {
-        "Id": "865838165"
+        "Id": "852720596"
+       }
+      ]
+     },
+     {
+      "Id": "3835067211",
+      "Name": "Play_sx_player_scythe_swing_v3",
+      "ObjectPath": "\\Events\\Default Work Unit\\sx\\Play_sx_player_scythe_swing_v3",
+      "GUID": "{4B6961F8-3262-4414-ADDB-4F071599DDBA}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.72838944",
+      "DurationMax": "2.4148753",
+      "MediaRefs": [
+       {
+        "Id": "632076456"
        }
       ]
      }
     ]
    }
   ],
-  "FileHash": "{0C88ABF0-1499-7535-482A-269E0D109D46}"
+  "FileHash": "{AD3F9EA8-448B-84C6-C6BC-25A08654EAA3}"
  }
 }

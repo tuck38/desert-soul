@@ -3,17 +3,36 @@
 	<Events>
 		<WorkUnit Name="Default Work Unit" ID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" PersistMode="Standalone">
 			<ChildrenList>
-				<Event Name="Play_Dungeon_Area1" ID="{BA7FFC38-9F89-40FE-A19D-6E1E6C7FF0C7}">
+				<Folder Name="mx" ID="{90D4729E-A137-4392-BD8C-A89CEDD572EB}" ShortID="250721965">
 					<ChildrenList>
-						<Action Name="" ID="{FE606DBD-8A6D-4A69-84D5-2FA6A83CCE7A}" ShortID="220668254">
-							<ReferenceList>
-								<Reference Name="Target">
-									<ObjectRef Name="Dungeon_Area1" ID="{68B11B31-E5D8-4024-B081-31C8C20AF0D6}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
-								</Reference>
-							</ReferenceList>
-						</Action>
+						<Event Name="Play_mx_Dungeon_Area1" ID="{17667795-8B22-4C4E-BFCF-B3BFF65C011E}">
+							<ChildrenList>
+								<Action Name="" ID="{F6CDC642-4B46-4516-B80C-C0A4AEB3B2BC}" ShortID="427756729">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="mx_Dungeon_Area1" ID="{6E23A8CC-4452-43F6-A496-0F10B44412BE}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
-				</Event>
+				</Folder>
+				<Folder Name="sx" ID="{8EF11801-B74E-4A35-8E15-073B1C25E454}" ShortID="561349436">
+					<ChildrenList>
+						<Event Name="Play_sx_player_scythe_swing_v3" ID="{4B6961F8-3262-4414-ADDB-4F071599DDBA}">
+							<ChildrenList>
+								<Action Name="" ID="{A40500A7-0CE6-46BB-962F-4774DA5C1FFE}" ShortID="671151652">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="sx_player_scythe_swing_v3" ID="{0DA825B3-AED1-42A2-8F2E-949BC7E638F8}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

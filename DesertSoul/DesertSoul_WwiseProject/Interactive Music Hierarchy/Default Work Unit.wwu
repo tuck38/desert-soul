@@ -6,6 +6,11 @@
 				<MusicSegment Name="Dungeon_Area1" ID="{BEDA9D42-F3DC-4C3A-BCEC-48DDB14621E1}" ShortID="853481524">
 					<PropertyList>
 						<Property Name="EndPosition" Type="Real64" Value="120000"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-6</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
