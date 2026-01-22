@@ -14,6 +14,8 @@ public class SC_Player_Prop : MonoBehaviour
     [SerializeField] private int currentHealthProxy;
     public static int currentHealth { get; private set; } = int.MinValue;
 
+    [SerializeField] private SC_Player_HUD HUD;
+
     //Sun Beam Variables, putting here for now
     [SerializeField] private int maxSunStacks;
     [SerializeField] private int sunStacksBeforeDamage;
@@ -65,6 +67,8 @@ public class SC_Player_Prop : MonoBehaviour
         sprite = gameObject.GetComponent<SpriteRenderer>();
         originalColor = sprite.color;
 
+        HUD.UpdateHealthUI(currentHealth, maxHealth);
+
         if (materialTest)
         {
             UpdateResources(ResouceTypes.STONE, 1000);
@@ -93,7 +97,7 @@ public class SC_Player_Prop : MonoBehaviour
         {
             currentHealth = currentHealth - dmg;
             currentHealthProxy = currentHealth;
-            //TODO: update health UI
+            HUD.UpdateHealthUI(currentHealth, maxHealth);
         }
         else
         {
