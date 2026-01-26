@@ -38,8 +38,6 @@ public class SC_Player_Prop : MonoBehaviour
     public static int fruitMaterialCount { get; private set; } = 0;
     public static int iceMaterialCount { get; private set; } = 0;
 
-    bool materialTest = true;
-
 
     private void OnEnable()
     {
@@ -68,14 +66,6 @@ public class SC_Player_Prop : MonoBehaviour
         originalColor = sprite.color;
 
         HUD.UpdateHealthUI(currentHealth, maxHealth);
-
-        if (materialTest)
-        {
-            UpdateResources(ResouceTypes.STONE, 1000);
-            UpdateResources(ResouceTypes.TWINE, 900);
-            UpdateResources(ResouceTypes.FRUIT, 50);
-            UpdateResources(ResouceTypes.ICE, 10);
-        }
     }
 
     // Update is called once per frame

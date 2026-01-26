@@ -84,7 +84,7 @@ public class SC_Player_Move : MonoBehaviour
     private SC_Camera_FollowObject cameraFollowObject;
 
     //UI
-    [SerializeField] GameObject UI;
+    [SerializeField] SC_Journal Journal;
     [SerializeField] Text stoneAmount;
 
     bool InUI;
@@ -122,7 +122,7 @@ public class SC_Player_Move : MonoBehaviour
     void Update()
     {
         Attack();
-        JumpInputs();
+        OtherInputs();
         horizontal = move.ReadValue<Vector2>();
         vertical = look.ReadValue<float>();
     }
@@ -258,8 +258,9 @@ public class SC_Player_Move : MonoBehaviour
         }
     }
 
-    private void JumpInputs()
+    private void OtherInputs()
     {
+
         if (!Input.GetButton("Jump") && !IsGrounded() && jumping == true)
         {
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
@@ -288,17 +289,27 @@ public class SC_Player_Move : MonoBehaviour
             interacting = false;
         }
 
-        if(Input.GetButtonDown("Menu") && InUI == false)
+        if(Input.GetButtonDown("MenuIn") && InUI == false)
         {
             InUI = true;
-            UI.SetActive(true);
+            Journal.OpenJournal();
 
         }
 
-        if(Input.GetButtonUp("Menu") && InUI == true)
+        if(Input.GetButtonDown("MenuOut") && InUI == true)
         {
             InUI = false;
-            UI.SetActive(false);
+            Journal.CloseJournal();
+        }
+
+        if(Input.GetButtonDown("TabLeft") && InUI == true)
+        {
+            Journal.NewTab(true);
+        }
+
+        if(Input.GetButtonDown("TabRight") && InUI == true)
+        {
+            Journal.NewTab(false);
         }
     }
 

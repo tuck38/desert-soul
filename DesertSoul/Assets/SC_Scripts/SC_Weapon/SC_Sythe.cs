@@ -48,6 +48,7 @@ public class SC_Sythe : MonoBehaviour
     void Start()
     {
         isAttacking = false;
+         HurtBox.enabled = false;
     }
 
     // Update is called once per frame
@@ -110,6 +111,7 @@ public class SC_Sythe : MonoBehaviour
         currentAttackLength = Attacks[0].getTime();
         animator.SetBool("isAttacking", isAttacking);
         Attacks[0].doAttack(projectileSpawn.transform);
+        HurtBox.enabled = true;
         // Sythe sound attack
         sytheAttack.Post(gameObject);
 
@@ -133,6 +135,7 @@ public class SC_Sythe : MonoBehaviour
         else
         {
             isAttacking = false;
+            HurtBox.enabled = false;
             EndCombo();
             animator.SetBool("isAttacking", isAttacking);
         }
@@ -165,7 +168,7 @@ public class SC_Sythe : MonoBehaviour
                 // Scythe damage vs Boss + 0.5
                 break;
             case WeaponUpgrades.IncreaseNumberOfAttacks:
-                // Adds one additional slice to the player’s primary attack. The player can press the attack button one additional time after the initial press to perform this second slice. This only applies to the player’s neutral, left, and right attacks. Hitting an enemy with any hits greater than one autolocks the player and the enemy together, halting momentum. This upgrade stacks.
+                // Adds one additional slice to the playerï¿½s primary attack. The player can press the attack button one additional time after the initial press to perform this second slice. This only applies to the playerï¿½s neutral, left, and right attacks. Hitting an enemy with any hits greater than one autolocks the player and the enemy together, halting momentum. This upgrade stacks.
                 break;
             case WeaponUpgrades.ChanceAtDoubleReward:
                 // Enemies slain using the scythe have a chance at dropping x2 money (10% chance) Does not apply to bosses.
