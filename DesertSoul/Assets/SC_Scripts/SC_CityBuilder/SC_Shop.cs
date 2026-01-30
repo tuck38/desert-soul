@@ -19,12 +19,24 @@ public class SC_Shop : MonoBehaviour
     [Tooltip("Used when clicking to place a building. This value alters the allowed distance from the center of a cell for the click to be registered")]
     [SerializeField] float distanceFromCenterOfCellAllowance = 1.0f;
 
+    [SerializeField] GameObject buildingBig;
+
+    [SerializeField] GameObject shopUI;
+
+    [SerializeField] GameObject buildButton;
+    [SerializeField] GameObject selectButton;
+
+    [SerializeField] GameObject resourceX;
+    [SerializeField] GameObject resourceY;
+
     [Header("Shop Camera Values")]
     [SerializeField] SC_Camera cameraScript;
     [SerializeField] Transform shopCameraTrackingTarget;
     [SerializeField] float shopCameraDistance;
 
     private SC_Building buildingToPlace;
+
+    private SC_Building selectedBuilding;
 
     private List<SC_Building> tentativlyPlacedBuildings = new List<SC_Building>();
     private List<SC_GridCell> tentativlyAllocatedGridCells = new List<SC_GridCell>();
@@ -55,14 +67,37 @@ public class SC_Shop : MonoBehaviour
     /// Enables player to place input building onto map
     /// </summary>
     /// <param name="building"></param>
-    public void SelectBuildingToSpawn(SC_Building building)
+    public void SelectBuildingToPlace(SC_Building building)
     {
+        //selectionmode
+        //if player has enough resources
         SC_Player_Prop.OnResourcesAmountChanged?.Invoke(ResouceTypes.STONE, building.MaterialCost.x * -1);
         SC_Player_Prop.OnResourcesAmountChanged?.Invoke(ResouceTypes.TWINE, building.MaterialCost.y * -1);
         buildingToPlace = building;
+        buildingBig.GetComponent<Image>().sprite = buildingToPlace.BuildingSprite;
+        buildingBig.SetActive(true);
+        selectedBuilding = buildingToPlace;
+    }
+
+    public void SelectBuildingToSpawn()
+    {
+        //buildmode
+        buildingToPlace = selectedBuilding;
         purchaseCursor.gameObject.SetActive(true);
-        purchaseCursor.GetComponent<SpriteRenderer>().sprite = building.BuildingSprite;
+        shopUI.SetActive(false);
+        purchaseCursor.GetComponent<SpriteRenderer>().sprite = buildingToPlace.BuildingSprite;
         Cursor.visible = false;
+        buildButton.SetActive(true);
+        selectButton.SetActive(true);
+    }
+
+    public void BackToBuildingSelection()
+    {
+        purchaseCursor.gameObject.SetActive(false);
+        shopUI.SetActive(true);
+        Cursor.visible = true;
+        buildButton.SetActive(false);
+        selectButton.SetActive(false);
     }
 
     /// <summary>
@@ -102,6 +137,8 @@ public class SC_Shop : MonoBehaviour
         tentativlyPlacedBuildings.Clear();
         tentativlyPlacedBuildingPrefabs.Clear();
         tentativlyPlacedBuildingSpawnPoint.Clear();
+        buildButton.SetActive(false);
+        selectButton.SetActive(false);
     }
 
     /// <summary>
@@ -123,6 +160,7 @@ public class SC_Shop : MonoBehaviour
         tentativlyPlacedBuildings.Clear();
         tentativlyPlacedBuildingPrefabs.Clear();
         tentativlyPlacedBuildingSpawnPoint.Clear();
+        CloseShopUI();
     }
 
     /// <summary>

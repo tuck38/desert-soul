@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //This script is used to keep track of health, possible materials, and other recources that may be introduced
 public class SC_Player_Prop : MonoBehaviour
@@ -15,6 +16,9 @@ public class SC_Player_Prop : MonoBehaviour
     public static int currentHealth { get; private set; } = int.MinValue;
 
     [SerializeField] private SC_Player_HUD HUD;
+
+    [SerializeField] private Text stoneText;
+    [SerializeField] private Text FruitText;
 
     //Sun Beam Variables, putting here for now
     [SerializeField] private int maxSunStacks;
@@ -157,6 +161,7 @@ public class SC_Player_Prop : MonoBehaviour
         {
             case ResouceTypes.STONE:
                 stoneMaterialCount += amountOfResouceChanged;
+                stoneText.text = stoneMaterialCount.ToString();
                 break;
             case ResouceTypes.TWINE:
                 twineMaterialCount += amountOfResouceChanged;
