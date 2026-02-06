@@ -102906,6 +102906,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 745673317537321479, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2305564514012376766, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_Name
       value: Player Package
@@ -102913,6 +102917,10 @@ PrefabInstance:
     - target: {fileID: 2512736724373257216, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: Lens.OrthographicSize
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2976054339864197536, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3113818856246194024, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: orthographic size
