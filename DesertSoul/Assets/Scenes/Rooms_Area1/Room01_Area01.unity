@@ -99090,7 +99090,7 @@ MonoBehaviour:
     valueGuidInternal: 
     WwiseObjectReference: {fileID: 11400000, guid: 9827cea262006674a9a4cea639a45086, type: 2}
   useCallbacks: 0
-  stopSoundOnDestroy: 1
+  stopSoundOnDestroy: 0
   Callbacks: []
   soundEmitterObject: {fileID: 0}
   transitionDuration: 0
