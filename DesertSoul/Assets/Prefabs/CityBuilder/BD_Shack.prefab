@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Shack
-  materialCost: {x: 60, y: 40}
+  materialCost: {x: 60, y: 0}
   unlocked: 1
   isMulticell: 1
   dimensions: {x: 2, y: 2}

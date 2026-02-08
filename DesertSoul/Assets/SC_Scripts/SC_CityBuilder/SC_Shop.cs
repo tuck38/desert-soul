@@ -26,8 +26,10 @@ public class SC_Shop : MonoBehaviour
     [SerializeField] GameObject buildButton;
     [SerializeField] GameObject selectButton;
 
-    [SerializeField] GameObject resourceX;
-    [SerializeField] GameObject resourceY;
+    [SerializeField] Text resourceX;
+    [SerializeField] Text resourceY;
+
+    [SerializeField] Text buildName;
 
     [Header("Shop Camera Values")]
     [SerializeField] SC_Camera cameraScript;
@@ -77,6 +79,9 @@ public class SC_Shop : MonoBehaviour
         buildingBig.GetComponent<Image>().sprite = buildingToPlace.BuildingSprite;
         buildingBig.SetActive(true);
         selectedBuilding = buildingToPlace;
+        buildName.text = buildingToPlace.BuildingName;
+        resourceX.text = buildingToPlace.MaterialCost.x.ToString();
+        resourceY.text = buildingToPlace.MaterialCost.y.ToString();
     }
 
     public void SelectBuildingToSpawn()

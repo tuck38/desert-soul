@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Quarry
-  materialCost: {x: 30, y: 0}
+  materialCost: {x: 80, y: 60}
   unlocked: 1
   isMulticell: 1
   dimensions: {x: 2, y: 2}
