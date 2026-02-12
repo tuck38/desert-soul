@@ -162,5 +162,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   attackTypeThatCanBreakNode: 6
-  amountPerHit: 1
-  healthTotal: 10
+  amountPerHit: 3
+  healthTotal: 3
