@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BuildScenes/StartMenu.unity
+    path: Assets/Scenes/Rooms_AreaTown/StartMenu.unity
     guid: 9ff16a10ca4c9c64d988e77b85487e6c
   - enabled: 1
     path: Assets/Scenes/AshleeRoomTest/SampleScene2.unity
@@ -36,7 +36,13 @@ EditorBuildSettings:
     path: Assets/Scenes/Rooms_Area1/RoomBoss_Area01.unity
     guid: de438660f393f314ea382123f9c1b9a9
   - enabled: 1
-    path: Assets/Scenes/BuildScenes/Town.unity
+    path: Assets/Scenes/Rooms_AreaTown/Town.unity
     guid: 41dd3cec040f9ca4d97ea4848d9e236e
+  - enabled: 1
+    path: Assets/Scenes/Rooms_AreaTown/Room01_AreaTown.unity
+    guid: 910a2ab33b330dc48bb018641944c07f
+  - enabled: 1
+    path: Assets/Scenes/Rooms_AreaTown/Room02_AreaTown.unity
+    guid: 19cc1b3afec687a4e8c6abf351a759d0
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

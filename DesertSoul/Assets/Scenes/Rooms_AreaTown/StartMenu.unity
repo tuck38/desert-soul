@@ -829,7 +829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89bb6605276ef1041865c79d52dd385c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SC_Menus_Start
-  LastScene: Town
+  LastScene: Room01_AreaTown
 --- !u!1 &1111001985
 GameObject:
   m_ObjectHideFlags: 0
