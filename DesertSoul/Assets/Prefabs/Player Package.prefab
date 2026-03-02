@@ -11654,11 +11654,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: baseGravity
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: maxJumpHeight
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: minJumpHeight
