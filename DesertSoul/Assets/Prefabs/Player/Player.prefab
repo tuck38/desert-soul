@@ -220,6 +220,18 @@ MonoBehaviour:
   cameraFollowGameObject: {fileID: 0}
   Journal: {fileID: 0}
   stoneAmount: {fileID: 0}
+  playerJump:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: f74a114f4f4c1764dbcb0ff011d88583, type: 2}
+  journalOpen:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 9c0424a15af050e4c839ce0437618362, type: 2}
+  journalClose:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 25e4a9fec9082504e870a817878674d2, type: 2}
 --- !u!50 &7767278961558348056
 Rigidbody2D:
   serializedVersion: 5
@@ -359,6 +371,10 @@ MonoBehaviour:
   sunStacksBeforeDamage: 50
   sunStackRemovalFrequency: 0.2
   sunStackDamageFrequency: 1
+  playerDamaged:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: d8fdbbe7ff7fcec47a8d8d154799f95a, type: 2}
 --- !u!114 &2448919803125031715
 MonoBehaviour:
   m_ObjectHideFlags: 0

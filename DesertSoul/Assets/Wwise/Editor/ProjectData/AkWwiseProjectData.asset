@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d63f9afb718f4a8d106d19165eb651
     GuidInternal: 
-    m_lastTime: -8584324855995766247
+    m_lastTime: -8584290243154789931
     List:
     - name: Main
       guid: 7d68801fd2a6ac4b8d6f80c734f8106d
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
     GuidInternal: 
-    m_lastTime: -8584324855999977673
+    m_lastTime: -8584290243154678439
     List:
     - name: mx
       guid: 9e72d49037a19243bd8ca89cedd572eb
@@ -133,6 +133,66 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 0
       minDuration: 0
+    - name: Play_mx_Town
+      guid: 3e98c0491228d042ab3ad8a8b1bee39b
+      id: 266235640
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: mx
+        ObjectType: 4
+        guid: 9e72d49037a19243bd8ca89cedd572eb
+      - ElementName: Play_mx_Town
+        ObjectType: 3
+        guid: 3e98c0491228d042ab3ad8a8b1bee39b
+      Path: Events\Default Work Unit\mx\Play_mx_Town
+      maxAttenuation: 0
+      maxDuration: 0
+      minDuration: 0
+    - name: Play_sx_player_damaged
+      guid: 34afccf96b55614f8d50d7950087611a
+      id: 2336817309
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: sx
+        ObjectType: 4
+        guid: 0118f18e4eb7354a8e15073b1c25e454
+      - ElementName: Play_sx_player_damaged
+        ObjectType: 3
+        guid: 34afccf96b55614f8d50d7950087611a
+      Path: Events\Default Work Unit\sx\Play_sx_player_damaged
+      maxAttenuation: 0
+      maxDuration: 0.4491383
+      minDuration: 0.4491383
+    - name: Play_sx_player_movement_jump_v1
+      guid: e540ea901325184fbefb133a089a09d8
+      id: 3809612014
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: sx
+        ObjectType: 4
+        guid: 0118f18e4eb7354a8e15073b1c25e454
+      - ElementName: Play_sx_player_movement_jump_v1
+        ObjectType: 3
+        guid: e540ea901325184fbefb133a089a09d8
+      Path: Events\Default Work Unit\sx\Play_sx_player_movement_jump_v1
+      maxAttenuation: 0
+      maxDuration: 1.6021769
+      minDuration: 1.6021769
     - name: Play_sx_player_scythe_swing_v3
       guid: f861694b62321444addb4f071599ddba
       id: 3835067211
@@ -153,6 +213,98 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 2.4148753
       minDuration: 0.72838944
+    - name: Play_sx_ui_book_close
+      guid: 6d5a6b8f7ff9ba4f924d6079f0905ef8
+      id: 1082386257
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: sx
+        ObjectType: 4
+        guid: 0118f18e4eb7354a8e15073b1c25e454
+      - ElementName: UI
+        ObjectType: 4
+        guid: e90f3273c178574f8b1f0f5992742af5
+      - ElementName: Play_sx_ui_book_close
+        ObjectType: 3
+        guid: 6d5a6b8f7ff9ba4f924d6079f0905ef8
+      Path: Events\Default Work Unit\sx\UI\Play_sx_ui_book_close
+      maxAttenuation: 0
+      maxDuration: 1.7182766
+      minDuration: 1.7182766
+    - name: Play_sx_ui_book_open
+      guid: 8943f5569111d84290f0866fcaedebf9
+      id: 1561345875
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: sx
+        ObjectType: 4
+        guid: 0118f18e4eb7354a8e15073b1c25e454
+      - ElementName: UI
+        ObjectType: 4
+        guid: e90f3273c178574f8b1f0f5992742af5
+      - ElementName: Play_sx_ui_book_open
+        ObjectType: 3
+        guid: 8943f5569111d84290f0866fcaedebf9
+      Path: Events\Default Work Unit\sx\UI\Play_sx_ui_book_open
+      maxAttenuation: 0
+      maxDuration: 1.2538775
+      minDuration: 1.2538775
+    - name: Play_sx_ui_button1
+      guid: 86b5636847400341a584fa3843e69fbd
+      id: 3111717568
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: sx
+        ObjectType: 4
+        guid: 0118f18e4eb7354a8e15073b1c25e454
+      - ElementName: UI
+        ObjectType: 4
+        guid: e90f3273c178574f8b1f0f5992742af5
+      - ElementName: Play_sx_ui_button1
+        ObjectType: 3
+        guid: 86b5636847400341a584fa3843e69fbd
+      Path: Events\Default Work Unit\sx\UI\Play_sx_ui_button1
+      maxAttenuation: 0
+      maxDuration: 1.7414966
+      minDuration: 1.7414966
+    - name: Play_sx_ui_mainMenu
+      guid: dbd2503a3440b9469a139e4fa7c10bef
+      id: 1579214325
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: sx
+        ObjectType: 4
+        guid: 0118f18e4eb7354a8e15073b1c25e454
+      - ElementName: UI
+        ObjectType: 4
+        guid: e90f3273c178574f8b1f0f5992742af5
+      - ElementName: Play_sx_ui_mainMenu
+        ObjectType: 3
+        guid: dbd2503a3440b9469a139e4fa7c10bef
+      Path: Events\Default Work Unit\sx\UI\Play_sx_ui_mainMenu
+      maxAttenuation: 0
+      maxDuration: 1.9504762
+      minDuration: 1.9504762
     - name: sx
       guid: 0118f18e4eb7354a8e15073b1c25e454
       id: 1584861564
@@ -167,6 +319,26 @@ MonoBehaviour:
         ObjectType: 4
         guid: 0118f18e4eb7354a8e15073b1c25e454
       Path: Events\Default Work Unit\sx
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
+    - name: UI
+      guid: e90f3273c178574f8b1f0f5992742af5
+      id: 1551306167
+      PathAndIcons:
+      - ElementName: Events
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
+      - ElementName: sx
+        ObjectType: 4
+        guid: 0118f18e4eb7354a8e15073b1c25e454
+      - ElementName: UI
+        ObjectType: 4
+        guid: e90f3273c178574f8b1f0f5992742af5
+      Path: Events\Default Work Unit\sx\UI
       maxAttenuation: 0
       maxDuration: -1
       minDuration: -1
@@ -227,7 +399,7 @@ MonoBehaviour:
     m_lastTime: -8584324855995751186
     List: []
   ExpandedFileSystemItemIds: 
-  ExpandedWaapiItemIds: 050000000600000007000000080000000b0000000c0000000d0000000f00000012000000600000006100000063000000
+  ExpandedWaapiItemIds: 050000000600000007000000080000000b0000000c0000000d0000000f000000120000001c00000026000000600000006100000063000000
   AutoSyncSelection: 0
   autoPopulateEnabled: 1
   currentDataSource: 0

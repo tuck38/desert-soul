@@ -42,7 +42,8 @@ public class SC_Player_Prop : MonoBehaviour
     public static int fruitMaterialCount { get; private set; } = 0;
     public static int iceMaterialCount { get; private set; } = 0;
 
-
+    [Header("Wwise Events")]
+    public AK.Wwise.Event playerDamaged;
     private void OnEnable()
     {
         OnResourcesAmountChanged += UpdateResources;
@@ -92,6 +93,7 @@ public class SC_Player_Prop : MonoBehaviour
             currentHealth = currentHealth - dmg;
             currentHealthProxy = currentHealth;
             HUD.UpdateHealthUI(currentHealth, maxHealth);
+            playerDamaged.Post(gameObject);
         }
         else
         {

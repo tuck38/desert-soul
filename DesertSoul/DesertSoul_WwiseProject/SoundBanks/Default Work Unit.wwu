@@ -5,9 +5,15 @@
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{1F80687D-A6D2-4BAC-8D6F-80C734F8106D}">
 					<ObjectInclusionList>
-						<ObjectRef Name="sx_player_scythe_swing_v3" ID="{0DA825B3-AED1-42A2-8F2E-949BC7E638F8}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_ui_button1" ID="{6863B586-4047-4103-A584-FA3843E69FBD}" WorkUnitID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_mx_Town" ID="{49C0983E-2812-42D0-AB3A-D8A8B1BEE39B}" WorkUnitID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_ui_book_open" ID="{56F54389-1191-42D8-90F0-866FCAEDEBF9}" WorkUnitID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_ui_mainMenu" ID="{3A50D2DB-4034-46B9-9A13-9E4FA7C10BEF}" WorkUnitID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Dungeon_Area1" ID="{BEDA9D42-F3DC-4C3A-BCEC-48DDB14621E1}" WorkUnitID="{8A42A339-B21E-42B0-BAC9-3A372741CC7A}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Play_mx_Dungeon_Area1" ID="{17667795-8B22-4C4E-BFCF-B3BFF65C011E}" WorkUnitID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_player_movement_jump_v1" ID="{90EA40E5-2513-4F18-BEFB-133A089A09D8}" WorkUnitID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_player_damaged" ID="{F9CCAF34-556B-4F61-8D50-D7950087611A}" WorkUnitID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Play_sx_ui_book_close" ID="{8F6B5A6D-F97F-4FBA-924D-6079F0905EF8}" WorkUnitID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

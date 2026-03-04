@@ -99,6 +99,10 @@ public class SC_Player_Move : MonoBehaviour
     {
         playerControls = new PlayerInputActions();
     }
+    [Header("Wwise Events")]
+    public AK.Wwise.Event playerJump;
+    public AK.Wwise.Event journalOpen;
+    public AK.Wwise.Event journalClose;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -277,6 +281,7 @@ public class SC_Player_Move : MonoBehaviour
             lastYValue = gameObject.transform.position.y;
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             coyoteTimeCounter = 0f;
+            playerJump.Post(gameObject);
         }
 
         if(Input.GetButtonDown("Interact"))
@@ -293,6 +298,7 @@ public class SC_Player_Move : MonoBehaviour
         {
             InUI = true;
             Journal.OpenJournal();
+            journalOpen.Post(gameObject);
 
         }
 
@@ -300,6 +306,7 @@ public class SC_Player_Move : MonoBehaviour
         {
             InUI = false;
             Journal.CloseJournal();
+            journalClose.Post(gameObject);
         }
 
         if(Input.GetButtonDown("TabLeft") && InUI == true)
