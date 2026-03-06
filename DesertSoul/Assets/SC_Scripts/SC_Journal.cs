@@ -9,6 +9,14 @@ public class SC_Journal : MonoBehaviour
 
     [SerializeField] GameObject[] tabs;
 
+    [SerializeField] GameObject controls;
+
+    [SerializeField] GameObject video;
+
+    [SerializeField] GameObject audio;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -60,5 +68,31 @@ public class SC_Journal : MonoBehaviour
         public void CloseJournal()
     {
         JournalBase.SetActive(false);
+    }
+
+    public void OnControlsPressed()
+    {
+        controls.SetActive(true);
+        video.SetActive(false);
+        audio.SetActive(false);
+    }
+
+    public void OnVideoPressed()
+    {
+        controls.SetActive(false);
+        video.SetActive(true);
+        audio.SetActive(false);
+    }
+
+    public void OnAudioPressed()
+    {
+        controls.SetActive(false);
+        video.SetActive(false);
+        audio.SetActive(true);
+    }
+
+    public void OnQuit()
+    {
+        Application.Quit();
     }
 }

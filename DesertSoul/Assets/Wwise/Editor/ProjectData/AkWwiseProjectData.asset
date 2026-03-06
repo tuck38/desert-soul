@@ -66,7 +66,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 27d63f9afb718f4a8d106d19165eb651
     GuidInternal: 
-    m_lastTime: -8584290243154789931
+    m_lastTime: -8584288742574328382
     List:
     - name: Main
       guid: 7d68801fd2a6ac4b8d6f80c734f8106d
@@ -94,7 +94,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 92dfd170ff1b10458ef6ef8b8bd2e86d
     GuidInternal: 
-    m_lastTime: -8584290243154678439
+    m_lastTime: -8584288742584823481
     List:
     - name: mx
       guid: 9e72d49037a19243bd8ca89cedd572eb
@@ -151,8 +151,8 @@ MonoBehaviour:
         guid: 3e98c0491228d042ab3ad8a8b1bee39b
       Path: Events\Default Work Unit\mx\Play_mx_Town
       maxAttenuation: 0
-      maxDuration: 0
-      minDuration: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Play_sx_player_damaged
       guid: 34afccf96b55614f8d50d7950087611a
       id: 2336817309
@@ -171,8 +171,8 @@ MonoBehaviour:
         guid: 34afccf96b55614f8d50d7950087611a
       Path: Events\Default Work Unit\sx\Play_sx_player_damaged
       maxAttenuation: 0
-      maxDuration: 0.4491383
-      minDuration: 0.4491383
+      maxDuration: -1
+      minDuration: -1
     - name: Play_sx_player_movement_jump_v1
       guid: e540ea901325184fbefb133a089a09d8
       id: 3809612014
@@ -191,8 +191,8 @@ MonoBehaviour:
         guid: e540ea901325184fbefb133a089a09d8
       Path: Events\Default Work Unit\sx\Play_sx_player_movement_jump_v1
       maxAttenuation: 0
-      maxDuration: 1.6021769
-      minDuration: 1.6021769
+      maxDuration: -1
+      minDuration: -1
     - name: Play_sx_player_scythe_swing_v3
       guid: f861694b62321444addb4f071599ddba
       id: 3835067211
@@ -234,8 +234,8 @@ MonoBehaviour:
         guid: 6d5a6b8f7ff9ba4f924d6079f0905ef8
       Path: Events\Default Work Unit\sx\UI\Play_sx_ui_book_close
       maxAttenuation: 0
-      maxDuration: 1.7182766
-      minDuration: 1.7182766
+      maxDuration: -1
+      minDuration: -1
     - name: Play_sx_ui_book_open
       guid: 8943f5569111d84290f0866fcaedebf9
       id: 1561345875
@@ -257,8 +257,8 @@ MonoBehaviour:
         guid: 8943f5569111d84290f0866fcaedebf9
       Path: Events\Default Work Unit\sx\UI\Play_sx_ui_book_open
       maxAttenuation: 0
-      maxDuration: 1.2538775
-      minDuration: 1.2538775
+      maxDuration: -1
+      minDuration: -1
     - name: Play_sx_ui_button1
       guid: 86b5636847400341a584fa3843e69fbd
       id: 3111717568
@@ -280,8 +280,8 @@ MonoBehaviour:
         guid: 86b5636847400341a584fa3843e69fbd
       Path: Events\Default Work Unit\sx\UI\Play_sx_ui_button1
       maxAttenuation: 0
-      maxDuration: 1.7414966
-      minDuration: 1.7414966
+      maxDuration: -1
+      minDuration: -1
     - name: Play_sx_ui_mainMenu
       guid: dbd2503a3440b9469a139e4fa7c10bef
       id: 1579214325
@@ -303,8 +303,8 @@ MonoBehaviour:
         guid: dbd2503a3440b9469a139e4fa7c10bef
       Path: Events\Default Work Unit\sx\UI\Play_sx_ui_mainMenu
       maxAttenuation: 0
-      maxDuration: 1.9504762
-      minDuration: 1.9504762
+      maxDuration: -1
+      minDuration: -1
     - name: sx
       guid: 0118f18e4eb7354a8e15073b1c25e454
       id: 1584861564
