@@ -1,12 +1,13 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 //Handles player movement, sprite rotation, knockback, IFrames, and attacking
+//Was lazy and ended up putting menu inputs here aswell, might move them to another script at some point, 
+//Right now they live in "other inputs"
 public class SC_Player_Move : MonoBehaviour
 {
-
-    private Vector2 horizontal;
     private float vertical;
 
     //Move Variables
@@ -58,10 +59,14 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
-    [SerializeField] private PlayerInputActions playerControls;
+    [SerializeField] public PlayerInputActions playerControls;
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private InputAction move;
     [SerializeField] private InputAction look;
+     [SerializeField] private InputAction jump;
+    [SerializeField] private InputAction journal;
+    [SerializeField] private InputAction journalTabs;
+    [SerializeField] private InputAction interact;
 
      private SC_Sythe sythe;
      private SC_Drill drill;
@@ -97,12 +102,32 @@ public class SC_Player_Move : MonoBehaviour
 
     private void Awake()
     {
+        //initial decloration
         playerControls = new PlayerInputActions();
+
+        //binding methods
+        playerControls.Player.Jump.performed += OnJump;
+        playerControls.Player.Jump.canceled += OnJump;
+        playerControls.Player.Move.performed += OnMove;
+        playerControls.Player.Move.canceled += OnMove;
+
+        //Attacks
+        playerControls.Player.PrimaryAttack.performed += OnPrimary;
+        playerControls.Player.SecondaryAttack.performed += OnSecondary;
+
+        //UI
+        playerControls.Player.Interact.performed += OnInteract;
+        playerControls.Player.Interact.canceled += OnInteract;
+        playerControls.Player.Journal.performed += OnMenu;
+        playerControls.Player.JournalLeft.performed += OnJournalTabLeft;
+        playerControls.Player.JournalRight.performed += OnJournalTabRight;
+        playerControls.Player.Blueprint.performed += OnTownBlueprint;
     }
     [Header("Wwise Events")]
     public AK.Wwise.Event playerJump;
     public AK.Wwise.Event journalOpen;
     public AK.Wwise.Event journalClose;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -125,15 +150,14 @@ public class SC_Player_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Attack();
-        OtherInputs();
-        horizontal = move.ReadValue<Vector2>();
+        //inst used rn, havent implemented camrea looking
         vertical = look.ReadValue<float>();
     }
 
     private void OnEnable()
     {
         SC_Shop.OnToggleShop += SetCanMove;
+        playerControls.Enable();
         move = playerControls.Player.Move;
         move.Enable();
         look.Enable();
@@ -142,6 +166,7 @@ public class SC_Player_Move : MonoBehaviour
     private void OnDisable()
     {
         SC_Shop.OnToggleShop -= SetCanMove;
+        playerControls.Disable();
         move.Disable();
         look.Disable();
     }
@@ -150,8 +175,7 @@ public class SC_Player_Move : MonoBehaviour
     {
         if (playerInControl)
         {
-            Jump();
-            Move(horizontal, currentSpeed, true);
+            Gravity();
         }
     }
 
@@ -160,8 +184,109 @@ public class SC_Player_Move : MonoBehaviour
         playerInControl = canMove;
     }
 
-    //made this public bc I forget how protected works
-    //will change later
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        //while this function is called when move inputs are read, movement calculation is still handled in the move function
+        //due to outside sources calling it when player must be moved (drill)
+        Move(context.ReadValue<Vector2>(), currentSpeed, true);
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            if(rb.linearVelocity.y > 0)
+            {
+                SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
+            }
+
+            //Gets player input and jumps if grounded
+            if ((IsGrounded() || coyoteTimeCounter > 0f) && !jumping)
+            {
+                stopJump = false;
+                jumping = true;
+                startJumpHeight = gameObject.transform.position.y;
+                lastYValue = gameObject.transform.position.y;
+                SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+                coyoteTimeCounter = 0f;
+                playerJump.Post(gameObject);
+            }
+
+
+        }
+        else if(context.canceled)
+        {
+            if (!IsGrounded() && jumping == true)
+            {
+                SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+                //rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
+                stopJump = true;
+            }
+        }
+    }
+
+    public void OnPrimary(InputAction.CallbackContext context)
+    {
+        SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+        sythe.AddAttack(AttackType.primary);
+    } 
+
+    public void OnSecondary(InputAction.CallbackContext context)
+    {
+        SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+        drill.Drill(IsGrounded(), isFacingRight);
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            interacting = true;
+        }
+
+        if(context.canceled)
+        {
+            interacting = false;
+        }
+    }
+
+    //this is where the UIbinds start, unaware if I wish to switch this to a seperat script or not, we shall see
+    public void OnMenu(InputAction.CallbackContext context)
+    {
+        if(context.performed && InUI == false)
+        {
+            InUI = true;
+            Journal.OpenJournal();
+            journalOpen.Post(gameObject);
+
+        }
+        else if(context.performed && InUI == true)
+        {
+            InUI = false;
+            Journal.CloseJournal();
+            journalClose.Post(gameObject);
+        }
+    }
+
+    //could make these 2 a pos/neg bind instead
+    public void OnJournalTabLeft(InputAction.CallbackContext context)
+    {
+        Journal.NewTab(true);
+    }
+
+    public void OnJournalTabRight(InputAction.CallbackContext context)
+    {
+        Journal.NewTab(false);
+    }
+
+    //this is in another script, need to move it to this one
+    public void OnTownBlueprint(InputAction.CallbackContext context)
+    {
+    
+    }
+
+    //handles all movement calculations
     public void Move(Vector2 movement, float speed, bool useGravity)
     {
         spriteRotation(movement);
@@ -262,65 +387,7 @@ public class SC_Player_Move : MonoBehaviour
         }
     }
 
-    private void OtherInputs()
-    {
-
-        if (!Input.GetButton("Jump") && !IsGrounded() && jumping == true)
-        {
-            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-            //rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
-            stopJump = true;
-        }
-
-        //Gets player input and jumps if grounded
-        if (Input.GetButtonDown("Jump") && (IsGrounded() || coyoteTimeCounter > 0f) && !jumping)
-        {
-            stopJump = false;
-            jumping = true;
-            startJumpHeight = gameObject.transform.position.y;
-            lastYValue = gameObject.transform.position.y;
-            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-            coyoteTimeCounter = 0f;
-            playerJump.Post(gameObject);
-        }
-
-        if(Input.GetButtonDown("Interact"))
-        {
-            interacting = true;
-        }
-
-        if(Input.GetButtonUp("Interact"))
-        {
-            interacting = false;
-        }
-
-        if(Input.GetButtonDown("MenuIn") && InUI == false)
-        {
-            InUI = true;
-            Journal.OpenJournal();
-            journalOpen.Post(gameObject);
-
-        }
-
-        if(Input.GetButtonDown("MenuOut") && InUI == true)
-        {
-            InUI = false;
-            Journal.CloseJournal();
-            journalClose.Post(gameObject);
-        }
-
-        if(Input.GetButtonDown("TabLeft") && InUI == true)
-        {
-            Journal.NewTab(true);
-        }
-
-        if(Input.GetButtonDown("TabRight") && InUI == true)
-        {
-            Journal.NewTab(false);
-        }
-    }
-
-    private void Jump()
+    private void Gravity()
     {
         //coyote time code
         if (IsGrounded() && !jumping)
@@ -332,6 +399,7 @@ public class SC_Player_Move : MonoBehaviour
             coyoteTimeCounter -= Time.deltaTime;
         }
 
+        //I dont remember what the fuck this is doing
         if (lastYValue.ToString("F2") == gameObject.transform.position.y.ToString("F2"))
         {
             if (!IsGrounded())
@@ -342,7 +410,7 @@ public class SC_Player_Move : MonoBehaviour
             }
         }
         lastYValue = gameObject.transform.position.y;
-
+        //OH THIS IS SO THE PLAYER STOPS JUMPING IF THEY BUMP THEY HEAD
 
         if (jumping)
         {
@@ -359,12 +427,6 @@ public class SC_Player_Move : MonoBehaviour
             jumping = false;
         }
 
-        if(Input.GetButtonDown("Jump") && rb.linearVelocity.y > 0f)
-        {
-            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-        }
-
         //makes player decend faster the longer they are falling
         if(rb.linearVelocity.y < 0 && rb.gravityScale < fallingGravLimit)
         {
@@ -379,24 +441,9 @@ public class SC_Player_Move : MonoBehaviour
         }
     }
 
-    private void Attack()
-    {
-        if (Input.GetButtonDown("PrimaryAttack"))
-        {
-            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-            sythe.AddAttack(AttackType.primary);
-
-        }
-
-        if (Input.GetButtonDown("SecondaryAttack"))
-        {
-            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-            drill.Drill(IsGrounded(), isFacingRight);
-        }
-    }
-
 
     //will make event in future
+    //at some point
     public bool IsInteracting()
     {
         return interacting;

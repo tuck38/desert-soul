@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requirments: 
   damage: 1
-  atkTime: 0
+  atkTime: 0.3
   type: 0
   attackID: 0
   projectile: {fileID: 0}
