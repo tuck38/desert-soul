@@ -211,6 +211,42 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  jump:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5cd34caa-24f3-44bc-99b3-b07dfbdc5a28
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  journal:
+    m_Name: Journal
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: efe230e1-3ba5-476d-8125-232b3b5e8141
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  journalTabs:
+    m_Name: Journal Tabs
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 3346e8b7-ecdf-45ca-bdbe-a21c6f66361e
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  interact:
+    m_Name: Interact
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b3666d01-7091-4c10-a25b-7fc13558f72d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   launchPower: 6
   launchTotalTime: 0.2
   launchFromRight: 0
