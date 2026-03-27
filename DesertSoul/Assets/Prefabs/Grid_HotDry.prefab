@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 4699639855432155553}
   - component: {fileID: 6446061049208148913}
   m_Layer: 0
-  m_Name: Tilemap_BGWall
+  m_Name: Tilemap_Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 3245412641412783970}
   - component: {fileID: 8377961377699289167}
   m_Layer: 0
-  m_Name: _BG2
+  m_Name: Tilemap_Enviro2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
