@@ -22,7 +22,7 @@ public class SC_Dungbeetle : SC_Enemy_Attack_Base
     void Start()
     {
         currentState = EnemyState.WANDERING;
-        nextPoint = point1;
+        nextPoint = realP1;
         isGoingOne = true;
         dungBallDefaultPosition = currentDungball.transform.localPosition;
         dungBallParentPosition = currentDungball.transform.parent.localPosition;
@@ -78,7 +78,7 @@ public class SC_Dungbeetle : SC_Enemy_Attack_Base
             {
                 player = playerObj;
                 preLockOnPoint = nextPoint;
-                nextPoint = player.transform;
+                nextPoint = player.transform.position;
                 currentState = EnemyState.DETECT_PLAYER;
             }
         }

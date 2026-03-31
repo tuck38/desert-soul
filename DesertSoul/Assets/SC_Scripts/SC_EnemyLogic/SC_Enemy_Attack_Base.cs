@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum EnemyState
 {
@@ -21,26 +22,29 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     [SerializeField] protected Transform point1;
     [SerializeField] protected Transform point2;
 
+    //allows us to have a local, unchaging version of these vars - Ashley
+    protected Vector3 realP1;
+    protected Vector3 realP2;
     [SerializeField] protected float timeBetweenAttacks = 0.2f;
 
     protected bool isGoingOne;
-    protected Transform nextPoint;
-    protected Transform preLockOnPoint;
+    protected Vector3 nextPoint;
+    protected Vector3 preLockOnPoint;
 
     protected virtual void CheckPos()
     {
-        float dist = Vector2.Distance(transform.position, nextPoint.position);
+        float dist = Vector2.Distance(transform.position, nextPoint);
         if (currentState == EnemyState.WANDERING && dist < stopDistancePlatformEdge)
         {
             if (isGoingOne)
             {
-                nextPoint = point2;
+                nextPoint = realP2;
                 isGoingOne = false;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
             }
             else
             {
-                nextPoint = point1;
+                nextPoint = realP1;
                 isGoingOne = true;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
@@ -50,7 +54,7 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     protected virtual void MoveTo()
     {
         float initialY = transform.position.y;
-        Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint.position, defaultSpeed * Time.deltaTime);
+        Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint, defaultSpeed * Time.deltaTime);
         //Debug.Log(newXPosition);
         transform.position = new Vector2(newXPosition.x, initialY);
     }
@@ -62,7 +66,7 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
             Debug.Log("Player detected");
             player = playerObj;
             preLockOnPoint = nextPoint;
-            nextPoint = player.transform;
+            nextPoint = player.transform.position;
             currentState = EnemyState.DETECT_PLAYER;
         }
     }

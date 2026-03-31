@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,9 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     void Start()
     {
         currentState = EnemyState.WANDERING;
-        nextPoint = point1;
+        realP1 = new Vector3(point1.position.x, point1.position.y, point1.position.z);
+        realP2 = new Vector3(point2.position.x, point2.position.y, point2.position.z);
+        nextPoint = realP1;
         isGoingOne = true;
         defaultColor = GetComponent<SpriteRenderer>().color;
     }
@@ -57,7 +60,7 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
         GetComponent<SpriteRenderer>().color = windUpColor;
         yield return new WaitForSeconds(timeBetweenApproachingPlayerAndAttacking);
         GetComponent<SpriteRenderer>().color = attackColor;
-        if(Vector2.Distance(transform.position, nextPoint.position) < stopDistancePlayer)
+        if(Vector2.Distance(transform.position, nextPoint) < stopDistancePlayer)
         {
             Debug.Log("Attack Hit");
             player.GetComponent<SC_Player_Prop>().TakeDamage(GetComponent<SC_Enemy_Base>().GetDamage());
@@ -70,18 +73,18 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
 
     protected override void CheckPos()
     {
-        float dist = Vector2.Distance(transform.position, nextPoint.position);
+        float dist = Vector2.Distance(transform.position, nextPoint);
         if (currentState == EnemyState.WANDERING && dist < stopDistancePlatformEdge)
         {
             if (isGoingOne)
             {
-                nextPoint = point2;
+                nextPoint = realP2;
                 isGoingOne = false;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
             }
             else
             {
-                nextPoint = point1;
+                nextPoint = realP1;
                 isGoingOne = true;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
@@ -96,7 +99,7 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     protected override void MoveTo()
     {
         float initialY = transform.position.y;
-        Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint.position, currentState == EnemyState.WANDERING ? defaultSpeed * Time.deltaTime : chasePlayerSpeed * Time.deltaTime);
+        Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint, currentState == EnemyState.WANDERING ? defaultSpeed * Time.deltaTime : chasePlayerSpeed * Time.deltaTime);
         //Debug.Log(newXPosition);
         transform.position = new Vector2(newXPosition.x, initialY);
     }
