@@ -177,11 +177,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveAcceleration: 1
   moveAccelerationTimer: 0.2
-  maxSpeed: 8
-  minSpeed: 4
-  maxJumpHeight: 8
-  minJumpHeight: 2
-  jumpVelocity: 8
+  maxSpeed: 12
+  minSpeed: 8
+  maxJumpHeight: 2
+  minJumpHeight: 1
+  jumpVelocity: 10
   baseGravity: 3
   gravModifier: 0.005
   fallingGravLimit: 10

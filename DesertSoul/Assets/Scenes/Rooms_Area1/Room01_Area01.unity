@@ -318,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0100033
+      value: 2.0099938
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
@@ -454,19 +454,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: maxSpeed
-      value: 6
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: minSpeed
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
-      propertyPath: jumpVelocity
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: baseGravity
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: jumpVelocity
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: maxJumpHeight
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: minJumpHeight
