@@ -44,5 +44,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rooms_AreaTown/Room02_AreaTown.unity
     guid: 19cc1b3afec687a4e8c6abf351a759d0
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room08_Area01.unity
+    guid: 97790c5581266b949a8e01437adeb560
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
