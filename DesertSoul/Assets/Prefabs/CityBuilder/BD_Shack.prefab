@@ -36,6 +36,7 @@ Transform:
   - {fileID: 5243358197701862773}
   - {fileID: 7307300589347412012}
   - {fileID: 1078156362910852532}
+  - {fileID: 1329742651119214895}
   - {fileID: 7330957726125477251}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -110,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingName: Shack
-  materialCost: {x: 60, y: 0}
+  materialCost: {x: 0, y: 0}
   unlocked: 1
   isMulticell: 1
   dimensions: {x: 4, y: 3}
@@ -118,6 +119,7 @@ MonoBehaviour:
   - {fileID: 2007079322562247833}
   - {fileID: 1515114987338110869}
   - {fileID: 7117196772374341581}
+  spawn: {fileID: 7935754168895078570}
 --- !u!58 &-2742736269606997843
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -655,6 +657,37 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &7935754168895078570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1329742651119214895}
+  m_Layer: 0
+  m_Name: spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1329742651119214895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7935754168895078570}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.87, y: -1.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4835498173171786062}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8485285703352754853
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,7 +878,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1078156362910852532}
   - component: {fileID: 7024117462517682612}
-  - component: {fileID: 2163631932956892469}
+  - component: {fileID: 714114655270450850}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
@@ -914,7 +947,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.2015357, y: 1.523994}
   m_EdgeRadius: 0
---- !u!114 &2163631932956892469
+--- !u!114 &714114655270450850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -923,10 +956,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9016212553033401585}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1004edc4cf4794390123d24623216d, type: 3}
+  m_Script: {fileID: 11500000, guid: fd5450704dc856c48a42bce337fa12ab, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SC_Interactable
+  m_EditorClassIdentifier: Assembly-CSharp::SC_IntDoor
   goToScene: Town_Shack
-  buttonHoldTime: 0
+  buttonHoldTime: 2
   needsHold: 0
   interactButton: {fileID: 8485285703352754853}
+  buttonText: 
+  building: Shack

@@ -1,21 +1,25 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SC_Interactable : MonoBehaviour
 {
-    [SerializeField] string goToScene;
+    //is good, just needs smthn for the graphics + text changing based on set inputs
+    [SerializeField] protected string goToScene;
 
     [SerializeField] float buttonHoldTime = 2f;
     private float currentButtonHoldTime = 0f;
 
     [SerializeField] bool needsHold = false;
 
-    [SerializeField] GameObject interactButton;
+    [SerializeField] protected GameObject interactButton;
+
+    [SerializeField] string buttonText;
 
     private SC_Player_Move player;
 
     private bool playerInRange = false;
 
-    private bool holding = false;
+    private bool pressing = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
    void Start()
@@ -26,21 +30,28 @@ public class SC_Interactable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HoldInputs();
-        if(holding)
+        Inputs();
+        if(pressing)
         {
-            HoldTimer();
+            if(needsHold)
+            {
+                HoldTimer();
+            }
+            else
+            {
+                DoAction();
+            }
         }
     }
 
-    void HoldInputs()
+    void Inputs()
     {
         if(playerInRange)
         {
 
-            holding = player.IsInteracting();
+            pressing = player.IsInteracting();
 
-            if(holding == false)
+            if(pressing == false)
             {
                 currentButtonHoldTime = 0f;
             }
@@ -55,14 +66,14 @@ public class SC_Interactable : MonoBehaviour
         }
         else
         {
-            GoToScene();
+            DoAction();
         }
     }
 
 
-    void GoToScene()
+    protected virtual void DoAction()
     {
-        GameManager.Instance.LoadNewLevel(goToScene, SC_Enum_Doors.Bottom, false, true);
+        
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -81,7 +92,7 @@ public class SC_Interactable : MonoBehaviour
         {
             playerInRange = false;
             interactButton.SetActive(false);
-            holding = false;
+            pressing = false;
             currentButtonHoldTime = 0f;
         }
     }

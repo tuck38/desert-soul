@@ -14,6 +14,8 @@ public class SC_Building : MonoBehaviour
     [SerializeField] Vector2Int dimensions;
     [SerializeField] List<Collider2D> buildingColliders;
 
+    [SerializeField] public GameObject spawn;
+
     public string BuildingName { get => buildingName; }
     public Sprite BuildingSprite { get => GetComponent<SpriteRenderer>().sprite; }
     public Vector2Int MaterialCost { get => materialCost; }

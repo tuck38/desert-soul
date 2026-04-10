@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     bool isDoor = false;
     bool isFastTravel = false;
+    bool interactableDoor = false;
+    String buildingName = "Shack";
    
     private void Awake()
     {
@@ -88,6 +90,19 @@ public class GameManager : MonoBehaviour
             }
         }
         }
+        else if (interactableDoor)
+        {
+            //need to check if not in town for later
+            List<SC_Building> builds = new List<SC_Building>(FindObjectsByType<SC_Building>(FindObjectsSortMode.None));
+            foreach (SC_Building build in builds)
+            {
+                if(build.BuildingName == buildingName)
+                {
+                    player.transform.position = build.spawn.transform.position;
+                    break;
+                }
+            }
+        }
         else if(isFastTravel)
         {
             SC_FastTravel fastTravel = FindAnyObjectByType<SC_FastTravel>();
@@ -95,14 +110,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadNewLevel(string scene, SC_Enum_Doors doorDir, bool door, bool fastTravel)
+    //This function is duplicated for all different travel methods
+    //In Order: directional doors, interactable doors, fast travel
+
+    //directional doors 
+    public void LoadNewLevel(string scene, SC_Enum_Doors doorDir, bool door, bool fastTravel, bool intDoor = false, string toBuildingName = "Shack")
     {
         //Gets the source door direction and finds the destination door in the next room
         //I hate this one
+
+        isDoor = door;
+        interactableDoor = intDoor;
+        isFastTravel = fastTravel;
+        buildingName = toBuildingName;
+
         if(door)
         {
-            isDoor = door;
-            isFastTravel = fastTravel;
         switch (doorDir)
         {
             case SC_Enum_Doors.Left:
@@ -149,11 +172,6 @@ public class GameManager : MonoBehaviour
                 newDoor = SC_Enum_Doors.Left;
                 break;
         }
-        }
-        else
-        {
-            isDoor = door;
-            isFastTravel = fastTravel;
         }
         //this is like ACTUALLY painful to look at
         //Toby Fox core

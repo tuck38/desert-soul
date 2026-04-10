@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2520999254140318445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3610143387485289105}
+  m_Layer: 0
+  m_Name: spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3610143387485289105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2520999254140318445}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.38, y: -0.87, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4835498173171786062}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2791252050183778560
 GameObject:
   m_ObjectHideFlags: 0
@@ -38,6 +69,7 @@ Transform:
   - {fileID: 3573929929774426851}
   - {fileID: 8971654773609988191}
   - {fileID: 2533045217974650832}
+  - {fileID: 3610143387485289105}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5273125685821136651
@@ -119,6 +151,7 @@ MonoBehaviour:
   - {fileID: 6830791860655875693}
   - {fileID: 6877037140250843379}
   - {fileID: 6646462988115743689}
+  spawn: {fileID: 2520999254140318445}
 --- !u!61 &6491977644130419026
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -780,7 +813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8971654773609988191}
   - component: {fileID: 6659907123223176235}
-  - component: {fileID: 5914919614387439544}
+  - component: {fileID: 4165543570632146805}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -849,7 +882,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0265362, y: 1.3582392}
   m_EdgeRadius: 0
---- !u!114 &5914919614387439544
+--- !u!114 &4165543570632146805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -858,13 +891,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5770284297281271825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1004edc4cf4794390123d24623216d, type: 3}
+  m_Script: {fileID: 11500000, guid: fd5450704dc856c48a42bce337fa12ab, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SC_Interactable
+  m_EditorClassIdentifier: Assembly-CSharp::SC_IntDoor
   goToScene: Town_Quarry
   buttonHoldTime: 2
   needsHold: 0
   interactButton: {fileID: 4212410730444734268}
+  buttonText: 
+  building: Quarry
 --- !u!1 &6517613245811139098
 GameObject:
   m_ObjectHideFlags: 0
