@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AtkSythe_P1
   m_EditorClassIdentifier: 
   requirments: 
-  damage: 1
-  atkTime: 0.3
+  damage: 13
+  atkTime: 0.5
   type: 0
   attackID: 0
   projectile: {fileID: 0}

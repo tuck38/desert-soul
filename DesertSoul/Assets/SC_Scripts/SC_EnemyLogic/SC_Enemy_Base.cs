@@ -6,6 +6,7 @@ public class SC_Enemy_Base : MonoBehaviour
     [SerializeField] private int MAXHealth;
     private int currentHealth;
     [SerializeField] private int damage;
+    [SerializeField] private ParticleSystem PlayerHitParticles = default;
 
     private Transform lockPoint;
 
@@ -92,6 +93,8 @@ public class SC_Enemy_Base : MonoBehaviour
     //takes damage and returns true if the attack killed the enemy
     public bool TakeDamage(SC_Attack_Base attack, Transform carryPoint)
     {
+        PlayerHitParticles.Play();
+
         if (!locked)
         {
             currentHealth -= attack.getDamage();
