@@ -28,7 +28,7 @@ public class SC_Interactable : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         Inputs();
         if(pressing)
@@ -48,7 +48,6 @@ public class SC_Interactable : MonoBehaviour
     {
         if(playerInRange)
         {
-
             pressing = player.IsInteracting();
 
             if(pressing == false)

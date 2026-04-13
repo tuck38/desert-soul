@@ -12,9 +12,9 @@ public class SC_IntDoor : SC_Interactable
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
     }
 
     protected override void DoAction()
