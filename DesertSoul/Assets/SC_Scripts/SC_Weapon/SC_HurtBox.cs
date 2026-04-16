@@ -11,7 +11,7 @@ public class SC_HurtBox : MonoBehaviour
     private List<SC_Enemy_Base> currentEnemies;
 
     [SerializeField] private Transform carryPoint;
-
+    [SerializeField] private ParticleSystem PlayerHitParticles;
 
     private void Start()
     {
@@ -36,6 +36,8 @@ public class SC_HurtBox : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            PlayerHitParticles.Play();
+            Debug.Log("hello particles");
             SC_Enemy_Base enemy = collision.gameObject.GetComponent<SC_Enemy_Base>();
             if(enemy != null && currentAttack != null)
             {

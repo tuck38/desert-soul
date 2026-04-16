@@ -12,7 +12,6 @@ public class SC_Sythe : MonoBehaviour
     //Script where the attacks are executed, and communication with the animator occures
 
     [SerializeField] private Animator animator;
-
     //List of attacks for current weapon
     [SerializeField] protected List<SC_Attack_Base> Attacks;
     //List that holds the chain of moves that hav been executed

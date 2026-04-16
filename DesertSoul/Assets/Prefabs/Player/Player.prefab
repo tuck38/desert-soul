@@ -179,8 +179,8 @@ MonoBehaviour:
   moveAccelerationTimer: 0.2
   maxSpeed: 12
   minSpeed: 8
-  maxJumpHeight: 2
-  minJumpHeight: 1
+  maxJumpHeight: 3
+  minJumpHeight: 2
   jumpVelocity: 10
   baseGravity: 3
   gravModifier: 0.005
@@ -618,6 +618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAttack: {fileID: 0}
   carryPoint: {fileID: 602430137304831808}
+  PlayerHitParticles: {fileID: 0}
 --- !u!1 &4343856675345002891
 GameObject:
   m_ObjectHideFlags: 0
