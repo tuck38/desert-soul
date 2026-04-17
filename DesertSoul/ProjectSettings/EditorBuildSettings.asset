@@ -56,5 +56,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rooms_Area1/Room11_Area01.unity
     guid: 57e6ed0208ba1b2498a3a85657f4c266
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room12_Area01.unity
+    guid: 711128b0351fee3498930395987f0461
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room13_Area01.unity
+    guid: 2ea7a134ee1f1ec4a8a41f27c5c40998
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
