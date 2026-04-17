@@ -31,6 +31,8 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     protected Vector3 nextPoint;
     protected Vector3 preLockOnPoint;
 
+    protected bool isFacingRight = false;
+
     protected virtual void CheckPos()
     {
         float dist = Vector2.Distance(transform.position, nextPoint);
@@ -40,13 +42,11 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
             {
                 nextPoint = realP2;
                 isGoingOne = false;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
             }
             else
             {
                 nextPoint = realP1;
                 isGoingOne = true;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
         }
     }
@@ -68,6 +68,15 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
             preLockOnPoint = nextPoint;
             nextPoint = player.transform.position;
             currentState = EnemyState.DETECT_PLAYER;
+        }
+    }
+
+    protected virtual void SpriteRotation(float GoToX)
+    {
+        if(transform.position.x > GoToX && isFacingRight || transform.position.x < GoToX && !isFacingRight)
+        {
+            isFacingRight = !isFacingRight;
+            transform.Rotate(new Vector3(0, 180, 0));
         }
     }
 

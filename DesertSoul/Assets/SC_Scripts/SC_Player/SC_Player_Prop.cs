@@ -10,6 +10,8 @@ public class SC_Player_Prop : MonoBehaviour
 {
     public static Action<ResouceTypes, int> OnResourcesAmountChanged;
 
+    [SerializeField] private SC_Player_Move move;
+
     [SerializeField] private int maxHealth;
     [Tooltip("Exists to visualize current health in inspector, modifying in inspector won't change player's current health")]
     [SerializeField] private int currentHealthProxy;
@@ -42,8 +44,8 @@ public class SC_Player_Prop : MonoBehaviour
     public static int fruitMaterialCount { get; private set; } = 0;
     public static int iceMaterialCount { get; private set; } = 0;
 
-    [Header("Wwise Events")]
-    public AK.Wwise.Event playerDamaged;
+    //[Header("Wwise Events")]
+    //public AK.Wwise.Event playerDamaged;
     private void OnEnable()
     {
         OnResourcesAmountChanged += UpdateResources;
@@ -90,10 +92,12 @@ public class SC_Player_Prop : MonoBehaviour
     {
         if (currentHealth > dmg)
         {
+            Debug.Log("sdfsdf");
             currentHealth = currentHealth - dmg;
             currentHealthProxy = currentHealth;
             HUD.UpdateHealthUI(currentHealth, maxHealth);
-            playerDamaged.Post(gameObject);
+            move.SetIFrames();
+            //playerDamaged.Post(gameObject);
         }
         else
         {

@@ -15,6 +15,8 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     [SerializeField] Color windUpColor;
     [SerializeField] Color attackColor;
 
+    [SerializeField] private Animator animator;
+
     bool isAttacking = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -37,7 +39,6 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
             case EnemyState.NONE:
                 break;
             case EnemyState.APPROACH:
-                GetComponent<SpriteRenderer>().color = approachColor;
                 if (!isAttacking) MoveTo();
                 break;
             case EnemyState.ATTACK:
@@ -47,7 +48,6 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
                 currentState = EnemyState.APPROACH;
                 break;
             case EnemyState.WANDERING:
-                GetComponent<SpriteRenderer>().color = defaultColor;
                 if(!isAttacking) MoveTo();
                 break;
         }
@@ -57,9 +57,9 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     {
         isAttacking = true;
         Debug.Log("Windup");
-        GetComponent<SpriteRenderer>().color = windUpColor;
+        animator.SetBool("Attack", true);
+        animator.SetBool("Moving", false);
         yield return new WaitForSeconds(timeBetweenApproachingPlayerAndAttacking);
-        GetComponent<SpriteRenderer>().color = attackColor;
         if(Vector2.Distance(transform.position, nextPoint) < stopDistancePlayer)
         {
             Debug.Log("Attack Hit");
@@ -68,6 +68,7 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
         else Debug.Log("Attack Missed");
         yield return new WaitForSeconds(timeBetweenAttacks);
         if(currentState == EnemyState.ATTACK) currentState = EnemyState.APPROACH;
+        animator.SetBool("Attack", false);
         isAttacking = false;
     }
 
@@ -98,8 +99,10 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
 
     protected override void MoveTo()
     {
+        animator.SetBool("Moving", true);
         float initialY = transform.position.y;
         Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint, currentState == EnemyState.WANDERING ? defaultSpeed * Time.deltaTime : chasePlayerSpeed * Time.deltaTime);
+        SpriteRotation(newXPosition.x);
         //Debug.Log(newXPosition);
         transform.position = new Vector2(newXPosition.x, initialY);
     }
