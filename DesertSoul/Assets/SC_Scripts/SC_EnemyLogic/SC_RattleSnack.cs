@@ -69,6 +69,7 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
         yield return new WaitForSeconds(timeBetweenAttacks);
         if(currentState == EnemyState.ATTACK) currentState = EnemyState.APPROACH;
         animator.SetBool("Attack", false);
+        animator.SetBool("Moving", true);
         isAttacking = false;
     }
 

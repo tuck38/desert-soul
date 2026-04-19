@@ -1,3 +1,0 @@
-Event	ID	Name			Wwise Object Path	Notes
-	3835067211	Play_sx_player_scythe_swing_v3			\Default Work Unit\sx\Play_sx_player_scythe_swing_v3	
-

@@ -23,6 +23,9 @@ public class SC_Player_Move : MonoBehaviour
     private float currentSpeed;
     bool moving = false;
 
+    //lets me save this for the knockback calc
+    Vector2 moveVector;
+
     //Jump Variables
     [Tooltip("How far the player can go up before they fall if the jump button is held")]
     [SerializeField] private float maxJumpHeight = 8f;
@@ -148,6 +151,8 @@ public class SC_Player_Move : MonoBehaviour
     {
         //inst used rn, havent implemented camrea looking
         vertical = look.ReadValue<float>();
+
+        KnockbackUpdate(moveVector, currentSpeed, true);
     }
 
     private void OnEnable()
@@ -306,54 +311,6 @@ public class SC_Player_Move : MonoBehaviour
             anim.SetBool("isWalking", false);
         }
 
-        //if getting knocked back, player cannot move
-        if (launchTime <= 0)
-        {
-            if (useGravity)
-            {
-                rb.linearVelocity = new Vector2(movement.x * speed, rb.linearVelocity.y);
-            }
-            else
-            {
-                rb.linearVelocity = new Vector2(movement.x * speed, movement.y * speed);
-            }
-        }
-        else
-        {
-            //This system works for now, but doesent use gravity and feels floaty
-            if(launchFromRight)
-            {
-                rb.linearVelocity = new Vector2(-launchPower, launchPower);
-            }
-            else
-            {
-                rb.linearVelocity = new Vector2(launchPower, launchPower);
-            }
-
-            launchTime -= Time.deltaTime;
-        }
-
-        //Iframes stuff
-        if (Iframes > 0)
-        {
-            if (flickerSpeed > 0)
-            {
-                flickerSpeed -= Time.deltaTime;
-            }
-            else if(flickerSpeed <= 0)
-            {
-                sprite.enabled = !sprite.enabled;
-                flickerSpeed = flickerSpeedTotal;
-            }
-
-            Iframes -= Time.deltaTime;
-        }
-        else
-        {
-            sprite.enabled = true;
-            hitbox.enabled = true;
-        }
-
         if (currentSpeed < maxSpeed && moving == true)
         {
             if(currentMoveAccelerationTimer < moveAccelerationTimer)
@@ -370,7 +327,10 @@ public class SC_Player_Move : MonoBehaviour
                 currentMoveAccelerationTimer = 0;
             }
         }
+        moveVector = movement;
     }
+
+    
 
     private void spriteRotation(Vector2 movement)
     {
@@ -472,10 +432,64 @@ public class SC_Player_Move : MonoBehaviour
         }
     }
 
+    private void KnockbackUpdate(Vector2 movement, float speed, bool useGravity)
+    {
+        //if getting knocked back, player cannot move
+        if (launchTime <= 0)
+        {
+            if (useGravity)
+            {
+                rb.linearVelocity = new Vector2(movement.x * speed, rb.linearVelocity.y);
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(movement.x * speed, movement.y * speed);
+            }
+        }
+        else
+        {
+            //This system works for now, but doesent use gravity and feels floaty
+            if(launchFromRight)
+            {
+                rb.linearVelocity = new Vector2(-launchPower, launchPower);
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(launchPower, launchPower);
+            }
+
+            launchTime -= Time.deltaTime;
+        }
+    }
+
     public void SetIFrames()
     {
         Iframes = IframeTotal;
         flickerSpeed = flickerSpeedTotal;
         hitbox.enabled = false;
+    }
+
+    private void IFramesUpdate()
+    {
+        //Iframes stuff
+        if (Iframes > 0)
+        {
+            if (flickerSpeed > 0)
+            {
+                flickerSpeed -= Time.deltaTime;
+            }
+            else if(flickerSpeed <= 0)
+            {
+                sprite.enabled = !sprite.enabled;
+                flickerSpeed = flickerSpeedTotal;
+            }
+
+            Iframes -= Time.deltaTime;
+        }
+        else
+        {
+            sprite.enabled = true;
+            hitbox.enabled = true;
+        }
     }
 }

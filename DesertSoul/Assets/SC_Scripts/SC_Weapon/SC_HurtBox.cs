@@ -47,6 +47,7 @@ public class SC_HurtBox : MonoBehaviour
                 }
                 enemy.TakeDamage(currentAttack, carryPoint);
                 enemy.SetPlayer(gameObject.gameObject);
+                enemy.Knockback(currentAttack.getAttackType());
             }
         }
         else if (collision.gameObject.tag == "ResourceNode")

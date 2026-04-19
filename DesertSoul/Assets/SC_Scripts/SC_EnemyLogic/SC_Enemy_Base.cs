@@ -7,6 +7,9 @@ public class SC_Enemy_Base : MonoBehaviour
     private int currentHealth;
     [SerializeField] private int damage;
     
+    //kb vars
+    [SerializeField] private float knockbackDist;
+    [SerializeField] private float kbLERPTime;
 
     private Transform lockPoint;
 
@@ -64,7 +67,7 @@ public class SC_Enemy_Base : MonoBehaviour
             gameObject.transform.position = new Vector3(lockPoint.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         }
 
-        //knockback timer 
+        //drill knockback timer 
         if(launchTime > 0)
         {         
             //This system works for now, but doesent use gravity and feels floaty
@@ -117,7 +120,7 @@ public class SC_Enemy_Base : MonoBehaviour
         roomSpawned = lockRoom;
     }
 
-    private void Knockback()
+    public void Knockback(AttackType atkType)
     {
 
         //method 1
@@ -127,15 +130,28 @@ public class SC_Enemy_Base : MonoBehaviour
         //rb.linearVelocity = dirVect * launchPower;
 
         //method 2
-        launchTime = totalLaunchTime;
+        if(atkType == AttackType.drillSide)
+        {
+            launchTime = totalLaunchTime;
+        }
+
+        Vector3 target = transform.position;
 
         if (player.transform.position.x >= transform.position.x)
         {
             launchFromRight = true;
+            target = new Vector3(transform.position.x - knockbackDist, transform.position.y, transform.position.z);
         }
         else if (player.transform.position.x < transform.position.x)
         {
             launchFromRight = false;
+            target = new Vector3(transform.position.x + knockbackDist, transform.position.y, transform.position.z);
+        }
+
+        if(atkType == AttackType.primary)
+        {
+            //ima make this a lerp
+            transform.position = target;
         }
     }
 
@@ -156,7 +172,7 @@ public class SC_Enemy_Base : MonoBehaviour
         {
             lockCooldown = true;
             currentLockTimer = lockTimer;
-            Knockback();
+            Knockback(AttackType.drillSide);
         }
     }
 
