@@ -125353,7 +125353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0099926
+      value: 2.0100174
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
@@ -125361,7 +125361,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3957154099658528880, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_Size.x
-      value: 33.182667
+      value: 34.28109
       objectReference: {fileID: 0}
     - target: {fileID: 3957154099658528880, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_Size.y
@@ -125369,7 +125369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3957154099658528880, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_Offset.x
-      value: 5.591337
+      value: 6.140552
       objectReference: {fileID: 0}
     - target: {fileID: 3957154099658528880, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_Offset.y
@@ -125457,7 +125457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[2].x
-      value: 22.18267
+      value: 23.281097
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[2].y
@@ -125465,7 +125465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[3].x
-      value: 22.182642
+      value: 23.281069
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[3].y
@@ -125473,7 +125473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[4].x
-      value: -10.999996
+      value: -10.999992
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[4].y
@@ -125481,7 +125481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[5].x
-      value: -10.999967
+      value: -10.999963
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_CompositePaths.m_Paths.Array.data[0].Array.data[5].y
@@ -125553,7 +125553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[0].X
-      value: 221826704
+      value: 232810976
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[0].Y
@@ -125561,7 +125561,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[1].X
-      value: -109999960
+      value: -109999920
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[1].Y
@@ -125569,7 +125569,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[2].X
-      value: -109999960
+      value: -109999920
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[2].Y
@@ -125577,7 +125577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[3].X
-      value: 221826704
+      value: 232810976
       objectReference: {fileID: 0}
     - target: {fileID: 6988193673501681366, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[3].Y
@@ -125779,10 +125779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4539b149978895e409f7164505caf849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkAudioListener
-  isDefaultListener: 1
-  bOverrideScalingFactor: 0
-  scalingFactor: -1
-  listenerId: 0
 --- !u!114 &1786040703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125795,18 +125791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7eca8170e92c749a780b03cfc64ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkGameObj
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 0
-  isStaticObject: 0
-  usePositionOffsetData: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  scalingFactor: 1
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
 --- !u!1001 &2018750309
 PrefabInstance:
   m_ObjectHideFlags: 0
