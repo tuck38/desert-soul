@@ -8,6 +8,7 @@ public class SC_Heal : SC_Interactable
         if (playerProp.can_heal())
         {
             playerProp.IncreaseHP();
+            this.gameObject.SetActive(false);
         }
     }
 
