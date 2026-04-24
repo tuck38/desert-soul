@@ -5,7 +5,7 @@ public class SC_Interactable : MonoBehaviour
 {
     //is good, just needs smthn for the graphics + text changing based on set inputs
     [SerializeField] protected string goToScene;
-
+    protected SC_Player_Prop playerProp;
     [SerializeField] float buttonHoldTime = 2f;
     private float currentButtonHoldTime = 0f;
 
@@ -15,7 +15,7 @@ public class SC_Interactable : MonoBehaviour
 
     [SerializeField] string buttonText;
 
-    private SC_Player_Move player;
+    protected SC_Player_Move player;
 
     private bool playerInRange = false;
 
@@ -80,6 +80,7 @@ public class SC_Interactable : MonoBehaviour
         if(collision.tag == "Player")
         {
             player = collision.GetComponent<SC_Player_Move>();
+            playerProp = collision.GetComponent<SC_Player_Prop>();
             playerInRange = true;
             interactButton.SetActive(true);
         }

@@ -12,7 +12,7 @@ public class SC_Player_Prop : MonoBehaviour
 
     [SerializeField] private SC_Player_Move move;
 
-    [SerializeField] private int maxHealth;
+    [SerializeField] public int maxHealth;
     [Tooltip("Exists to visualize current health in inspector, modifying in inspector won't change player's current health")]
     [SerializeField] private int currentHealthProxy;
     public static int currentHealth { get; private set; } = int.MinValue;
@@ -86,6 +86,10 @@ public class SC_Player_Prop : MonoBehaviour
         {
             SunDamageTimer();
         }
+        if (Input.GetKeyDown("p"))
+        {
+            currentHealth -= 1;
+        }
     }
     
     public void TakeDamage(int dmg)
@@ -108,6 +112,23 @@ public class SC_Player_Prop : MonoBehaviour
         }
     }
 
+    public bool can_heal()
+    {
+        if (currentHealth < maxHealth)
+        {
+            print(currentHealth);
+            return true;
+        }
+        return false;
+    }
+    
+
+    public void IncreaseHP()
+    {
+        currentHealth += 1;
+        HUD.UpdateHealthUI(currentHealth, maxHealth);
+        print(currentHealth);
+    }
     public void giveSunStack(int damage)
     {
         inSunlight = true;

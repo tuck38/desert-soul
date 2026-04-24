@@ -46,6 +46,7 @@ public class SC_Player_HUD : MonoBehaviour
         {
             Health[Health.Count - i - 1].gameObject.transform.GetChild(1).gameObject.SetActive(false);
         }
+        
         }
         createdHealth += healthOfCreation;
     }
