@@ -71,6 +71,12 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private InputAction journalTabs;
     [SerializeField] private InputAction interact;
 
+    [SerializeField] AudioClip[] sytheSwingAUD;
+    [SerializeField] AudioClip[] movementAUD;
+    [SerializeField] AudioClip jumpAUD;
+    [SerializeField] AudioClip landAUD;
+
+
      private SC_Sythe sythe;
      private SC_Drill drill;
 
@@ -94,6 +100,8 @@ public class SC_Player_Move : MonoBehaviour
     //UI
     [SerializeField] SC_Journal Journal;
     [SerializeField] Text stoneAmount;
+
+    [SerializeField] AudioSource playerSource;
 
     bool InUI;
 
@@ -205,6 +213,8 @@ public class SC_Player_Move : MonoBehaviour
             //Gets player input and jumps if grounded
             if ((IsGrounded() || coyoteTimeCounter > 0f) && !jumping)
             {
+                playerSource.clip = jumpAUD;
+                playerSource.Play();
                 stopJump = false;
                 jumping = true;
                 startJumpHeight = gameObject.transform.position.y;

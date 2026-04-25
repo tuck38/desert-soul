@@ -125791,6 +125791,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7eca8170e92c749a780b03cfc64ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkGameObj
+--- !u!1 &1881247951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2288424958357108308, guid: addf43060c7ee0d4e95e66dc91a73f87, type: 3}
+  m_PrefabInstance: {fileID: 2018750309}
+  m_PrefabAsset: {fileID: 0}
+--- !u!81 &1881247954
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881247951}
+  m_Enabled: 1
 --- !u!1001 &2018750309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -125858,7 +125871,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2288424958357108308, guid: addf43060c7ee0d4e95e66dc91a73f87, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1881247954}
   m_SourcePrefab: {fileID: 100100000, guid: addf43060c7ee0d4e95e66dc91a73f87, type: 3}
 --- !u!4 &2084460414 stripped
 Transform:
