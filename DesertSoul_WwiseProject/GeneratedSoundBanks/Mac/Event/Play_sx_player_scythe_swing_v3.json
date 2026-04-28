@@ -1,0 +1,48 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3835067211",
+    "Type": "Event",
+    "GUID": "{4B6961F8-3262-4414-ADDB-4F071599DDBA}",
+    "Language": "SFX",
+    "Hash": "{07758DF7-74B2-E10D-C86A-8AB6C68BDB8D}",
+    "ObjectPath": "Play_sx_player_scythe_swing_v3",
+    "ShortName": "Play_sx_player_scythe_swing_v3",
+    "Path": "Event/Play_sx_player_scythe_swing_v3.bnk",
+    "Media": [
+     {
+      "Id": "632076456",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Loose",
+      "ShortName": "sx_player_scythe_swing_v3.wav",
+      "Path": "Media/632076456.wem",
+      "CachePath": "6D/{6D98A7A3-24BD-7A1E-2522-A4F78733EAAB}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3835067211",
+      "Name": "Play_sx_player_scythe_swing_v3",
+      "ObjectPath": "\\Events\\Default Work Unit\\sx\\Play_sx_player_scythe_swing_v3",
+      "GUID": "{4B6961F8-3262-4414-ADDB-4F071599DDBA}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.72838944",
+      "DurationMax": "2.4148753",
+      "MediaRefs": [
+       {
+        "Id": "632076456"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{CD7A4CFA-E2F1-A052-9B4E-3766C60945FA}"
+ }
+}

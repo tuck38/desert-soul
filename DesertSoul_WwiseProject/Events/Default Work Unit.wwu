@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" SchemaVersion="123">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{70D1DF92-1BFF-4510-8EF6-EF8B8BD2E86D}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="mx" ID="{90D4729E-A137-4392-BD8C-A89CEDD572EB}" ShortID="250721965">
+					<ChildrenList>
+						<Event Name="Play_mx_Dungeon_Area1" ID="{17667795-8B22-4C4E-BFCF-B3BFF65C011E}">
+							<ChildrenList>
+								<Action Name="" ID="{F6CDC642-4B46-4516-B80C-C0A4AEB3B2BC}" ShortID="427756729">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Area1_v3" ID="{99CE3EE8-5F2A-4F38-ADAA-AC7F78D49780}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_mx_Town" ID="{49C0983E-2812-42D0-AB3A-D8A8B1BEE39B}">
+							<ChildrenList>
+								<Action Name="" ID="{D353630E-1310-4A52-9704-C3AAFA807C1E}" ShortID="453997792">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="mx_TownMusic_v1" ID="{1263F71A-8126-4FCE-8BAD-67F39A5AB172}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="sx" ID="{8EF11801-B74E-4A35-8E15-073B1C25E454}" ShortID="561349436">
+					<ChildrenList>
+						<Event Name="Play_sx_player_scythe_swing_v3" ID="{4B6961F8-3262-4414-ADDB-4F071599DDBA}">
+							<ChildrenList>
+								<Action Name="" ID="{A40500A7-0CE6-46BB-962F-4774DA5C1FFE}" ShortID="671151652">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="sx_player_scythe_swing_v3" ID="{0DA825B3-AED1-42A2-8F2E-949BC7E638F8}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Folder Name="UI" ID="{73320FE9-78C1-4F57-8B1F-0F5992742AF5}" ShortID="427484036">
+							<ChildrenList>
+								<Event Name="Play_sx_ui_button1" ID="{6863B586-4047-4103-A584-FA3843E69FBD}">
+									<ChildrenList>
+										<Action Name="" ID="{E3FF6484-F775-4743-8123-A7B20A8AE4B4}" ShortID="819756350">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="sx_ui_button_v1" ID="{449309E8-421E-4601-910E-E302ADD02AD4}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_sx_ui_mainMenu" ID="{3A50D2DB-4034-46B9-9A13-9E4FA7C10BEF}">
+									<ChildrenList>
+										<Action Name="" ID="{BC4CA838-4BA8-420E-9581-CD44F1FF459C}" ShortID="300593112">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="sx_ui_mainMenu" ID="{E93AA843-D8E4-4215-981D-A42BC15028E4}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_sx_ui_book_open" ID="{56F54389-1191-42D8-90F0-866FCAEDEBF9}">
+									<ChildrenList>
+										<Action Name="" ID="{51853DD4-01EF-4821-9CA1-3FECCFE18C83}" ShortID="450839795">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="sx_ui_book_open" ID="{71949BB0-595F-4480-AB9E-6255FA1D3832}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+								<Event Name="Play_sx_ui_book_close" ID="{8F6B5A6D-F97F-4FBA-924D-6079F0905EF8}">
+									<ChildrenList>
+										<Action Name="" ID="{FD23D4AA-228B-4B6A-A4D1-81F852D7CD35}" ShortID="810263278">
+											<ReferenceList>
+												<Reference Name="Target">
+													<ObjectRef Name="sx_ui_book_close" ID="{5EA7D082-4EAE-4FBC-9749-2428B11FABC3}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+												</Reference>
+											</ReferenceList>
+										</Action>
+									</ChildrenList>
+								</Event>
+							</ChildrenList>
+						</Folder>
+						<Event Name="Play_sx_player_damaged" ID="{F9CCAF34-556B-4F61-8D50-D7950087611A}">
+							<ChildrenList>
+								<Action Name="" ID="{691FEE19-E791-4D3B-BBF4-571987ED26E9}" ShortID="1071942935">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="sx_player_damaged" ID="{B7921B31-DD30-4396-B397-9EE431D245D8}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Play_sx_player_movement_jump_v1" ID="{90EA40E5-2513-4F18-BEFB-133A089A09D8}">
+							<ChildrenList>
+								<Action Name="" ID="{EF808C9A-5534-4F77-B3AB-03D95FDD859D}" ShortID="938442093">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="sx_player_movement_jump_v1" ID="{C3951080-D625-4DD1-9D23-4C7FA0F9D0BA}" WorkUnitID="{D89AFD68-C902-4CEA-9DBE-8C43680D40F6}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

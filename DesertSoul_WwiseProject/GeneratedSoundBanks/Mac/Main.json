@@ -1,0 +1,75 @@
+{
+ "SoundBanksInfo": {
+  "Platform": "Mac",
+  "BasePlatform": "Mac",
+  "SchemaVersion": "16",
+  "SoundBankVersion": "154",
+  "SoundBanks": [
+   {
+    "Id": "3161908922",
+    "Type": "User",
+    "GUID": "{1F80687D-A6D2-4BAC-8D6F-80C734F8106D}",
+    "Language": "SFX",
+    "Hash": "{59C1422A-4142-99AF-9702-FA77FDAD2D27}",
+    "ObjectPath": "\\SoundBanks\\Default Work Unit\\Main",
+    "ShortName": "Main",
+    "Path": "Main.bnk",
+    "Media": [
+     {
+      "Id": "430690571",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "Dungeon_Area1.wav",
+      "CachePath": "C7/{C7E813BC-F144-795C-0EAA-8971E0ACE2F6}.wem"
+     },
+     {
+      "Id": "632076456",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "sx_player_scythe_swing_v3.wav",
+      "CachePath": "6D/{6D98A7A3-24BD-7A1E-2522-A4F78733EAAB}.wem"
+     },
+     {
+      "Id": "852720596",
+      "Language": "SFX",
+      "Streaming": "false",
+      "Location": "Memory",
+      "ShortName": "mx_Dungeon_Area1.wav",
+      "CachePath": "59/{59DEBA80-38BF-7B05-7A77-92DA850267C7}.wem"
+     }
+    ],
+    "Events": [
+     {
+      "Id": "3296999183",
+      "Name": "Play_mx_Dungeon_Area1",
+      "ObjectPath": "\\Events\\Default Work Unit\\mx\\Play_mx_Dungeon_Area1",
+      "GUID": "{17667795-8B22-4C4E-BFCF-B3BFF65C011E}",
+      "DurationType": "Infinite",
+      "MediaRefs": [
+       {
+        "Id": "852720596"
+       }
+      ]
+     },
+     {
+      "Id": "3835067211",
+      "Name": "Play_sx_player_scythe_swing_v3",
+      "ObjectPath": "\\Events\\Default Work Unit\\sx\\Play_sx_player_scythe_swing_v3",
+      "GUID": "{4B6961F8-3262-4414-ADDB-4F071599DDBA}",
+      "DurationType": "OneShot",
+      "DurationMin": "0.72838944",
+      "DurationMax": "2.4148753",
+      "MediaRefs": [
+       {
+        "Id": "632076456"
+       }
+      ]
+     }
+    ]
+   }
+  ],
+  "FileHash": "{AD3F9EA8-448B-84C6-C6BC-25A08654EAA3}"
+ }
+}

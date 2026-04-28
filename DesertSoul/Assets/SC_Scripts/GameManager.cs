@@ -25,6 +25,17 @@ public class GameManager : MonoBehaviour
     static float dayTimer;
     static TimeOfDay currentTime;
 
+    [SerializeField] AudioClip town;
+    [SerializeField] AudioClip mainmenu;
+    [SerializeField] AudioClip area1;
+    [SerializeField] AudioClip area2;
+    [SerializeField] AudioClip area3;
+    [SerializeField] AudioClip area4;
+
+    [SerializeField] AudioSource musicbox;
+
+    SC_Areas_Enum currentArea = SC_Areas_Enum.mainmenu;
+
     public static GameManager Instance {  get; private set; }
 
     private GameObject player;
@@ -178,5 +189,39 @@ public class GameManager : MonoBehaviour
         //I majored in Game Programming
 
         SceneManager.LoadScene(scene);
+    }
+
+    //not finished function
+    private void NewArea(SC_Areas_Enum area)
+    {
+        if(area != currentArea)
+        {
+            switch (currentArea)
+            {
+                case SC_Areas_Enum.town:
+
+                    break;
+
+                case SC_Areas_Enum.mainmenu:
+
+                    break;
+
+                case SC_Areas_Enum.hotdry:
+
+                    break;
+
+                case SC_Areas_Enum.arid:
+
+                    break;
+
+                case SC_Areas_Enum.costal:
+
+                    break;
+
+                case SC_Areas_Enum.frozen:
+                
+                    break;
+            }
+        }
     }
 }
