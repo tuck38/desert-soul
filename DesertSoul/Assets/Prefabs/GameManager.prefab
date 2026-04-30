@@ -59,7 +59,7 @@ MonoBehaviour:
   area2: {fileID: 0}
   area3: {fileID: 0}
   area4: {fileID: 0}
-  musicbox: {fileID: 0}
+  musicbox: {fileID: 1316775377393167063}
 --- !u!82 &1316775377393167063
 AudioSource:
   m_ObjectHideFlags: 0

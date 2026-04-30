@@ -125,7 +125,7 @@ public class GameManager : MonoBehaviour
     //In Order: directional doors, interactable doors, fast travel
 
     //directional doors 
-    public void LoadNewLevel(string scene, SC_Enum_Doors doorDir, bool door, bool fastTravel, bool intDoor = false, string toBuildingName = "Shack")
+    public void LoadNewLevel(string scene, SC_Areas_Enum area, SC_Enum_Doors doorDir, bool door, bool fastTravel, bool intDoor = false, string toBuildingName = "Shack")
     {
         //Gets the source door direction and finds the destination door in the next room
         //I hate this one
@@ -188,6 +188,7 @@ public class GameManager : MonoBehaviour
         //Toby Fox core
         //I majored in Game Programming
 
+        NewArea(area);
         SceneManager.LoadScene(scene);
     }
 
@@ -196,30 +197,42 @@ public class GameManager : MonoBehaviour
     {
         if(area != currentArea)
         {
-            switch (currentArea)
+            switch (area)
             {
                 case SC_Areas_Enum.town:
-
+                    musicbox.clip = town;
+                    musicbox.Play();
+                    currentArea = area;
                     break;
 
                 case SC_Areas_Enum.mainmenu:
-
+                    musicbox.clip = mainmenu;
+                    musicbox.Play();
+                    currentArea = area;
                     break;
 
                 case SC_Areas_Enum.hotdry:
-
+                    musicbox.clip = area1;
+                    musicbox.Play();
+                    currentArea = area;
                     break;
 
                 case SC_Areas_Enum.arid:
-
+                    musicbox.clip = area2;
+                    musicbox.Play();
+                    currentArea = area;
                     break;
 
                 case SC_Areas_Enum.costal:
-
+                    musicbox.clip = area3;
+                    musicbox.Play();
+                    currentArea = area;
                     break;
 
                 case SC_Areas_Enum.frozen:
-                
+                    musicbox.clip = area4;
+                    musicbox.Play();
+                    currentArea = area;
                     break;
             }
         }

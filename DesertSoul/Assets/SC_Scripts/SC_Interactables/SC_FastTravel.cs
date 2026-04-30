@@ -61,7 +61,7 @@ public class SC_FastTravel : MonoBehaviour
 
     void GoToScene()
     {
-        GameManager.Instance.LoadNewLevel(goToScene, SC_Enum_Doors.Bottom, false, true);
+        GameManager.Instance.LoadNewLevel(goToScene, SC_Areas_Enum.hotdry, SC_Enum_Doors.Bottom, false, true);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

@@ -6,6 +6,7 @@ public class SC_Door : MonoBehaviour
     BoxCollider2D doorTrigger;
     [SerializeField] public SC_Enum_Doors doorDir;
     [SerializeField] string nextScene;
+    [SerializeField] SC_Areas_Enum nextArea = SC_Areas_Enum.hotdry;
     [SerializeField] public GameObject spawn;
     private bool movePlayer;
     Vector2 movement;
@@ -112,7 +113,7 @@ public class SC_Door : MonoBehaviour
                 movePlayer = false;
                 if (collision.gameObject.tag == "Player")
                 {
-                    GameManager.Instance.LoadNewLevel(nextScene, doorDir, true, false);
+                    GameManager.Instance.LoadNewLevel(nextScene, nextArea, doorDir, true, false);
                 }
             }
             //Player moving out from a door into a new room
