@@ -241,6 +241,8 @@ public class SC_Player_Move : MonoBehaviour
     {
         SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
         sythe.AddAttack(AttackType.primary);
+            playerSource.clip = sytheSwingAUD[0];
+            playerSource.Play();
     } 
 
     public void OnSecondary(InputAction.CallbackContext context)

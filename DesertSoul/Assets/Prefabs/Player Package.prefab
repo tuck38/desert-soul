@@ -399,7 +399,7 @@ Transform:
   m_GameObject: {fileID: 126721860067205480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.000005722046, y: 0, z: -10}
+  m_LocalPosition: {x: 0.37599587, y: 2.30633, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23472,6 +23472,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: ba5a6ff1cf0ba6b4f9a36f3d3c344d1a, type: 3}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: sytheSwingAUD.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: 'movementAUD.Array.data[0]'
       value: 
       objectReference: {fileID: 8300000, guid: 695ce432fbc74be46b897907d9338917, type: 3}
@@ -23479,6 +23483,10 @@ PrefabInstance:
       propertyPath: 'movementAUD.Array.data[1]'
       value: 
       objectReference: {fileID: 8300000, guid: 7145de8daed62884bb04c6261452ccd1, type: 3}
+    - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: 'sytheSwingAUD.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: ba5a6ff1cf0ba6b4f9a36f3d3c344d1a, type: 3}
     - target: {fileID: 3960449730630822904, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: HUD
       value: 
