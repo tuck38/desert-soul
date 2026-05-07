@@ -14,6 +14,8 @@ public class SC_Player_HUD : MonoBehaviour
 
     private int createdHealth = 1;
 
+    private int activeHealth = 1;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,14 +42,23 @@ public class SC_Player_HUD : MonoBehaviour
                 Health.Add(node);
             }
         }
-        else 
+        else if (currentHealth < activeHealth)
         {
         for(int i = 0; i < maxHealth - currentHealth; i++)
         {
             Health[Health.Count - i - 1].gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            activeHealth --;
         }
-        
+        }
+        else if (currentHealth > activeHealth)
+        {
+            for(int i = 0; i < currentHealth - activeHealth; i++)
+            {
+                Health[activeHealth + i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                
+            }
         }
         createdHealth += healthOfCreation;
+        activeHealth = createdHealth;
     }
 }
