@@ -1,0 +1,16 @@
+﻿title: Start
+---
+Green Soul: Yo what's poppin?
+Archaeologist: THE GREEN SOUL FROM THE HIT GAME THE DESERT SOUL???
+-> Yes, it is me.
+    Archaeologist: Omg, can I get your autograph?
+-> No, you're mistaking me for someone else.
+    Archaeologist: Oh shit mb bruh.
+<<jump End>>
+===
+
+title: End
+---
+Green Soul: I gotta bounce, gotta reseal the World Eater
+Archaeologist: Type shit.
+===
