@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SC_Player_HUD : MonoBehaviour
 {
@@ -42,15 +43,14 @@ public class SC_Player_HUD : MonoBehaviour
                 Health.Add(node);
             }
         }
-        else if (currentHealth < activeHealth)
-        {
-        for(int i = 0; i < maxHealth - currentHealth; i++)
-        {
-            Health[Health.Count - i - 1].gameObject.transform.GetChild(1).gameObject.SetActive(false);
-            activeHealth --;
+        else {
+            for(int i = 0; i < maxHealth - currentHealth; i++)
+            {
+                Health[Health.Count - i - 1].gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                activeHealth --;
+            }
         }
-        }
-        else if (currentHealth > activeHealth)
+        /*else if (currentHealth > activeHealth)
         {
             for(int i = 0; i < currentHealth - activeHealth; i++)
             {
@@ -59,6 +59,6 @@ public class SC_Player_HUD : MonoBehaviour
             }
         }
         createdHealth += healthOfCreation;
-        activeHealth = createdHealth;
+        activeHealth = createdHealth;*/
     }
 }
