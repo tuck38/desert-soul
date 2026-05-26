@@ -53,10 +53,14 @@ public class SC_Drill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("?????");
         if (drillin)
         {
+            Debug.Log("in the if");
             if (currentTimeDrillin <= timeDrillin)
             {
+                Debug.Log("We Drillin");
+                Debug.Log(currentTimeDrillin);
                 currentTimeDrillin += Time.deltaTime;
                 if (drillinDown)
                 {
@@ -69,6 +73,7 @@ public class SC_Drill : MonoBehaviour
             }
             else
             {
+                Debug.Log("Done Drillin");
                 //done drillin
                 drillin = false;
                 animator.SetBool("DrillSide", false);
@@ -81,6 +86,7 @@ public class SC_Drill : MonoBehaviour
         }
         else
         { 
+            Debug.Log("in the else");
             if (currentDrillCooldown > 0)
             {
                 currentDrillCooldown -= Time.deltaTime;
@@ -93,11 +99,12 @@ public class SC_Drill : MonoBehaviour
         //Drill Animation switch here 
 
         playerGrounded = isGrounded;
-
+        Debug.Log("huh? - joe biden");
         if (isGrounded & currentDrillCooldown <= 0)
         {
             animator.SetBool("DrillSide", true);
             drillin = true;
+            Debug.Log(drillin);
             attackSide.setTime(timeDrillin);
             hurtbox.currentAttack = attackSide;
             currentTimeDrillin = 0f;
@@ -151,7 +158,7 @@ public class SC_Drill : MonoBehaviour
                 // The player is able to use the airborne drill attack to bounce off of specific terrain.
                 break;
             case WeaponUpgrades.DrillGroundAttackIncreaseDamageZones:
-                // The drill’s ground attack now deals damage upon contact, and at the end of the attack
+                // The drillï¿½s ground attack now deals damage upon contact, and at the end of the attack
                 break;
             case WeaponUpgrades.LaunchEnemies:
                 // The player launches enemies in an upward arc upon contact with the drill ground attack (at the end of drill animation)
