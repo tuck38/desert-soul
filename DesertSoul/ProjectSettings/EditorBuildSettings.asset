@@ -77,5 +77,29 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rooms_Area1/Room18_Area01.unity
     guid: a1a64090ffa18c24b9eb54046a55091c
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room19_Area01.unity
+    guid: ea44e3347914eca4fb1f3e2d6e82ae76
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room20_Area01.unity
+    guid: 67100f222b8553341b667b52563b2e00
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room21_Area01.unity
+    guid: 19be5c64ad3078348aca79ca71e8dfe1
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room22_Area01.unity
+    guid: 73b7c6711d169f7449a094dee6b40980
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room23_Area01.unity
+    guid: cb98253943b3bce489dfd544637b7051
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room24_Area01.unity
+    guid: c889ed45e1f5b1541bf2a210376c3d0c
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room25_Area01.unity
+    guid: c16425ac55d35fb4f90c1d0dd38f2683
+  - enabled: 1
+    path: Assets/Scenes/Rooms_Area1/Room26_Area01.unity
+    guid: 6132bcd061d06e44ab159767d395e0da
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
