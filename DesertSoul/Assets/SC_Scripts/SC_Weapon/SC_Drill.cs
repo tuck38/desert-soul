@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
 public class SC_Drill : MonoBehaviour
@@ -53,7 +56,6 @@ public class SC_Drill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("?????");
         if (drillin)
         {
             Debug.Log("in the if");
@@ -74,7 +76,9 @@ public class SC_Drill : MonoBehaviour
             else
             {
                 Debug.Log("Done Drillin");
+                shmovement = new Vector2(0, 0);
                 //done drillin
+                playerMove.Move(shmovement, 0, false);
                 drillin = false;
                 animator.SetBool("DrillSide", false);
                 animator.SetBool("DrillDown", false);
@@ -85,8 +89,7 @@ public class SC_Drill : MonoBehaviour
             }
         }
         else
-        { 
-            Debug.Log("in the else");
+        {
             if (currentDrillCooldown > 0)
             {
                 currentDrillCooldown -= Time.deltaTime;

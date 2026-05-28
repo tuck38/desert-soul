@@ -96,7 +96,6 @@ public class SC_Player_Prop : MonoBehaviour
     {
         if (currentHealth > dmg)
         {
-            Debug.Log("sdfsdf");
             currentHealth = currentHealth - dmg;
             currentHealthProxy = currentHealth;
             HUD.UpdateHealthUI(currentHealth, maxHealth);

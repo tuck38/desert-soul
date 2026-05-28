@@ -125416,6 +125416,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.5348135
       objectReference: {fileID: 0}
+    - target: {fileID: 3366755237181995076, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: isDrill
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3957154099658528880, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_Size.x
       value: 34.28109
@@ -125713,12 +125717,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 126721860067205480, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1786040703}
-    - targetCorrespondingSourceObject: {fileID: 126721860067205480, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1786040702}
     - targetCorrespondingSourceObject: {fileID: 3451372563784238228, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1786040700}
@@ -125823,35 +125821,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 21.844707, y: 26.407948}
   m_EdgeRadius: 0
---- !u!1 &1786040701 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 126721860067205480, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
-  m_PrefabInstance: {fileID: 1786040697}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1786040702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1786040701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4539b149978895e409f7164505caf849, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkAudioListener
---- !u!114 &1786040703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1786040701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e7eca8170e92c749a780b03cfc64ecd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkGameObj
 --- !u!1 &1881247951 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2288424958357108308, guid: addf43060c7ee0d4e95e66dc91a73f87, type: 3}
