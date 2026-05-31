@@ -58,11 +58,8 @@ public class SC_Drill : MonoBehaviour
     {
         if (drillin)
         {
-            Debug.Log("in the if");
             if (currentTimeDrillin <= timeDrillin)
             {
-                Debug.Log("We Drillin");
-                Debug.Log(currentTimeDrillin);
                 currentTimeDrillin += Time.deltaTime;
                 if (drillinDown)
                 {
@@ -75,7 +72,6 @@ public class SC_Drill : MonoBehaviour
             }
             else
             {
-                Debug.Log("Done Drillin");
                 shmovement = new Vector2(0, 0);
                 //done drillin
                 playerMove.Move(shmovement, 0, false);
@@ -102,7 +98,6 @@ public class SC_Drill : MonoBehaviour
         //Drill Animation switch here 
 
         playerGrounded = isGrounded;
-        Debug.Log("huh? - joe biden");
         if (isGrounded & currentDrillCooldown <= 0)
         {
             animator.SetBool("DrillSide", true);

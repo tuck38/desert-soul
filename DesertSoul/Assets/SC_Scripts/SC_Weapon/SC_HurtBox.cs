@@ -61,11 +61,13 @@ public class SC_HurtBox : MonoBehaviour
         }
         else if (collision.gameObject.tag == "DrillableTerrain")
         {
+            Debug.Log("terrain");
             SC_Drillable_Terrain terrain = collision.gameObject.GetComponent<SC_Drillable_Terrain>();
             if (terrain != null && currentAttack != null)
             {
-                if(currentAttack.getAttackType() == AttackType.drillDown)
+                if(currentAttack.getAttackType() == AttackType.drillDown || currentAttack.getAttackType() == AttackType.drillSide)
                 {
+                    Debug.Log("terrain drill");
                     terrain.BreakTerrain();
                 }
             }

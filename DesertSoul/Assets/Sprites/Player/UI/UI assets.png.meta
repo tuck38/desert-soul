@@ -43,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -81,7 +81,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -114,7 +114,7 @@ TextureImporter:
         width: 159
         height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -134,9 +134,9 @@ TextureImporter:
         x: 25
         y: 0
         width: 24
-        height: 23
+        height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: image_2
       rect:
         serializedVersion: 2
-        x: 56
-        y: 3
-        width: 12
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 50
+        y: 0
+        width: 24
+        height: 24
+      alignment: 9
+      pivot: {x: 0.47743574, y: 0.4887176}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -175,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4d3cc818d12625a429c3326952cf82bf
     internalID: 0
     vertices: []
     indices: 
