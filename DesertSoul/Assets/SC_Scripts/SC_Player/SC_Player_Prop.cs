@@ -72,7 +72,7 @@ public class SC_Player_Prop : MonoBehaviour
         sprite = gameObject.GetComponent<SpriteRenderer>();
         originalColor = sprite.color;
 
-        HUD.UpdateHealthUI(currentHealth, maxHealth);
+        HUD.UpdateHealthUI(currentHealth, maxHealth, false);
     }
 
     // Update is called once per frame
@@ -98,7 +98,8 @@ public class SC_Player_Prop : MonoBehaviour
         {
             currentHealth = currentHealth - dmg;
             currentHealthProxy = currentHealth;
-            HUD.UpdateHealthUI(currentHealth, maxHealth);
+            Debug.Log("YOWCH!");
+            HUD.UpdateHealthUI(currentHealth, maxHealth, false);
             move.SetIFrames();
             //playerDamaged.Post(gameObject);
         }
@@ -125,7 +126,7 @@ public class SC_Player_Prop : MonoBehaviour
     public void IncreaseHP()
     {
         currentHealth += 1;
-        HUD.UpdateHealthUI(currentHealth, maxHealth);
+        HUD.UpdateHealthUI(currentHealth, maxHealth, true, 1);
         print(currentHealth);
     }
     public void giveSunStack(int damage)

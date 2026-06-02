@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Rooms_Area1/Room06_Area01.unity
     guid: e351a4e44e3b45043b517c76c7dc7f47
   - enabled: 1
-    path: Assets/Scenes/Rooms_Area1/RoomBoss_Area01.unity
+    path: Assets/Scenes/Rooms_Area1/RoomMiniBoss_Area01.unity
     guid: de438660f393f314ea382123f9c1b9a9
   - enabled: 1
     path: Assets/Scenes/Rooms_AreaTown/Town.unity

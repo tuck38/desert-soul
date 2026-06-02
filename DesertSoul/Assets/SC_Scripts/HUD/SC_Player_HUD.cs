@@ -29,9 +29,10 @@ public class SC_Player_HUD : MonoBehaviour
         
     }
 
-    public void UpdateHealthUI(int currentHealth, int maxHealth)
+    public void UpdateHealthUI(int currentHealth, int maxHealth, bool healing, int healAmount = 0)
     {
         int healthOfCreation = 0;
+        //creating the health nodes at the begining
         if(createdHealth < maxHealth)
         {
             for(int i = 0; i < maxHealth - createdHealth; i++)
@@ -42,23 +43,26 @@ public class SC_Player_HUD : MonoBehaviour
                 healthOfCreation++;
                 Health.Add(node);
             }
+            createdHealth += healthOfCreation;
+            activeHealth = createdHealth;
         }
-        else {
-            for(int i = 0; i < maxHealth - currentHealth; i++)
+        //taking damage
+        else if (currentHealth < activeHealth)
+        {
+            for(int i = currentHealth; i < maxHealth; i++)
             {
-                Health[Health.Count - i - 1].gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                Health[i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
                 activeHealth --;
             }
         }
-        /*else if (currentHealth > activeHealth)
+        //healing
+        else if(healing)
         {
-            for(int i = 0; i < currentHealth - activeHealth; i++)
+            for(int i = activeHealth; i < currentHealth; i++)
             {
-                Health[activeHealth + i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
-                
+                Health[i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                activeHealth++;
             }
         }
-        createdHealth += healthOfCreation;
-        activeHealth = createdHealth;*/
     }
 }
