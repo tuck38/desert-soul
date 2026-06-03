@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3996241600824708527}
-  - {fileID: 6255894786098965615}
+  - {fileID: 2117771642673620475}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8727411944709856307
@@ -110,12 +110,12 @@ GameObject:
   - component: {fileID: 1485586346614939724}
   - component: {fileID: 1446410218150080087}
   m_Layer: 5
-  m_Name: Text
+  m_Name: M&KText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6255894786098965615
 RectTransform:
   m_ObjectHideFlags: 0
@@ -125,15 +125,14 @@ RectTransform:
   m_GameObject: {fileID: 2856360057147765247}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3545529, y: 0.85036033, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2117771642673620475}
-  m_Father: {fileID: 4595711096995103086}
+  m_Children: []
+  m_Father: {fileID: 2117771642673620475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.144}
+  m_AnchoredPosition: {x: 0.093, y: 0.398}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &1485586346614939724
@@ -231,10 +230,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 7.8
+  m_fontSize: 18
   m_fontSizeBase: 7.8
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -394,11 +393,12 @@ Transform:
   m_GameObject: {fileID: 7950052497647954470}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.045, y: -0.067, z: 0}
-  m_LocalScale: {x: 0.635, y: 0.6547, z: 1}
+  m_LocalPosition: {x: -0.0516, y: 1.6706, z: 0}
+  m_LocalScale: {x: 0.73825103, y: 1.0382658, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6255894786098965615}
+  m_Children:
+  - {fileID: 6255894786098965615}
+  m_Father: {fileID: 4595711096995103086}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6951855262700206068
 SpriteRenderer:
