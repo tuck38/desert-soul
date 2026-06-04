@@ -22,6 +22,17 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     [SerializeField] protected Transform point1;
     [SerializeField] protected Transform point2;
 
+    //the knowerrrrrr
+    protected Rigidbody2D rigidbody;
+
+    protected Vector2 currentDirection;
+
+
+    [SerializeField] protected SpriteRenderer spriteRenderer;
+    //Raycast vars
+    protected float halfWidth;
+    protected float halfHeight;
+
     //allows us to have a local, unchaging version of these vars - Ashley
     protected Vector3 realP1;
     protected Vector3 realP2;
@@ -32,6 +43,15 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     protected Vector3 preLockOnPoint;
 
     protected bool isFacingRight = false;
+
+    protected void Start()
+    {
+        rigidbody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        currentDirection = Vector2.left;
+        halfWidth = spriteRenderer.bounds.extents.x;
+        halfHeight = spriteRenderer.bounds.extents.y;
+    }
 
     protected virtual void CheckPos()
     {
@@ -51,12 +71,37 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
         }
     }
 
+    protected void SetDirection()
+    {
+        Vector2 leftPos = transform.position;
+        Vector2 rightPos = transform.position;
+
+        leftPos.x += halfWidth;
+        rightPos.x -= halfWidth;
+
+        if(rigidbody.linearVelocityX > 0)
+        {
+            //do raycasts here
+        }
+        else if(rigidbody.linearVelocityX < 0)
+        {
+            //do raycasts here
+        }
+
+
+
+
+
+
+    }
+
     protected virtual void MoveTo()
     {
         float initialY = transform.position.y;
-        Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint, defaultSpeed * Time.deltaTime);
+        //Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint, defaultSpeed * Time.deltaTime);
+        rigidbody.linearVelocity = currentDirection * defaultSpeed;
         //Debug.Log(newXPosition);
-        transform.position = new Vector2(newXPosition.x, initialY);
+        //transform.position = new Vector2(newXPosition.x, initialY);
     }
 
     public virtual void PlayerDetected(GameObject playerObj)
