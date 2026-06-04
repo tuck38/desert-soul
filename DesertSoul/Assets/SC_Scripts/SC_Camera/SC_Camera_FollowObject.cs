@@ -5,6 +5,7 @@ public class SC_Camera_FollowObject : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float rotationTime = 1f;
+    public Transform currentFollow;
 
     private SC_Player_Move player;
     private bool isFacingRight;
@@ -13,12 +14,28 @@ public class SC_Camera_FollowObject : MonoBehaviour
     {
         player = playerTransform.gameObject.GetComponent<SC_Player_Move>();
         isFacingRight = player.isFacingRight;
+        currentFollow = playerTransform;
     }
 
     private void Update()
     {
-        transform.position = playerTransform.position;
+        transform.position = currentFollow.position;
         isFacingRight = player.isFacingRight;
+    }
+
+    public void lookingUp(Transform target)
+    {
+        currentFollow = target;
+    }
+
+    public void lookingDown(Transform target)
+    {
+        currentFollow = target;
+    }
+
+    public void notLooking()
+    {
+        currentFollow = playerTransform;
     }
 
     public void Turn()

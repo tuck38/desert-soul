@@ -44,7 +44,9 @@ public class SC_Player_Move : MonoBehaviour
     //Gravity
     [Tooltip("The base gravity acting upon the player, reset after they are grounded")]
     [SerializeField] private float baseGravity = 2f;
-
+    //CameraTracker
+    [SerializeField] Transform cameraUp;
+    [SerializeField] Transform cameraDown;
     //fastfall
     [Tooltip("The factor of how much the gravity increases on the player as they are falling")]
     [SerializeField] private float gravModifier = 0.005f;
@@ -115,6 +117,10 @@ public class SC_Player_Move : MonoBehaviour
     {
         //initial decloration
         playerControls = new PlayerInputActions();
+
+        //look function
+        playerControls.Player.Look.performed += onLook;
+        playerControls.Player.Look.canceled += onLook;
 
         //binding methods
         playerControls.Player.Jump.performed += OnJump;
@@ -193,6 +199,28 @@ public class SC_Player_Move : MonoBehaviour
         playerInControl = canMove;
     }
 
+    public void onLook(InputAction.CallbackContext context)
+    {
+        Vector2 lookDirection = context.ReadValue<Vector2>();
+        //Debug.Log("InputGotten");
+        if (context.performed){
+            if (lookDirection.y > 0)
+            {
+                cameraFollowGameObject.GetComponent<SC_Camera_FollowObject>().lookingUp(cameraUp);
+                Debug.Log("LookingUp");
+            }
+            else if(lookDirection.y < 0)
+            {
+                cameraFollowGameObject.GetComponent<SC_Camera_FollowObject>().lookingDown(cameraDown);
+                Debug.Log("LookingDown");
+            }
+        }
+        else if (context.canceled)
+        {
+            cameraFollowObject.notLooking();
+            Debug.Log("NotLooking");
+        }
+    }
     public void OnMove(InputAction.CallbackContext context)
     {
         //while this function is called when move inputs are read, movement calculation is still handled in the move function
