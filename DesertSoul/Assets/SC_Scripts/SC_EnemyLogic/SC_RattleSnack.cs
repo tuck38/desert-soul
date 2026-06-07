@@ -94,10 +94,12 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
             if(Physics2D.Raycast(transform.position, Vector2.right, halfWidth + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //We are hitting Le wall
+                isGoingLeft = !isGoingLeft;
             }
             else if(!Physics2D.Raycast(rightPos, Vector2.down, halfHeight + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //No ledge below
+                isGoingLeft = !isGoingLeft;
             }
         }
         else if(nextPoint.x < transform.position.x)
@@ -107,10 +109,12 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
             if(Physics2D.Raycast(transform.position, Vector2.left, halfWidth + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //We are hitting Le wall
+                isGoingLeft = !isGoingLeft;
             }
             else if(!Physics2D.Raycast(leftPos, Vector2.down, halfHeight + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //No ledge below
+                isGoingLeft = !isGoingLeft;
             }
 
         }
@@ -143,6 +147,14 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     {
         animator.SetBool("Moving", true);
         float initialY = transform.position.y;
+        if (isGoingLeft)
+        {
+            nextPoint = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z);
+        }
+        else if(!isGoingLeft)
+        {
+            nextPoint = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z);
+        }
         Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint, currentState == EnemyState.WANDERING ? defaultSpeed * Time.deltaTime : chasePlayerSpeed * Time.deltaTime);
         //SpriteRotation(newXPosition.x);
         //Debug.Log(newXPosition);
