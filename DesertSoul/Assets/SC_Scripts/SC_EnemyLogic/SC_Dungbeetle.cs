@@ -23,7 +23,7 @@ public class SC_Dungbeetle : SC_Enemy_Attack_Base
     {
         currentState = EnemyState.WANDERING;
         nextPoint = realP1;
-        isGoingOne = true;
+        isGoingLeft = true;
         dungBallDefaultPosition = currentDungball.transform.localPosition;
         dungBallParentPosition = currentDungball.transform.parent.localPosition;
     }

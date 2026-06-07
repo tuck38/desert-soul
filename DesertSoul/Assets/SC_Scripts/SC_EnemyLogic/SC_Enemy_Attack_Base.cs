@@ -38,7 +38,7 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     protected Vector3 realP2;
     [SerializeField] protected float timeBetweenAttacks = 0.2f;
 
-    protected bool isGoingOne;
+    protected bool isGoingLeft;
     protected Vector3 nextPoint;
     protected Vector3 preLockOnPoint;
 
@@ -58,15 +58,15 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
         float dist = Vector2.Distance(transform.position, nextPoint);
         if (currentState == EnemyState.WANDERING && dist < stopDistancePlatformEdge)
         {
-            if (isGoingOne)
+            if (isGoingLeft)
             {
                 nextPoint = realP2;
-                isGoingOne = false;
+                isGoingLeft = false;
             }
             else
             {
                 nextPoint = realP1;
-                isGoingOne = true;
+                isGoingLeft = true;
             }
         }
     }
@@ -98,10 +98,9 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     protected virtual void MoveTo()
     {
         float initialY = transform.position.y;
-        //Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint, defaultSpeed * Time.deltaTime);
-        rigidbody.linearVelocity = currentDirection * defaultSpeed;
+        Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint, defaultSpeed * Time.deltaTime);
         //Debug.Log(newXPosition);
-        //transform.position = new Vector2(newXPosition.x, initialY);
+        transform.position = new Vector2(newXPosition.x, initialY);
     }
 
     public virtual void PlayerDetected(GameObject playerObj)
@@ -116,13 +115,10 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
         }
     }
 
-    protected virtual void SpriteRotation(float GoToX)
+    protected virtual void SpriteRotation()
     {
-        if(transform.position.x > GoToX && isFacingRight || transform.position.x < GoToX && !isFacingRight)
-        {
-            isFacingRight = !isFacingRight;
-            transform.Rotate(new Vector3(0, 180, 0));
-        }
+        isFacingRight = !isFacingRight;
+        transform.Rotate(new Vector3(0, 180, 0));
     }
 
     public virtual void PlayerLost()
