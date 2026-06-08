@@ -11,7 +11,7 @@ public class SC_Player_Prop : MonoBehaviour
     public static Action<ResouceTypes, int> OnResourcesAmountChanged;
 
     [SerializeField] private SC_Player_Move move;
-
+    [SerializeField] private ParticleSystem PlayerDamagedParticles;
     [SerializeField] public int maxHealth;
     [Tooltip("Exists to visualize current health in inspector, modifying in inspector won't change player's current health")]
     [SerializeField] private int currentHealthProxy;
@@ -94,13 +94,16 @@ public class SC_Player_Prop : MonoBehaviour
     
     public void TakeDamage(int dmg)
     {
+        
         if (currentHealth > dmg)
         {
+            PlayerDamagedParticles.Play();
             currentHealth = currentHealth - dmg;
             currentHealthProxy = currentHealth;
             Debug.Log("YOWCH!");
             HUD.UpdateHealthUI(currentHealth, maxHealth, false);
             move.SetIFrames();
+            
             //playerDamaged.Post(gameObject);
         }
         else
