@@ -5,7 +5,7 @@ using UnityEngine;
 public class SC_WaveRoom : MonoBehaviour
 {
 
-    [SerializeField] protected List<SC_Door> roomDoors;
+    [SerializeField] protected List<GameObject> roomDoors;
     //may not need this
     [SerializeField] private Sprite doorLock;
 
@@ -41,11 +41,16 @@ public class SC_WaveRoom : MonoBehaviour
     void CloseRoom()
     {
         //does nothing rn, dont need it for demo
+        for(int i = 0; i < roomDoors.Count; i++)
+        {
+            roomDoors[i].SetActive(true);
+        }
         SpawnWave();
     }
 
     void SpawnWave()
     {
+        Debug.Log("spawning wave");
         for(int i = 0; i < waves[currentWave].enemies.Count; i++)
         {
             Transform spawnTransform = null;
@@ -62,7 +67,8 @@ public class SC_WaveRoom : MonoBehaviour
                 }
             }
 
-            GameObject enemy = Instantiate(waves[currentWave].enemies[i], spawnTransform);
+            Debug.Log("herm");
+            GameObject enemy = Instantiate(waves[currentWave].enemies[i], new Vector3(spawnTransform.position.x, spawnTransform.position.y, spawnTransform.position.z), Quaternion.identity);
             currentEnemies++;
 
             //give enemy item
@@ -74,27 +80,27 @@ public class SC_WaveRoom : MonoBehaviour
     {
         currentEnemies--;
 
-        if(currentEnemies == 1)
+        if(currentEnemies < 1)
         {
+            Debug.Log("wave over");
+            currentWave++;
             if(waves.Count <= currentWave)
             {
                 OpenRoom();
             }
             else
             {
-                NextWave();
+                SpawnWave();
             }
         }
-    }
-    void NextWave()
-    {
-        currentWave++;
-        NextWave();
     }
 
     void OpenRoom()
     {
-        
+                for(int i = 0; i < roomDoors.Count; i++)
+        {
+            roomDoors[i].SetActive(false);
+        }
     }
 
 }

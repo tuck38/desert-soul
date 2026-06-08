@@ -190,6 +190,7 @@ public class SC_Enemy_Base : MonoBehaviour
 
     private void Die()
     {
+        Debug.Log("?");
         if(roomSpawned != null)
         {
             roomSpawned.checkWave();
