@@ -71,30 +71,6 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
         }
     }
 
-    protected void SetDirection()
-    {
-        Vector2 leftPos = transform.position;
-        Vector2 rightPos = transform.position;
-
-        leftPos.x += halfWidth;
-        rightPos.x -= halfWidth;
-
-        if(rigidbody.linearVelocityX > 0)
-        {
-            //do raycasts here
-        }
-        else if(rigidbody.linearVelocityX < 0)
-        {
-            //do raycasts here
-        }
-
-
-
-
-
-
-    }
-
     protected virtual void MoveTo()
     {
         float initialY = transform.position.y;
