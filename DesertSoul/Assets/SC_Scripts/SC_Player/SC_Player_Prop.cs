@@ -100,7 +100,6 @@ public class SC_Player_Prop : MonoBehaviour
             PlayerDamagedParticles.Play();
             currentHealth = currentHealth - dmg;
             currentHealthProxy = currentHealth;
-            Debug.Log("YOWCH!");
             HUD.UpdateHealthUI(currentHealth, maxHealth, false);
             move.SetIFrames();
             
@@ -119,7 +118,6 @@ public class SC_Player_Prop : MonoBehaviour
     {
         if (currentHealth < maxHealth)
         {
-            print(currentHealth);
             return true;
         }
         return false;
@@ -130,7 +128,6 @@ public class SC_Player_Prop : MonoBehaviour
     {
         currentHealth += 1;
         HUD.UpdateHealthUI(currentHealth, maxHealth, true, 1);
-        print(currentHealth);
     }
     public void giveSunStack(int damage)
     {
@@ -168,6 +165,7 @@ public class SC_Player_Prop : MonoBehaviour
             if (sunStackDamageTimer <= 0)
             {
                 StartCoroutine(FlashRed(0.2f));
+                TakeDamage(sunDamage);
                 sunStackDamageTimer = sunStackDamageFrequency;
             }
         }
