@@ -32,15 +32,15 @@ public class SC_DustCloud : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        dustBlindess.color = new Color(dustBlindess.color.r, dustBlindess.color.g, dustBlindess.color.b, 0);
-        nextPoint = pathPoints[0];
+        dustBlindess.color = Color.white;
+        //nextPoint = pathPoints[0];
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveTo();
-        CheckPos();
+        //MoveTo();
+        //CheckPos();
         if (removeDust && useTimeBasedDustRemover && timeElaspedForRemovingDust < timeForDustBlindnessToVanish)
         {
             timeElaspedForRemovingDust += Time.deltaTime;
@@ -88,8 +88,10 @@ public class SC_DustCloud : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.name);
-        if (collision.gameObject.tag == "Player") dustBlindess.color = new Color(dustBlindess.color.r, dustBlindess.color.g, dustBlindess.color.b, 1);
+        if (collision.gameObject.tag == "Player") 
+        {
+            dustBlindess.color = new Color(dustBlindess.color.r, dustBlindess.color.g, dustBlindess.color.b, 1);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
