@@ -12,6 +12,7 @@ public class SC_Player_HUD : MonoBehaviour
 
     [SerializeField] private GameObject momma;
     [SerializeField] private float spacing;
+    public int mapPart;
 
     private int createdHealth = 1;
 

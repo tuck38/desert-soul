@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class SC_UpgradeTree : MonoBehaviour
 {
+    [SerializeField] GameObject minimap;
     [SerializeField] GameObject uiParent;
     [SerializeField] Button scytheTab;
     [SerializeField] Button drillTab;
@@ -23,6 +24,14 @@ public class SC_UpgradeTree : MonoBehaviour
     void Update()
     {
         if(Input.GetKeyDown(toggleKey)) ToggleTree();
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            minimap.gameObject.SetActive(true);
+        }
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            minimap.gameObject.SetActive(false);
+        }
     }
 
     /// <summary>

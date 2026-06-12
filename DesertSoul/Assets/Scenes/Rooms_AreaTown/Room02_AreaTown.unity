@@ -862,6 +862,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[0].Array.data[3].Y
       value: -40278596
       objectReference: {fileID: 0}
+    - target: {fileID: 7392902277211904586, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: mapFull
+      value: 
+      objectReference: {fileID: 215727254}
     m_RemovedComponents:
     - {fileID: 2289080432730399972, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
     m_RemovedGameObjects: []
@@ -930,6 +934,11 @@ MonoBehaviour:
   scalingFactor: 1
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
+--- !u!1 &215727254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8763713784414080079, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+  m_PrefabInstance: {fileID: 215727249}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &242878908
 GameObject:
   m_ObjectHideFlags: 0
