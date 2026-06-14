@@ -75,6 +75,9 @@ public class SC_Player_Move : MonoBehaviour
 
     [SerializeField] AudioClip[] sytheSwingAUD;
     [SerializeField] AudioClip[] movementAUD;
+
+    [SerializeField] int stepSoundFrequency;
+    private float currentStepSound = 0f;
     [SerializeField] AudioClip jumpAUD;
     [SerializeField] AudioClip landAUD;
 
@@ -167,6 +170,11 @@ public class SC_Player_Move : MonoBehaviour
         vertical = look.ReadValue<float>();
 
         KnockbackUpdate(moveVector, currentSpeed, true);
+
+        if(moving)
+        {
+            StepSound();
+        }
     }
 
     private void OnEnable()
@@ -370,7 +378,21 @@ public class SC_Player_Move : MonoBehaviour
         moveVector = movement;
     }
 
-    
+    private void StepSound()
+    {
+        if(stepSoundFrequency > currentStepSound)
+        {
+            currentStepSound += Time.deltaTime;
+        }
+        else if(stepSoundFrequency <= currentStepSound)
+        {
+            int num = Random.Range(0, movementAUD.Length);
+            playerSource.clip = movementAUD[num];
+            currentStepSound = stepSoundFrequency;
+        }
+    }
+
+
 
     private void spriteRotation(Vector2 movement)
     {
