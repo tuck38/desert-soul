@@ -9,6 +9,8 @@ public class SC_DuctTapeMiniMap : MonoBehaviour
     static bool isMapActive = false;
     public List<GameObject> maps = new List<GameObject>();
     SC_Player_HUD playerHud;
+
+    [SerializeField] private SC_RoomManager roomManager;
     
     
 
