@@ -76,7 +76,7 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] AudioClip[] sytheSwingAUD;
     [SerializeField] AudioClip[] movementAUD;
 
-    [SerializeField] int stepSoundFrequency;
+    [SerializeField] float stepSoundFrequency;
     private float currentStepSound = 0f;
     [SerializeField] AudioClip jumpAUD;
     [SerializeField] AudioClip landAUD;
@@ -171,7 +171,7 @@ public class SC_Player_Move : MonoBehaviour
 
         KnockbackUpdate(moveVector, currentSpeed, true);
 
-        if(moving)
+        if(moving && IsGrounded())
         {
             StepSound();
         }
@@ -388,7 +388,8 @@ public class SC_Player_Move : MonoBehaviour
         {
             int num = Random.Range(0, movementAUD.Length);
             playerSource.clip = movementAUD[num];
-            currentStepSound = stepSoundFrequency;
+            playerSource.Play();
+            currentStepSound = 0;
         }
     }
 
