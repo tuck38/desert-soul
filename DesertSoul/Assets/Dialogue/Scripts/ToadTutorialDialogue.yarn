@@ -1,0 +1,39 @@
+﻿title: ToadTutorialDialogue
+---
+Toad: Hmm… These inscriptions seem to be on the older side, probably 400 years old… And these…
+Toad: …hm?
+
+//(Sir Thomas Toad turns around and notices the Green Soul)
+
+Toad: Whoa! Who are you?!
+
+Toad: Or rather, what are you?
+
+// (Sir Thomas Toad gets a closer look at the Green Soul)
+
+Toad: Fascinating… You are not organic, are you?
+
+Green Soul: …
+
+Toad: Well, I guess I should not expect an organism composed of sand to be able to talk.
+
+Toad: Can you understand what I say, at the very least? 
+
+Green Soul: …
+
+Toad: I’ll take your silence as confirmation for the time being.
+
+Sir Thomas Toad: My name is Sir Thomas Toad, independent archaeologist. Came here to take a closer look at the ruins of this ancient civilization.
+
+Sir Thomas Toad: I assume you are here for a similar reason?
+
+Green Soul: …
+
+Sir Thomas Toad: Well, if you indeed are, feel free to follow me. Some of the inscriptions deeper inside contain some truly fascinating information regarding the people who lived here.
+
+Sir Thomas Toad: Hope to see you in a moment then!
+
+//(Sir Thomas Toad walks deeper into the ruins)
+
+<<enable_movement Square>>
+===
