@@ -233,11 +233,16 @@ public class SC_Player_Move : MonoBehaviour
     {
         //while this function is called when move inputs are read, movement calculation is still handled in the move function
         //due to outside sources calling it when player must be moved (drill)
-        Move(context.ReadValue<Vector2>(), currentSpeed, true);
+        if(playerInControl)
+        {
+            Move(context.ReadValue<Vector2>(), currentSpeed, true);
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if(playerInControl)
+        {
         if(context.performed)
         {
             if(rb.linearVelocity.y > 0)
@@ -270,6 +275,7 @@ public class SC_Player_Move : MonoBehaviour
                 //rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
                 stopJump = true;
             }
+        }
         }
     }
 

@@ -4,19 +4,40 @@ public class SC_SandCatRun : StateMachineBehaviour
 {
 
     Transform player;
+
+    SC_BossBase bossBase;
     Rigidbody2D rb;
 
+    [SerializeField] private float speed = 2.5f; 
+
+
+    public void Start()
+    {
+        Debug.Log("this actually runs");
+    }
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        rb = animator.GetComponent<Rigidbody2D>();
+        if(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+        if(rb == null)
+        {
+            rb = animator.GetComponent<Rigidbody2D>();
+        }
+        if(bossBase == null)
+        {
+            bossBase = animator.GetComponent<SC_BossBase>();
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        Vector2 target = new Vector2(player.position.x, rb.position.y);
+        Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
+        rb.MovePosition(newPos);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
