@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SC_BossBase : MonoBehaviour
 {
-
+    [SerializeField] Animator bossAnim;
     private Transform player;
 
     private bool isFacingRight = false;
@@ -28,4 +28,15 @@ public class SC_BossBase : MonoBehaviour
 
         }
     }
+
+    public void StartFight()
+    {
+        bossAnim.SetTrigger("FightStart");
+    }
+
+    public void BossRoar()
+    {
+        
+    }
+
 }
