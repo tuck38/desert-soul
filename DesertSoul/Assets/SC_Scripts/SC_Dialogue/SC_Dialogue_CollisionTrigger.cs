@@ -34,7 +34,7 @@ public class SC_Dialogue_CollisionTrigger : MonoBehaviour
             {
                 dialogueRunner.StartDialogue(dialogueID);
                 GetComponent<Collider2D>().enabled = false; // Disable the collider to prevent retriggering
-                //player.GetComponent<SC_Player_Move>().SetCanMove(false); // Disable player movement during dialogue
+                player.GetComponent<SC_Player_Move>().SetCanMove(false); // Disable player movement during dialogue
             }
         }
     }
@@ -42,6 +42,7 @@ public class SC_Dialogue_CollisionTrigger : MonoBehaviour
     [YarnCommand("enable_movement")]
     public void EndDialogue()
     {
-        //player.GetComponent<SC_Player_Move>().SetCanMove(true); // Re-enable player movement after dialogue ends
+        player.GetComponent<SC_Player_Move>().SetCanMove(true); // Re-enable player movement after dialogue ends
+        Debug.Log("Dialogue ended, player can move again");
     }
 }

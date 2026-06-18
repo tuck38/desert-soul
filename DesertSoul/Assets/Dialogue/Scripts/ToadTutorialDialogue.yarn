@@ -35,5 +35,5 @@ Sir Thomas Toad: Hope to see you in a moment then!
 
 //(Sir Thomas Toad walks deeper into the ruins)
 
-<<enable_movement Square>>
+<<enable_movement ToadInitialDialogueTrigger>>
 ===

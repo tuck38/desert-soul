@@ -191,19 +191,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 115062389750763263, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: m_Name
-      value: BasicDialogueTrigger
+      value: ToadDialogueTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 5658766166095406492, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: dialogueID
       value: ToadArea01Dialogue
       objectReference: {fileID: 0}
     - target: {fileID: 6801254243919456808, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1200347
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801254243919456808, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7236595
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801254243919456808, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.9
+      value: -4.5255
       objectReference: {fileID: 0}
     - target: {fileID: 6801254243919456808, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.67
+      value: 0.024
       objectReference: {fileID: 0}
     - target: {fileID: 6801254243919456808, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: m_LocalPosition.z

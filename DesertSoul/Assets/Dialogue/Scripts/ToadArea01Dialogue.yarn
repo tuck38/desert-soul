@@ -49,4 +49,6 @@ Sir Thomas Toad: Well then, do not let me hold you any longer.
 
 Sir Thomas Toad: Best of luck down there!
 
+<<enable_movement ToadDialogueTrigger>>
+
 ===
