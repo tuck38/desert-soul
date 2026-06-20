@@ -1,4 +1,6 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SC_Interactable : MonoBehaviour
@@ -72,7 +74,7 @@ public class SC_Interactable : MonoBehaviour
 
     protected virtual void DoAction()
     {
-        
+        SceneManager.LoadScene(goToScene);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

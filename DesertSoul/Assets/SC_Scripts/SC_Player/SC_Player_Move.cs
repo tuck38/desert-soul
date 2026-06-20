@@ -205,6 +205,7 @@ public class SC_Player_Move : MonoBehaviour
     public void SetCanMove(bool canMove)
     {
         playerInControl = canMove;
+        Move(Vector2.zero, 0, true);
     }
 
     public void onLook(InputAction.CallbackContext context)

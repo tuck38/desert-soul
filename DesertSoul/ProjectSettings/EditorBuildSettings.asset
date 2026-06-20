@@ -101,5 +101,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Rooms_Area1/Room26_Area01.unity
     guid: 6132bcd061d06e44ab159767d395e0da
+  - enabled: 1
+    path: Assets/Scenes/Rooms_AreaTown/Town_Quarry.unity
+    guid: 3bc279c9f68a5624b9ea6ec7ac6e4e7e
+  - enabled: 1
+    path: Assets/Scenes/Rooms_AreaTown/Town_Shack.unity
+    guid: dd9fe9c868d1cfe4ca7e72050e53e5ee
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
