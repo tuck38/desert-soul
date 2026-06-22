@@ -140,7 +140,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: InRange
+  - m_Name: doAttack1
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -195,7 +195,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: InRange
+    m_ConditionEvent: doAttack1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 40401546845613490}
@@ -245,7 +245,10 @@ AnimatorStateTransition:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 
-  m_Conditions: []
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: doAttack1
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7052581796886415858}
   m_Solo: 0
@@ -269,7 +272,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: InRange
+    m_ConditionEvent: doAttack1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 40401546845613490}
@@ -455,3 +458,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92a7dc1a748fd4429c4394f7485489b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  speed: 2.5

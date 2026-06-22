@@ -25,6 +25,7 @@ public class SC_Player_HitBox : MonoBehaviour
             SC_Enemy_Base enemy = collision.gameObject.GetComponent<SC_Enemy_Base>();
             if (enemy != null)
             {
+                Debug.Log("helllo");
                 prop.TakeDamage(enemy.GetDamage());
                 player.Knockback(collision.gameObject);
                 player.SetIFrames();

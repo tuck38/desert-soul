@@ -37,7 +37,7 @@ public class SC_SandCatRoar : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        bossBase.enableHPBar(true);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

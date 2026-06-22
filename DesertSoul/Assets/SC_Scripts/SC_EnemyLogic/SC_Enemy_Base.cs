@@ -3,8 +3,8 @@ using UnityEngine;
 public class SC_Enemy_Base : MonoBehaviour
 {
 
-    [SerializeField] private int MAXHealth;
-    private int currentHealth;
+    [SerializeField] protected float MAXHealth;
+    protected float currentHealth;
     [SerializeField] private int damage;
     
     //kb vars
@@ -15,11 +15,11 @@ public class SC_Enemy_Base : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    bool locked;
+    protected bool locked;
 
     private float lockTimer = 0.5f;
     private float currentLockTimer = 0f;
-    private bool lockCooldown;
+    protected bool lockCooldown;
 
     //Launch Vars
     private bool launchFromRight = true;
@@ -38,14 +38,14 @@ public class SC_Enemy_Base : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    protected virtual void Start()
     {
         currentHealth = MAXHealth;
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
 
         if (currentHealth <= 0)
@@ -94,10 +94,10 @@ public class SC_Enemy_Base : MonoBehaviour
     }
 
     //takes damage and returns true if the attack killed the enemy
-    public bool TakeDamage(SC_Attack_Base attack, Transform carryPoint)
+    public virtual bool TakeDamage(SC_Attack_Base attack, Transform carryPoint)
     {
         
-
+        Debug.Log("working");
         if (!locked)
         {
             currentHealth -= attack.getDamage();
@@ -190,7 +190,6 @@ public class SC_Enemy_Base : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("?");
         if(roomSpawned != null)
         {
             roomSpawned.checkWave();

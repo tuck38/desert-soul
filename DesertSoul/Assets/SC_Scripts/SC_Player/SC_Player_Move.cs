@@ -175,6 +175,7 @@ public class SC_Player_Move : MonoBehaviour
         {
             StepSound();
         }
+        IFramesUpdate();
     }
 
     private void OnEnable()
