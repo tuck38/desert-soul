@@ -102,6 +102,7 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private GameObject cameraFollowGameObject;
     private SC_Camera_FollowObject cameraFollowObject;
 
+    int kbX = 0;
     //UI
     [SerializeField] SC_Journal Journal;
     [SerializeField] Text stoneAmount;
@@ -169,7 +170,7 @@ public class SC_Player_Move : MonoBehaviour
         //inst used rn, havent implemented camrea looking
         vertical = look.ReadValue<float>();
 
-        KnockbackUpdate(moveVector, currentSpeed, true);
+        MoveUpdate(moveVector, currentSpeed, true);
 
         if(moving && IsGrounded())
         {
@@ -496,14 +497,17 @@ public class SC_Player_Move : MonoBehaviour
         if (enemy.transform.position.x >= transform.position.x)
         {
             launchFromRight = true;
+            kbX = -1;
+
         }
         else if(enemy.transform.position.x < transform.position.x)
         {
             launchFromRight = false;
+            kbX = 1;
         }
     }
 
-    private void KnockbackUpdate(Vector2 movement, float speed, bool useGravity)
+    private void MoveUpdate(Vector2 movement, float speed, bool useGravity)
     {
         //if getting knocked back, player cannot move
         if (launchTime <= 0)
@@ -518,6 +522,14 @@ public class SC_Player_Move : MonoBehaviour
             }
         }
         else
+        {
+
+        }
+    }
+
+    private void KnockbackUpdate()
+    {
+        if(launchTime > 0)
         {
             //This system works for now, but doesent use gravity and feels floaty
             if(launchFromRight)
