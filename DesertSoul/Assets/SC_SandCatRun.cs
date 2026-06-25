@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SC_SandCatRun : StateMachineBehaviour
@@ -8,11 +9,15 @@ public class SC_SandCatRun : StateMachineBehaviour
     SC_BossBase bossBase;
     Rigidbody2D rb;
 
+    [SerializeField] float distToAttackClaws = 20;
+    [SerializeField] float distToAttackPounce = 30;
+
     [SerializeField] private float speed = 2.5f; 
 
 
     public void Start()
     {
+        //this does not run
         Debug.Log("this actually runs");
     }
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -38,6 +43,13 @@ public class SC_SandCatRun : StateMachineBehaviour
         Vector2 target = new Vector2(player.position.x, rb.position.y);
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
+
+        Debug.Log("daf");
+        if(Mathf.Abs(rb.position.x - player.position.x) <= distToAttackClaws)
+        {
+            Debug.Log("Hello!");
+            animator.SetBool("doAttack1Windup", true);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

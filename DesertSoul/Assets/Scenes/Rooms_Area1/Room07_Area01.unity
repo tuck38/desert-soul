@@ -39702,6 +39702,11 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7145225, y: 0.8858794}
   m_EdgeRadius: 0
+--- !u!212 &1970608739 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4198121723198292843, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+  m_PrefabInstance: {fileID: 5650149646988268697}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2022699543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40318,6 +40323,10 @@ PrefabInstance:
       propertyPath: damage
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 1970608739}
     - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: MAXHealth
       value: 200

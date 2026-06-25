@@ -9,6 +9,10 @@ public class SC_BossBase : SC_Enemy_Base
     [SerializeField] GameObject healthBar;
     private Slider slider;
 
+    [SerializeField] SpriteRenderer sprite;
+
+    [SerializeField] Color baseColor;
+
     private bool isFacingRight = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,6 +20,7 @@ public class SC_BossBase : SC_Enemy_Base
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         slider = healthBar.GetComponent<Slider>();
+        baseColor = sprite.color;
         base.Start();
     }
 
@@ -62,6 +67,18 @@ public class SC_BossBase : SC_Enemy_Base
     public void BossRoar()
     {
         
+    }
+
+    public void ChangeColor(Color color, bool originalColor)
+    {
+        if(originalColor)
+        {
+            sprite.color = baseColor;
+        }
+        else
+        {
+            sprite.color = color;
+        }
     }
 
 }
