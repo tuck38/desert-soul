@@ -1,9 +1,14 @@
 ﻿title: ToadTutorialDialogue
 ---
+
+<<change_camera_target DialogueManager SirThomasToad>>
+
 Toad: Hmm… These inscriptions seem to be on the older side, probably 400 years old… And these…
 Toad: …hm?
 
 //(Sir Thomas Toad turns around and notices the Green Soul)
+
+<<flip_target DialogueManager SirThomasToad false>>
 
 Toad: Whoa! Who are you?!
 
