@@ -14,12 +14,12 @@ public class SC_SanCatClawsWindup : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //animation/sprite change
-
+    
         if(bossBase == null)
         {
             bossBase = animator.GetComponent<SC_BossBase>();
         }
-        bossBase.ChangeColor(Color.red, false);
+        bossBase.ChangeColor(Color.orange, false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -32,7 +32,7 @@ public class SC_SanCatClawsWindup : StateMachineBehaviour
         else
         {
             currentWindUpTime = 0;
-             bossBase.ChangeColor(Color.red, true);
+            bossBase.ChangeColor(Color.orange, true);
             animator.SetBool("doAttack1Windup", false);
             animator.SetBool("doAttack1", true);
         }

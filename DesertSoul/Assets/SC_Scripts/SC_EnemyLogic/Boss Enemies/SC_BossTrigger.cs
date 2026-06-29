@@ -5,6 +5,11 @@ public class SC_BossTrigger : MonoBehaviour
 
     [SerializeField] private SC_BossBase bossBase;
 
+    [SerializeField] SpriteRenderer sprite;
+
+    [SerializeField] BoxCollider2D box;
+    bool active = true;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,8 +22,20 @@ public class SC_BossTrigger : MonoBehaviour
         
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
-        bossBase.StartFight();
+        if(active)
+        {
+            bossBase.StartFight();
+            box.isTrigger = false;
+            sprite.enabled = true;
+        }
+    }
+
+    public void fightOver()
+    {
+        box.isTrigger = true;
+        sprite.enabled = true;
+        active = false;
     }
 }

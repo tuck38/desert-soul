@@ -13,6 +13,10 @@ public class SC_BossBase : SC_Enemy_Base
 
     [SerializeField] Color baseColor;
 
+    public float halfWidth;
+
+    public float halfHeight;
+
     private bool isFacingRight = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +25,8 @@ public class SC_BossBase : SC_Enemy_Base
         player = GameObject.FindGameObjectWithTag("Player").transform;
         slider = healthBar.GetComponent<Slider>();
         baseColor = sprite.color;
+        halfHeight = sprite.bounds.extents.y;
+        halfWidth = sprite.bounds.extents.x;
         base.Start();
     }
 
@@ -28,6 +34,11 @@ public class SC_BossBase : SC_Enemy_Base
     protected override void Update()
     {
         
+    }
+
+    public bool GetDirection()
+    {
+        return isFacingRight;
     }
 
     public void flipBoss()
