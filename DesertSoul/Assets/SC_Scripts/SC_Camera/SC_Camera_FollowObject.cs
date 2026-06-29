@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using Yarn.Unity;
 
 public class SC_Camera_FollowObject : MonoBehaviour
 {
@@ -50,5 +51,10 @@ public class SC_Camera_FollowObject : MonoBehaviour
             return new Vector3(0, 180, 0);
         else
             return new Vector3(0, 0, 0);
+    }
+
+    public void DialogueTarget(GameObject target)
+    {
+        currentFollow = target.transform;
     }
 }
