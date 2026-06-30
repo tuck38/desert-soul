@@ -91,6 +91,8 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private float launchTotalTime;
     [SerializeField] private bool launchFromRight;
 
+    [SerializeField] public bool knockbackActive = false;
+
     //Iframe Vars
     private float flickerSpeed = 0;
     [SerializeField] private float flickerSpeedTotal;
@@ -171,6 +173,11 @@ public class SC_Player_Move : MonoBehaviour
         vertical = look.ReadValue<float>();
 
         MoveUpdate(moveVector, currentSpeed, true);
+
+        if(knockbackActive)
+        {
+            KnockbackUpdate();
+        }
 
         if(moving && IsGrounded())
         {
@@ -505,6 +512,8 @@ public class SC_Player_Move : MonoBehaviour
             launchFromRight = false;
             kbX = 1;
         }
+
+        knockbackActive = true;
     }
 
     private void MoveUpdate(Vector2 movement, float speed, bool useGravity)
@@ -520,10 +529,6 @@ public class SC_Player_Move : MonoBehaviour
             {
                 rb.linearVelocity = new Vector2(movement.x * speed, movement.y * speed);
             }
-        }
-        else
-        {
-
         }
     }
 
@@ -542,6 +547,12 @@ public class SC_Player_Move : MonoBehaviour
             }
 
             launchTime -= Time.deltaTime;
+        }
+        else
+        {
+            knockbackActive = false;
+            Vector2 zer = Vector2.zero;
+            rb.linearVelocity = zer;
         }
     }
 

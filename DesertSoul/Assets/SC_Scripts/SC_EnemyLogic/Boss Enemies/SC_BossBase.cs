@@ -56,7 +56,6 @@ public class SC_BossBase : SC_Enemy_Base
     {
         currentHealth -= attack.getDamage();
         slider.value = currentHealth / MAXHealth;
-        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             return true;
