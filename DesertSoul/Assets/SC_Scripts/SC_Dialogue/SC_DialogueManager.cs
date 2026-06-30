@@ -35,4 +35,11 @@ public class SC_DialogueManager : MonoBehaviour
     {
         target.GetComponent<SpriteRenderer>().flipX = flip;
     }
+
+    [YarnCommand("move_target_to_position")]
+    public void MoveTargetToPosition(GameObject target, float x, float y)
+    {
+        Vector2 position = new Vector2(x, y); 
+        target.GetComponent<SC_NPC_Movement>().movementTarget = position;
+    }
 }

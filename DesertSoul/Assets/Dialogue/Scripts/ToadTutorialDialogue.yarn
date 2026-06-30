@@ -15,6 +15,7 @@ Toad: Whoa! Who are you?!
 Toad: Or rather, what are you?
 
 // (Sir Thomas Toad gets a closer look at the Green Soul)
+<<move_target_to_position DialogueManager SirThomasToad -1.8 -2.02>>
 
 Toad: Fascinating… You are not organic, are you?
 
