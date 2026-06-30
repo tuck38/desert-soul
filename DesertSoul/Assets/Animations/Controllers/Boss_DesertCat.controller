@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   attackSpeed: 10
+  dashRange: 10
 --- !u!1101 &-571695922622290330
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

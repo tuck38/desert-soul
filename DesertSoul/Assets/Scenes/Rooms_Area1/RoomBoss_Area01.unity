@@ -403,7 +403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.301298
+      value: -10.302065
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
@@ -966,6 +966,22 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -2.957059
       objectReference: {fileID: 0}
+    - target: {fileID: 1061100552614987308, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9036131
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061100552614987308, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: m_Size.y
+      value: 0.9192972
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061100552614987308, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.07841349
+      objectReference: {fileID: 0}
+    - target: {fileID: 1061100552614987308, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.070572376
+      objectReference: {fileID: 0}
     - target: {fileID: 2166668093290521595, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: m_Name
       value: DesertCat_PCKG
@@ -1022,6 +1038,30 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 419919636}
+    - target: {fileID: 8736271047689334101, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: m_Size.x
+      value: 1.1883488
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736271047689334101, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: m_Size.y
+      value: 1.1097794
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736271047689334101, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.094174385
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736271047689334101, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.023524284
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736271047689334101, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736271047689334101, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

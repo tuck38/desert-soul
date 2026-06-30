@@ -8,6 +8,8 @@ public class SC_SandCatClaws : StateMachineBehaviour
 
     [SerializeField] float attackSpeed;
 
+    [SerializeField] float dashRange;
+
     private Vector2 target;
     private bool isFacingRight;
 
@@ -31,11 +33,11 @@ public class SC_SandCatClaws : StateMachineBehaviour
         isFacingRight = bossBase.GetDirection();
         if(isFacingRight)
         {
-            target = new Vector2(1000, rb.position.y);
+            target = new Vector2(rb.position.x + dashRange, rb.position.y);
         }
         else
         {
-            target = new Vector2(-1000, rb.position.y);   
+            target = new Vector2(rb.position.x - dashRange, rb.position.y);   
         }
     }
 
@@ -59,14 +61,32 @@ public class SC_SandCatClaws : StateMachineBehaviour
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
+            else if(bossBase.transform.position.x >= target.x)
+            {
+                //range maxxed out
+
+                Debug.Log("its working! (said like anakin in hit movie star wars episode 1: The Phantom Menace)");
+
+                animator.SetBool("doAttack1", false);
+                animator.SetBool("Moving", true);
+            }
         }
-        else
+        else if (!isFacingRight)
         {
-            if(Physics2D.Raycast(bossBase.gameObject.transform.position, Vector2.left, bossBase.halfWidth + 0.1f, LayerMask.GetMask("Ground")))
+            if(Physics2D.Raycast(rb.position, Vector2.left, bossBase.halfWidth + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //We are hitting Le wall
 
                 //stun timer, i dont wanna make it rn tho
+
+                animator.SetBool("doAttack1", false);
+                animator.SetBool("Moving", true);
+            }
+            else if(rb.position.x <= target.x)
+            {
+                //range maxxed out
+
+                Debug.Log("its working! (said like anakin in hit movie star wars episode 1: The Phantom Menace)");
 
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
