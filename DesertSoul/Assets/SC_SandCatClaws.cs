@@ -61,11 +61,9 @@ public class SC_SandCatClaws : StateMachineBehaviour
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
-            else if(bossBase.transform.position.x >= target.x)
+            else if(bossBase.transform.position.x <= target.x)
             {
                 //range maxxed out
-
-                Debug.Log("its working! (said like anakin in hit movie star wars episode 1: The Phantom Menace)");
 
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
@@ -82,11 +80,9 @@ public class SC_SandCatClaws : StateMachineBehaviour
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
-            else if(rb.position.x <= target.x)
+            else if(rb.position.x >= target.x)
             {
                 //range maxxed out
-
-                Debug.Log("its working! (said like anakin in hit movie star wars episode 1: The Phantom Menace)");
 
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
