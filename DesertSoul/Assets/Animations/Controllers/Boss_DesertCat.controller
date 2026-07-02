@@ -25,6 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793907ea3ac36ee44a92f2064bcb2ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  bossRoar: {fileID: 8300000, guid: b7f36406997c02946890a8ca80473c9c, type: 3}
 --- !u!1101 &-7078305698452443414
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -99,7 +100,7 @@ AnimatorStateMachine:
     m_Position: {x: 330, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 4695416821370794318}
-    m_Position: {x: 330, y: -180, z: 0}
+    m_Position: {x: 330, y: -170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1440145006895983405}
     m_Position: {x: 50, y: -180, z: 0}

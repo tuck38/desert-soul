@@ -13,6 +13,11 @@ public class SC_BossBase : SC_Enemy_Base
 
     [SerializeField] Color baseColor;
 
+    //SFX used for boss sounds
+    [SerializeField] AudioSource catSounds;
+
+    [SerializeField] AudioClip bossTheme;
+
     public float halfWidth;
 
     public float halfHeight;
@@ -74,9 +79,15 @@ public class SC_BossBase : SC_Enemy_Base
         slider.value = 1;
     }
 
-    public void BossRoar()
+    public void PlaySFX(AudioClip audio)
     {
-        
+        catSounds.clip = audio;
+        catSounds.Play();
+    }
+
+    public void BossMusic()
+    {
+        GameManager.Instance.playBossTheme(bossTheme);
     }
 
     public void ChangeColor(Color color, bool originalColor)

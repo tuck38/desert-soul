@@ -1,3 +1,4 @@
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class SC_SandCatRoar : StateMachineBehaviour
@@ -5,6 +6,10 @@ public class SC_SandCatRoar : StateMachineBehaviour
 
     SC_BossBase bossBase;
     Rigidbody2D rb;
+
+    [SerializeField] AudioClip bossRoar;
+
+    [SerializeField] float roarTime;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -22,7 +27,7 @@ public class SC_SandCatRoar : StateMachineBehaviour
 
         //play the roar by calling bassBase, which will call the audio manager
 
-        bossBase.BossRoar();
+        bossBase.PlaySFX(bossRoar);
 
         //gotta delay this until after the roar
         animator.SetBool("Moving", true);
@@ -37,6 +42,7 @@ public class SC_SandCatRoar : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        bossBase.BossMusic();
         bossBase.enableHPBar(true);
     }
 

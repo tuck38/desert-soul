@@ -5084,6 +5084,8 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   sprite: {fileID: 0}
   baseColor: {r: 0, g: 0, b: 0, a: 0}
+  catSounds: {fileID: 3259157621386341622}
+  bossTheme: {fileID: 8300000, guid: ff3f870d244679144932b3fd27adf95e, type: 3}
   halfWidth: 0
   halfHeight: 0
 --- !u!212 &4198121723198292843

@@ -255,7 +255,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2072937761046315814, guid: d5b945606a7489340be61eb8c45e9f50, type: 3}
       propertyPath: m_Name
-      value: Door_RoomTBD_AreaTBD
+      value: Door_RoomBoss_Area01
       objectReference: {fileID: 0}
     - target: {fileID: 5357824774843493371, guid: d5b945606a7489340be61eb8c45e9f50, type: 3}
       propertyPath: m_LocalPosition.x
@@ -270,8 +270,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5714599243685109376, guid: d5b945606a7489340be61eb8c45e9f50, type: 3}
+      propertyPath: nextArea
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5714599243685109376, guid: d5b945606a7489340be61eb8c45e9f50, type: 3}
       propertyPath: nextScene
-      value: Room26_Area01
+      value: RoomBoss_Area01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
