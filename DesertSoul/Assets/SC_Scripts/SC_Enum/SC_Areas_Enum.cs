@@ -6,5 +6,5 @@ public enum SC_Areas_Enum
 
     hotdry, arid,
 
-    costal, frozen,
+    costal, frozen, boss,
 }

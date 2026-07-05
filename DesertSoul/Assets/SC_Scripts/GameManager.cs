@@ -192,6 +192,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
+
+    public void playBossTheme(AudioClip bossMusic)
+    {
+        musicbox.clip = bossMusic;
+        musicbox.Play();
+    }
+
     //not finished function
     private void NewArea(SC_Areas_Enum area)
     {
@@ -232,6 +239,11 @@ public class GameManager : MonoBehaviour
                 case SC_Areas_Enum.frozen:
                     musicbox.clip = area4;
                     musicbox.Play();
+                    currentArea = area;
+                    break;
+
+                case SC_Areas_Enum.boss:
+                    musicbox.Stop();
                     currentArea = area;
                     break;
             }

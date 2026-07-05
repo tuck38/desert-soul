@@ -13,6 +13,15 @@ public class SC_BossBase : SC_Enemy_Base
 
     [SerializeField] Color baseColor;
 
+    //SFX used for boss sounds
+    [SerializeField] AudioSource catSounds;
+
+    [SerializeField] AudioClip bossTheme;
+
+    public float halfWidth;
+
+    public float halfHeight;
+
     private bool isFacingRight = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +30,8 @@ public class SC_BossBase : SC_Enemy_Base
         player = GameObject.FindGameObjectWithTag("Player").transform;
         slider = healthBar.GetComponent<Slider>();
         baseColor = sprite.color;
+        halfHeight = sprite.bounds.extents.y;
+        halfWidth = sprite.bounds.extents.x;
         base.Start();
     }
 
@@ -28,6 +39,11 @@ public class SC_BossBase : SC_Enemy_Base
     protected override void Update()
     {
         
+    }
+
+    public bool GetDirection()
+    {
+        return isFacingRight;
     }
 
     public void flipBoss()
@@ -45,7 +61,6 @@ public class SC_BossBase : SC_Enemy_Base
     {
         currentHealth -= attack.getDamage();
         slider.value = currentHealth / MAXHealth;
-        Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
             return true;
@@ -64,9 +79,15 @@ public class SC_BossBase : SC_Enemy_Base
         slider.value = 1;
     }
 
-    public void BossRoar()
+    public void PlaySFX(AudioClip audio)
     {
-        
+        catSounds.clip = audio;
+        catSounds.Play();
+    }
+
+    public void BossMusic()
+    {
+        GameManager.Instance.playBossTheme(bossTheme);
     }
 
     public void ChangeColor(Color color, bool originalColor)

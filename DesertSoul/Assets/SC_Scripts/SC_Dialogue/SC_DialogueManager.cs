@@ -6,6 +6,7 @@ public class SC_DialogueManager : MonoBehaviour
 
     public GameObject player;
     public GameObject cameraFollow;
+    public GameObject[] dialogueUI;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,5 +35,21 @@ public class SC_DialogueManager : MonoBehaviour
     public void FlipTargetSprite(GameObject target, bool flip)
     {
         target.GetComponent<SpriteRenderer>().flipX = flip;
+    }
+
+    [YarnCommand("move_target_to_position")]
+    public void MoveTargetToPosition(GameObject target, float x, float y)
+    {
+        Vector2 position = new Vector2(x, y); 
+        target.GetComponent<SC_NPC_Movement>().movementTarget = position;
+    }
+
+    [YarnCommand("disable_player_ui")]
+    public void DisablePlayerUI(bool isDisabled)
+    {
+        foreach (GameObject ui in dialogueUI)
+        {
+            ui.SetActive(!isDisabled);
+        }
     }
 }
