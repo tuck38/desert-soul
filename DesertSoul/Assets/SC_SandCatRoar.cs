@@ -14,7 +14,6 @@ public class SC_SandCatRoar : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("doing the roar");
 
         if(rb == null)
         {
@@ -44,6 +43,7 @@ public class SC_SandCatRoar : StateMachineBehaviour
     {
         bossBase.BossMusic();
         bossBase.enableHPBar(true);
+        bossBase.GetAnimator().SetBool("FightStart", false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

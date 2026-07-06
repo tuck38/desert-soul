@@ -74,7 +74,12 @@ public class SC_BossBase : SC_Enemy_Base
 
     public void StartFight()
     {
-        bossAnim.SetTrigger("FightStart");
+        bossAnim.SetBool("FightStart", true);
+    }
+
+    public Animator GetAnimator()
+    {
+        return bossAnim;
     }
 
     public void enableHPBar(bool enable)
