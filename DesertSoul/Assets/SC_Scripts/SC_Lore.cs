@@ -22,12 +22,19 @@ public class SC_Lore : MonoBehaviour
     {
         if (isInRange && Input.GetKeyDown(KeyCode.E))
         {
+            gameInput.SetActive(false);
             lorePanel.SetActive(true);
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            lorePanel.SetActive(false);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        Debug.Log("Contact");
         if (col.CompareTag("Player"))
         {
             gameInput.SetActive(true);
@@ -43,7 +50,7 @@ public class SC_Lore : MonoBehaviour
         }
     }
 
-    void Close()
+    public void Close()
     {
         lorePanel.SetActive(false);
     }
