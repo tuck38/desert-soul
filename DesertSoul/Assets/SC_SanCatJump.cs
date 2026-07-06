@@ -1,4 +1,5 @@
 using UnityEngine;
+using Yarn.Compiler;
 
 public class SC_SanCatJump : StateMachineBehaviour
 {
@@ -10,6 +11,10 @@ public class SC_SanCatJump : StateMachineBehaviour
 
     private SC_BossBase bossBase;
 
+    private float jumpBufferTime = 0.1f;
+    private float currentJumpBufferTime = 0;
+
+    private bool jumperr;
     private bool isFacingRight;
 
 
@@ -17,6 +22,8 @@ public class SC_SanCatJump : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        jumperr = true;
+        currentJumpBufferTime = jumpBufferTime;
         if(bossBase == null)
         {
             bossBase = animator.GetComponent<SC_BossBase>();
@@ -28,8 +35,6 @@ public class SC_SanCatJump : StateMachineBehaviour
 
         bossBase.flipBoss();
         isFacingRight = bossBase.GetDirection();
-
-        Debug.Log("attack 2 is happening");
         
         //force method, not working
 
@@ -59,7 +64,22 @@ public class SC_SanCatJump : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        if(jumperr == true && currentJumpBufferTime > 0)
+        {
+            currentJumpBufferTime--;
+        }
+        else if(currentJumpBufferTime <= 0)
+        {
+            currentJumpBufferTime = jumpBufferTime;
+            jumperr = false;
+        }
+
+
+        if(jumperr == false && bossBase.IsGrounded())
+        {
+            animator.SetBool("doAttack2", false);
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

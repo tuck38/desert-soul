@@ -4964,6 +4964,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7096001912586926036}
+  - {fileID: 8170789184186874811}
   m_Father: {fileID: 4234985695894275792}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6346500146307739651
@@ -5081,8 +5082,12 @@ MonoBehaviour:
   launchPower: 0
   decelerationMult: 0.95
   bossAnim: {fileID: 7583574871159292710}
+  groundCheck: {fileID: 8170789184186874811}
   healthBar: {fileID: 0}
   sprite: {fileID: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   catSounds: {fileID: 3259157621386341622}
   bossTheme: {fileID: 8300000, guid: ff3f870d244679144932b3fd27adf95e, type: 3}
@@ -5289,6 +5294,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &6224695816062056631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8170789184186874811}
+  m_Layer: 0
+  m_Name: GroundCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8170789184186874811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6224695816062056631}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4829877920198025377}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7118305760037069830
 GameObject:
   m_ObjectHideFlags: 0

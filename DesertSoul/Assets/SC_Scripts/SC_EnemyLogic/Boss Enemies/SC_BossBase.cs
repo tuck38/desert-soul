@@ -4,12 +4,16 @@ using UnityEngine.UI;
 public class SC_BossBase : SC_Enemy_Base
 {
     [SerializeField] Animator bossAnim;
+
+     [SerializeField] private Transform groundCheck;
     private Transform player;
 
     [SerializeField] GameObject healthBar;
     private Slider slider;
 
     [SerializeField] SpriteRenderer sprite;
+
+    [SerializeField]LayerMask groundLayer;
 
     [SerializeField] Color baseColor;
 
@@ -88,6 +92,11 @@ public class SC_BossBase : SC_Enemy_Base
     public void BossMusic()
     {
         GameManager.Instance.playBossTheme(bossTheme);
+    }
+
+    public bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
     public void ChangeColor(Color color, bool originalColor)

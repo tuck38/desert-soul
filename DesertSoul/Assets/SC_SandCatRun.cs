@@ -44,7 +44,6 @@ public class SC_SandCatRun : StateMachineBehaviour
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
 
-        Debug.Log(Mathf.Abs(rb.position.x - player.position.x) );
         if(Mathf.Abs(rb.position.x - player.position.x) <= distToAttackClaws)
         {
             animator.SetBool("doAttack1Windup", true);
