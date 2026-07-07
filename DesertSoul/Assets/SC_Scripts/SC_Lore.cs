@@ -46,6 +46,7 @@ public class SC_Lore : MonoBehaviour
         if (col.CompareTag("Player"))
         {
             gameInput.SetActive(false);
+            lorePanel.SetActive(false);
             isInRange = false;
         }
     }
