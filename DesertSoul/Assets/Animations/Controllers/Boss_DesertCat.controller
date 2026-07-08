@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b7e9581d8dec74982e9e4681fc67dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  windUpTime: 0.7
+  windUpTime: 0.1
 --- !u!114 &-8490374246292708070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6a6c896f46be94db091d7aaf2640a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  attackSpeed: 10
+  attackSpeed: 12
   dashRange: 10
 --- !u!1101 &-227404030425361231
 AnimatorStateTransition:
@@ -546,8 +546,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16c1438fde6b51478506c94ebc591ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  upForce: 7
-  sideForce: 10
+  upForce: 7.5
+  sideForce: 12
 --- !u!1101 &3038824393320031770
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
