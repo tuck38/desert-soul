@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -22,11 +23,10 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     [SerializeField] protected Transform point1;
     [SerializeField] protected Transform point2;
 
-    //the knowerrrrrr
+    //Raycasts
     protected Rigidbody2D rigidbody;
 
     protected Vector2 currentDirection;
-
 
     [SerializeField] protected SpriteRenderer spriteRenderer;
     //Raycast vars
@@ -101,7 +101,15 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     {
         Debug.Log("Player lost");
         player = null;
-        nextPoint = preLockOnPoint;
+        //nextPoint = preLockOnPoint;
+        if (isGoingLeft)
+        {
+            nextPoint = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z);
+        }
+        else if(!isGoingLeft)
+        {
+            nextPoint = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z);
+        }
         currentState = EnemyState.WANDERING;
     }
 

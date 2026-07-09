@@ -96,8 +96,6 @@ public class SC_Enemy_Base : MonoBehaviour
     //takes damage and returns true if the attack killed the enemy
     public virtual bool TakeDamage(SC_Attack_Base attack, Transform carryPoint)
     {
-        
-        Debug.Log("working");
         if (!locked)
         {
             currentHealth -= attack.getDamage();

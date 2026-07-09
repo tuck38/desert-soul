@@ -16,6 +16,10 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     [SerializeField] Color windUpColor;
     [SerializeField] Color attackColor;
 
+    [SerializeField] float detectionTime;
+
+    float currentDetectionTime = 0f;
+
     [SerializeField] private Animator animator;
 
     bool isAttacking = false;
@@ -33,7 +37,8 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     // Update is called once per frame
     void Update()
     {
-        CheckPos(); 
+        CheckPos();
+
         switch (currentState)
         {
             case EnemyState.NONE:
@@ -45,7 +50,7 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
                 if(!isAttacking) StartCoroutine("AttackCoroutine");
                 break;
             case EnemyState.DETECT_PLAYER:
-                currentState = EnemyState.APPROACH;
+                detectionTimer();
                 break;
             case EnemyState.WANDERING:
                 if(!isAttacking) MoveTo();
@@ -53,11 +58,11 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
         }
     }
 
-    protected override IEnumerator AttackCoroutine()
+    /*protected override IEnumerator AttackCoroutine()
     {
         isAttacking = true;
         Debug.Log("Windup");
-        animator.SetBool("Attack", true);
+       // animator.SetBool("Attack", true);
         animator.SetBool("Moving", false);
         yield return new WaitForSeconds(timeBetweenApproachingPlayerAndAttacking);
         if(Vector2.Distance(transform.position, nextPoint) < stopDistancePlayer)
@@ -66,13 +71,39 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
             player.GetComponent<SC_Player_Prop>().TakeDamage(GetComponent<SC_Enemy_Base>().GetDamage());
         }
         else Debug.Log("Attack Missed");
-        yield return new WaitForSeconds(timeBetweenAttacks);
+        //yield return new WaitForSeconds(timeBetweenAttacks);
         if(currentState == EnemyState.ATTACK) currentState = EnemyState.APPROACH;
-        animator.SetBool("Attack", false);
-        animator.SetBool("Moving", true);
         isAttacking = false;
+    }*/
+
+    
+
+    private void detectionTimer()
+    {
+        if(currentDetectionTime < detectionTime)
+        {
+            currentDetectionTime += Time.deltaTime;
+        }
+        else if(currentDetectionTime >= detectionTime)
+        {
+            animator.SetBool("detected", false);
+            currentState = EnemyState.APPROACH;
+            animator.SetBool("Attack", true);
+            currentDetectionTime = 0;
+        }
     }
 
+    public override void PlayerDetected(GameObject playerObj)
+    {
+        if(currentState == EnemyState.WANDERING)
+        {
+            animator.SetBool("detected", true);
+            player = playerObj;
+            preLockOnPoint = nextPoint;
+            nextPoint = player.transform.position;
+            currentState = EnemyState.DETECT_PLAYER;
+        }
+    }
 
     //TODO:
     //Set up racast
@@ -87,7 +118,7 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
         float dist = Vector2.Distance(transform.position, nextPoint);
 
 
-        if(currentState == EnemyState.WANDERING && nextPoint.x > transform.position.x)
+        if((currentState == EnemyState.WANDERING || currentState == EnemyState.APPROACH) && nextPoint.x > transform.position.x)
         {
             //Going Right
             isGoingLeft = false;
@@ -100,11 +131,12 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
             else if(!Physics2D.Raycast(rightPos, Vector2.down, halfHeight + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //No ledge below
+                Debug.Log("Ledge");
                 isGoingLeft = !isGoingLeft;
                 SpriteRotation();
             }
         }
-        else if(currentState == EnemyState.WANDERING && nextPoint.x < transform.position.x)
+        else if((currentState == EnemyState.WANDERING || currentState == EnemyState.APPROACH) && nextPoint.x < transform.position.x)
         {
             //Going Left
             isGoingLeft = true;
@@ -117,16 +149,17 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
             else if(!Physics2D.Raycast(leftPos, Vector2.down, halfHeight + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //No ledge below
+                Debug.Log("Ledge");
                 isGoingLeft = !isGoingLeft;
                 SpriteRotation();
             }
 
         }
-        else if (currentState == EnemyState.APPROACH && dist < stopDistancePlayer)
+        /*else if (currentState == EnemyState.APPROACH && dist < stopDistancePlayer)
         {
             Debug.Log("Close Enough To Attack");
             currentState = EnemyState.ATTACK;
-        }
+        }*/
     }
 
     protected override void MoveTo()
