@@ -50,7 +50,9 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] Transform cameraDown;
     //fastfall
     [Tooltip("The factor of how much the gravity increases on the player as they are falling")]
-    [SerializeField] private float gravModifier = 0.005f;
+    [SerializeField] private float fallGravModifier;
+
+    [SerializeField] private float fallGravMult;
     [Tooltip("How fast the player will go up upon the jump button being pressed")]
     [SerializeField] private float fallingGravLimit = 10f;
 
@@ -283,7 +285,9 @@ public class SC_Player_Move : MonoBehaviour
             if (!IsGrounded() && jumping == true)
             {
                 SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-                //rb.linearVelocity = new(rb.linearVelocity.x, -(jumpPower * 0.005f));
+                Debug.Log("sdds");
+                rb.gravityScale = rb.gravityScale * fallGravMult;
+                //rb.linearVelocity = new(rb.linearVelocity.x, rb.linearVelocityY / 2);
                 stopJump = true;
             }
         }
@@ -458,21 +462,22 @@ public class SC_Player_Move : MonoBehaviour
             jumping = false;
         }
 
-        if (transform.position.y - startJumpHeight >= maxJumpHeight)
+        if (transform.position.y - startJumpHeight >= maxJumpHeight && jumping == true)
         {
+            Debug.Log("woag");
+            rb.gravityScale = rb.gravityScale * fallGravMult;
             jumping = false;
         }
 
         //makes player decend faster the longer they are falling
         if(rb.linearVelocity.y <= 0 && rb.gravityScale < fallingGravLimit)
         {
-            rb.gravityScale = rb.gravityScale + gravModifier;
+            rb.gravityScale = rb.gravityScale + fallGravModifier;
         }
 
         //sets player gravity back to normal after being grounded
         if(IsGrounded())
         {
-            Debug.Log("Gravity Reset");
             stopJump = false;
             rb.gravityScale = baseGravity;
         }

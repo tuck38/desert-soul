@@ -34,7 +34,6 @@ public class SC_Lore : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Contact");
         if (col.CompareTag("Player"))
         {
             gameInput.SetActive(true);
