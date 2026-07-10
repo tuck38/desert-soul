@@ -33,6 +33,7 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private float minJumpHeight = 2f;
     [Tooltip("How fast the player will go up upon the jump button being pressed")]
     [SerializeField] private float jumpVelocity = 8f;
+    [SerializeField] private float airMoveMult = 0.8f;
     private float lastYValue;
 
     //vars the keep track of jump state
@@ -43,7 +44,7 @@ public class SC_Player_Move : MonoBehaviour
 
     //Gravity
     [Tooltip("The base gravity acting upon the player, reset after they are grounded")]
-    [SerializeField] private float baseGravity = 2f;
+    [SerializeField] private float baseGravity;
     //CameraTracker
     [SerializeField] Transform cameraUp;
     [SerializeField] Transform cameraDown;
@@ -255,11 +256,11 @@ public class SC_Player_Move : MonoBehaviour
         {
         if(context.performed)
         {
-            if(rb.linearVelocity.y > 0)
+            /*if(rb.linearVelocity.y > 0)
             {
                 SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
                 rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-            }
+            }*/
 
             //Gets player input and jumps if grounded
             if ((IsGrounded() || coyoteTimeCounter > 0f) && !jumping)
@@ -463,7 +464,7 @@ public class SC_Player_Move : MonoBehaviour
         }
 
         //makes player decend faster the longer they are falling
-        if(rb.linearVelocity.y < 0 && rb.gravityScale < fallingGravLimit)
+        if(rb.linearVelocity.y <= 0 && rb.gravityScale < fallingGravLimit)
         {
             rb.gravityScale = rb.gravityScale + gravModifier;
         }
@@ -471,6 +472,7 @@ public class SC_Player_Move : MonoBehaviour
         //sets player gravity back to normal after being grounded
         if(IsGrounded())
         {
+            Debug.Log("Gravity Reset");
             stopJump = false;
             rb.gravityScale = baseGravity;
         }
@@ -521,9 +523,13 @@ public class SC_Player_Move : MonoBehaviour
         //if getting knocked back, player cannot move
         if (launchTime <= 0)
         {
-            if (useGravity)
+            if (useGravity && !IsGrounded())
             {
-                rb.linearVelocity = new Vector2(movement.x * speed, rb.linearVelocity.y);
+                rb.linearVelocity = new Vector2(movement.x * (speed * airMoveMult), rb.linearVelocity.y);
+            }
+            else if (useGravity)
+            {
+                rb.linearVelocity = new Vector2(movement.x * (speed), rb.linearVelocity.y);
             }
             else
             {

@@ -399,7 +399,7 @@ Transform:
   m_GameObject: {fileID: 126721860067205480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0000059604645, y: 0, z: -10}
+  m_LocalPosition: {x: 1.5663276, y: 5.91085, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -30523,8 +30523,8 @@ Transform:
   m_GameObject: {fileID: 9140345654368930707}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.9, y: -0.07, z: 0}
+  m_LocalScale: {x: 0.89183414, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4435905006718356002}
@@ -30883,15 +30883,19 @@ PrefabInstance:
       objectReference: {fileID: 6457582991829213946}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: baseGravity
-      value: 2.5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: jump.m_Name
       value: Jump
       objectReference: {fileID: 0}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: gravModifier
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: jumpVelocity
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: playerSource
@@ -31059,7 +31063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6122991240835986413, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_Size.x
-      value: 0.91296995
+      value: 0.815647
       objectReference: {fileID: 0}
     - target: {fileID: 6122991240835986413, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_Size.y
@@ -31067,7 +31071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6122991240835986413, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_Offset.x
-      value: -0.05878979
+      value: -0.010128319
       objectReference: {fileID: 0}
     - target: {fileID: 6122991240835986413, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_Offset.y
@@ -31089,6 +31093,10 @@ PrefabInstance:
       propertyPath: PlayerHitParticles
       value: 
       objectReference: {fileID: 4809186640204831006}
+    - target: {fileID: 7767278961558348056, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: m_GravityScale
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
