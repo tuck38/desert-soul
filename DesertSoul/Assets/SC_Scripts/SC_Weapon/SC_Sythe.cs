@@ -101,7 +101,6 @@ public class SC_Sythe : MonoBehaviour
                 }
             }
         }*/
-
         animator.SetInteger("Attack", Attacks[0].getID());
         HurtBox.currentAttack = Attacks[0];
         isAttacking = true;
@@ -109,7 +108,7 @@ public class SC_Sythe : MonoBehaviour
         currentAttackLength = Attacks[0].getTime();
         animator.SetBool("isAttacking", isAttacking);
         Attacks[0].doAttack(projectileSpawn.transform);
-        HurtBox.enabled = true;
+        //HurtBox.enabled = true;
         // Sythe sound attack
 
         //if no moves are found that equal the current combo, clear the combo and run the function again to preform a basic move
