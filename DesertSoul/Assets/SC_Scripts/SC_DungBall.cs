@@ -13,14 +13,24 @@ public class SC_DungBall : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        StartCoroutine(rollBall());
+        StartCoroutine(breakBalls());
     }
 
     IEnumerator rollBall()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
 
         ballThrown = true;
+    }
+
+    IEnumerator breakBalls()
+    {
+        yield return new WaitForSeconds(10f);
+
+        Destroy(this);
     }
     
 

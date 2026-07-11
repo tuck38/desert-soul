@@ -6,6 +6,7 @@ public class SC_DungBeetle : MonoBehaviour
     [SerializeField] int MAXhp;
     [SerializeField] Transform createPoint;
     int currHP;
+    bool ballMade = false;
     [SerializeField] private Animator animator;
     [SerializeField] GameObject dungBall;
     SC_DungBall ballCode;
@@ -22,14 +23,17 @@ public class SC_DungBeetle : MonoBehaviour
             Destroy(this);
         }
 
-        StartCoroutine(createBall());
+        if (!ballMade){
+            StartCoroutine(createBall());
+            ballMade = true;
+        }
     }
 
     IEnumerator createBall()
     {
-        
-        yield return new WaitForSeconds(2f);
-
         Instantiate(dungBall, createPoint, createPoint);
+        yield return new WaitForSeconds(2f);
+        ballMade = false;
+        
     }
 }

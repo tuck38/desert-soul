@@ -436,15 +436,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3113818856246194024, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: orthographic size
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5326328
+      value: 0.023384094
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.14201736
+      value: -0.0000038146973
       objectReference: {fileID: 0}
     - target: {fileID: 3957154099658528880, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_Size.x
@@ -33140,14 +33140,14 @@ PrefabInstance:
     - target: {fileID: 1717810404397437404, guid: b4c876d4e69854945b80466cb1997cb8, type: 3}
       propertyPath: dungBall
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8022694183629763047, guid: 0ef2fb7fd10c7cf40986b8465c411276, type: 3}
     - target: {fileID: 6419962554968117026, guid: b4c876d4e69854945b80466cb1997cb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -31.58
       objectReference: {fileID: 0}
     - target: {fileID: 6419962554968117026, guid: b4c876d4e69854945b80466cb1997cb8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33.44
+      value: 32.91
       objectReference: {fileID: 0}
     - target: {fileID: 6419962554968117026, guid: b4c876d4e69854945b80466cb1997cb8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -33180,6 +33180,10 @@ PrefabInstance:
     - target: {fileID: 6419962554968117026, guid: b4c876d4e69854945b80466cb1997cb8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8155010213553588450, guid: b4c876d4e69854945b80466cb1997cb8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
