@@ -7,9 +7,16 @@ public class SC_Enemy_Base : MonoBehaviour
     protected float currentHealth;
     [SerializeField] private int damage;
     
+    [SerializeField] private SC_RattleSnake snake;
+
     //kb vars
     [SerializeField] private float knockbackDist;
-    [SerializeField] private float kbLERPTime;
+    [SerializeField] private float totalLerpTime;
+    private float elapsedLerpTime = 0f;
+
+    Vector3 kbEndPoint;
+
+    bool lerping = false;
 
     private Transform lockPoint;
 
@@ -87,6 +94,22 @@ public class SC_Enemy_Base : MonoBehaviour
             }
         }
 
+        //this is for knockback lerping, just doing a quick dirty implementation
+        if(lerping)
+        {
+            elapsedLerpTime += Time.deltaTime;
+            float percentageComplete = elapsedLerpTime / totalLerpTime;
+
+            transform.position = Vector3.Lerp(transform.position, kbEndPoint, percentageComplete);
+
+            //if statment of doom and dispair
+            if(transform.position == kbEndPoint)
+            {
+                lerping = false;
+                snake.SetCanMove(true);
+            }
+        }
+
         if (decelerationEnabled)
         {
             decelerate();
@@ -110,6 +133,8 @@ public class SC_Enemy_Base : MonoBehaviour
                 lockPoint = carryPoint;
             }
         }
+
+
         return false;
     }
 
@@ -149,7 +174,10 @@ public class SC_Enemy_Base : MonoBehaviour
         if(atkType == AttackType.primary)
         {
             //ima make this a lerp
-            transform.position = target;
+            lerping = true;
+            kbEndPoint = target;
+            snake.SetCanMove(false);
+            //transform.position = target;
         }
     }
 

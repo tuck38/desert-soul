@@ -4,6 +4,8 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+//THERE ARE 3 DIFFERENT ENEMY SCRIPTS, THEY NEED TO ALL BE CONSOLIDATED BUT I DONT HAVE TIME RN
 public class SC_RattleSnake : SC_Enemy_Attack_Base
 {
     [Header("Rattlesnake Values")]
@@ -17,6 +19,8 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     [SerializeField] Color attackColor;
 
     [SerializeField] float detectionTime;
+
+    private bool canMove = true;
 
     float currentDetectionTime = 0f;
 
@@ -131,7 +135,6 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
             else if(!Physics2D.Raycast(rightPos, Vector2.down, halfHeight + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //No ledge below
-                Debug.Log("Ledge");
                 isGoingLeft = !isGoingLeft;
                 SpriteRotation();
             }
@@ -149,7 +152,6 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
             else if(!Physics2D.Raycast(leftPos, Vector2.down, halfHeight + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //No ledge below
-                Debug.Log("Ledge");
                 isGoingLeft = !isGoingLeft;
                 SpriteRotation();
             }
@@ -162,24 +164,33 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
         }*/
     }
 
+    //I loooove tech debt
+    public void SetCanMove(bool move)
+    {
+        canMove = move;
+    }
+
     protected override void MoveTo()
     {
-        animator.SetBool("Moving", true);
-        float initialY = transform.position.y;
-        if(currentState == EnemyState.WANDERING)
+        if (canMove == true)
         {
-            if (isGoingLeft)
+            animator.SetBool("Moving", true);
+            float initialY = transform.position.y;
+            if(currentState == EnemyState.WANDERING)
             {
-                nextPoint = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z);
+                if (isGoingLeft)
+                {
+                    nextPoint = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z);
+                }
+                else if(!isGoingLeft)
+                {
+                    nextPoint = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z);
+                }
             }
-            else if(!isGoingLeft)
-            {
-                nextPoint = new Vector3(transform.position.x + 1f, transform.position.y, transform.position.z);
-            }
+            Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint, currentState == EnemyState.WANDERING ? defaultSpeed * Time.deltaTime : chasePlayerSpeed * Time.deltaTime);
+            //SpriteRotation(newXPosition.x);
+            //Debug.Log(newXPosition);
+            transform.position = new Vector2(newXPosition.x, initialY);
         }
-        Vector2 newXPosition = Vector2.MoveTowards(transform.position, nextPoint, currentState == EnemyState.WANDERING ? defaultSpeed * Time.deltaTime : chasePlayerSpeed * Time.deltaTime);
-        //SpriteRotation(newXPosition.x);
-        //Debug.Log(newXPosition);
-        transform.position = new Vector2(newXPosition.x, initialY);
     }
 }

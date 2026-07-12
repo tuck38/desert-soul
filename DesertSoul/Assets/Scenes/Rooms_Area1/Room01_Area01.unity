@@ -957,7 +957,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 1f80deab7d53710468f1baada0446415, type: 2}
     - target: {fileID: 2512736724373257216, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: Lens.OrthographicSize
-      value: 5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 2512736724373257216, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: Target.TrackingTarget
@@ -973,15 +973,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3113818856246194024, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.010006
+      value: 2.0099928
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6376898
+      value: 0.13768983
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.z

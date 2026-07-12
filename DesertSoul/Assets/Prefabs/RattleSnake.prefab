@@ -5382,8 +5382,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MAXHealth: 30
   damage: 1
-  knockbackDist: 0.5
-  kbLERPTime: 0.5
+  snake: {fileID: 3084359168301113991}
+  knockbackDist: 1
+  totalLerpTime: 1.2
   totalLaunchTime: 3
   launchPower: 5
   decelerationMult: 0.95
