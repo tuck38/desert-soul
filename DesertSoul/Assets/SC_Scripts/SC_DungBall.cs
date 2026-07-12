@@ -8,13 +8,21 @@ public class SC_DungBall : MonoBehaviour
     [SerializeField] Transform ballSprite;
     public bool ballThrown = false;
     public bool isFacingRight;
+    public int damageDealt;
     private Rigidbody2D rb;
+    SC_DungBeetle dungbeetleScript;
+    public void GetParentBeetle(SC_DungBeetle parent)
+    {
+        dungbeetleScript = parent;
+    }
+
+    
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-
+        //rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        //SC_DungBeetle dungbeetleScript = GetComponentInParent<SC_DungBeetle>();
         StartCoroutine(rollBall());
         StartCoroutine(breakBalls());
     }
@@ -32,20 +40,32 @@ public class SC_DungBall : MonoBehaviour
 
         Destroy(this);
     }
+
+    IEnumerator resetBall()
+    {
+        yield return new WaitForSeconds(0.2f);
+        ballThrown = false;
+    }
     
 
     // Update is called once per frame
     void Update()
     {
         if (ballThrown) {
-            if (isFacingRight){
-                //transform.Rotate(transform.forward * ballRollSPD * Time.deltaTime);
+            if(dungbeetleScript.isFacingLeft == false){
+                rb.AddForce(transform.right * ballRollSPD);
             }
             else
             {
-                //transform.Rotate(transform.forward * -ballRollSPD * Time.deltaTime);
+                rb.AddForce(transform.right * (ballRollSPD*-1));
             }
-            rb.AddForce(transform.right * ballRollSPD);
+            rb.AddForce(transform.up * ballRollSPD);
+            StartCoroutine(resetBall());
         }
+    }
+
+    public int GetDamage()
+    {
+        return damageDealt;
     }
 }

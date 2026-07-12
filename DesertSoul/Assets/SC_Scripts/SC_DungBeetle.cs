@@ -8,6 +8,7 @@ public class SC_DungBeetle : MonoBehaviour
     bool ballMade = false;
     [SerializeField] GameObject dungBall;
     SC_DungBall ballCode;
+    public bool isFacingLeft = false;
 
     [SerializeField] protected float MAXHealth;
     protected float currentHealth;
@@ -59,7 +60,7 @@ public class SC_DungBeetle : MonoBehaviour
             Die();
         }
 
-        /*if(currentLockTimer > 0)
+        if(currentLockTimer > 0)
         {
             currentLockTimer -= Time.deltaTime;
             if (currentLockTimer <= 0)
@@ -96,7 +97,7 @@ public class SC_DungBeetle : MonoBehaviour
         if (decelerationEnabled)
         {
             decelerate();
-        }*/
+        }
 
         if (!ballMade){
             StartCoroutine(createBall());
@@ -115,16 +116,16 @@ public class SC_DungBeetle : MonoBehaviour
                 return true;
             }
 
-            /*if (attack.shouldCarry() && !lockCooldown)
+            if (attack.shouldCarry() && !lockCooldown)
             {
                 locked = true;
                 lockPoint = carryPoint;
             }
-        */}
+        }
         return false;
     }
 
-    /*public void setMommaSpawner(SC_WaveRoom lockRoom)
+    public void setMommaSpawner(SC_WaveRoom lockRoom)
     {
         roomSpawned = lockRoom;
     }
@@ -185,7 +186,7 @@ public class SC_DungBeetle : MonoBehaviour
         }
     }
 
-    /*private void decelerate()
+    private void decelerate()
     {
         rb.linearVelocity = new Vector2 (rb.linearVelocityX * decelerationMult, rb.linearVelocityY);
 
@@ -194,12 +195,14 @@ public class SC_DungBeetle : MonoBehaviour
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             decelerationEnabled = false;
         }
-    }*/
+    }
 
     IEnumerator createBall()
     {
-        Instantiate(dungBall, createPoint, createPoint);
-        yield return new WaitForSeconds(2f);
+        GameObject obj = Instantiate(dungBall, createPoint.position, createPoint.rotation);
+        SC_DungBall ball = obj.GetComponent<SC_DungBall>();
+        ball.GetParentBeetle(this);
+        yield return new WaitForSeconds(4f);
         ballMade = false;
         
     }

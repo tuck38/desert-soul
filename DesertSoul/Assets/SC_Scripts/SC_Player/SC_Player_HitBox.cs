@@ -32,13 +32,14 @@ public class SC_Player_HitBox : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Dungball")
         {
-            SC_Dungball enemy = collision.gameObject.GetComponent<SC_Dungball>();
-            if (enemy.IsFullyFormed())
+            SC_DungBall enemy = collision.gameObject.GetComponent<SC_DungBall>();
+            if (enemy != null)
             {
-                Debug.Log($"{collision.gameObject.name}");
+                Debug.Log("Balled");
                 prop.TakeDamage(enemy.GetDamage());
                 player.Knockback(collision.transform.gameObject);
                 player.SetIFrames();
+                Destroy(enemy.gameObject);
             }
         }
     }
