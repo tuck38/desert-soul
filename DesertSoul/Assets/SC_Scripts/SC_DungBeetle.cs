@@ -6,7 +6,6 @@ public class SC_DungBeetle : MonoBehaviour
     [SerializeField] int MAXhp;
     [SerializeField] Transform createPoint;
     bool ballMade = false;
-    [SerializeField] private Animator animator;
     [SerializeField] GameObject dungBall;
     SC_DungBall ballCode;
 
@@ -60,7 +59,7 @@ public class SC_DungBeetle : MonoBehaviour
             Die();
         }
 
-        if(currentLockTimer > 0)
+        /*if(currentLockTimer > 0)
         {
             currentLockTimer -= Time.deltaTime;
             if (currentLockTimer <= 0)
@@ -97,7 +96,7 @@ public class SC_DungBeetle : MonoBehaviour
         if (decelerationEnabled)
         {
             decelerate();
-        }
+        }*/
 
         if (!ballMade){
             StartCoroutine(createBall());
@@ -116,16 +115,16 @@ public class SC_DungBeetle : MonoBehaviour
                 return true;
             }
 
-            if (attack.shouldCarry() && !lockCooldown)
+            /*if (attack.shouldCarry() && !lockCooldown)
             {
                 locked = true;
                 lockPoint = carryPoint;
             }
-        }
+        */}
         return false;
     }
 
-    public void setMommaSpawner(SC_WaveRoom lockRoom)
+    /*public void setMommaSpawner(SC_WaveRoom lockRoom)
     {
         roomSpawned = lockRoom;
     }
@@ -182,11 +181,11 @@ public class SC_DungBeetle : MonoBehaviour
         {
             lockCooldown = true;
             currentLockTimer = lockTimer;
-            Knockback(AttackType.drillSide);
+            //Knockback(AttackType.drillSide);
         }
     }
 
-    private void decelerate()
+    /*private void decelerate()
     {
         rb.linearVelocity = new Vector2 (rb.linearVelocityX * decelerationMult, rb.linearVelocityY);
 
@@ -195,7 +194,7 @@ public class SC_DungBeetle : MonoBehaviour
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             decelerationEnabled = false;
         }
-    }
+    }*/
 
     IEnumerator createBall()
     {
