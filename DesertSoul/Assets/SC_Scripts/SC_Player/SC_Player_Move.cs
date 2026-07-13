@@ -2,6 +2,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 //Handles player movement, sprite rotation, knockback, IFrames, and attacking
 //Was lazy and ended up putting menu inputs here aswell, might move them to another script at some point, 
@@ -50,8 +51,9 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] Transform cameraDown;
     //fastfall
     [Tooltip("The factor of how much the gravity increases on the player as they are falling")]
+    //
     [SerializeField] private float fallGravModifier;
-
+    //Gravity is multiplied by this when the player begins to fall or releases the jump key
     [SerializeField] private float fallGravMult;
     [Tooltip("How fast the player will go up upon the jump button being pressed")]
     [SerializeField] private float fallingGravLimit = 10f;
@@ -120,7 +122,13 @@ public class SC_Player_Move : MonoBehaviour
 
     private bool jumping;
 
+    private Vector3 spawnPos;
+
     private bool interacting = false;
+
+    //TEMP 
+
+    [SerializeField] bool firstRoom = false;
 
     private void Awake()
     {
@@ -162,7 +170,14 @@ public class SC_Player_Move : MonoBehaviour
         cameraFollowObject = cameraFollowGameObject.GetComponent<SC_Camera_FollowObject>();
 
         jumping = false;
+        
         playerInControl = true;
+
+        if(firstRoom)
+        {
+            spawnPos = transform.position;
+            playerInControl = false;
+        }
 
         flickerSpeed = flickerSpeedTotal;
         currentSpeed = minSpeed;
@@ -172,6 +187,11 @@ public class SC_Player_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(firstRoom)
+        {
+            transform.position = spawnPos;
+        }
+
         //inst used rn, havent implemented camrea looking
         vertical = look.ReadValue<float>();
 
@@ -212,6 +232,13 @@ public class SC_Player_Move : MonoBehaviour
         {
             Gravity();
         }
+    }
+
+    //TEMP
+
+    public void isFirstRoom(bool room)
+    {
+        firstRoom = room;
     }
 
     public void SetCanMove(bool canMove)
