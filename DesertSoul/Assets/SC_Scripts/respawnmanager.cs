@@ -1,20 +1,50 @@
 using System;
+using System.Diagnostics.Eventing.Reader;
+using System.Drawing;
 using UnityEditor.ShaderGraph.Internal;
 using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class respawnmanager : MonoBehaviour
 {
     [SerializeField] SpriteRenderer rune1;
 
+    [SerializeField] Light2D light1;
+
+    [SerializeField] Light2D light2;
+
+    [SerializeField] Light2D lightSpawn;
+
     [SerializeField] SpriteRenderer rune2;
 
+    [SerializeField] Animator Animation;
+
     [SerializeField] float spawnTime;
+
+    [SerializeField] UnityEngine.UI.Image Screen;
+
+    [SerializeField] float fadeFromBlack;
+
+    [SerializeField] float fadeToWhite;
+
+    [SerializeField] float animTimer;
+
+    [SerializeField] float setUpTime;
+
+    private float currentSetupTime;
+
+    private float currentAnimTime = 0;
+
+    private float currentFadeBlackTimer = 0;
+
+    private float currentFadeWhiteTimer = 0;
 
     private float timeToSpawn = 0;
 
     [SerializeField] float timeToGlow;
 
+    private bool respawn = true;
     private float currentTimer = 0;
 
     private float currentGlow;
@@ -32,25 +62,59 @@ public class respawnmanager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeToGlow >= currentTimer)
+        if(respawn == true)
+        {
+
+        if(setUpTime >= currentSetupTime)
+        {
+                currentSetupTime += Time.deltaTime;
+        }    
+        else if(fadeFromBlack >= currentFadeBlackTimer)
+        {
+            currentFadeBlackTimer += Time.deltaTime;
+            float percentegeComplete = currentFadeBlackTimer/ fadeFromBlack;
+
+            float currentFade = Mathf.Lerp(1, 0, percentegeComplete);
+
+            Screen.color = new UnityEngine.Color(Screen.color.r, Screen.color.g, Screen.color.b, currentFade);
+        }
+        else if(timeToGlow >= currentTimer)
         {
             currentTimer += Time.deltaTime;
             float percentegeComplete = currentTimer/timeToGlow;
 
             currentGlow = Mathf.Lerp(0, 1, percentegeComplete);
 
-            rune1.color = new Color(rune1.color.r, rune1.color.g, rune1.color.r, currentGlow);
-            rune2.color = new Color(rune1.color.r, rune1.color.g, rune1.color.r, currentGlow);
-
+            rune1.color = new UnityEngine.Color(rune1.color.r, rune1.color.g, rune1.color.r, currentGlow);
+            light1.intensity = currentGlow;
+            rune2.color = new UnityEngine.Color(rune1.color.r, rune1.color.g, rune1.color.r, currentGlow);
+            light2.intensity = currentGlow;
         }
-
-        if(spawnTime >= timeToSpawn)
+        else if(animTimer >= currentAnimTime)
         {
-            timeToSpawn += Time.deltaTime;
+            currentAnimTime += Time.deltaTime;
+            lightSpawn.intensity = 1;
+            Animation.SetBool("Respawn", true); 
         }
-        else
+        else if(fadeToWhite >= currentFadeWhiteTimer)
         {
-            respawned();
+            Screen.color = new UnityEngine.Color(UnityEngine.Color.white.r, UnityEngine.Color.white.g, UnityEngine.Color.white.b, Screen.color.a);
+
+            currentFadeWhiteTimer += Time.deltaTime;
+
+            float percentegeComplete = currentFadeWhiteTimer / fadeToWhite;
+
+            float currentFade = Mathf.Lerp(0, 1, percentegeComplete);
+
+            Screen.color = new UnityEngine.Color(Screen.color.r, Screen.color.g, Screen.color.b, currentFade);
+            if(currentFade >= 0.7)
+            {
+                respawned();
+                currentFadeWhiteTimer = 200;
+                respawn = false;
+                Screen.color = new UnityEngine.Color(Screen.color.r, Screen.color.g, Screen.color.b, 0);
+            }
+        }
         }
 
     }
@@ -62,11 +126,15 @@ public class respawnmanager : MonoBehaviour
 
     public void respawned()
     {
-        
-        playerMove.SetCanMove(true);
+        lightSpawn.intensity = 0;
+
+        GameObject.Destroy(Animation.gameObject);
 
         playerMove.isFirstRoom(false);
 
-        playerSprite.color = new Color(playerSprite.color.r, playerSprite.color.g, playerSprite.color.b, 1);
+        playerMove.SetCanMove(true);
+
+        playerSprite.color = new UnityEngine.Color(playerSprite.color.r, playerSprite.color.g, playerSprite.color.b, 1);
+
     }
 }

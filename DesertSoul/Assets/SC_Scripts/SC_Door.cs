@@ -1,3 +1,4 @@
+using Google.Protobuf.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -77,6 +78,7 @@ public class SC_Door : MonoBehaviour
                 {
                     movement = new Vector2(0, -1);
                 }
+                GameManager.Instance.fadeOut();
             }
             //set movement to the direction opposite the door, so the player will travel out of it
             else if (!doorActive)
@@ -98,7 +100,6 @@ public class SC_Door : MonoBehaviour
                     movement = new Vector2(0, 1);
                 }
             }
-
             movePlayer = true;
         }
     }

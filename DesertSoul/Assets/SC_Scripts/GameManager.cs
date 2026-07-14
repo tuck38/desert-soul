@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using System;
 using Unity.VisualScripting;
+using UnityEngine.Rendering;
 
 public enum TimeOfDay
 {
@@ -22,6 +23,12 @@ public class GameManager : MonoBehaviour
     [Tooltip("Indexes in this array correspond to the indexes attached to the values in the TimeOfDay enum")]
     [SerializeField] float[] timeOfDayStartTimes;
 
+    private UnityEngine.UI.Image fade;
+
+    [SerializeField] float fadeTime;
+
+    float currentFadeTime = 0;
+
     static float dayTimer;
     static TimeOfDay currentTime;
 
@@ -34,11 +41,19 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] AudioSource musicbox;
 
+    private bool wait = false;
+
+    float waitTime = .2f;
+
+    float currentWaitTime = 0f;
+
     SC_Areas_Enum currentArea = SC_Areas_Enum.mainmenu;
 
     public static GameManager Instance {  get; private set; }
 
     private GameObject player;
+
+    private SC_Player_Move move;
 
     SC_Enum_Doors newDoor;
 
@@ -66,6 +81,21 @@ public class GameManager : MonoBehaviour
         dayTimer += Time.deltaTime * dayNightClockSpeed;
         if (dayTimer >= maxTime) dayTimer -= maxTime;
         UpdateTimeOfDay();
+
+        if(wait)
+        {
+            if(waitTime >= currentWaitTime)
+            {
+                currentWaitTime += Time.deltaTime;
+            }
+            else
+            {
+                wait = false;
+                move.FadeIn();
+                currentWaitTime = 0;
+            }
+        }
+
         //Debug.Log($"Current Time: {dayTimer}, Time Of Day: {currentTime}");
     }
 
@@ -83,11 +113,35 @@ public class GameManager : MonoBehaviour
             OnTimeOfDayChanged?.Invoke(currentTime);
         }
     }
+    
+    public void fadeIn()
+    {
+        if(move == null)
+        {
+            move = player.GetComponent<SC_Player_Move>();
+        }   
+
+        wait = true;
+    }
+
+    public void fadeOut()
+    {
+        if(move == null)
+        {
+            move = player.GetComponent<SC_Player_Move>();
+        }
+        move.FadeOut();
+    }
 
     //called by player at start of scene right now, will be called by a scene manager in the future
     public void newScene()
     {
         player = GameObject.Find("Player");
+
+        move = player.GetComponent<SC_Player_Move>();
+
+        fade = move.getFade();
+
         if(isDoor)
         {
         List<SC_Door> doors = new List<SC_Door>(FindObjectsByType<SC_Door>(FindObjectsSortMode.None));
@@ -97,6 +151,8 @@ public class GameManager : MonoBehaviour
             {
                 door.SetDoorActive(false);
                 player.transform.position = door.spawn.transform.position;
+                
+                fadeIn();
                 break;
             }
         }
@@ -110,6 +166,7 @@ public class GameManager : MonoBehaviour
                 if(build.BuildingName == buildingName)
                 {
                     player.transform.position = build.spawn.transform.position;
+                    fadeIn();
                     break;
                 }
             }
@@ -118,6 +175,7 @@ public class GameManager : MonoBehaviour
         {
             SC_FastTravel fastTravel = FindAnyObjectByType<SC_FastTravel>();
             player.transform.position = fastTravel.transform.position;
+            fadeIn();
         }
     }
 
@@ -188,6 +246,12 @@ public class GameManager : MonoBehaviour
         //Toby Fox core
         //I majored in Game Programming
 
+
+        player = GameObject.Find("Player");
+
+        move = player.GetComponent<SC_Player_Move>();
+
+        fade = move.getFade();
         NewArea(area);
         SceneManager.LoadScene(scene);
     }

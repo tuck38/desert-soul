@@ -14,18 +14,44 @@ public class SC_Menus_Start : MonoBehaviour
     //[Header("Wwise Events")]
     //public AK.Wwise.Event mainMenuButtons;
     bool activeCredits = false;
+
+    bool fadeOut = false;
+    [SerializeField] float fadeFromBlack;
+
+    [SerializeField] UnityEngine.UI.Image screen;
+
+    float currentFadeBlackTimer = 0;
+
     void Update()
     {
         if (activeCredits)
         {
             creditTransform.anchoredPosition += new Vector2(0, +credSpd * Time.deltaTime);
         }
+
+        if(fadeOut)
+        {
+            if(fadeFromBlack >= currentFadeBlackTimer)
+            {
+                currentFadeBlackTimer += Time.deltaTime;
+                float percentegeComplete = currentFadeBlackTimer/ fadeFromBlack;
+
+                float currentFade = Mathf.Lerp(0, 1, percentegeComplete);
+
+                screen.color = new UnityEngine.Color(screen.color.r, screen.color.g, screen.color.b, currentFade);
+            }
+            else
+            {
+                fadeOut = false; 
+                SceneManager.LoadScene(LastScene);
+            }
+        }
     }
 
     public void StartGame ()
     {
        // mainMenuButtons.Post(gameObject);
-        SceneManager.LoadScene(LastScene);
+        fadeOut = true;
     }
 
     public void Options()

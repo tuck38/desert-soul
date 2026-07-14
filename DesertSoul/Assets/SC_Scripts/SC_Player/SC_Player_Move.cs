@@ -1,3 +1,4 @@
+using Unity.Jobs;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -23,6 +24,8 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private float minSpeed = 4f;
     private float currentSpeed;
     bool moving = false;
+
+    [SerializeField] UnityEngine.UI.Image fade;
 
     //lets me save this for the knockback calc
     Vector2 moveVector;
@@ -128,6 +131,14 @@ public class SC_Player_Move : MonoBehaviour
 
     //TEMP 
 
+    [SerializeField] float fadeTime;
+
+    float currentFadeTime = 0;
+
+    bool fadeIn = false;
+
+    bool fadeOut = false;
+
     [SerializeField] bool firstRoom = false;
 
     private void Awake()
@@ -207,6 +218,45 @@ public class SC_Player_Move : MonoBehaviour
             StepSound();
         }
         IFramesUpdate();
+
+        if(fadeIn)
+        {
+            if(fadeTime >= currentFadeTime)
+            {
+                currentFadeTime += Time.deltaTime;
+                float percentegeComplete = currentFadeTime/ fadeTime;
+
+                float currentFade = Mathf.Lerp(1, 0, percentegeComplete);
+
+                fade.color = new UnityEngine.Color(fade.color.r, fade.color.g, fade.color.b, currentFade);
+            }
+            else
+            {
+                currentFadeTime = 0;
+                fadeIn = false;
+                //fadeOut = false; 
+                //SceneManager.LoadScene(LastScene);
+            }
+        }
+        else if (fadeOut)
+        {
+            if(fadeTime >= currentFadeTime)
+            {
+                currentFadeTime += Time.deltaTime;
+                float percentegeComplete = currentFadeTime/ fadeTime;
+
+                float currentFade = Mathf.Lerp(0, 1, percentegeComplete);
+
+                fade.color = new UnityEngine.Color(fade.color.r, fade.color.g, fade.color.b, currentFade);
+            }
+            else
+            {
+                currentFadeTime = 0;
+                fadeOut = false;
+                //fadeOut = false; 
+                //SceneManager.LoadScene(LastScene);
+            }
+        }
     }
 
     private void OnEnable()
@@ -239,6 +289,21 @@ public class SC_Player_Move : MonoBehaviour
     public void isFirstRoom(bool room)
     {
         firstRoom = room;
+    }
+
+    public UnityEngine.UI.Image getFade()
+    {
+        return fade;
+    }
+
+    public void FadeIn()
+    {
+        fadeIn = true;
+    }
+
+    public void FadeOut()
+    {
+        fadeOut = true;
     }
 
     public void SetCanMove(bool canMove)

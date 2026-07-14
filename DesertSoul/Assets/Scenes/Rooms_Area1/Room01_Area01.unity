@@ -1790,6 +1790,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 82.435974, y: 14.97784}
   m_EdgeRadius: 0
+--- !u!114 &1078495961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7425059609795309003, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+  m_PrefabInstance: {fileID: 1078495958}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &1098099208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -104742,12 +104753,16 @@ PrefabInstance:
       value: Door_Enterance
       objectReference: {fileID: 0}
     - target: {fileID: 4141089785354688401, guid: d5b945606a7489340be61eb8c45e9f50, type: 3}
+      propertyPath: m_Size.x
+      value: 2.3102922
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141089785354688401, guid: d5b945606a7489340be61eb8c45e9f50, type: 3}
       propertyPath: m_Size.y
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4141089785354688401, guid: d5b945606a7489340be61eb8c45e9f50, type: 3}
       propertyPath: m_Offset.x
-      value: 0
+      value: -0.6551461
       objectReference: {fileID: 0}
     - target: {fileID: 4141089785354688401, guid: d5b945606a7489340be61eb8c45e9f50, type: 3}
       propertyPath: m_Offset.y
@@ -105379,6 +105394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5828494069722678759, guid: addf43060c7ee0d4e95e66dc91a73f87, type: 3}
+      propertyPath: fade
+      value: 
+      objectReference: {fileID: 1078495961}
     - target: {fileID: 5828494069722678759, guid: addf43060c7ee0d4e95e66dc91a73f87, type: 3}
       propertyPath: timeOfDayStartTimes.Array.size
       value: 3

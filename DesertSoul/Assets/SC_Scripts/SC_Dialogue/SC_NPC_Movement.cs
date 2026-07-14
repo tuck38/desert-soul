@@ -18,7 +18,7 @@ public class SC_NPC_Movement : MonoBehaviour
     {
         if (movementTarget != null)
         {
-            Debug.Log("Target position: " + movementTarget + " | Current Position: " + transform.position);
+            //Debug.Log("Target position: " + movementTarget + " | Current Position: " + transform.position);
             transform.position = Vector2.MoveTowards(transform.position, movementTarget, speed * Time.deltaTime);
         }
     }

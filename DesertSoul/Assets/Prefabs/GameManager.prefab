@@ -53,6 +53,8 @@ MonoBehaviour:
   - 0
   - 6
   - 12
+  fade: {fileID: 0}
+  fadeTime: 3
   town: {fileID: 8300000, guid: 3fd760d7e515a814c9bb8fcc52a88c07, type: 3}
   mainmenu: {fileID: 8300000, guid: 3fd760d7e515a814c9bb8fcc52a88c07, type: 3}
   area1: {fileID: 8300000, guid: b7a00ca101f12af4f9761663ea5c1343, type: 3}

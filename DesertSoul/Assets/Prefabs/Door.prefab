@@ -79,8 +79,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorDir: 1
   nextScene: SampleScene2
+  nextArea: 2
   spawn: {fileID: 1931698420968504765}
-  doorSpeed: 4
+  doorSpeed: 2
 --- !u!61 &4141089785354688401
 BoxCollider2D:
   m_ObjectHideFlags: 0
