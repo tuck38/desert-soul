@@ -2,6 +2,7 @@ using Unity.Jobs;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -182,6 +183,8 @@ public class SC_Player_Move : MonoBehaviour
 
         jumping = false;
         
+        SetFade();
+
         playerInControl = true;
 
         if(firstRoom)
@@ -294,6 +297,11 @@ public class SC_Player_Move : MonoBehaviour
     public UnityEngine.UI.Image getFade()
     {
         return fade;
+    }
+
+    public void SetFade()
+    {
+        fade.color = Color.black;
     }
 
     public void FadeIn()
