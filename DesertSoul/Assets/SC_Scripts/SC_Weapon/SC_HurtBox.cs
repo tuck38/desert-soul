@@ -40,9 +40,12 @@ public class SC_HurtBox : MonoBehaviour
             SC_Enemy_Base enemy = collision.gameObject.GetComponent<SC_Enemy_Base>();
             if(enemy != null && currentAttack != null)
             {
-                if(currentAttack.getAttackType() == AttackType.drillSide & !currentEnemies.Contains(enemy))
+                if(!enemy.IsBoss())
                 {
-                    currentEnemies.Add(enemy);
+                    if(currentAttack.getAttackType() == AttackType.drillSide & !currentEnemies.Contains(enemy))
+                    {
+                        currentEnemies.Add(enemy);
+                    }
                 }
                 enemy.TakeDamage(currentAttack, carryPoint);
                 enemy.SetPlayer(gameObject.gameObject);

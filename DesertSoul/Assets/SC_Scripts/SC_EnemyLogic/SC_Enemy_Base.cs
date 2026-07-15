@@ -37,6 +37,8 @@ public class SC_Enemy_Base : MonoBehaviour
     [SerializeField] private float decelerationMult = 0.95f;
     private bool decelerationEnabled = false;
 
+    [SerializeField] bool bossEnemy = false;
+
     //REFERENCE GOTTEN AFTER PLAYER HITS ENEMY
     private GameObject player;
 
@@ -116,6 +118,11 @@ public class SC_Enemy_Base : MonoBehaviour
         }
     }
 
+    public bool IsBoss()
+    {
+        return bossEnemy;
+    }
+
     //takes damage and returns true if the attack killed the enemy
     public virtual bool TakeDamage(SC_Attack_Base attack, Transform carryPoint)
     {
@@ -173,11 +180,14 @@ public class SC_Enemy_Base : MonoBehaviour
 
         if(atkType == AttackType.primary)
         {
-            //ima make this a lerp
-            lerping = true;
-            kbEndPoint = target;
-            snake.SetCanMove(false);
-            //transform.position = target;
+            if(bossEnemy != true)
+            {
+                //ima make this a lerp
+                lerping = true;
+                kbEndPoint = target;
+                snake.SetCanMove(false);
+                //transform.position = target;
+            }
         }
     }
 
