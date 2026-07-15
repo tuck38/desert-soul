@@ -339,7 +339,6 @@ public class SC_Player_Move : MonoBehaviour
         else if (context.canceled)
         {
             cameraFollowObject.notLooking();
-            Debug.Log("NotLooking");
         }
     }
     public void OnMove(InputAction.CallbackContext context)
@@ -367,6 +366,8 @@ public class SC_Player_Move : MonoBehaviour
             //Gets player input and jumps if grounded
             if ((IsGrounded() || coyoteTimeCounter > 0f) && !jumping)
             {
+                anim.SetBool("isJumping", true); 
+                Debug.Log("??");
                 playerSource.clip = jumpAUD;
                 playerSource.Play();
                 stopJump = false;
@@ -385,7 +386,6 @@ public class SC_Player_Move : MonoBehaviour
             if (!IsGrounded() && jumping == true)
             {
                 SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-                Debug.Log("sdds");
                 rb.gravityScale = rb.gravityScale * fallGravMult;
                 //rb.linearVelocity = new(rb.linearVelocity.x, rb.linearVelocityY / 2);
                 stopJump = true;
@@ -564,7 +564,6 @@ public class SC_Player_Move : MonoBehaviour
 
         if (transform.position.y - startJumpHeight >= maxJumpHeight && jumping == true)
         {
-            Debug.Log("woag");
             rb.gravityScale = rb.gravityScale * fallGravMult;
             jumping = false;
         }
@@ -578,6 +577,7 @@ public class SC_Player_Move : MonoBehaviour
         //sets player gravity back to normal after being grounded
         if(IsGrounded())
         {
+            anim.SetBool("isJumping", false);
             stopJump = false;
             rb.gravityScale = baseGravity;
         }
