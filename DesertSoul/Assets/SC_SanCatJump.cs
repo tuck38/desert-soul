@@ -14,11 +14,21 @@ public class SC_SanCatJump : StateMachineBehaviour
     private bool jumperr;
     private bool isFacingRight;
 
+    private Vector3 center;
+
+    private Vector3 start;
+
+    private Vector3 end;
+
+
+    [SerializeField] float time = 3f;
+    private float currentTime = 0;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        currentTime = 0;
         jumperr = false;
         if(bossBase == null)
         {
@@ -32,14 +42,24 @@ public class SC_SanCatJump : StateMachineBehaviour
         bossBase.flipBoss();
         isFacingRight = bossBase.GetDirection();
 
-        if(isFacingRight)
+        center = bossBase.GetPlayerPos().position + bossBase.transform.position * 0.5f;
+
+        //center -= new Vector3(0, 1, 0);
+
+        start = bossBase.transform.position - center;
+
+        end = bossBase.GetPlayerPos().position - center;
+
+        
+
+        /*if(isFacingRight)
         {
             rb.linearVelocity = new Vector2(sideForce, upForce);
         }
         else if (!isFacingRight)
         {
             rb.linearVelocity = new Vector2(-sideForce, upForce);
-        }
+        }*/
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -50,6 +70,12 @@ public class SC_SanCatJump : StateMachineBehaviour
             jumperr = true;
         }
 
+        currentTime += Time.deltaTime;
+
+        float fracComplete = currentTime / time;
+
+        bossBase.transform.position = Vector3.Slerp(start, end, fracComplete);
+        bossBase.transform.position += center;
 
         if(jumperr == true && bossBase.IsGrounded())
         {

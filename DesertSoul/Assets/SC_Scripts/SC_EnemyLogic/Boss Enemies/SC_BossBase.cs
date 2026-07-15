@@ -60,6 +60,11 @@ public class SC_BossBase : SC_Enemy_Base
         }
     }
 
+    public Transform GetPlayerPos()
+    {
+        return player;
+    }
+
         //takes damage and returns true if the attack killed the enemy
     public override bool TakeDamage(SC_Attack_Base attack, Transform carryPoint)
     {
