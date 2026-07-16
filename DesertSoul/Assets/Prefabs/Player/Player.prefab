@@ -179,11 +179,16 @@ MonoBehaviour:
   moveAccelerationTimer: 0.2
   maxSpeed: 12
   minSpeed: 8
-  maxJumpHeight: 3
-  minJumpHeight: 2
+  fade: {fileID: 0}
+  maxJumpHeight: 2.5
+  minJumpHeight: 0.1
   jumpVelocity: 10
+  airMoveMult: 0.8
   baseGravity: 3
-  gravModifier: 0.005
+  cameraUp: {fileID: 0}
+  cameraDown: {fileID: 0}
+  fallGravModifier: 0
+  fallGravMult: 0
   fallingGravLimit: 10
   coyoteTime: 0.2
   isFacingRight: 1
@@ -247,27 +252,24 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  sytheSwingAUD: []
+  movementAUD: []
+  stepSoundFrequency: 0
+  jumpAUD: {fileID: 0}
+  landAUD: {fileID: 0}
   launchPower: 6
   launchTotalTime: 0.2
   launchFromRight: 0
+  knockbackActive: 0
   flickerSpeedTotal: 0.5
   IframeTotal: 2
   hitbox: {fileID: 1691440002245027248}
   cameraFollowGameObject: {fileID: 0}
   Journal: {fileID: 0}
   stoneAmount: {fileID: 0}
-  playerJump:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: f74a114f4f4c1764dbcb0ff011d88583, type: 2}
-  journalOpen:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 9c0424a15af050e4c839ce0437618362, type: 2}
-  journalClose:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 25e4a9fec9082504e870a817878674d2, type: 2}
+  playerSource: {fileID: 0}
+  fadeTime: 0
+  firstRoom: 0
 --- !u!50 &7767278961558348056
 Rigidbody2D:
   serializedVersion: 5
@@ -382,10 +384,6 @@ MonoBehaviour:
   combo: 
   projectileSpawn: {fileID: 768154965916438980}
   HurtBox: {fileID: 6557361794270610141}
-  sytheAttack:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: 1f80deab7d53710468f1baada0446415, type: 2}
 --- !u!114 &3960449730630822904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc594f549a3fe3140ba9b266e03e9bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  move: {fileID: 0}
+  PlayerDamagedParticles: {fileID: 0}
   maxHealth: 10
   currentHealthProxy: 0
   HUD: {fileID: 0}
@@ -407,10 +407,6 @@ MonoBehaviour:
   sunStacksBeforeDamage: 50
   sunStackRemovalFrequency: 0.2
   sunStackDamageFrequency: 1
-  playerDamaged:
-    idInternal: 0
-    valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: d8fdbbe7ff7fcec47a8d8d154799f95a, type: 2}
 --- !u!114 &2448919803125031715
 MonoBehaviour:
   m_ObjectHideFlags: 0
