@@ -61,6 +61,8 @@ public class GameManager : MonoBehaviour
     bool isFastTravel = false;
     bool interactableDoor = false;
     String buildingName = "Shack";
+
+    List<string> disabledDialogueTriggers = new List<string>();
    
     private void Awake()
     {
@@ -177,6 +179,8 @@ public class GameManager : MonoBehaviour
             player.transform.position = fastTravel.transform.position;
             fadeIn();
         }
+
+        disableDialogueTriggers();
     }
 
     //This function is duplicated for all different travel methods
@@ -311,6 +315,27 @@ public class GameManager : MonoBehaviour
                     currentArea = area;
                     break;
             }
+        }
+    }
+
+    private void disableDialogueTriggers()
+    {
+        GameObject[] triggers = GameObject.FindGameObjectsWithTag("DialogueTrigger");
+        Debug.Log(disabledDialogueTriggers);
+        foreach (GameObject trigger in triggers)
+        {
+            if (disabledDialogueTriggers.Contains(trigger.name))
+            {
+                trigger.SetActive(false);
+            }
+        }
+    }
+
+    public void addTriggerToDisabledList(string trigger)
+    {
+        if (!disabledDialogueTriggers.Contains(trigger))
+        {
+            disabledDialogueTriggers.Add(trigger);
         }
     }
 }

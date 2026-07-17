@@ -336,6 +336,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 57311704}
   m_CullTransparentMesh: 1
+--- !u!1 &88083893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2288424958357108308, guid: addf43060c7ee0d4e95e66dc91a73f87, type: 3}
+  m_PrefabInstance: {fileID: 1484696148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &112429690
 GameObject:
   m_ObjectHideFlags: 0
@@ -49932,7 +49937,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.6269426
+      value: 8.110748
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
@@ -50604,7 +50609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6801254243919456808, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.9211214
+      value: 12.554885
       objectReference: {fileID: 0}
     - target: {fileID: 6801254243919456808, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50612,7 +50617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6801254243919456808, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.9896
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 6801254243919456808, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50707,6 +50712,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 2062207940}
+    - target: {fileID: 7777257767001911902, guid: 489730e45e7988a4abf70ae1f6763fc9, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 88083893}
     - target: {fileID: 7777257767001911902, guid: 489730e45e7988a4abf70ae1f6763fc9, type: 3}
       propertyPath: cameraFollow
       value: 

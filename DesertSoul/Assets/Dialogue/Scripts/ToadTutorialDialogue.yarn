@@ -40,8 +40,13 @@ Sir Thomas Toad: Well, if you indeed are, feel free to follow me. Some of the in
 
 Sir Thomas Toad: Hope to see you in a moment then!
 
+<<flip_target DialogueManager SirThomasToad true>>
+<<move_target_to_position DialogueManager SirThomasToad 19 -2.02>>
+
 //(Sir Thomas Toad walks deeper into the ruins)
 
+<<change_camera_target DialogueManager Player>>
 <<enable_movement ToadInitialDialogueTrigger>>
 <<disable_player_ui DialogueManager false>>
+<<disable_dialogue_trigger DialogueManager ToadInitialDialogueTrigger>>
 ===

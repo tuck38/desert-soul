@@ -1,16 +1,24 @@
 ﻿title: ToadArea01Dialogue
 ---
+
+<<change_camera_target DialogueManager SirThomasToad>>
+<<disable_player_ui DialogueManager true>>
+
+<<flip_target DialogueManager SirThomasToad false>>
+
 Sir Thomas Toad: Oh, hello! Guess you could understand me after all.
 
 Sir Thomas Toad: Either that or you just followed me, but I am choosing to believe in your capabilities.
 
 Green Soul: …
 
+<<flip_target DialogueManager SirThomasToad true>>
+
 Sir Thomas Toad: Anyhow, fascinating is it not?
 
 Sir Thomas Toad: Remnants of the past like these never fail to impress me.
 
-Sir Thomas Toad: Even a door like this can tell us so much about how the people who inhabited these ruins lived.
+Sir Thomas Toad: Even a chamber like this can tell us so much about how the people who inhabited these ruins lived.
 
 Sir Thomas Toad: I wish I could somehow talk to someone from that time. I would have so much to ask…
 
@@ -19,6 +27,8 @@ Sir Thomas Toad: I wish I could somehow talk to someone from that time. I would 
 Desert Soul: …oul…atch…rpos…eal…
 
 Desert Soul: Derelict soul… The profaned egg will soon hatch… Fulfill your purpose… Reapply the seal…
+
+<<flip_target DialogueManager SirThomasToad false>>
 
 Sir Thomas Toad: …ou okay?
 
@@ -29,17 +39,21 @@ Sir Thomas Toad: Can you hear me now? Your gaze was fixated on the passage downw
 Green Soul: …
 
 //(Green Soul goes in the direction of the tunnels leading down)
+//<<move_player_to_position DialogueManager -4 -2.02>>
+
+<<flip_target DialogueManager SirThomasToad true>>
 
 Sir Thomas Toad: Are you proceeding deeper into the ruins? You should be careful, there are some rather fierce beasts roaming the tunnels.
 Sir Thomas Toad: I would follow you to help, but I am well past my fighting days…
 
 //(Green Soul walks a bit more)
+//<<move_player_to_position DialogueManager -2.4 -2.02>>
 
 Sir Thomas Toad: Wait, before you leave, I have a small request.
 
 Sir Thomas Toad: I know I am in no position to ask for favors, as we have just met.
 
-Sir Thomas Toad: But if you by any chance run into MATERIALS NAMES, would you be so kind as to bring them back to the area where we met earlier?
+Sir Thomas Toad: But if you by any chance run into some cactus spines, would you be so kind as to bring them back to the area where we met earlier?
 
 Sir Thomas Toad: I am thinking of establishing myself around the ruins to study them in more depth, so these materials would help me make a small base of operations.
 
@@ -49,6 +63,11 @@ Sir Thomas Toad: Well then, do not let me hold you any longer.
 
 Sir Thomas Toad: Best of luck down there!
 
+<<change_camera_target DialogueManager Player>>
+<<flip_target DialogueManager SirThomasToad false>>
+<<move_target_to_position DialogueManager SirThomasToad -37 0.08>>
 <<enable_movement ToadDialogueTrigger>>
+<<disable_player_ui DialogueManager false>>
+<<disable_dialogue_trigger DialogueManager ToadDialogueTrigger>>
 
 ===

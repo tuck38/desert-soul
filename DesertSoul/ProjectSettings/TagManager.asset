@@ -13,6 +13,7 @@ TagManager:
   - Hazard
   - Fruit
   - Dungball
+  - DialogueTrigger
   layers:
   - Default
   - TransparentFX
