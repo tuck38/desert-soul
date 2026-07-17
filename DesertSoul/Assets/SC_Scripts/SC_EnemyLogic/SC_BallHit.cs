@@ -14,5 +14,9 @@ public class SC_BallHit : MonoBehaviour
         {
             Destroy(Ball);
         }
+        if(col.gameObject.tag == "DungWall")
+        {
+            Destroy(Ball);
+        }
     }
 }
