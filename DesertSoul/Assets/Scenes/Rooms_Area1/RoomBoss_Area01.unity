@@ -353,6 +353,10 @@ PrefabInstance:
       propertyPath: m_CompositeOperation
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3969729942375214759, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4435905006718356002, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.03

@@ -11,6 +11,8 @@ public class SC_SandCatRoar : StateMachineBehaviour
 
     [SerializeField] float roarTime;
 
+    float currentTime = 0f;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -27,15 +29,20 @@ public class SC_SandCatRoar : StateMachineBehaviour
         //play the roar by calling bassBase, which will call the audio manager
 
         bossBase.PlaySFX(bossRoar);
-
-        //gotta delay this until after the roar
-        animator.SetBool("Moving", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        if(roarTime >= currentTime)
+        {
+            //could add screen shake here in the future
+            currentTime += Time.deltaTime;
+        }
+        else
+        {
+            animator.SetBool("Moving", true);
+        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -8,6 +8,8 @@ public class SC_DrillEnabled : MonoBehaviour
     [SerializeField] GameObject unlockText;
     // Update is called once per frame
 
+    private bool drill = false;
+
     void Awake()
     {
         
@@ -15,14 +17,17 @@ public class SC_DrillEnabled : MonoBehaviour
 
     void Update()
     {
-        
+        if(drill)
+        {
+            GameManager.Instance.SetDrillActive(true);  
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
         {
-            player.GetComponent<SC_UpgradeCheck>().isDrill = true;
+            drill = true;
             unlockText.SetActive(true);
             StartCoroutine(UpgradeCelebrate());
         }

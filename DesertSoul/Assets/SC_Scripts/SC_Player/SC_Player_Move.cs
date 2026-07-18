@@ -126,6 +126,8 @@ public class SC_Player_Move : MonoBehaviour
 
     private bool jumping;
 
+    private bool drillGot = false;
+
     private Vector3 spawnPos;
 
     private bool interacting = false;
@@ -403,8 +405,16 @@ public class SC_Player_Move : MonoBehaviour
 
     public void OnSecondary(InputAction.CallbackContext context)
     {
-        SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-        drill.Drill(IsGrounded(), isFacingRight);
+        if(drillGot)
+        {
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+            drill.Drill(IsGrounded(), isFacingRight);
+        }
+    }
+
+    public void setHasDrill(bool drill)
+    {
+        drillGot = drill;
     }
 
     public void OnInteract(InputAction.CallbackContext context)

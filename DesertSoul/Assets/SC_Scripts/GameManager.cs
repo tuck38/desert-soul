@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     private SC_Player_Move move;
 
+    private bool drillActive = false;
+
     SC_Enum_Doors newDoor;
 
     bool isDoor = false;
@@ -141,6 +143,8 @@ public class GameManager : MonoBehaviour
         player = GameObject.Find("Player");
 
         move = player.GetComponent<SC_Player_Move>();
+
+        move.setHasDrill(drillActive);
 
         fade = move.getFade();
 
@@ -260,6 +264,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
+    //Temp function
+
+    public void SetDrillActive(bool active)
+    {
+        drillActive = active;
+        move.setHasDrill(drillActive);
+    }
+
+    public bool GetDrillActive()
+    {
+        return drillActive;
+    }
 
     public void playBossTheme(AudioClip bossMusic)
     {
