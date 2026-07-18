@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,7 +29,7 @@ public class SC_BossBase : SC_Enemy_Base
 
     public float halfHeight;
 
-    private bool isFacingRight = false;
+    private bool isFacingRight = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
@@ -44,12 +45,31 @@ public class SC_BossBase : SC_Enemy_Base
     // Update is called once per frame
     protected override void Update()
     {
-        
+        //I am so tired and want to go to sleep
+        /*if(transform.position.x > player.position.x && isFacingRight)
+        {
+             
+            isFacingRight = !isFacingRight;
+            transform.Rotate(new Vector3(0, 180, 0));
+        }
+        else if(transform.position.x < player.position.x && !isFacingRight)
+        {
+            isFacingRight = !isFacingRight;
+            transform.Rotate(new Vector3(0, 180, 0));
+        }*/
+
     }
 
     public bool GetDirection()
     {
-        return isFacingRight;
+        if(transform.position.x > player.position.x)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public void flipBoss()

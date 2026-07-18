@@ -29,7 +29,7 @@ public class SC_SandCatClaws : StateMachineBehaviour
         //the magic numbers are NOT real and they CANNOT hurt me
         //forgive my Johnathan Ferguson
 
-        bossBase.flipBoss();
+        //bossBase.flipBoss();
         isFacingRight = bossBase.GetDirection();
         if(isFacingRight)
         {
@@ -57,7 +57,7 @@ public class SC_SandCatClaws : StateMachineBehaviour
                 //We are hitting Le wall
 
                 //stun timer, i dont wanna make it rn tho
-
+                Debug.Log("huhwuh");
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }

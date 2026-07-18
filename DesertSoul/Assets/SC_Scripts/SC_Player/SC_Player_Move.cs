@@ -367,7 +367,6 @@ public class SC_Player_Move : MonoBehaviour
             if ((IsGrounded() || coyoteTimeCounter > 0f) && !jumping)
             {
                 anim.SetBool("isJumping", true); 
-                Debug.Log("??");
                 playerSource.clip = jumpAUD;
                 playerSource.Play();
                 stopJump = false;

@@ -1,0 +1,772 @@
+fileFormatVersion: 2
+guid: 1d7e67e97ced49543bcefa18577a70c0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4722662984288873370
+    second: SandCatBossSpriteSheet-ALL_0
+  - first:
+      213: 2854644678753827358
+    second: SandCatBossSpriteSheet-ALL_1
+  - first:
+      213: 5475202877365521805
+    second: SandCatBossSpriteSheet-ALL_2
+  - first:
+      213: -5276337054135625831
+    second: SandCatBossSpriteSheet-ALL_3
+  - first:
+      213: 1289378691004613237
+    second: SandCatBossSpriteSheet-ALL_4
+  - first:
+      213: -6227654842165733621
+    second: SandCatBossSpriteSheet-ALL_5
+  - first:
+      213: -7563601478707645927
+    second: SandCatBossSpriteSheet-ALL_6
+  - first:
+      213: -78039702425633981
+    second: SandCatBossSpriteSheet-ALL_7
+  - first:
+      213: -5920824425642595217
+    second: SandCatBossSpriteSheet-ALL_8
+  - first:
+      213: -7816041779367794115
+    second: SandCatBossSpriteSheet-ALL_9
+  - first:
+      213: -2608611735080461676
+    second: SandCatBossSpriteSheet-ALL_10
+  - first:
+      213: 450462323071336014
+    second: SandCatBossSpriteSheet-ALL_11
+  - first:
+      213: -2200484313720746503
+    second: SandCatBossSpriteSheet-ALL_12
+  - first:
+      213: -4782631481290833583
+    second: SandCatBossSpriteSheet-ALL_13
+  - first:
+      213: 6224447822636742554
+    second: SandCatBossSpriteSheet-ALL_14
+  - first:
+      213: 8245719154968946227
+    second: SandCatBossSpriteSheet-ALL_15
+  - first:
+      213: -4607792820375138717
+    second: SandCatBossSpriteSheet-ALL_16
+  - first:
+      213: 7555124357741921980
+    second: SandCatBossSpriteSheet-ALL_17
+  - first:
+      213: -4245160169709045381
+    second: SandCatBossSpriteSheet-ALL_18
+  - first:
+      213: 725453483974716853
+    second: SandCatBossSpriteSheet-ALL_19
+  - first:
+      213: 4487084692435438270
+    second: SandCatBossSpriteSheet-ALL_20
+  - first:
+      213: 9210837708550427555
+    second: SandCatBossSpriteSheet-ALL_21
+  - first:
+      213: -4741392289495973242
+    second: SandCatBossSpriteSheet-ALL_22
+  - first:
+      213: -8882928022745750979
+    second: SandCatBossSpriteSheet-ALL_23
+  - first:
+      213: -7284434611945006109
+    second: SandCatBossSpriteSheet-ALL_24
+  - first:
+      213: 6370003105566804269
+    second: SandCatBossSpriteSheet-ALL_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 195
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9bac6466f44a8140800000000000000
+      internalID: 4722662984288873370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 195
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1ab415f53cbd9720800000000000000
+      internalID: 2854644678753827358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 195
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8d81921204dbfb40800000000000000
+      internalID: 5475202877365521805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 195
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 997d30d876fa6c6b0800000000000000
+      internalID: -5276337054135625831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 195
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 572c94a861bc4e110800000000000000
+      internalID: 1289378691004613237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 195
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0758f4aaece299a0800000000000000
+      internalID: -6227654842165733621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 195
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 912f20f5780b80790800000000000000
+      internalID: -7563601478707645927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 195
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34bfa8add4fbaeef0800000000000000
+      internalID: -78039702425633981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 195
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6ced140e8105dda0800000000000000
+      internalID: -5920824425642595217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 132
+        width: 64
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3aab2fa967d78390800000000000000
+      internalID: -7816041779367794115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 132
+        width: 64
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49a1d9da2795ccbd0800000000000000
+      internalID: -2608611735080461676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_11
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 132
+        width: 64
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4e3d5f981d504600800000000000000
+      internalID: 450462323071336014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 133
+        width: 64
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fd0bd2ec2f4671e0800000000000000
+      internalID: -2200484313720746503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_13
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 133
+        width: 64
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1514f0ad10ea0adb0800000000000000
+      internalID: -4782631481290833583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_14
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 133
+        width: 64
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a97773fe05ea16650800000000000000
+      internalID: 6224447822636742554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_15
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 133
+        width: 64
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 336ee8d32edae6270800000000000000
+      internalID: 8245719154968946227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_16
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 133
+        width: 64
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 36ec1fec7d4dd00c0800000000000000
+      internalID: -4607792820375138717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_17
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 132
+        width: 64
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb6cb19139139d860800000000000000
+      internalID: 7555124357741921980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 67
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b79fad541592615c0800000000000000
+      internalID: -4245160169709045381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 67
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5bde16d9914511a00800000000000000
+      internalID: 725453483974716853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_20
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 67
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eba05b111c3554e30800000000000000
+      internalID: 4487084692435438270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_21
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 67
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3a3dbe5481873df70800000000000000
+      internalID: 9210837708550427555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 64
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68201db65d0333eb0800000000000000
+      internalID: -4741392289495973242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_23
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 4
+        width: 64
+        height: 60
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3260eee60089b480800000000000000
+      internalID: -8882928022745750979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SandCatBossSpriteSheet-ALL_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 10
+        width: 64
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3eb1575a05d78ea90800000000000000
+      internalID: -7284434611945006109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a51bf93393645c34896fa2fe1b64aec1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      SandCatBossSpriteSheet-ALL_0: 4722662984288873370
+      SandCatBossSpriteSheet-ALL_1: 2854644678753827358
+      SandCatBossSpriteSheet-ALL_10: -2608611735080461676
+      SandCatBossSpriteSheet-ALL_11: 450462323071336014
+      SandCatBossSpriteSheet-ALL_12: -2200484313720746503
+      SandCatBossSpriteSheet-ALL_13: -4782631481290833583
+      SandCatBossSpriteSheet-ALL_14: 6224447822636742554
+      SandCatBossSpriteSheet-ALL_15: 8245719154968946227
+      SandCatBossSpriteSheet-ALL_16: -4607792820375138717
+      SandCatBossSpriteSheet-ALL_17: 7555124357741921980
+      SandCatBossSpriteSheet-ALL_18: -4245160169709045381
+      SandCatBossSpriteSheet-ALL_19: 725453483974716853
+      SandCatBossSpriteSheet-ALL_2: 5475202877365521805
+      SandCatBossSpriteSheet-ALL_20: 4487084692435438270
+      SandCatBossSpriteSheet-ALL_21: 9210837708550427555
+      SandCatBossSpriteSheet-ALL_22: -4741392289495973242
+      SandCatBossSpriteSheet-ALL_23: -8882928022745750979
+      SandCatBossSpriteSheet-ALL_24: -7284434611945006109
+      SandCatBossSpriteSheet-ALL_3: -5276337054135625831
+      SandCatBossSpriteSheet-ALL_4: 1289378691004613237
+      SandCatBossSpriteSheet-ALL_5: -6227654842165733621
+      SandCatBossSpriteSheet-ALL_6: -7563601478707645927
+      SandCatBossSpriteSheet-ALL_7: -78039702425633981
+      SandCatBossSpriteSheet-ALL_8: -5920824425642595217
+      SandCatBossSpriteSheet-ALL_9: -7816041779367794115
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

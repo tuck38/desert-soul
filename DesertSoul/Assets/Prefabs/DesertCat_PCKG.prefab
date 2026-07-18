@@ -4960,7 +4960,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.57, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7096001912586926036}
@@ -5032,8 +5032,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 7.625}
-    newSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 1, y: 0.953125}
+    newSize: {x: 1, y: 0.953125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -5093,6 +5093,7 @@ MonoBehaviour:
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   catSounds: {fileID: 3259157621386341622}
   bossTheme: {fileID: 8300000, guid: ff3f870d244679144932b3fd27adf95e, type: 3}
+  actualTransform: {fileID: 0}
   halfWidth: 0
   halfHeight: 0
 --- !u!212 &4198121723198292843
@@ -5142,12 +5143,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -7760018770940203644, guid: b520b59a5c7541d4e9b1f309efc24296, type: 3}
+  m_Sprite: {fileID: 4722662984288873370, guid: 1d7e67e97ced49543bcefa18577a70c0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 1, y: 0.953125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -5191,8 +5192,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 7.625}
-    newSize: {x: 1.28, y: 1.28}
+    oldSize: {x: 1, y: 0.953125}
+    newSize: {x: 1, y: 0.953125}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

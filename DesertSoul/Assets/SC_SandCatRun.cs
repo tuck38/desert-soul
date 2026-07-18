@@ -35,6 +35,8 @@ public class SC_SandCatRun : StateMachineBehaviour
         {
             bossBase = animator.GetComponent<SC_BossBase>();
         }
+
+        bossBase.flipBoss();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

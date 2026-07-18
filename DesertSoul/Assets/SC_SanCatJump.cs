@@ -7,32 +7,10 @@ public class SC_SanCatJump : StateMachineBehaviour
 
     Rigidbody2D rb;
 
-    [SerializeField] float upForce;
-    [SerializeField] float sideForce;
-
     private SC_BossBase bossBase;
 
     private bool jumperr;
     private bool isFacingRight;
-
-    private Vector3 center;
-
-    private Vector3 start;
-
-    private Vector3 end;
-
-
-    [SerializeField] float attackTime = 3f;
-
-    float currentTime;
-
-    //math (ew)
-
-    float accelerationX = 0;
-
-    float accelerationY = -9.8f;
-
-    [SerializeField] float angle = 30f;
 
     [SerializeField] float attackSpeed = 1f;
     [SerializeField] float maxHeight;
@@ -80,7 +58,7 @@ public class SC_SanCatJump : StateMachineBehaviour
 
 
 
-        bossBase.flipBoss();
+        //bossBase.flipBoss();
         isFacingRight = bossBase.GetDirection();
     }
 
@@ -89,6 +67,7 @@ public class SC_SanCatJump : StateMachineBehaviour
     {
         if(jumperr == false && !bossBase.IsGrounded())
         {
+            Debug.Log("no, that aint right");
             jumperr = true;
         }
 
@@ -106,14 +85,23 @@ public class SC_SanCatJump : StateMachineBehaviour
 
         if(jumperr == true && bossBase.IsGrounded())
         {
+            Debug.Log("gwahgwah");
             animator.SetBool("doAttack2", false);
             rb.linearVelocity = Vector2.zero;
         }
 
         if(isFacingRight)
         {
+            if(Physics2D.Raycast(bossBase.gameObject.transform.position, Vector2.right, bossBase.halfWidth + 0.1f, LayerMask.GetMask("Ground")))
+            {
+                //We are hitting Le wall
 
-            trajectoryRange = bossBase.GetPlayerPos().position - trajectoryStartPoint;
+                //stun timer, i dont wanna make it rn tho
+
+                animator.SetBool("doAttack2", false);
+                animator.SetBool("Moving", true);
+            }
+            trajectoryRange = trajectoryEndPoint - trajectoryStartPoint;
 
             nextPositionX = bossBase.gameObject.transform.position.x + attackSpeed * Time.deltaTime;
 
@@ -127,8 +115,18 @@ public class SC_SanCatJump : StateMachineBehaviour
         }
         else if(!isFacingRight)
         {
+            
+            if(Physics2D.Raycast(rb.position, Vector2.left, bossBase.halfWidth + 0.1f, LayerMask.GetMask("Ground")))
+            {
+                //We are hitting Le wall
 
-            trajectoryRange = trajectoryStartPoint - bossBase.GetPlayerPos().position;
+                //stun timer, i dont wanna make it rn tho
+
+                animator.SetBool("doAttack2", false);
+                animator.SetBool("Moving", true);
+            }
+
+            trajectoryRange = trajectoryStartPoint - trajectoryEndPoint;
 
             nextPositionX = bossBase.gameObject.transform.position.x - attackSpeed * Time.deltaTime;
 
@@ -149,7 +147,7 @@ public class SC_SanCatJump : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        bossBase.flipBoss();
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
