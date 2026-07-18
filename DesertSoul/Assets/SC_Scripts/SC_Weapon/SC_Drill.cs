@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Runtime.InteropServices.ComTypes;
+using NUnit.Framework;
 using UnityEngine;
 
 public class SC_Drill : MonoBehaviour
@@ -127,6 +128,11 @@ public class SC_Drill : MonoBehaviour
             playerMove.SetCanMove(false);
             shmovement = new Vector2(0, -1);
         }
+    }
+
+    public bool GetDrillin()
+    {
+        return drillin;
     }
 
     /// <summary>

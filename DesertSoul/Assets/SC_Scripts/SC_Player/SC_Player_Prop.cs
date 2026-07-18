@@ -109,7 +109,7 @@ public class SC_Player_Prop : MonoBehaviour
         {
             //TODO: Good for now but change this to restarting from save
             currentHealth = int.MinValue;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameManager.Instance.playerDead();
             
         }
     }

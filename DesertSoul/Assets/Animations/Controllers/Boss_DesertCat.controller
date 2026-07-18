@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cdfc880664722f47bc0a14d98d8fc63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  windUpTime: 0.4
+  windUpTime: 0.7
 --- !u!1101 &-7786179023913126035
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -307,8 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6a6c896f46be94db091d7aaf2640a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  attackSpeed: 25
-  dashRange: 30
+  attackSpeed: 75
+  dashRange: 50
 --- !u!1102 &-96100659064961967
 AnimatorState:
   serializedVersion: 6

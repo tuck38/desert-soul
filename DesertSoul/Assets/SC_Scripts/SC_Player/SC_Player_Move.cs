@@ -218,7 +218,7 @@ public class SC_Player_Move : MonoBehaviour
             KnockbackUpdate();
         }
 
-        if(moving && IsGrounded())
+        if(moving && IsGrounded() && !drill.GetDrillin())
         {
             StepSound();
         }

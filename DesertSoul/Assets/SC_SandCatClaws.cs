@@ -57,7 +57,6 @@ public class SC_SandCatClaws : StateMachineBehaviour
                 //We are hitting Le wall
 
                 //stun timer, i dont wanna make it rn tho
-                Debug.Log("huhwuh");
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
@@ -65,6 +64,7 @@ public class SC_SandCatClaws : StateMachineBehaviour
             {
                 //range maxxed out
 
+                Debug.Log("huh");
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
@@ -84,6 +84,7 @@ public class SC_SandCatClaws : StateMachineBehaviour
             {
                 //range maxxed out
 
+                Debug.Log("huhwuh");
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }

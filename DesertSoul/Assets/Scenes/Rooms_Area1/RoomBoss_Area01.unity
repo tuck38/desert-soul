@@ -319,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.302068
+      value: -10.298241
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
@@ -427,7 +427,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4933505185385794882, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.06
+      value: 7.12
       objectReference: {fileID: 0}
     - target: {fileID: 4933505185385794882, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
@@ -958,7 +958,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 470734760665065030, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: m_Size.x
-      value: 2.1603432
+      value: 1.3807945
       objectReference: {fileID: 0}
     - target: {fileID: 470734760665065030, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: m_Size.y
@@ -966,7 +966,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 470734760665065030, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: m_Offset.x
-      value: 17.673738
+      value: 17.283964
       objectReference: {fileID: 0}
     - target: {fileID: 470734760665065030, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: m_Offset.y
@@ -1079,6 +1079,10 @@ PrefabInstance:
     - target: {fileID: 4829877920198025377, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: damage
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: sprite
@@ -1478,8 +1482,8 @@ MonoBehaviour:
   m_LightType: 1
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0.040562414, g: 0.6247824, b: 0.79622644, a: 1}
+  m_Intensity: 2.27
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000

@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
 
     SC_Enum_Doors newDoor;
 
+    bool fuckyoumode = false;
+
     bool isDoor = false;
     bool isFastTravel = false;
     bool interactableDoor = false;
@@ -101,6 +103,19 @@ public class GameManager : MonoBehaviour
         }
 
         //Debug.Log($"Current Time: {dayTimer}, Time Of Day: {currentTime}");
+
+        //DEBUG KEYS
+
+        if(Input.GetKeyDown(KeyCode.Keypad1))
+        {
+            SceneManager.LoadScene("Room11_Area01");
+        }
+        else if(Input.GetKeyDown(KeyCode.Keypad2))
+        {
+            SceneManager.LoadScene("RoomBoss_Area01");
+            SetDrillActive(true);
+        }
+
     }
 
     private void UpdateTimeOfDay()
@@ -135,6 +150,11 @@ public class GameManager : MonoBehaviour
             move = player.GetComponent<SC_Player_Move>();
         }
         move.FadeOut();
+    }
+
+    public void setPain(bool pain)
+    {
+        fuckyoumode = pain;
     }
 
     //called by player at start of scene right now, will be called by a scene manager in the future
@@ -270,6 +290,18 @@ public class GameManager : MonoBehaviour
     {
         drillActive = active;
         move.setHasDrill(drillActive);
+    }
+
+    public void playerDead()
+    {
+        if(fuckyoumode)
+        {
+            SceneManager.LoadScene("Room01_AreaTown");
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 
     public bool GetDrillActive()

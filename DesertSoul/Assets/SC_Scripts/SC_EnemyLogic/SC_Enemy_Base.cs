@@ -14,6 +14,8 @@ public class SC_Enemy_Base : MonoBehaviour
     [SerializeField] private float totalLerpTime;
     private float elapsedLerpTime = 0f;
 
+    public bool isSnake = false;
+
     Vector3 kbEndPoint;
 
     bool lerping = false;
@@ -108,7 +110,10 @@ public class SC_Enemy_Base : MonoBehaviour
             if(transform.position == kbEndPoint)
             {
                 lerping = false;
-                snake.SetCanMove(true);
+                if(isSnake)
+                {
+                    snake.SetCanMove(true);
+                }
             }
         }
 
@@ -152,6 +157,9 @@ public class SC_Enemy_Base : MonoBehaviour
 
     public void Knockback(AttackType atkType)
     {
+        //TEMPORARY IF STATMENT
+        if(isSnake)
+        {
 
         //method 1
         //Vector3 dirVect = gameObject.transform.position - enemy.transform.position;
@@ -188,6 +196,7 @@ public class SC_Enemy_Base : MonoBehaviour
                 snake.SetCanMove(false);
                 //transform.position = target;
             }
+        }
         }
     }
 

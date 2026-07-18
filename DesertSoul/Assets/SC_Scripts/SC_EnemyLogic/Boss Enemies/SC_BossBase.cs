@@ -94,6 +94,8 @@ public class SC_BossBase : SC_Enemy_Base
         slider.value = currentHealth / MAXHealth;
         if (currentHealth <= 0)
         {
+            //death "cutscene"
+            Destroy(gameObject);
             return true;
         }
         return false;
