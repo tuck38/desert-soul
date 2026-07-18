@@ -22,6 +22,8 @@ public class SC_BossBase : SC_Enemy_Base
 
     [SerializeField] AudioClip bossTheme;
 
+    [SerializeField] Transform actualTransform;
+
     public float halfWidth;
 
     public float halfHeight;
@@ -107,6 +109,11 @@ public class SC_BossBase : SC_Enemy_Base
     public bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    public Transform getBossTransform()
+    {
+        return actualTransform;
     }
 
     public void ChangeColor(Color color, bool originalColor)

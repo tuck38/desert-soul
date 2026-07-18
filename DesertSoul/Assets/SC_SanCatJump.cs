@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using Yarn.Compiler;
 
@@ -23,6 +24,8 @@ public class SC_SanCatJump : StateMachineBehaviour
 
     [SerializeField] float attackTime = 3f;
 
+    float currentTime;
+
     //math (ew)
 
     float accelerationX = 0;
@@ -31,9 +34,15 @@ public class SC_SanCatJump : StateMachineBehaviour
 
     [SerializeField] float angle = 30f;
 
-    Vector2 launchVelocity;
-    
-    float initialVelocity;
+    [SerializeField] float attackSpeed = 1f;
+    [SerializeField] float maxHeight;
+
+    [SerializeField] AnimationCurve curve;
+
+    Vector3 trajectoryStartPoint;
+    Vector3 trajectoryEndPoint;
+
+    Vector2 gravityVec = new Vector2(0, -9.8f);
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -48,7 +57,26 @@ public class SC_SanCatJump : StateMachineBehaviour
             rb = animator.GetComponent<Rigidbody2D>();
         }
 
-        Vector3 gravity = new Vector3(0,-9.8f,0);
+        trajectoryStartPoint = bossBase.getBossTransform().position;
+        trajectoryEndPoint = bossBase.GetPlayerPos().transform.position;
+
+       /* currentTime = 0f;
+        rb.gravityScale = 9.8f;
+
+        //finding initial velocity of boss attack
+        UnityEngine.Vector2 displacment = bossBase.GetPlayerPos().position - bossBase.transform.position;
+
+        Vector2 horizontalDisplacement = new Vector2(displacment.x, 0f);
+
+        float verticalDisplacment = displacment.y;
+
+        Vector2 horizontalVelocity = horizontalDisplacement / attackTime;
+
+        float verticalVelocity = (displacment.y - 0.5f * gravityVec.y * attackTime * attackTime)/ attackTime;*/
+
+
+        //initialVelocity = horizontalVelocity + Vector2.up * verticalVelocity;
+        //rb.linearVelocity = horizontalVelocity + Vector2.up * verticalVelocity;
 
 
 
@@ -64,11 +92,58 @@ public class SC_SanCatJump : StateMachineBehaviour
             jumperr = true;
         }
 
+        Vector3 trajectoryRange;
+
+        float nextPositionX = bossBase.gameObject.transform.position.x + attackSpeed * Time.deltaTime;
+
+        float posXNorm = 0;
+
+        float posYNorm = curve.Evaluate(posXNorm);
+
+        float nextPositionY = trajectoryStartPoint.y + posYNorm * maxHeight;
+
+        Vector3 nextPosition = Vector3.zero;
+
         if(jumperr == true && bossBase.IsGrounded())
         {
             animator.SetBool("doAttack2", false);
             rb.linearVelocity = Vector2.zero;
         }
+
+        if(isFacingRight)
+        {
+
+            trajectoryRange = bossBase.GetPlayerPos().position - trajectoryStartPoint;
+
+            nextPositionX = bossBase.gameObject.transform.position.x + attackSpeed * Time.deltaTime;
+
+            posXNorm = (nextPositionX - trajectoryStartPoint.x) / trajectoryRange.x;
+
+            posYNorm = curve.Evaluate(posXNorm);
+
+            nextPositionY = trajectoryStartPoint.y + posYNorm * maxHeight;
+
+            nextPosition = new Vector3(nextPositionX, nextPositionY, 0);
+        }
+        else if(!isFacingRight)
+        {
+
+            trajectoryRange = trajectoryStartPoint - bossBase.GetPlayerPos().position;
+
+            nextPositionX = bossBase.gameObject.transform.position.x - attackSpeed * Time.deltaTime;
+
+            posXNorm = (trajectoryStartPoint.x - nextPositionX) / trajectoryRange.x;
+
+            posYNorm = curve.Evaluate(posXNorm);
+
+            nextPositionY = trajectoryStartPoint.y + posYNorm * maxHeight;
+
+            nextPosition = new Vector3(nextPositionX, nextPositionY, 0);
+        }
+
+        bossBase.transform.position = nextPosition;
+
+        //rb.MovePosition(nextPosition);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

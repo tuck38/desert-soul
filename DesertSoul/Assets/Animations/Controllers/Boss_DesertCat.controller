@@ -548,6 +548,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   upForce: 7.5
   sideForce: 12
+  attackTime: 0.07
+  angle: 30
+  attackSpeed: 20
+  maxHeight: 3
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.003540039
+      value: 0
+      inSlope: 2.0039618
+      outSlope: 2.0039618
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.50255156
+      value: 1
+      inSlope: -0.0008598546
+      outSlope: -0.0008598546
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.4718675
+    - serializedVersion: 3
+      time: 1.0008515
+      value: 0
+      inSlope: -2.0068233
+      outSlope: -2.0068233
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1101 &3038824393320031770
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

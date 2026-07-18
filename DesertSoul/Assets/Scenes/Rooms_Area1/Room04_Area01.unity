@@ -26623,19 +26623,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 776877c512bf40b499f97b8125849090, type: 3}
   m_Name: 
   m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkInitializer
-  InitializationSettings: {fileID: 11400000, guid: 021a36a7d2e4cf746bd799f79a72ea00, type: 2}
-  basePath: 
-  language: 
-  defaultPoolSize: 0
-  lowerPoolSize: 0
-  streamingPoolSize: 0
-  memoryCutoffThreshold: 0
-  monitorPoolSize: 0
-  monitorQueuePoolSize: 0
-  callbackManagerBufferSize: 0
-  spatialAudioPoolSize: 0
-  maxSoundPropagationDepth: 0
-  engineLogging: 0
 --- !u!4 &2024082630
 Transform:
   m_ObjectHideFlags: 0
@@ -26754,11 +26741,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.7816796
+      value: 2.01
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.65108
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26890,11 +26877,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: jumpVelocity
-      value: 8
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: maxJumpHeight
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5025454606652546236, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: minJumpHeight
@@ -26998,10 +26985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4539b149978895e409f7164505caf849, type: 3}
   m_Name: 
   m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkAudioListener
-  isDefaultListener: 1
-  bOverrideScalingFactor: 0
-  scalingFactor: -1
-  listenerId: 0
 --- !u!114 &2143068155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27014,18 +26997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7eca8170e92c749a780b03cfc64ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: AK.Wwise.Unity.MonoBehaviour::AkGameObj
-  m_listeners:
-    initialListenerList: []
-    useDefaultListeners: 1
-  isEnvironmentAware: 0
-  isStaticObject: 0
-  usePositionOffsetData: 0
-  m_positionOffsetData:
-    KeepMe: 0
-    positionOffset: {x: 0, y: 0, z: 0}
-  scalingFactor: 1
-  m_posOffsetData: {fileID: 0}
-  listenerMask: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
