@@ -61,10 +61,13 @@ public class GameManager : MonoBehaviour
 
     bool fuckyoumode = false;
 
+    //door stuff
     bool isDoor = false;
     bool isFastTravel = false;
     bool interactableDoor = false;
     String buildingName = "Shack";
+
+    bool isFacingRight = false; 
 
     List<string> disabledDialogueTriggers = new List<string>();
    
@@ -211,15 +214,21 @@ public class GameManager : MonoBehaviour
         disableDialogueTriggers();
     }
 
+
+    public bool GetWasFacingRight()
+    {
+        return isFacingRight;
+    }
     //This function is duplicated for all different travel methods
     //In Order: directional doors, interactable doors, fast travel
 
     //directional doors 
-    public void LoadNewLevel(string scene, SC_Areas_Enum area, SC_Enum_Doors doorDir, bool door, bool fastTravel, bool intDoor = false, string toBuildingName = "Shack")
+    public void LoadNewLevel(string scene, SC_Areas_Enum area, SC_Enum_Doors doorDir, bool door, bool fastTravel, bool facingRight = false, bool intDoor = false, string toBuildingName = "Shack")
     {
         //Gets the source door direction and finds the destination door in the next room
         //I hate this one
 
+        isFacingRight = facingRight;
         isDoor = door;
         interactableDoor = intDoor;
         isFastTravel = fastTravel;

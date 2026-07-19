@@ -132,6 +132,8 @@ public class SC_Player_Move : MonoBehaviour
 
     private bool interacting = false;
 
+    private bool usingGravity = true;
+
     //TEMP 
 
     [SerializeField] float fadeTime;
@@ -211,7 +213,7 @@ public class SC_Player_Move : MonoBehaviour
         //inst used rn, havent implemented camrea looking
         vertical = look.ReadValue<float>();
 
-        MoveUpdate(moveVector, currentSpeed, true);
+        MoveUpdate(moveVector, currentSpeed, usingGravity);
 
         if(knockbackActive)
         {
@@ -224,6 +226,8 @@ public class SC_Player_Move : MonoBehaviour
         }
         IFramesUpdate();
 
+
+        //fade in da update func
         if(fadeIn)
         {
             if(fadeTime >= currentFadeTime)
@@ -468,6 +472,7 @@ public class SC_Player_Move : MonoBehaviour
     //handles all movement calculations
     public void Move(Vector2 movement, float speed, bool useGravity)
     {
+        usingGravity = useGravity;
         spriteRotation(movement);
         if (movement.x < 0)
         {

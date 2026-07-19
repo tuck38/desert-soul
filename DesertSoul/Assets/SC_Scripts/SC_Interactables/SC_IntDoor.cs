@@ -21,6 +21,6 @@ public class SC_IntDoor : SC_Interactable
 
     protected override void DoAction()
     {
-        GameManager.Instance.LoadNewLevel(goToScene, area, SC_Enum_Doors.Bottom, false, false, true, building);
+        GameManager.Instance.LoadNewLevel(goToScene, area, SC_Enum_Doors.Bottom, false, false, true, false, building);
     }
 }

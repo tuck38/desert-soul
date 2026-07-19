@@ -13,10 +13,23 @@ public class SC_Door : MonoBehaviour
     Vector2 movement;
 
     //Completely works for horizontal doors rn, does not for up/down. can do some band aid solutions to get it working but
+    //I got this
 
+    private bool curvingIt = false;
+
+    [SerializeField] AnimationCurve curve;
+    private Transform curveStartPoint;
+
+    [SerializeField] Transform curveEndRight;
+
+    [SerializeField] Transform curveEndLeft;
     private bool doorActive = true;
 
     [SerializeField] float doorSpeed = 4f;
+
+    [SerializeField] private float maxHeight;
+
+    private bool goRight = false;
 
     SC_Player_Move playerMove;
 
@@ -32,7 +45,7 @@ public class SC_Door : MonoBehaviour
 
     private void Update()
     {
-        if(movePlayer)
+        if(movePlayer && !curvingIt)
         {
             //unaware if this is more expensive then just getting the component here
             playerMove.SetCanMove(false);
@@ -46,6 +59,10 @@ public class SC_Door : MonoBehaviour
             {
                 playerMove.Move(movement, doorSpeed, true);
             }
+        }
+        else if(movePlayer && curvingIt)
+        {
+            UpDoorTragectory();
         }
     }
 
@@ -93,6 +110,8 @@ public class SC_Door : MonoBehaviour
                 }
                 else if (doorDir == SC_Enum_Doors.Top || doorDir == SC_Enum_Doors.Top2)
                 {
+                    //this is when your coming out of a top door
+                    //happy pride
                     movement = new Vector2(0, -1);
                 }
                 else if (doorDir == SC_Enum_Doors.Bottom || doorDir == SC_Enum_Doors.Bottom2)
@@ -114,16 +133,96 @@ public class SC_Door : MonoBehaviour
                 movePlayer = false;
                 if (collision.gameObject.tag == "Player")
                 {
-                    GameManager.Instance.LoadNewLevel(nextScene, nextArea, doorDir, true, false);
+                    bool facingRight = playerMove.isFacingRight;
+                    GameManager.Instance.LoadNewLevel(nextScene, nextArea, doorDir, true, false, facingRight);
                 }
             }
             //Player moving out from a door into a new room
             else if (!doorActive)
             {
-                movePlayer = false;
-                playerMove.SetCanMove(true);
-                doorActive = true;
+                //ANIMATION CURVE
+                if(doorDir == SC_Enum_Doors.Bottom || doorDir == SC_Enum_Doors.Bottom2)
+                {
+                    curveStartPoint = playerMove.transform;
+                    //curvingIt = true;
+                    movePlayer = false;
+                    playerMove.SetCanMove(true);
+                    doorActive = true;
+                }
+                else
+                {
+                    movePlayer = false;
+                    playerMove.SetCanMove(true);
+                    doorActive = true;
+                }
             }
         }
     }
+
+
+    private void UpDoorTragectory()
+    {
+        goRight = GameManager.Instance.GetWasFacingRight();
+
+        Vector3 curveEndPoint = curveEndLeft.position;
+
+        //curveStartPoint = playerMove.transform;
+
+        Vector3 trajectoryRange;
+
+        float nextPositionX = playerMove.transform.position.x + doorSpeed * Time.deltaTime;
+
+        float posXNorm = 0;
+
+        float posYNorm = curve.Evaluate(posXNorm);
+
+        float nextPositionY = curveStartPoint.position.y + posYNorm * maxHeight;
+
+        Vector3 nextPosition = Vector3.zero;
+
+        if(goRight)
+        {
+            curveEndPoint = curveEndRight.position;
+
+            trajectoryRange = curveEndPoint - curveStartPoint.position;
+
+            nextPositionX = playerMove.transform.position.x + doorSpeed * Time.deltaTime;
+
+            posXNorm = (nextPositionX - curveStartPoint.position.x) / trajectoryRange.x;
+
+            posYNorm = curve.Evaluate(posXNorm);
+
+            nextPositionY = curveStartPoint.position.y + posYNorm * maxHeight;
+
+            nextPosition = new Vector3(nextPositionX, nextPositionY, 0);
+
+        }
+        else
+        {
+            curveEndPoint = curveEndLeft.position;
+
+            trajectoryRange = curveStartPoint.position - curveEndPoint;
+
+            nextPositionX = playerMove.transform.position.x - doorSpeed * Time.deltaTime;
+
+            posXNorm = (curveStartPoint.position.x - nextPositionX) / trajectoryRange.x;
+
+            posYNorm = curve.Evaluate(posXNorm);
+
+            nextPositionY = curveStartPoint.position.y + posYNorm * maxHeight;
+
+            nextPosition = new Vector3(nextPositionX, nextPositionY, 0);
+        }
+
+        playerMove.transform.position = nextPosition;
+
+        if(playerMove.transform.position == curveEndPoint)
+        {
+            curvingIt = false;
+            movePlayer = false;
+            playerMove.SetCanMove(true);
+            doorActive = true;
+        }
+    }
+
 }
