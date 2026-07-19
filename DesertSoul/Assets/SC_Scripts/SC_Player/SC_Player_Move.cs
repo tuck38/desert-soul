@@ -185,7 +185,7 @@ public class SC_Player_Move : MonoBehaviour
 
         jumping = false;
         
-        SetFade();
+        //SetFade();
 
         playerInControl = true;
 

@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
         {
             move = player.GetComponent<SC_Player_Move>();
         }   
-
+        move.SetFade();
         wait = true;
     }
 
