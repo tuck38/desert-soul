@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SC_BossBase : SC_Enemy_Base
 {
     [SerializeField] Animator bossAnim;
-
+    [SerializeField] Transform beetleSpawn;
+    [SerializeField] GameObject beetle;
+    private bool phaseTransed = false;
      [SerializeField] private Transform groundCheck;
     private Transform playerTrans;
 
@@ -91,6 +94,11 @@ public class SC_BossBase : SC_Enemy_Base
     {
         currentHealth -= attack.getDamage();
         slider.value = currentHealth / MAXHealth;
+        if (currentHealth <= 100 && phaseTransed == false)
+        {
+            GameObject obj = Instantiate(beetle, beetleSpawn.position, beetleSpawn.rotation);
+            phaseTransed = true;
+        }
         if (currentHealth <= 0)
         {
             //death "cutscene"
