@@ -1,8 +1,6 @@
 using System;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
-using UnityEditor.ShaderGraph.Internal;
-using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 

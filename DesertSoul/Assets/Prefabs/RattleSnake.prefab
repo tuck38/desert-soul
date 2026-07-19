@@ -5385,9 +5385,11 @@ MonoBehaviour:
   snake: {fileID: 3084359168301113991}
   knockbackDist: 1
   totalLerpTime: 1.2
+  isSnake: 1
   totalLaunchTime: 3
   launchPower: 5
   decelerationMult: 0.95
+  bossEnemy: 0
 --- !u!114 &3084359168301113991
 MonoBehaviour:
   m_ObjectHideFlags: 0

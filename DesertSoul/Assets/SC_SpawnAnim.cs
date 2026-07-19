@@ -17,7 +17,7 @@ public class SC_SpawnAnim : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        GameObject.Destroy(this);
+        //GameObject.Destroy(this);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

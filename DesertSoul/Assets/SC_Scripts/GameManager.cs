@@ -106,14 +106,18 @@ public class GameManager : MonoBehaviour
 
         //DEBUG KEYS
 
-        if(Input.GetKeyDown(KeyCode.Keypad1))
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             SceneManager.LoadScene("Room11_Area01");
         }
-        else if(Input.GetKeyDown(KeyCode.Keypad2))
+        else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
             SceneManager.LoadScene("RoomBoss_Area01");
             SetDrillActive(true);
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("StartMenu");
         }
 
     }

@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +6,7 @@ public class SC_BossBase : SC_Enemy_Base
     [SerializeField] Animator bossAnim;
 
      [SerializeField] private Transform groundCheck;
-    private Transform player;
+    private Transform playerTrans;
 
     [SerializeField] GameObject healthBar;
     private Slider slider;
@@ -34,7 +33,7 @@ public class SC_BossBase : SC_Enemy_Base
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
         slider = healthBar.GetComponent<Slider>();
         baseColor = sprite.color;
         halfHeight = sprite.bounds.extents.y;
@@ -62,7 +61,7 @@ public class SC_BossBase : SC_Enemy_Base
 
     public bool GetDirection()
     {
-        if(transform.position.x > player.position.x)
+        if(transform.position.x > playerTrans.position.x)
         {
             return false;
         }
@@ -74,7 +73,7 @@ public class SC_BossBase : SC_Enemy_Base
 
     public void flipBoss()
     {
-        if (transform.position.x > player.position.x && isFacingRight || transform.position.x < player.position.x && !isFacingRight)
+        if (transform.position.x > playerTrans.position.x && isFacingRight || transform.position.x < playerTrans.position.x && !isFacingRight)
         {
             isFacingRight = !isFacingRight;
             transform.Rotate(new Vector3(0, 180, 0));
@@ -84,7 +83,7 @@ public class SC_BossBase : SC_Enemy_Base
 
     public Transform GetPlayerPos()
     {
-        return player;
+        return playerTrans;
     }
 
         //takes damage and returns true if the attack killed the enemy
