@@ -102,6 +102,7 @@ public class SC_BossBase : SC_Enemy_Base
         if (currentHealth <= 0)
         {
             //death "cutscene"
+            SceneManager.LoadScene("DemoOverScene");
             Destroy(gameObject);
             return true;
         }
