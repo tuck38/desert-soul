@@ -125,6 +125,7 @@ public class respawnmanager : MonoBehaviour
     public void respawned()
     {
         lightSpawn.intensity = 0;
+        Screen.color = new UnityEngine.Color(UnityEngine.Color.black.r, UnityEngine.Color.black.g, UnityEngine.Color.black.b, 0);
 
         GameObject.Destroy(Animation.gameObject);
 
