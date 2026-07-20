@@ -1,4 +1,3 @@
-using Google.Protobuf.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -144,6 +143,7 @@ public class SC_Door : MonoBehaviour
                 if(doorDir == SC_Enum_Doors.Bottom || doorDir == SC_Enum_Doors.Bottom2)
                 {
                     curveStartPoint = playerMove.transform;
+                    Debug.Log("gah");
                     //curvingIt = true;
                     movePlayer = false;
                     playerMove.SetCanMove(true);
@@ -160,6 +160,8 @@ public class SC_Door : MonoBehaviour
     }
 
 
+
+//not working right now, will come back later
     private void UpDoorTragectory()
     {
         goRight = GameManager.Instance.GetWasFacingRight();
@@ -206,12 +208,18 @@ public class SC_Door : MonoBehaviour
             nextPositionX = playerMove.transform.position.x - doorSpeed * Time.deltaTime;
 
             posXNorm = (curveStartPoint.position.x - nextPositionX) / trajectoryRange.x;
-
             posYNorm = curve.Evaluate(posXNorm);
 
             nextPositionY = curveStartPoint.position.y + posYNorm * maxHeight;
 
             nextPosition = new Vector3(nextPositionX, nextPositionY, 0);
+
+            Debug.Log("start");
+            Debug.Log("End Point: " + curveEndPoint);
+            Debug.Log("Start Point: " + curveStartPoint.transform.position);
+            Debug.Log("next position: " + nextPosition);
+            Debug.Log("current transform: " + playerMove.transform.position);
+            Debug.Log("End");
         }
 
         playerMove.transform.position = nextPosition;
