@@ -3,6 +3,7 @@
 
 <<change_camera_target DialogueManager SirThomasToad>>
 <<disable_player_ui DialogueManager true>>
+<<disable_dialogue_trigger DialogueManager ToadDialogueTrigger>>
 
 <<flip_target DialogueManager SirThomasToad false>>
 
@@ -24,6 +25,8 @@ Sir Thomas Toad: I wish I could somehow talk to someone from that time. I would 
 
 //(Green Soul suddenly hears whispers from the depths of the ruins)
 
+<<change_camera_target DialogueManager Player>>
+
 Desert Soul: …oul…atch…rpos…eal…
 
 Desert Soul: Derelict soul… The profaned egg will soon hatch… Fulfill your purpose… Reapply the seal…
@@ -33,6 +36,8 @@ Desert Soul: Derelict soul… The profaned egg will soon hatch… Fulfill your p
 Sir Thomas Toad: …ou okay?
 
 Green Soul: …!
+
+<<change_camera_target DialogueManager SirThomasToad>>
 
 Sir Thomas Toad: Can you hear me now? Your gaze was fixated on the passage downward.
 
@@ -49,6 +54,8 @@ Sir Thomas Toad: I would follow you to help, but I am well past my fighting days
 //(Green Soul walks a bit more)
 //<<move_player_to_position DialogueManager -2.4 -2.02>>
 
+<<flip_target DialogueManager SirThomasToad false>>
+
 Sir Thomas Toad: Wait, before you leave, I have a small request.
 
 Sir Thomas Toad: I know I am in no position to ask for favors, as we have just met.
@@ -64,10 +71,8 @@ Sir Thomas Toad: Well then, do not let me hold you any longer.
 Sir Thomas Toad: Best of luck down there!
 
 <<change_camera_target DialogueManager Player>>
-<<flip_target DialogueManager SirThomasToad false>>
 <<move_target_to_position DialogueManager SirThomasToad -37 0.08>>
 <<enable_movement ToadDialogueTrigger>>
 <<disable_player_ui DialogueManager false>>
-<<disable_dialogue_trigger DialogueManager ToadDialogueTrigger>>
 
 ===
