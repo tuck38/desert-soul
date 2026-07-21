@@ -24,7 +24,6 @@ public class SC_SandCatClaws : StateMachineBehaviour
         {
             rb = animator.GetComponent<Rigidbody2D>();
         }
-        bossBase.ChangeColor(Color.red, true);
 
         //the magic numbers are NOT real and they CANNOT hurt me
         //forgive my Johnathan Ferguson
@@ -64,7 +63,7 @@ public class SC_SandCatClaws : StateMachineBehaviour
             {
                 //range maxxed out
 
-                Debug.Log("huh");
+                //Debug.Log("huh");
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
@@ -84,7 +83,7 @@ public class SC_SandCatClaws : StateMachineBehaviour
             {
                 //range maxxed out
 
-                Debug.Log("huhwuh");
+                //Debug.Log("huhwuh");
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }

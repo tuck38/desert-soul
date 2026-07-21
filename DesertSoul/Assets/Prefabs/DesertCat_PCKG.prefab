@@ -4960,7 +4960,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.57, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7096001912586926036}
@@ -5079,11 +5079,14 @@ MonoBehaviour:
   snake: {fileID: 0}
   knockbackDist: 0
   totalLerpTime: 0
+  isSnake: 0
   totalLaunchTime: 0
   launchPower: 0
   decelerationMult: 0.95
   bossEnemy: 0
   bossAnim: {fileID: 7583574871159292710}
+  beetleSpawn: {fileID: 0}
+  beetle: {fileID: 0}
   groundCheck: {fileID: 8170789184186874811}
   healthBar: {fileID: 0}
   sprite: {fileID: 0}
