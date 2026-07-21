@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] AudioSource musicbox;
 
+    [SerializeField] List<KeyValuePair<string, bool>> mapList;
+
     private bool wait = false;
 
     float waitTime = .2f;
@@ -68,6 +70,12 @@ public class GameManager : MonoBehaviour
     String buildingName = "Shack";
 
     bool isFacingRight = false; 
+
+    private SC_MapManager map;
+
+    [SerializeField] GameObject[] mapPieces;
+
+    [SerializeField] bool[] piecesActive;
 
     List<string> disabledDialogueTriggers = new List<string>();
    
@@ -171,9 +179,15 @@ public class GameManager : MonoBehaviour
 
         move = player.GetComponent<SC_Player_Move>();
 
+        
+
+        map = GameObject.Find("JournalManager").GetComponentInChildren<SC_MapManager>();
+
         move.setHasDrill(drillActive);
 
         fade = move.getFade();
+
+        Load();
 
         if(isDoor)
         {
@@ -292,8 +306,11 @@ public class GameManager : MonoBehaviour
 
         move = player.GetComponent<SC_Player_Move>();
 
+        map = player.GetComponentInChildren<SC_MapManager>();
+
         fade = move.getFade();
         NewArea(area);
+        Save();
         SceneManager.LoadScene(scene);
     }
 
@@ -398,5 +415,22 @@ public class GameManager : MonoBehaviour
         {
             disabledDialogueTriggers.Add(trigger);
         }
+    }
+
+    private void Save()
+    {
+        if(map != null)
+        {
+            mapPieces = map.GetMapPieces();
+
+            piecesActive = map.GetMapActive();
+        }
+    }
+
+    private void Load()
+    {
+        map.SetMapPieces(mapPieces, piecesActive);
+
+        map.RoomDiscovered();
     }
 }

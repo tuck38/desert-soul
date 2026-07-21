@@ -7,6 +7,8 @@ public class SC_RoomManager : MonoBehaviour
     [SerializeField] private int roomID;
 
     [SerializeField] private AudioClip roomMusic;
+
+    [SerializeField] bool hasMap = true;
     void Start()
     {
         
@@ -21,5 +23,10 @@ public class SC_RoomManager : MonoBehaviour
     public int GetRoomID()
     {
         return roomID;
+    }
+
+    public bool GetHasMap()
+    {
+        return hasMap;
     }
 }

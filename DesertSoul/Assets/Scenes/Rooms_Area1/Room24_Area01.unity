@@ -696,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4214968327385399388, guid: e15eb9c3c2cad5c41b2ee2f326f3205c, type: 3}
       propertyPath: roomID
-      value: 26
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 4214968327385399388, guid: e15eb9c3c2cad5c41b2ee2f326f3205c, type: 3}
       propertyPath: roomMusic
@@ -60948,7 +60948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.88043773
+      value: 0.8848196
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y

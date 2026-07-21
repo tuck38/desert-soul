@@ -53,7 +53,6 @@ MonoBehaviour:
   - 0
   - 6
   - 12
-  fade: {fileID: 0}
   fadeTime: 3
   town: {fileID: 8300000, guid: 3fd760d7e515a814c9bb8fcc52a88c07, type: 3}
   mainmenu: {fileID: 8300000, guid: 3fd760d7e515a814c9bb8fcc52a88c07, type: 3}
@@ -62,6 +61,35 @@ MonoBehaviour:
   area3: {fileID: 0}
   area4: {fileID: 0}
   musicbox: {fileID: 1316775377393167063}
+  mapPieces:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  piecesActive: 000000000000000000000000000000000000000000000000000000
 --- !u!82 &1316775377393167063
 AudioSource:
   m_ObjectHideFlags: 0

@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4214968327385399388, guid: e15eb9c3c2cad5c41b2ee2f326f3205c, type: 3}
       propertyPath: roomID
-      value: 16
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4214968327385399388, guid: e15eb9c3c2cad5c41b2ee2f326f3205c, type: 3}
       propertyPath: roomMusic
