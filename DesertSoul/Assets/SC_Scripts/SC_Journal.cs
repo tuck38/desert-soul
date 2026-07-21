@@ -9,6 +9,8 @@ public class SC_Journal : MonoBehaviour
 
     [SerializeField] GameObject[] tabs;
 
+    [SerializeField] SC_MapManager map;
+
     [SerializeField] GameObject controls;
 
     [SerializeField] GameObject video;
@@ -43,6 +45,11 @@ public class SC_Journal : MonoBehaviour
                 current--;
             }
             tabs[current].SetActive(true);
+            //temp map activate code
+            if(tabs[current].name == "Tab_Map")
+            {
+                map.ActivateMap();
+            }
 
         }
         if(!Dir)
@@ -57,6 +64,11 @@ public class SC_Journal : MonoBehaviour
                 current++;
             }
             tabs[current].SetActive(true);
+            //temp map activate code
+            if(tabs[current].name == "Tab_Map")
+            {
+                map.ActivateMap();
+            }
         }
     }
 
