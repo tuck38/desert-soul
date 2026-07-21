@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class SC_Enemy_Base : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class SC_Enemy_Base : MonoBehaviour
     [SerializeField] private int damage;
     
     [SerializeField] private SC_RattleSnake snake;
-
+    public AudioSource deathCry;
     //kb vars
     [SerializeField] private float knockbackDist;
     [SerializeField] private float totalLerpTime;
@@ -61,7 +62,8 @@ public class SC_Enemy_Base : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Die();
+            deathCry.Play();
+            StartCoroutine(Die());
         }
 
         if(currentLockTimer > 0)
@@ -136,6 +138,7 @@ public class SC_Enemy_Base : MonoBehaviour
             currentHealth -= attack.getDamage();
             if (currentHealth <= 0)
             {
+                
                 return true;
             }
 
@@ -233,12 +236,16 @@ public class SC_Enemy_Base : MonoBehaviour
     }
 
 
-    private void Die()
+    IEnumerator Die()
     {
+        
         if(roomSpawned != null)
         {
+            
             roomSpawned.checkWave();
         }
+
+        yield return new WaitForSeconds(0.2f);
         Destroy(gameObject);
     }
 }

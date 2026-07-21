@@ -17,7 +17,7 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     [SerializeField] Color approachColor;
     [SerializeField] Color windUpColor;
     [SerializeField] Color attackColor;
-
+    
     [SerializeField] float detectionTime;
 
     private bool canMove = true;
