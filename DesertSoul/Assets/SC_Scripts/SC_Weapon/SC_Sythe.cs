@@ -54,7 +54,7 @@ public class SC_Sythe : MonoBehaviour
     {
         if(isAttacking == true)
         {
-            AttackTimer();
+            //AttackTimer();
         }
     }
 
@@ -104,10 +104,10 @@ public class SC_Sythe : MonoBehaviour
         animator.SetInteger("Attack", Attacks[0].getID());
         HurtBox.currentAttack = Attacks[0];
         isAttacking = true;
-        attackTimer = 0f;
-        currentAttackLength = Attacks[0].getTime();
-        animator.SetBool("isAttacking", isAttacking);
-        Attacks[0].doAttack(projectileSpawn.transform);
+        //attackTimer = 0f;
+        //currentAttackLength = Attacks[0].getTime();
+        animator.SetTrigger("doAttack");
+        //Attacks[0].doAttack(projectileSpawn.transform);
         //HurtBox.enabled = true;
         // Sythe sound attack
 
