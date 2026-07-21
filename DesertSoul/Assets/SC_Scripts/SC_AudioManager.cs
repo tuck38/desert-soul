@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class SC_AudioManager : MonoBehaviour
 {
-    public static SC_AudioManager instance;
+    public static SC_AudioManager Instance;
 
 
     [SerializeField] private AudioClip[] music, sfx;
@@ -14,9 +14,9 @@ public class SC_AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if(Instance == null)
         {
-            instance = this;
+            Instance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -53,5 +53,25 @@ public class SC_AudioManager : MonoBehaviour
             sfxSource.clip = current;
             sfxSource.Play();
         }
+    }
+
+    public void ToggleMusic()
+    {
+        musicSource.mute = !musicSource.mute;
+    }
+
+    public void ToggleSFX()
+    {
+        sfxSource.mute = !sfxSource.mute;
+    }
+
+    public void MusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+
+    public void SFXVolume(float volume)
+    {
+        sfxSource.volume = volume;
     }
 }
