@@ -196,7 +196,7 @@ public class SC_Player_Prop : MonoBehaviour
                 break;
             case ResouceTypes.FRUIT:
                 fruitMaterialCount += amountOfResouceChanged;
-                FruitText.text = stoneMaterialCount.ToString();
+                FruitText.text = fruitMaterialCount.ToString();
                 break;
             case ResouceTypes.ICE:
                 iceMaterialCount += amountOfResouceChanged;

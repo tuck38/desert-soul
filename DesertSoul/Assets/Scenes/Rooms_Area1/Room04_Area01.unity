@@ -316,9 +316,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: amountPerHit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: attackTypeThatCanBreakNode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6882934683702675486, guid: 0e036640636962d44a37c21f53603121, type: 3}
       propertyPath: m_Name
       value: ResourceNode
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902709588948447460, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 487940343, guid: a1887d8de347e214b956543e6b5f2c8c, type: 3}
+    - target: {fileID: 8902709588948447460, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26383,9 +26403,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: amountPerHit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: attackTypeThatCanBreakNode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6882934683702675486, guid: 0e036640636962d44a37c21f53603121, type: 3}
       propertyPath: m_Name
       value: ResourceNode (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902709588948447460, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 487940343, guid: a1887d8de347e214b956543e6b5f2c8c, type: 3}
+    - target: {fileID: 8902709588948447460, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26484,6 +26524,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 249204156005818838, guid: e895fe142cefc054d9a86a4c0bf3a0f0, type: 3}
+      propertyPath: type
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1601141666002933840, guid: e895fe142cefc054d9a86a4c0bf3a0f0, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -26532,9 +26576,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4859687558222351075, guid: e895fe142cefc054d9a86a4c0bf3a0f0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1326340812, guid: a1887d8de347e214b956543e6b5f2c8c, type: 3}
+    - target: {fileID: 4859687558222351075, guid: e895fe142cefc054d9a86a4c0bf3a0f0, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8193156355591675318, guid: e895fe142cefc054d9a86a4c0bf3a0f0, type: 3}
       propertyPath: m_Name
-      value: Fruit (1)
+      value: Rock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26589,9 +26641,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: amountPerHit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: attackTypeThatCanBreakNode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6882934683702675486, guid: 0e036640636962d44a37c21f53603121, type: 3}
       propertyPath: m_Name
       value: ResourceNode (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8902709588948447460, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 487940343, guid: a1887d8de347e214b956543e6b5f2c8c, type: 3}
+    - target: {fileID: 8902709588948447460, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
