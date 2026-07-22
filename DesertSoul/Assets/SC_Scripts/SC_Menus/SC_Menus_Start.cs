@@ -22,6 +22,8 @@ public class SC_Menus_Start : MonoBehaviour
 
     float currentFadeBlackTimer = 0;
 
+    [SerializeField] AudioClip startSound;
+
     void Update()
     {
         if (activeCredits)
@@ -51,6 +53,7 @@ public class SC_Menus_Start : MonoBehaviour
     public void StartGame ()
     {
        // mainMenuButtons.Post(gameObject);
+        GameManager.Instance.playSFX(startSound.name);
         fadeOut = true;
     }
 

@@ -5384,7 +5384,7 @@ MonoBehaviour:
   MAXHealth: 30
   damage: 1
   snake: {fileID: 3084359168301113991}
-  deathCry: {fileID: 7708838105159006}
+  deathCry: {fileID: 8300000, guid: 5ec93f73bece6114f8d793aee996fc80, type: 3}
   knockbackDist: 1.25
   totalLerpTime: 1.2
   isSnake: 1

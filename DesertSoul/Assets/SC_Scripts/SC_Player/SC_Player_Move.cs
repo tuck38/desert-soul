@@ -88,6 +88,8 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] float stepSoundFrequency;
     private float currentStepSound = 0f;
     [SerializeField] AudioClip jumpAUD;
+
+    //Not implemented
     [SerializeField] AudioClip landAUD;
 
 
@@ -118,13 +120,14 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] SC_Journal Journal;
     [SerializeField] Text stoneAmount;
 
-    [SerializeField] AudioSource playerSource;
-
     bool InUI;
 
     private bool playerInControl;
 
     private bool jumping;
+
+    private bool jumpUp = false;
+    //kick back whip around and spin
 
     private bool drillGot = false;
 
@@ -373,8 +376,7 @@ public class SC_Player_Move : MonoBehaviour
             if ((IsGrounded() || coyoteTimeCounter > 0f) && !jumping)
             {
                 anim.SetBool("isJumping", true); 
-                playerSource.clip = jumpAUD;
-                playerSource.Play();
+                GameManager.Instance.playSFX(jumpAUD.name);
                 stopJump = false;
                 jumping = true;
                 startJumpHeight = gameObject.transform.position.y;
@@ -403,8 +405,7 @@ public class SC_Player_Move : MonoBehaviour
     {
         SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
         sythe.AddAttack(AttackType.primary);
-            playerSource.clip = sytheSwingAUD[0];
-            playerSource.Play();
+        GameManager.Instance.playSFX(sytheSwingAUD[0].name, true);
     } 
 
     public void OnSecondary(InputAction.CallbackContext context)
@@ -419,6 +420,12 @@ public class SC_Player_Move : MonoBehaviour
     public void setHasDrill(bool drill)
     {
         drillGot = drill;
+    }
+
+    //bad, fix, make all part of state machine
+    public void DoDrill()
+    {
+        drill.Yeah();
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -522,8 +529,7 @@ public class SC_Player_Move : MonoBehaviour
         else if(stepSoundFrequency <= currentStepSound)
         {
             int num = Random.Range(0, movementAUD.Length);
-            playerSource.clip = movementAUD[num];
-            playerSource.Play();
+            GameManager.Instance.playSFX(movementAUD[num].name);
             currentStepSound = 0;
         }
     }
@@ -568,16 +574,19 @@ public class SC_Player_Move : MonoBehaviour
 
         if (jumping)
         {
+            
             rb.linearVelocity = new(rb.linearVelocity.x, 1 * jumpVelocity);
         }
 
         if (transform.position.y - startJumpHeight >= minJumpHeight && stopJump)
         {
+            jumpUp = true;
             jumping = false;
         }
 
         if (transform.position.y - startJumpHeight >= maxJumpHeight && jumping == true)
         {
+            jumpUp = true;
             rb.gravityScale = rb.gravityScale * fallGravMult;
             jumping = false;
         }
@@ -591,7 +600,12 @@ public class SC_Player_Move : MonoBehaviour
         //sets player gravity back to normal after being grounded
         if(IsGrounded())
         {
-            anim.SetBool("isJumping", false);
+            if(jumpUp)
+            {
+                anim.SetBool("isJumping", false);
+                //GameManager.Instance.playSFX(landAUD.name);
+                jumpUp = false;
+            }
             stopJump = false;
             rb.gravityScale = baseGravity;
         }

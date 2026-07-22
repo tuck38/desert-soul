@@ -493,6 +493,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 26.27
       objectReference: {fileID: 0}
+    - target: {fileID: 5763584823500365033, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: timeDrillin
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5763584823500365033, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: sideDrillSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6897926676062928177, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: spacing
       value: 55
@@ -1100,6 +1108,10 @@ PrefabInstance:
       propertyPath: bossEnemy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: bossTheme
+      value: 
+      objectReference: {fileID: 8300000, guid: ff3f870d244679144932b3fd27adf95e, type: 3}
     - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: healthBar
       value: 

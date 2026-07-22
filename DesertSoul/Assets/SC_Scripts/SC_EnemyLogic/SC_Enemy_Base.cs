@@ -9,7 +9,7 @@ public class SC_Enemy_Base : MonoBehaviour
     [SerializeField] private int damage;
     
     [SerializeField] private SC_RattleSnake snake;
-    public AudioSource deathCry;
+    public AudioClip deathCry;
     //kb vars
     [SerializeField] private float knockbackDist;
     [SerializeField] private float totalLerpTime;
@@ -45,6 +45,8 @@ public class SC_Enemy_Base : MonoBehaviour
     //REFERENCE GOTTEN AFTER PLAYER HITS ENEMY
     private GameObject player;
 
+    private bool canDie = true;
+
     //spawner stuff, temp, use events later
     SC_WaveRoom roomSpawned;
 
@@ -62,7 +64,11 @@ public class SC_Enemy_Base : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            deathCry.Play();
+            if(canDie)
+            {
+                GameManager.Instance.playSFX(deathCry.name);
+                canDie = false;
+            }
             StartCoroutine(Die());
         }
 

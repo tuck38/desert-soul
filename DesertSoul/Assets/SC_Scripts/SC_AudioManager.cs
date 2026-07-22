@@ -1,5 +1,6 @@
 using System;
 using Unity.VisualScripting;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -12,16 +13,20 @@ public class SC_AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicSource, sfxSource;
 
+    [SerializeField] float prioBufferMax;
+
+    private float currentTime;
+
     private void Awake()
     {
-        if(Instance == null)
+        
+    }
+
+    private void Update()
+    {
+        if(currentTime >= 0)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            currentTime -= Time.deltaTime;
         }
     }
 
@@ -40,9 +45,15 @@ public class SC_AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(string name)
+    //priority sounds create a buffer until other sounds can be playe, they also jump the buffer
+    public void PlaySFX(string name, bool prio = false, float bufferTime = 0.3f)
     {
         AudioClip current = Array.Find(sfx, x => x.name == name);
+        if(prio == true)
+        {
+            Debug.Log("prio sound");
+            currentTime = bufferTime;
+        }
 
         if(current == null)
         {
@@ -50,9 +61,18 @@ public class SC_AudioManager : MonoBehaviour
         }
         else
         {
-            sfxSource.clip = current;
-            sfxSource.Play();
+            if(currentTime <= 0 || prio == true)
+            {
+                Debug.Log("new sound");
+                sfxSource.clip = current;
+                sfxSource.Play();
+            }
         }
+    }
+
+    public void StopSong()
+    {
+        musicSource.Stop();
     }
 
     public void ToggleMusic()

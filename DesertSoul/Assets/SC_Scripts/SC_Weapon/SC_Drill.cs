@@ -29,7 +29,14 @@ public class SC_Drill : MonoBehaviour
     private bool drillin = false;
     private bool drillinDown = false;
 
+    //bad
+    private bool timeToDrill = false;
+
+    private bool facingRight = false;
+
     private bool playerGrounded;
+
+    [SerializeField] AudioClip drillSound;
 
 
 
@@ -57,6 +64,26 @@ public class SC_Drill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(timeToDrill)
+        {
+            drillin = true;
+            Debug.Log(drillin);
+            attackSide.setTime(timeDrillin);
+            hurtbox.currentAttack = attackSide;
+            currentTimeDrillin = 0f;
+            GameManager.Instance.playSFX(drillSound.name);
+            playerMove.SetCanMove(false);
+            if (facingRight)
+            {
+                shmovement = new Vector2(1, 0);
+            }
+            else
+            {
+                shmovement = new Vector2(-1, 0);
+            }
+            timeToDrill = false;
+        }
+
         if (drillin)
         {
             if (currentTimeDrillin <= timeDrillin)
@@ -94,6 +121,12 @@ public class SC_Drill : MonoBehaviour
         }
     }
 
+    public void Yeah()
+    {
+        timeToDrill = true;
+    }
+    
+
     public void Drill(bool isGrounded, bool isFacingRight)
     {
         //Drill Animation switch here 
@@ -102,20 +135,7 @@ public class SC_Drill : MonoBehaviour
         if (isGrounded & currentDrillCooldown <= 0)
         {
             animator.SetBool("DrillSide", true);
-            drillin = true;
-            Debug.Log(drillin);
-            attackSide.setTime(timeDrillin);
-            hurtbox.currentAttack = attackSide;
-            currentTimeDrillin = 0f;
-            playerMove.SetCanMove(false);
-            if (isFacingRight)
-            {
-                shmovement = new Vector2(1, 0);
-            }
-            else
-            {
-                shmovement = new Vector2(-1, 0);
-            }
+            facingRight = isFacingRight;
         }
         else if (!isGrounded && currentDrillCooldown <= 0)
         {

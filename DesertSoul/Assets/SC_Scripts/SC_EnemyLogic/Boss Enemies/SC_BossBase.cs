@@ -20,9 +20,6 @@ public class SC_BossBase : SC_Enemy_Base
 
     [SerializeField] Color baseColor;
 
-    //SFX used for boss sounds
-    [SerializeField] AudioSource catSounds;
-
     [SerializeField] AudioClip bossTheme;
 
     [SerializeField] Transform actualTransform;
@@ -125,15 +122,9 @@ public class SC_BossBase : SC_Enemy_Base
         slider.value = 1;
     }
 
-    public void PlaySFX(AudioClip audio)
-    {
-        catSounds.clip = audio;
-        catSounds.Play();
-    }
-
     public void BossMusic()
     {
-        GameManager.Instance.playBossTheme(bossTheme);
+        GameManager.Instance.playSong(bossTheme.name);
     }
 
     public bool IsGrounded()

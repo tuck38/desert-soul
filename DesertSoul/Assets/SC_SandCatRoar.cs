@@ -25,9 +25,8 @@ public class SC_SandCatRoar : StateMachineBehaviour
             bossBase = animator.GetComponent<SC_BossBase>();
         }
 
-        //play the roar by calling bassBase, which will call the audio manager
-
-        bossBase.PlaySFX(bossRoar);
+        //MAGIC NUMBERS
+        GameManager.Instance.playSFX(bossRoar.name, true, 3f);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

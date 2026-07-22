@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] float fadeTime;
 
+    [SerializeField] SC_AudioManager audioManager;
+
     float currentFadeTime = 0;
 
     static float dayTimer;
@@ -38,8 +40,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip area2;
     [SerializeField] AudioClip area3;
     [SerializeField] AudioClip area4;
-
-    [SerializeField] AudioSource musicbox;
 
     [SerializeField] List<KeyValuePair<string, bool>> mapList;
 
@@ -165,6 +165,23 @@ public class GameManager : MonoBehaviour
             move = player.GetComponent<SC_Player_Move>();
         }
         move.FadeOut();
+    }
+
+
+    public void playSFX(string name, bool prio = false, float buff = 0.3f)
+    {
+        audioManager.PlaySFX(name, prio, buff);
+    }
+
+    public void playSong(string name)
+    {
+        audioManager.PlaySong(name);
+    }
+
+    //bad function zone
+    public void drillChargeDone()
+    {
+        move.DoDrill();
     }
 
     public void setPain(bool pain)
@@ -339,12 +356,6 @@ public class GameManager : MonoBehaviour
         return drillActive;
     }
 
-    public void playBossTheme(AudioClip bossMusic)
-    {
-        musicbox.clip = bossMusic;
-        musicbox.Play();
-    }
-
     //not finished function
     private void NewArea(SC_Areas_Enum area)
     {
@@ -353,43 +364,37 @@ public class GameManager : MonoBehaviour
             switch (area)
             {
                 case SC_Areas_Enum.town:
-                    musicbox.clip = town;
-                    musicbox.Play();
+                    playSong(town.name);
                     currentArea = area;
                     break;
 
                 case SC_Areas_Enum.mainmenu:
-                    musicbox.clip = mainmenu;
-                    musicbox.Play();
+                    playSong(mainmenu.name);
                     currentArea = area;
                     break;
 
                 case SC_Areas_Enum.hotdry:
-                    musicbox.clip = area1;
-                    musicbox.Play();
+                    playSong(area1.name);
                     currentArea = area;
                     break;
 
                 case SC_Areas_Enum.arid:
-                    musicbox.clip = area2;
-                    musicbox.Play();
+                    playSong(area2.name);
                     currentArea = area;
                     break;
 
                 case SC_Areas_Enum.costal:
-                    musicbox.clip = area3;
-                    musicbox.Play();
+                    playSong(area3.name);
                     currentArea = area;
                     break;
 
                 case SC_Areas_Enum.frozen:
-                    musicbox.clip = area4;
-                    musicbox.Play();
+                    playSong(area4.name);
                     currentArea = area;
                     break;
 
                 case SC_Areas_Enum.boss:
-                    musicbox.Stop();
+                    audioManager.StopSong();
                     currentArea = area;
                     break;
             }

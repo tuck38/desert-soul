@@ -17,7 +17,11 @@ public class SC_Journal : MonoBehaviour
 
     [SerializeField] GameObject audio;
 
+    [SerializeField] AudioClip journalOpen;
 
+    [SerializeField] AudioClip journalClose;
+
+    [SerializeField] AudioClip journalPage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -33,6 +37,7 @@ public class SC_Journal : MonoBehaviour
 
     public void NewTab(bool Dir)
     {
+        GameManager.Instance.playSFX(journalOpen.name, true);
         if(Dir)
         {
             tabs[current].SetActive(false);
@@ -75,11 +80,13 @@ public class SC_Journal : MonoBehaviour
     public void OpenJournal()
     {
         JournalBase.SetActive(true);
+        GameManager.Instance.playSFX(journalOpen.name, true);
     }
 
-        public void CloseJournal()
+    public void CloseJournal()
     {
         JournalBase.SetActive(false);
+        GameManager.Instance.playSFX(journalClose.name, true);
     }
 
     public void OnControlsPressed()

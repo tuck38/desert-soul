@@ -664,6 +664,7 @@ MonoBehaviour:
   credSpd: 50
   fadeFromBlack: 2
   screen: {fileID: 1185309789}
+  startSound: {fileID: 8300000, guid: f66210173d35c1447932b25720293758, type: 3}
 --- !u!1 &1111001985
 GameObject:
   m_ObjectHideFlags: 0

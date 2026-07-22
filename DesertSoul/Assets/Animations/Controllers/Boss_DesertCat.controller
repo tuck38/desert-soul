@@ -88,8 +88,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 793907ea3ac36ee44a92f2064bcb2ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  bossRoar: {fileID: 8300000, guid: b7f36406997c02946890a8ca80473c9c, type: 3}
-  roarTime: 1.5
+  bossRoar: {fileID: 8300000, guid: 2db3103c0ccb54d49ba8e6c4241d5475, type: 3}
+  roarTime: 3
 --- !u!1101 &-7078305698452443414
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
