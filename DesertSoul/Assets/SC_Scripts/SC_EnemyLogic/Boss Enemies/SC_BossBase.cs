@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class SC_BossBase : SC_Enemy_Base
 {
@@ -24,6 +25,8 @@ public class SC_BossBase : SC_Enemy_Base
     [SerializeField] AudioClip bossTheme;
 
     [SerializeField] Transform actualTransform;
+
+    [SerializeField] Transform lastPlayerPos;
 
     public float halfWidth;
 
@@ -87,7 +90,17 @@ public class SC_BossBase : SC_Enemy_Base
         return playerTrans;
     }
 
-        //takes damage and returns true if the attack killed the enemy
+    public Transform GetLastPlayePos()
+    {
+        return lastPlayerPos;
+    }
+
+    public void SetLastPlayerPos()
+    {
+        lastPlayerPos = playerTrans;
+    }
+
+    //takes damage and returns true if the attack killed the enemy
     public bool TakeBossDamage(SC_Attack_Base attack, Transform carryPoint)
     {
         currentHealth -= attack.getDamage();
@@ -133,7 +146,7 @@ public class SC_BossBase : SC_Enemy_Base
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    public Transform getBossTransform()
+    public Transform GetBossTransform()
     {
         return actualTransform;
     }

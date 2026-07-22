@@ -17,7 +17,8 @@ public class SC_SanCatJumpWindup : StateMachineBehaviour
         {
             bossBase = animator.GetComponent<SC_BossBase>();
         }
-        bossBase.ChangeColor(Color.red, false);
+
+        bossBase.SetLastPlayerPos();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

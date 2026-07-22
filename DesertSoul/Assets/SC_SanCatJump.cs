@@ -35,8 +35,8 @@ public class SC_SanCatJump : StateMachineBehaviour
             rb = animator.GetComponent<Rigidbody2D>();
         }
 
-        trajectoryStartPoint = bossBase.getBossTransform().position;
-        trajectoryEndPoint = bossBase.GetPlayerPos().transform.position;
+        trajectoryStartPoint = bossBase.GetBossTransform().position;
+        trajectoryEndPoint = bossBase.GetLastPlayePos().position;
 
        /* currentTime = 0f;
         rb.gravityScale = 9.8f;
