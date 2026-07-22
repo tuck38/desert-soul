@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class SC_BossBase : SC_Enemy_Base
 {
@@ -96,11 +97,11 @@ public class SC_BossBase : SC_Enemy_Base
             GameObject obj = Instantiate(beetle, beetleSpawn.position, beetleSpawn.rotation);
             phaseTransed = true;
         }
-        if (currentHealth <= 0)
+        if (currentHealth <= 1)
         {
-            //death "cutscene"
+            //Debug.Log("Works");
             SceneManager.LoadScene("DemoOverScene");
-            Destroy(gameObject);
+            StartCoroutine(Die());
             return true;
         }
         return false;
@@ -147,6 +148,12 @@ public class SC_BossBase : SC_Enemy_Base
         {
             sprite.color = color;
         }
+    }
+
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(0.2f);
+        Destroy(this);
     }
 
 }
