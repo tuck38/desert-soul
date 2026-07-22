@@ -12,11 +12,6 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     [SerializeField] float chasePlayerSpeed;
     [SerializeField] float stopDistancePlayer = 1f;
     [SerializeField] float timeBetweenApproachingPlayerAndAttacking = 1f;
-  
-    [SerializeField] Color defaultColor;
-    [SerializeField] Color approachColor;
-    [SerializeField] Color windUpColor;
-    [SerializeField] Color attackColor;
     
     [SerializeField] float detectionTime;
 
@@ -35,7 +30,6 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
         currentState = EnemyState.WANDERING;
         nextPoint = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z);
         isGoingLeft = true;
-        defaultColor = GetComponent<SpriteRenderer>().color;
     }
 
     // Update is called once per frame

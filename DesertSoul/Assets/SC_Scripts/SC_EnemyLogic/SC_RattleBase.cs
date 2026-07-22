@@ -52,12 +52,19 @@ public class SC_RattleBase : MonoBehaviour
     //spawner stuff, temp, use events later
     SC_WaveRoom roomSpawned;
 
-    [SerializeField] GameObject venture;
+    Color defaultColor;
+    [SerializeField] Color damagedColor;
+
+    private SpriteRenderer sprite;
+
+    [SerializeField] GameObject snakeDead;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         currentHealth = MAXHealth;
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        defaultColor = sprite.color;
     }
 
     // Update is called once per frame
@@ -120,6 +127,7 @@ public class SC_RattleBase : MonoBehaviour
             if(transform.position == kbEndPoint)
             {
                 lerping = false;
+                sprite.color = defaultColor;
                 if(isSnake)
                 {
                     snake.SetCanMove(true);
@@ -201,6 +209,7 @@ public class SC_RattleBase : MonoBehaviour
             {
                 //ima make this a lerp
                 lerping = true;
+                sprite.color = damagedColor;
                 kbEndPoint = target;
                 snake.SetCanMove(false);
                 //transform.position = target;
@@ -212,11 +221,6 @@ public class SC_RattleBase : MonoBehaviour
     public void setMommaSpawner(SC_WaveRoom lockRoom)
     {
         roomSpawned = lockRoom;
-    }
-
-    public void Venture()
-    {
-        venture.SetActive(true);
     }
 
     public int GetDamage()
@@ -261,6 +265,8 @@ public class SC_RattleBase : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.2f);
+        SC_SnakeDead dead = Instantiate(snakeDead, gameObject.transform.position, gameObject.transform.rotation).GetComponent<SC_SnakeDead>();
+        dead.knockBack(launchFromRight);
         Destroy(gameObject);
     }
 }

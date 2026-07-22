@@ -5482,10 +5482,6 @@ MonoBehaviour:
   chasePlayerSpeed: 6
   stopDistancePlayer: 0
   timeBetweenApproachingPlayerAndAttacking: 1
-  defaultColor: {r: 0.1764706, g: 0.8392157, b: 0.06666667, a: 1}
-  approachColor: {r: 1, g: 0.99997795, b: 0, a: 1}
-  windUpColor: {r: 1, g: 0.5758062, b: 0, a: 1}
-  attackColor: {r: 1, g: 0, b: 0, a: 1}
   detectionTime: 0.3
   animator: {fileID: 7391969222741997723}
 --- !u!95 &7391969222741997723
@@ -5750,4 +5746,5 @@ MonoBehaviour:
   launchPower: 5
   decelerationMult: 0.95
   bossEnemy: 0
-  venture: {fileID: 5347689553343754359}
+  damagedColor: {r: 0.65072924, g: 0.9924528, b: 0.61232466, a: 1}
+  snakeDead: {fileID: 2578793225704484309, guid: af64b6a8dfb5c634ebad72593b4b7528, type: 3}
