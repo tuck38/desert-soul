@@ -88,7 +88,7 @@ public class SC_BossBase : SC_Enemy_Base
     }
 
         //takes damage and returns true if the attack killed the enemy
-    public override bool TakeDamage(SC_Attack_Base attack, Transform carryPoint)
+    public bool TakeBossDamage(SC_Attack_Base attack, Transform carryPoint)
     {
         currentHealth -= attack.getDamage();
         slider.value = currentHealth / MAXHealth;

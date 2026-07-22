@@ -10,6 +10,10 @@ public class SC_HurtBox : MonoBehaviour
     //The enemy that is currently being affected by some attack EX:the drills carry
     private List<SC_Enemy_Base> currentEnemies;
 
+    [SerializeField] GameObject venture;
+
+    [SerializeField] GameObject venture2;
+
     [SerializeField] private Transform carryPoint;
     [SerializeField] private ParticleSystem PlayerHitParticles;
 
@@ -37,25 +41,37 @@ public class SC_HurtBox : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             PlayerHitParticles.Play();
-            SC_Enemy_Base enemy = collision.gameObject.GetComponent<SC_Enemy_Base>();
+            //getting here in build
+            SC_RattleBase enemy = collision.gameObject.GetComponent<SC_RattleBase>();
+
+
             if(enemy != null && currentAttack != null)
             {
+
                 if(!enemy.IsBoss())
                 {
-                    if(currentAttack.getAttackType() == AttackType.drillSide & !currentEnemies.Contains(enemy))
-                    {
-                        currentEnemies.Add(enemy);
-                    }
+                    enemy.TakeDamage(currentAttack, carryPoint, venture, venture2);
+                    enemy.SetPlayer(gameObject.gameObject);
+                    enemy.Knockback(currentAttack.getAttackType());
                 }
-                enemy.TakeDamage(currentAttack, carryPoint);
-                enemy.SetPlayer(gameObject.gameObject);
-                enemy.Knockback(currentAttack.getAttackType());
+                else
+                {
+                    SC_BossBase boss = collision.gameObject.GetComponent<SC_BossBase>();
+
+                    boss.TakeBossDamage(currentAttack, carryPoint);
+                }
+                //PlayerHitParticles.Play();
+                //Build getting here, not calling takedamage?
             }
         }
         else if (collision.gameObject.tag == "ResourceNode")
         {
             SC_ResourceNode node = collision.gameObject.GetComponent<SC_ResourceNode>();
-            bool canBreak = node.AttackTypeToBreakNode() == currentAttack.getAttackType() || node.AttackTypeToBreakNode() == AttackType.all;
+            bool canBreak = false;
+            if(currentAttack != null)
+            {
+                canBreak = node.AttackTypeToBreakNode() == currentAttack.getAttackType() || node.AttackTypeToBreakNode() == AttackType.all;
+            }
             if (node != null && currentAttack != null && canBreak)
             {
                 node.TakeDamage(currentAttack.getDamage());

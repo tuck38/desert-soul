@@ -149,6 +149,8 @@ public class SC_Player_Move : MonoBehaviour
 
     [SerializeField] bool firstRoom = false;
 
+    [SerializeField] GameObject debug;
+
     private void Awake()
     {
         //initial decloration
@@ -399,6 +401,11 @@ public class SC_Player_Move : MonoBehaviour
             }
         }
         }
+    }
+
+    public void TheVentureAppears()
+    {
+        //debug.SetActive(true);
     }
 
     public void OnPrimary(InputAction.CallbackContext context)

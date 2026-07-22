@@ -1,6 +1,5 @@
 using System;
 using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -51,7 +50,6 @@ public class SC_AudioManager : MonoBehaviour
         AudioClip current = Array.Find(sfx, x => x.name == name);
         if(prio == true)
         {
-            Debug.Log("prio sound");
             currentTime = bufferTime;
         }
 
@@ -63,7 +61,6 @@ public class SC_AudioManager : MonoBehaviour
         {
             if(currentTime <= 0 || prio == true)
             {
-                Debug.Log("new sound");
                 sfxSource.clip = current;
                 sfxSource.Play();
             }

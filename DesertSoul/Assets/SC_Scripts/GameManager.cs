@@ -78,6 +78,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] bool[] piecesActive;
 
     List<string> disabledDialogueTriggers = new List<string>();
+
+    [SerializeField] int frameCap = 60;
    
     private void Awake()
     {
@@ -91,6 +93,10 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        //frame cap
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = frameCap;
     }
 
     private void Update()

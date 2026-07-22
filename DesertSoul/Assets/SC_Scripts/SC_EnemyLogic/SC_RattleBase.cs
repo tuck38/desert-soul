@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class SC_Enemy_Base : MonoBehaviour
+public class SC_RattleBase : MonoBehaviour
 {
 
     [SerializeField] protected float MAXHealth;
@@ -10,6 +10,8 @@ public class SC_Enemy_Base : MonoBehaviour
     
     [SerializeField] protected SC_RattleSnake snake;
     public AudioClip deathCry;
+    
+    [SerializeField] AudioClip hurtSound;
     //kb vars
     [SerializeField] protected float knockbackDist;
     [SerializeField] protected float totalLerpTime;
@@ -51,24 +53,22 @@ public class SC_Enemy_Base : MonoBehaviour
     SC_WaveRoom roomSpawned;
 
     [SerializeField] GameObject venture;
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected virtual void Start()
+    void Start()
     {
         currentHealth = MAXHealth;
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    protected virtual void Update()
+    void Update()
     {
 
         if (currentHealth <= 0)
         {
             if(canDie)
             {
-                GameManager.Instance.playSFX(deathCry.name);
+                GameManager.Instance.playSFX(deathCry.name, true);
                 canDie = false;
             }
             StartCoroutine(Die());
@@ -133,26 +133,17 @@ public class SC_Enemy_Base : MonoBehaviour
         }
     }
 
-    public bool IsBoss()
-    {
-        return bossEnemy;
-    }
-
     //takes damage and returns true if the attack killed the enemy
-    public virtual bool TakeDamage(SC_Attack_Base attack, Transform carryPoint, GameObject debug, GameObject debug2)
+    public bool TakeDamage(SC_Attack_Base attack, Transform carryPoint, GameObject debug, GameObject debug2)
     {
-        GameObject.Find("Player").GetComponent<SC_Player_Move>().TheVentureAppears();
-        //debug2.SetActive(true);
         if (!locked)
         {
-            Debug.Log("taking damage");
-
-            Debug.Log("hmm");
             
             currentHealth -= attack.getDamage();
+
+            GameManager.Instance.playSFX(hurtSound.name, true);
             if (currentHealth <= 0)
             {
-                
                 return true;
             }
 
@@ -167,17 +158,13 @@ public class SC_Enemy_Base : MonoBehaviour
         return false;
     }
 
-    public void setMommaSpawner(SC_WaveRoom lockRoom)
+    public bool IsBoss()
     {
-        roomSpawned = lockRoom;
+        return bossEnemy;
     }
 
-    public void Venture()
-    {
-        venture.SetActive(true);
-    }
 
-    public virtual void Knockback(AttackType atkType)
+    public void Knockback(AttackType atkType)
     {
         //TEMPORARY IF STATMENT
         if(isSnake)
@@ -222,6 +209,16 @@ public class SC_Enemy_Base : MonoBehaviour
         }
     }
 
+    public void setMommaSpawner(SC_WaveRoom lockRoom)
+    {
+        roomSpawned = lockRoom;
+    }
+
+    public void Venture()
+    {
+        venture.SetActive(true);
+    }
+
     public int GetDamage()
     { 
         return damage; 
@@ -232,7 +229,7 @@ public class SC_Enemy_Base : MonoBehaviour
         this.player = player;
     }
     
-    public virtual void setLocked(bool shouldLock)
+    public void setLocked(bool shouldLock)
     {
         locked = shouldLock;
         if (!locked)
@@ -254,8 +251,7 @@ public class SC_Enemy_Base : MonoBehaviour
         }
     }
 
-
-    protected IEnumerator Die()
+    IEnumerator Die()
     {
         
         if(roomSpawned != null)
@@ -268,4 +264,3 @@ public class SC_Enemy_Base : MonoBehaviour
         Destroy(gameObject);
     }
 }
-
