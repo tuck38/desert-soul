@@ -12,13 +12,15 @@ public class SC_AudioManager : MonoBehaviour
 
     [SerializeField] private AudioSource musicSource, sfxSource;
 
+    private float musicVol = 0.5f, sfxVol = 0.5f;
+
     [SerializeField] float prioBufferMax;
 
     private float currentTime;
 
     private void Awake()
     {
-        
+        Setup();
     }
 
     private void Update()
@@ -27,6 +29,12 @@ public class SC_AudioManager : MonoBehaviour
         {
             currentTime -= Time.deltaTime;
         }
+    }
+
+    public void Setup()
+    {
+        musicSource.volume = musicVol;
+        sfxSource.volume = sfxVol;
     }
 
     public void PlaySong(string name)
@@ -84,11 +92,32 @@ public class SC_AudioManager : MonoBehaviour
 
     public void MusicVolume(float volume)
     {
+        musicVol = volume;
         musicSource.volume = volume;
     }
 
     public void SFXVolume(float volume)
     {
+        sfxVol = volume;
         sfxSource.volume = volume;
+    }
+
+    public float GetMusic()
+    {
+        return musicVol;
+    }
+
+    public float GetSFX()
+    {
+        return sfxVol;
+    }
+
+    public void SetSound(float sfx, float music)
+    {
+        musicVol = music;
+        musicSource.volume = music;
+
+        sfxVol = sfx;
+        sfxSource.volume = sfx;
     }
 }

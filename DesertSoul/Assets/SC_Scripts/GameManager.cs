@@ -45,6 +45,8 @@ public class GameManager : MonoBehaviour
 
     private bool wait = false;
 
+    [SerializeField] GameObject UI;
+
     float waitTime = .2f;
 
     float currentWaitTime = 0f;
@@ -58,6 +60,8 @@ public class GameManager : MonoBehaviour
     private SC_Player_Move move;
 
     private bool drillActive = false;
+
+    public bool gameIsPaused = false;
 
     SC_Enum_Doors newDoor;
 
@@ -139,6 +143,27 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void TogglePause()
+    {
+        if (!gameIsPaused)
+        {
+            Time.timeScale = 0f;
+            gameIsPaused = true;
+            move.SetPaused();
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            gameIsPaused = false;
+            move.SetPaused();
+        }
+    }
+
+    public bool IsPaused()
+    {
+        return gameIsPaused;
+    }
+
     private void UpdateTimeOfDay()
     {
         TimeOfDay newTime = currentTime;
@@ -152,6 +177,15 @@ public class GameManager : MonoBehaviour
             currentTime = newTime;
             OnTimeOfDayChanged?.Invoke(currentTime);
         }
+    }
+    public void MusicVolume(float music)
+    {
+        audioManager.MusicVolume(music);
+    }
+
+    public void SFXVolume(float sfx)
+    {
+        audioManager.SFXVolume(sfx);
     }
     
     public void fadeIn()
@@ -433,6 +467,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public float GetMusicVol()
+    {
+        return audioManager.GetMusic();
+    }
+
+    public float GetSFXVol()
+    {
+        return audioManager.GetSFX();
+    }
+
     private void Save()
     {
         if(map != null)
@@ -448,5 +492,6 @@ public class GameManager : MonoBehaviour
         map.SetMapPieces(mapPieces, piecesActive);
 
         map.RoomDiscovered();
+
     }
 }

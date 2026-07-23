@@ -1,11 +1,13 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SC_Journal : MonoBehaviour
 {
 
 
     [SerializeField] GameObject JournalBase;
-    int current = 0;
+    int current = 2;
 
     [SerializeField] GameObject[] tabs;
 
@@ -13,15 +15,15 @@ public class SC_Journal : MonoBehaviour
 
     [SerializeField] GameObject controls;
 
-    [SerializeField] GameObject video;
-
-    [SerializeField] GameObject audio;
+    [SerializeField] GameObject audioSliders;
 
     [SerializeField] AudioClip journalOpen;
 
     [SerializeField] AudioClip journalClose;
 
     [SerializeField] AudioClip journalPage;
+
+    [SerializeField] Slider musicSlider, sfxSlider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -92,22 +94,34 @@ public class SC_Journal : MonoBehaviour
     public void OnControlsPressed()
     {
         controls.SetActive(true);
-        video.SetActive(false);
-        audio.SetActive(false);
+
+        audioSliders.SetActive(false);
     }
 
-    public void OnVideoPressed()
+    public void OnQuitPressed()
     {
-        controls.SetActive(false);
-        video.SetActive(true);
-        audio.SetActive(false);
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void OnAudioPressed()
     {
         controls.SetActive(false);
-        video.SetActive(false);
-        audio.SetActive(true);
+
+        audioSliders.SetActive(true);
+
+        sfxSlider.value = GameManager.Instance.GetSFXVol();
+
+        musicSlider.value = GameManager.Instance.GetMusicVol();
+    }
+
+    public void SFXChange()
+    {
+        GameManager.Instance.SFXVolume(sfxSlider.value);
+    }
+
+    public void MusicChange()
+    {
+        GameManager.Instance.MusicVolume(musicSlider.value);
     }
 
     public void OnQuit()

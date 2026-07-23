@@ -9,19 +9,12 @@ public class SC_GameSettingsMenu : MonoBehaviour
 
     void Start()
     {
-        sliders.SetActive(false);
+        //sliders.SetActive(false);
     }
 
     public void Volume()
     {
-        sliders.SetActive(true);
-        if(Input.GetKeyDown("Left bracket")) {
-            sliders.SetActive(false);
-        }
-        if (Input.GetKeyDown("Right bracket"))
-        {
-            sliders.SetActive(false);
-        }
+
     }
 
     public void ToggleMusic()
@@ -41,7 +34,6 @@ public class SC_GameSettingsMenu : MonoBehaviour
 
     public void SFXVolume()
     {
-        SC_AudioManager.Instance.SFXVolume(_sfxSlider.value);
     }
 
     public void QuitGame()

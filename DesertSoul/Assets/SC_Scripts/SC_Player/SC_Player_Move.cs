@@ -164,6 +164,8 @@ public class SC_Player_Move : MonoBehaviour
 
     [SerializeField] bool firstRoom = false;
 
+    bool paused = false;
+
     private void Awake()
     {
         //initial decloration
@@ -208,6 +210,8 @@ public class SC_Player_Move : MonoBehaviour
         //SetFade();
 
         playerInControl = true;
+
+        paused = GameManager.Instance.gameIsPaused;
 
         if(firstRoom)
         {
@@ -344,6 +348,11 @@ public class SC_Player_Move : MonoBehaviour
         Move(Vector2.zero, 0, true);
     }
 
+    public void SetPaused()
+    {
+        paused = GameManager.Instance.gameIsPaused;
+    }
+
     public void onLook(InputAction.CallbackContext context)
     {
         Vector2 lookDirection = context.ReadValue<Vector2>();
@@ -369,7 +378,7 @@ public class SC_Player_Move : MonoBehaviour
     {
         //while this function is called when move inputs are read, movement calculation is still handled in the move function
         //due to outside sources calling it when player must be moved (drill)
-        if(playerInControl)
+        if(playerInControl && paused == false)
         {
             Move(context.ReadValue<Vector2>(), currentSpeed, true);
         }
@@ -377,7 +386,7 @@ public class SC_Player_Move : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(playerInControl)
+        if(playerInControl && paused == false)
         {
         if(context.performed)
         {
@@ -423,14 +432,17 @@ public class SC_Player_Move : MonoBehaviour
 
     public void OnPrimary(InputAction.CallbackContext context)
     {
-        SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
-        sythe.AddAttack(AttackType.primary);
-        GameManager.Instance.playSFX(sytheSwingAUD[0].name, true);
+        if(paused == false)
+        {
+            SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
+            sythe.AddAttack(AttackType.primary);
+            GameManager.Instance.playSFX(sytheSwingAUD[0].name, true);
+        }
     } 
 
     public void OnSecondary(InputAction.CallbackContext context)
     {
-        if(drillGot)
+        if(drillGot && paused == false)
         {
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             drill.Drill(IsGrounded(), isFacingRight);
@@ -450,14 +462,17 @@ public class SC_Player_Move : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(paused == false)
         {
-            interacting = true;
-        }
+            if(context.performed)
+            {
+                interacting = true;
+            }
 
-        if(context.canceled)
-        {
-            interacting = false;
+            if(context.canceled)
+            {
+                interacting = false;
+            }
         }
     }
 
@@ -467,6 +482,7 @@ public class SC_Player_Move : MonoBehaviour
         if(context.performed && InUI == false)
         {
             InUI = true;
+            GameManager.Instance.TogglePause();
             Journal.OpenJournal();
             //journalOpen.Post(gameObject);
 
@@ -474,6 +490,7 @@ public class SC_Player_Move : MonoBehaviour
         else if(context.performed && InUI == true)
         {
             InUI = false;
+            GameManager.Instance.TogglePause();
             Journal.CloseJournal();
             //journalClose.Post(gameObject);
         }

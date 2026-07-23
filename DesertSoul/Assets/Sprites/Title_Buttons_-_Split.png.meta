@@ -1,0 +1,375 @@
+fileFormatVersion: 2
+guid: d595977bc36977441aab6510ecd931da
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1222955116613189409
+    second: Title_Buttons_-_Split_0
+  - first:
+      213: -6574462851955958416
+    second: Title_Buttons_-_Split_1
+  - first:
+      213: -8140818119014708148
+    second: Title_Buttons_-_Split_2
+  - first:
+      213: -4407429505171832087
+    second: Title_Buttons_-_Split_3
+  - first:
+      213: -8765875456278446437
+    second: Title_Buttons_-_Split_4
+  - first:
+      213: -7899348101749352075
+    second: Title_Buttons_-_Split_5
+  - first:
+      213: 17525486045434807
+    second: Title_Buttons_-_Split_6
+  - first:
+      213: -1479904950763386266
+    second: Title_Buttons_-_Split_7
+  - first:
+      213: -6508944832820977067
+    second: Title_Buttons_-_Split_8
+  - first:
+      213: -2340685909663594765
+    second: Title_Buttons_-_Split_9
+  - first:
+      213: -7095887814203687387
+    second: Title_Buttons_-_Split_10
+  - first:
+      213: 6336675266776607868
+    second: Title_Buttons_-_Split_11
+  - first:
+      213: 7810086130385506568
+    second: Title_Buttons_-_Split_12
+  - first:
+      213: -7018617923945768019
+    second: Title_Buttons_-_Split_13
+  - first:
+      213: -5535989703006515370
+    second: Title_Buttons_-_Split_14
+  - first:
+      213: -2960476516791841044
+    second: Title_Buttons_-_Split_15
+  - first:
+      213: -3814072166226811552
+    second: Title_Buttons_-_Split_16
+  - first:
+      213: 603863376172035631
+    second: Title_Buttons_-_Split_17
+  - first:
+      213: 2364077401760581897
+    second: Title_Buttons_-_Split_18
+  - first:
+      213: 2098330238911443007
+    second: Title_Buttons_-_Split_19
+  - first:
+      213: -2519252904260463661
+    second: Title_Buttons_-_Split_20
+  - first:
+      213: 453419246794198417
+    second: Title_Buttons_-_Split_21
+  - first:
+      213: 5861724207379530478
+    second: Title_Buttons_-_Split_22
+  - first:
+      213: -1060624748873725510
+    second: Title_Buttons_-_Split_23
+  - first:
+      213: -2488768997690717265
+    second: Title_Buttons_-_Split_24
+  - first:
+      213: 782207442871917534
+    second: Title_Buttons_-_Split_25
+  - first:
+      213: 379350983002667084
+    second: Title_Buttons_-_Split_26
+  - first:
+      213: 5003220964108676747
+    second: Title_Buttons_-_Split_27
+  - first:
+      213: -5907656168148400395
+    second: Title_Buttons_-_Split_28
+  - first:
+      213: 1711416404091910914
+    second: Title_Buttons_-_Split_29
+  - first:
+      213: -410006945978873559
+    second: Title_Buttons_-_Split_30
+  - first:
+      213: 3967946743034606937
+    second: Title_Buttons_-_Split_31
+  - first:
+      213: -6210008267065107768
+    second: Title_Buttons_-_Split_32
+  - first:
+      213: 4639523384489222268
+    second: Title_Buttons_-_Split_33
+  - first:
+      213: -3242430526207080886
+    second: Title_Buttons_-_Split_34
+  - first:
+      213: -4014426887276932517
+    second: Title_Buttons_-_Split_35
+  - first:
+      213: -7946707223235868388
+    second: Title_Buttons_-_Split_36
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Title_Buttons_-_Split_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 151
+        width: 161
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12fb9f5f23fc8f010800000000000000
+      internalID: 1222955116613189409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title_Buttons_-_Split_10
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 117
+        width: 97
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52ebd5ce0a7568d90800000000000000
+      internalID: -7095887814203687387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title_Buttons_-_Split_16
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 84
+        width: 123
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 065a8589291b11bc0800000000000000
+      internalID: -3814072166226811552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title_Buttons_-_Split_24
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 51
+        width: 123
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fabc3ac58cd167dd0800000000000000
+      internalID: -2488768997690717265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Title_Buttons_-_Split_32
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 18
+        width: 97
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ca5855126e91d9a0800000000000000
+      internalID: -6210008267065107768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 569ed885c0f358c48b1c47f2282d621a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Title_Buttons_-_Split_0: 1222955116613189409
+      Title_Buttons_-_Split_1: -6574462851955958416
+      Title_Buttons_-_Split_10: -7095887814203687387
+      Title_Buttons_-_Split_11: 6336675266776607868
+      Title_Buttons_-_Split_12: 7810086130385506568
+      Title_Buttons_-_Split_13: -7018617923945768019
+      Title_Buttons_-_Split_14: -5535989703006515370
+      Title_Buttons_-_Split_15: -2960476516791841044
+      Title_Buttons_-_Split_16: -3814072166226811552
+      Title_Buttons_-_Split_17: 603863376172035631
+      Title_Buttons_-_Split_18: 2364077401760581897
+      Title_Buttons_-_Split_19: 2098330238911443007
+      Title_Buttons_-_Split_2: -8140818119014708148
+      Title_Buttons_-_Split_20: -2519252904260463661
+      Title_Buttons_-_Split_21: 453419246794198417
+      Title_Buttons_-_Split_22: 5861724207379530478
+      Title_Buttons_-_Split_23: -1060624748873725510
+      Title_Buttons_-_Split_24: -2488768997690717265
+      Title_Buttons_-_Split_25: 782207442871917534
+      Title_Buttons_-_Split_26: 379350983002667084
+      Title_Buttons_-_Split_27: 5003220964108676747
+      Title_Buttons_-_Split_28: -5907656168148400395
+      Title_Buttons_-_Split_29: 1711416404091910914
+      Title_Buttons_-_Split_3: -4407429505171832087
+      Title_Buttons_-_Split_30: -410006945978873559
+      Title_Buttons_-_Split_31: 3967946743034606937
+      Title_Buttons_-_Split_32: -6210008267065107768
+      Title_Buttons_-_Split_33: 4639523384489222268
+      Title_Buttons_-_Split_34: -3242430526207080886
+      Title_Buttons_-_Split_35: -4014426887276932517
+      Title_Buttons_-_Split_36: -7946707223235868388
+      Title_Buttons_-_Split_4: -8765875456278446437
+      Title_Buttons_-_Split_5: -7899348101749352075
+      Title_Buttons_-_Split_6: 17525486045434807
+      Title_Buttons_-_Split_7: -1479904950763386266
+      Title_Buttons_-_Split_8: -6508944832820977067
+      Title_Buttons_-_Split_9: -2340685909663594765
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
