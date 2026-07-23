@@ -7,7 +7,6 @@ public class SC_DialogueManager : MonoBehaviour
     public GameObject player;
     public GameObject cameraFollow;
     public GameObject[] dialogueUI;
-    public GameObject gameManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -64,6 +63,6 @@ public class SC_DialogueManager : MonoBehaviour
     [YarnCommand("disable_dialogue_trigger")]
     public void DisableDialogueTrigger(GameObject trigger)
     {
-        gameManager.GetComponent<GameManager>().addTriggerToDisabledList(trigger.name);
+        GameManager.Instance.GetComponent<GameManager>().addTriggerToDisabledList(trigger.name);
     }
 }

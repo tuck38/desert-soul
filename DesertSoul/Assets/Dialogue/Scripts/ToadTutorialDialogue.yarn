@@ -3,7 +3,6 @@
 
 <<change_camera_target DialogueManager SirThomasToad>>
 <<disable_player_ui DialogueManager true>>
-<<disable_dialogue_trigger DialogueManager ToadInitialDialogueTrigger>>
 
 Toad: Hmm… These inscriptions seem to be on the older side, probably 400 years old… And these…
 Toad: …hm?
@@ -49,4 +48,5 @@ Sir Thomas Toad: Hope to see you in a moment then!
 <<change_camera_target DialogueManager Player>>
 <<enable_movement ToadInitialDialogueTrigger>>
 <<disable_player_ui DialogueManager false>>
+<<disable_dialogue_trigger DialogueManager ToadInitialDialogueTrigger>>
 ===
