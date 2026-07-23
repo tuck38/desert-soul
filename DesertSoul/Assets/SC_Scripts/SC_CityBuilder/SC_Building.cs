@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -15,6 +17,8 @@ public class SC_Building : MonoBehaviour
     [SerializeField] List<Collider2D> buildingColliders;
 
     [SerializeField] public GameObject spawn;
+
+    [SerializeField] SpriteRenderer sprite;
 
     public string BuildingName { get => buildingName; }
     public Sprite BuildingSprite { get => GetComponent<SpriteRenderer>().sprite; }
@@ -45,5 +49,10 @@ public class SC_Building : MonoBehaviour
             collider.enabled = isBuildingActive;
             collider.gameObject.GetComponent<SpriteRenderer>().enabled = isBuildingActive;
         }
+    }
+
+    public Vector2 GetSpriteDims()
+    {
+        return new Vector2(sprite.bounds.extents.x, sprite.bounds.extents.y);
     }
 }

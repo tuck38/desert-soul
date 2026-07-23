@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System;
 using Unity.VisualScripting;
 using UnityEngine.Rendering;
+using UnityEngine.EventSystems;
 
 public enum TimeOfDay
 {
@@ -44,6 +45,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip area4;
 
     [SerializeField] List<KeyValuePair<string, bool>> mapList;
+
+    [SerializeField] EventSystem eventSystem;
 
     private bool wait = false;
 
@@ -170,6 +173,11 @@ public class GameManager : MonoBehaviour
         return gameIsPaused;
     }
 
+    public EventSystem GetEventSystem()
+    {
+        return eventSystem;
+    }
+
     private void UpdateTimeOfDay()
     {
         TimeOfDay newTime = currentTime;
@@ -244,8 +252,9 @@ public class GameManager : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name == "Town")
         {
+            Debug.Log("auh");
             inTown = true;
-            shopManager = GameObject.Find("Canvas").GetComponent<SC_Shop>();
+            shopManager = GameObject.FindGameObjectWithTag("shop").GetComponent<SC_Shop>();
         }
         else
         {
@@ -524,7 +533,7 @@ public class GameManager : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Town")
         {
             inTown = true;
-            shopManager = GameObject.Find("Canvas").GetComponent<SC_Shop>();
+            shopManager = GameObject.FindGameObjectWithTag("shop").GetComponent<SC_Shop>();
         }
         else
         {

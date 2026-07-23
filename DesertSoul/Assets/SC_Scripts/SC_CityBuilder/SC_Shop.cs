@@ -14,6 +14,8 @@ public class SC_Shop : MonoBehaviour
     [SerializeField] SC_MouseTracker purchaseCursor;
     [SerializeField] SC_GridMaker grid;
     [SerializeField] List<SC_Building> buildings;
+
+    [SerializeField] List<bool> unlocked;
     [SerializeField] List<Button> buttons;
     [SerializeField] KeyCode OpenShopKey;
     [Tooltip("Used when clicking to place a building. This value alters the allowed distance from the center of a cell for the click to be registered")]
@@ -96,6 +98,7 @@ public class SC_Shop : MonoBehaviour
     {
         //buildmode
         buildingToPlace = selectedBuilding;
+        purchaseCursor.SetBuildingDimensions(selectedBuilding);
         purchaseCursor.gameObject.SetActive(true);
         shopUI.SetActive(false);
         purchaseCursor.GetComponent<SpriteRenderer>().sprite = buildingToPlace.BuildingSprite;
@@ -186,9 +189,20 @@ public class SC_Shop : MonoBehaviour
             buttons[i].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = buildings[i].MaterialCost.x.ToString();
             buttons[i].transform.GetChild(1).GetChild(0).GetComponent<TextMeshProUGUI>().text = buildings[i].MaterialCost.y.ToString();
 
-            if (!buildings[i].Unlocked) buttons[i].interactable = false;
-            else if (buildings[i].MaterialCost.x > SC_Player_Prop.stoneMaterialCount || buildings[i].MaterialCost.y > SC_Player_Prop.twineMaterialCount) buttons[i].interactable = false;
-            else buttons[i].interactable = true;
+            if (!unlocked[i]) 
+            {
+                buttons[i].interactable = false;
+                buttons[i].gameObject.SetActive(false);
+            }
+            else if (buildings[i].MaterialCost.x > SC_Player_Prop.stoneMaterialCount || buildings[i].MaterialCost.y > SC_Player_Prop.twineMaterialCount) 
+            {
+                buttons[i].interactable = false;
+            }
+            else 
+            {
+                buttons[i].interactable = true;
+                buttons[i].gameObject.SetActive(true);
+            }
         }
     }
 

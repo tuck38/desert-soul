@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class SC_Journal : MonoBehaviour
 {
@@ -13,9 +14,15 @@ public class SC_Journal : MonoBehaviour
 
     [SerializeField] SC_MapManager map;
 
+    //SETTINGS
+
+    [SerializeField] GameObject firstButton;
+
     [SerializeField] GameObject controls;
 
     [SerializeField] GameObject audioSliders;
+
+    [SerializeField] Slider musicSlider, sfxSlider;
 
     [SerializeField] AudioClip journalOpen;
 
@@ -23,7 +30,7 @@ public class SC_Journal : MonoBehaviour
 
     [SerializeField] AudioClip journalPage;
 
-    [SerializeField] Slider musicSlider, sfxSlider;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -58,6 +65,13 @@ public class SC_Journal : MonoBehaviour
                 map.ActivateMap();
             }
 
+            if(tabs[current].name == "Tab_Settings")
+            {
+                EventSystem.current.firstSelectedGameObject = firstButton;
+
+                EventSystem.current.SetSelectedGameObject(firstButton);
+            }
+
         }
         if(!Dir)
         {
@@ -75,6 +89,13 @@ public class SC_Journal : MonoBehaviour
             if(tabs[current].name == "Tab_Map")
             {
                 map.ActivateMap();
+            }
+
+            if(tabs[current].name == "Tab_Settings")
+            {
+                GameManager.Instance.GetEventSystem().firstSelectedGameObject = firstButton;
+
+                EventSystem.current.SetSelectedGameObject(firstButton);
             }
         }
     }

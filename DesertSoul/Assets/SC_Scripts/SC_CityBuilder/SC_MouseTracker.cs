@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 public class SC_MouseTracker : MonoBehaviour
 {
     Vector2 defaultPosition;
+
+    float buildingx;
+
+    float buildingY;
     private void Start()
     {
         defaultPosition = transform.position;
@@ -21,5 +25,12 @@ public class SC_MouseTracker : MonoBehaviour
 
         //Vector3 screenPoint = Camera.main.WorldToScreenPoint(worldPosition);
         //Mouse.current.WarpCursorPosition(screenPoint);
+    }
+
+    public void SetBuildingDimensions(int x, int y)
+    {
+        buildingx = x;
+
+        buildingY = y;
     }
 }
