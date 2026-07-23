@@ -62,7 +62,6 @@ public class SC_Shop : MonoBehaviour
     private void Update()
     {
         if(Input.GetMouseButtonDown(0) && buildingToPlace != null) CheckForValidGridCell();
-        if(Input.GetKeyDown(OpenShopKey)) OpenShopUI();
     }
 
     /// <summary>
@@ -82,6 +81,15 @@ public class SC_Shop : MonoBehaviour
         buildName.text = buildingToPlace.BuildingName;
         resourceX.text = buildingToPlace.MaterialCost.x.ToString();
         resourceY.text = buildingToPlace.MaterialCost.y.ToString();
+    }
+
+    public void PlaceObject()
+    {
+        //get input from outside
+        if( buildingToPlace != null) 
+        {
+            CheckForValidGridCell();
+        }
     }
 
     public void SelectBuildingToSpawn()

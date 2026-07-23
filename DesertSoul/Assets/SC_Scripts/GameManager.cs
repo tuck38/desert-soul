@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
 
     float currentFadeTime = 0;
 
+    bool inTown = false;
+
     static float dayTimer;
     static TimeOfDay currentTime;
 
@@ -58,6 +60,10 @@ public class GameManager : MonoBehaviour
     private GameObject player;
 
     private SC_Player_Move move;
+
+    [SerializeField] SC_Shop shopManager;
+
+    bool buildMode = false;
 
     private bool drillActive = false;
 
@@ -236,7 +242,15 @@ public class GameManager : MonoBehaviour
 
         move = player.GetComponent<SC_Player_Move>();
 
-        
+        if(SceneManager.GetActiveScene().name == "Town")
+        {
+            inTown = true;
+            shopManager = GameObject.Find("Canvas").GetComponent<SC_Shop>();
+        }
+        else
+        {
+            inTown = false;
+        }
 
         map = GameObject.Find("JournalManager").GetComponentInChildren<SC_MapManager>();
 
@@ -384,6 +398,20 @@ public class GameManager : MonoBehaviour
         move.setHasDrill(drillActive);
     }
 
+    public void ToggleBuildMode()
+    {
+        if(inTown && buildMode == false)
+        {
+            buildMode = true;
+            shopManager.OpenShopUI();
+        }
+        else if(inTown && buildMode == true)
+        {
+            buildMode = false;
+            shopManager.CloseShopUI();
+        }
+    }
+
     public void playerDead()
     {
         if(fuckyoumode)
@@ -492,6 +520,16 @@ public class GameManager : MonoBehaviour
         map.SetMapPieces(mapPieces, piecesActive);
 
         map.RoomDiscovered();
+
+        if(SceneManager.GetActiveScene().name == "Town")
+        {
+            inTown = true;
+            shopManager = GameObject.Find("Canvas").GetComponent<SC_Shop>();
+        }
+        else
+        {
+            inTown = false;
+        }
 
     }
 }

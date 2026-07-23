@@ -425,11 +425,6 @@ public class SC_Player_Move : MonoBehaviour
         }
     }
 
-    public void TheVentureAppears()
-    {
-        //debug.SetActive(true);
-    }
-
     public void OnPrimary(InputAction.CallbackContext context)
     {
         if(paused == false)
@@ -510,7 +505,7 @@ public class SC_Player_Move : MonoBehaviour
     //this is in another script, need to move it to this one
     public void OnTownBlueprint(InputAction.CallbackContext context)
     {
-    
+        GameManager.Instance.ToggleBuildMode();
     }
 
     //handles all movement calculations

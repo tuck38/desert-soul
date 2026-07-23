@@ -141,7 +141,6 @@ public class SC_Enemy_Base : MonoBehaviour
     //takes damage and returns true if the attack killed the enemy
     public virtual bool TakeDamage(SC_Attack_Base attack, Transform carryPoint, GameObject debug, GameObject debug2)
     {
-        GameObject.Find("Player").GetComponent<SC_Player_Move>().TheVentureAppears();
         //debug2.SetActive(true);
         if (!locked)
         {
@@ -232,7 +231,7 @@ public class SC_Enemy_Base : MonoBehaviour
         this.player = player;
     }
     
-    public virtual void setLocked(bool shouldLock)
+    public void setLocked(bool shouldLock)
     {
         locked = shouldLock;
         if (!locked)
