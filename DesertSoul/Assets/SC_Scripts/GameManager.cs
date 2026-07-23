@@ -337,6 +337,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
+    public GameObject GetPlayer()
+    {
+        return player;
+    }
+
     //Temp function
 
     public void SetDrillActive(bool active)

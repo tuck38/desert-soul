@@ -64,7 +64,22 @@ public class SC_Player_Move : MonoBehaviour
 
     [Tooltip("The time the player has to jump after leaving an edge")]
     [SerializeField] private float coyoteTime = 0.2f;
+
     private float coyoteTimeCounter;
+
+    //peak jump vars
+
+    [SerializeField] float peakJumpClamp;
+
+    [SerializeField] float peakJumpGravMult = 0.5f;
+
+    [SerializeField] float velocityPeakCut = 0.4f;
+
+    [SerializeField] float velocityReleaseCut = 0.5f;
+
+    bool peak = false;
+
+    float prePeakJumpGrav;
 
     public bool isFacingRight = true;
 
@@ -148,8 +163,6 @@ public class SC_Player_Move : MonoBehaviour
     bool fadeOut = false;
 
     [SerializeField] bool firstRoom = false;
-
-    [SerializeField] GameObject debug;
 
     private void Awake()
     {
@@ -396,7 +409,7 @@ public class SC_Player_Move : MonoBehaviour
             {
                 SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
                 rb.gravityScale = rb.gravityScale * fallGravMult;
-                //rb.linearVelocity = new(rb.linearVelocity.x, rb.linearVelocityY / 2);
+                rb.linearVelocity = new(rb.linearVelocity.x, rb.linearVelocityY * velocityReleaseCut);
                 stopJump = true;
             }
         }
@@ -585,21 +598,40 @@ public class SC_Player_Move : MonoBehaviour
             rb.linearVelocity = new(rb.linearVelocity.x, 1 * jumpVelocity);
         }
 
+        //short hop
         if (transform.position.y - startJumpHeight >= minJumpHeight && stopJump)
         {
             jumpUp = true;
             jumping = false;
         }
 
+
+        //near peak of jump
+        if (transform.position.y - startJumpHeight > maxJumpHeight - peakJumpClamp && jumping == true && peak == false)
+        {
+            prePeakJumpGrav = rb.gravityScale;
+            rb.gravityScale = rb.gravityScale * peakJumpGravMult;
+            peak = true;
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * velocityPeakCut);
+        }
+
+        //leaving peak of jump
+        if(transform.position.y - startJumpHeight < maxJumpHeight - peakJumpClamp  && peak == true)
+        {
+            rb.gravityScale = prePeakJumpGrav;
+            peak = false;
+            rb.gravityScale = rb.gravityScale * fallGravMult;
+        }
+
+        //stop player after reachin max jump
         if (transform.position.y - startJumpHeight >= maxJumpHeight && jumping == true)
         {
             jumpUp = true;
-            rb.gravityScale = rb.gravityScale * fallGravMult;
             jumping = false;
         }
 
         //makes player decend faster the longer they are falling
-        if(rb.linearVelocity.y <= 0 && rb.gravityScale < fallingGravLimit)
+        if(rb.linearVelocity.y <= 0 && rb.gravityScale < fallingGravLimit && peak == false)
         {
             rb.gravityScale = rb.gravityScale + fallGravModifier;
         }
