@@ -48,6 +48,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] EventSystem eventSystem;
 
+    [SerializeField] List<bool> unlockedBuildings;
+
     private bool wait = false;
 
     [SerializeField] GameObject UI;
@@ -252,7 +254,6 @@ public class GameManager : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name == "Town")
         {
-            Debug.Log("auh");
             inTown = true;
             shopManager = GameObject.FindGameObjectWithTag("shop").GetComponent<SC_Shop>();
         }
@@ -522,6 +523,11 @@ public class GameManager : MonoBehaviour
 
             piecesActive = map.GetMapActive();
         }
+
+        if(shopManager != null)
+        {
+            unlockedBuildings = shopManager.GetUnlocks();
+        }
     }
 
     private void Load()
@@ -534,6 +540,7 @@ public class GameManager : MonoBehaviour
         {
             inTown = true;
             shopManager = GameObject.FindGameObjectWithTag("shop").GetComponent<SC_Shop>();
+            shopManager.SetUnlocks(unlockedBuildings);
         }
         else
         {

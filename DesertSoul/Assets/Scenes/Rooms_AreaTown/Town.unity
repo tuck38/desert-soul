@@ -1647,7 +1647,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5772828123094465065, guid: 7bc032052fc615d46b726e7750d53d23, type: 3}
   m_PrefabInstance: {fileID: 4341521222362548088}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4341521222362548089}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -47599,6 +47599,7 @@ MonoBehaviour:
   cameraScript: {fileID: 2062207943}
   shopCameraTrackingTarget: {fileID: 294215769}
   shopCameraDistance: 9
+  firstshopButton: {fileID: 4341521222362548089}
 --- !u!114 &1590286223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48156,7 +48157,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.84705883, b: 0.84705883, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -50002,6 +50003,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bc032052fc615d46b726e7750d53d23, type: 3}
+--- !u!1 &4341521222362548089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8283613118230210761, guid: 7bc032052fc615d46b726e7750d53d23, type: 3}
+  m_PrefabInstance: {fileID: 4341521222362548088}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8297692663110389757
 PrefabInstance:
   m_ObjectHideFlags: 0

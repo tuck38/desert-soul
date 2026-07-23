@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class SC_Shop : MonoBehaviour
@@ -37,6 +38,8 @@ public class SC_Shop : MonoBehaviour
     [SerializeField] SC_Camera cameraScript;
     [SerializeField] Transform shopCameraTrackingTarget;
     [SerializeField] float shopCameraDistance;
+
+    [SerializeField] GameObject firstshopButton;
 
     private SC_Building buildingToPlace;
 
@@ -104,7 +107,7 @@ public class SC_Shop : MonoBehaviour
         purchaseCursor.GetComponent<SpriteRenderer>().sprite = buildingToPlace.BuildingSprite;
         Cursor.visible = false;
         buildButton.SetActive(true);
-        selectButton.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(buildButton);
     }
 
     public void BackToBuildingSelection()
@@ -127,6 +130,10 @@ public class SC_Shop : MonoBehaviour
         grid.gameObject.SetActive(true);
         OnToggleShop?.Invoke(false);
         cameraScript.SetShopView(shopCameraTrackingTarget, shopCameraDistance);
+
+        EventSystem.current.firstSelectedGameObject = firstshopButton;
+
+        EventSystem.current.SetSelectedGameObject(firstshopButton);
     }
 
     /// <summary>
@@ -311,5 +318,15 @@ public class SC_Shop : MonoBehaviour
             }
         }
         return cells;
+    }
+
+    public void SetUnlocks(List<bool> unlocks)
+    {
+        unlocked = unlocks;
+    }
+
+    public List<bool> GetUnlocks()
+    {
+        return unlocked;
     }
 }

@@ -66,6 +66,7 @@ MonoBehaviour:
   area3: {fileID: 0}
   area4: {fileID: 0}
   eventSystem: {fileID: 2953033830583378413}
+  unlockedBuildings: 0100
   UI: {fileID: 0}
   shopManager: {fileID: 0}
   gameIsPaused: 0
