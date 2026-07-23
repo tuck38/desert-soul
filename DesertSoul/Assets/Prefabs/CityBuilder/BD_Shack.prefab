@@ -120,6 +120,7 @@ MonoBehaviour:
   - {fileID: 1515114987338110869}
   - {fileID: 7117196772374341581}
   spawn: {fileID: 7935754168895078570}
+  sprite: {fileID: 5273125685821136651}
 --- !u!58 &-2742736269606997843
 CircleCollider2D:
   m_ObjectHideFlags: 0

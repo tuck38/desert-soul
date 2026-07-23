@@ -152,6 +152,7 @@ MonoBehaviour:
   - {fileID: 6877037140250843379}
   - {fileID: 6646462988115743689}
   spawn: {fileID: 2520999254140318445}
+  sprite: {fileID: 5273125685821136651}
 --- !u!61 &6491977644130419026
 BoxCollider2D:
   m_ObjectHideFlags: 0

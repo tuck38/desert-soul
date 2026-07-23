@@ -98,7 +98,7 @@ public class SC_Shop : MonoBehaviour
     {
         //buildmode
         buildingToPlace = selectedBuilding;
-        purchaseCursor.SetBuildingDimensions(selectedBuilding);
+        purchaseCursor.SetBuildingDimensions(selectedBuilding.GetSpriteDims().x, selectedBuilding.GetSpriteDims().y);
         purchaseCursor.gameObject.SetActive(true);
         shopUI.SetActive(false);
         purchaseCursor.GetComponent<SpriteRenderer>().sprite = buildingToPlace.BuildingSprite;

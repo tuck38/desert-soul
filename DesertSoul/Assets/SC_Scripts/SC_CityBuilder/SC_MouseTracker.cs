@@ -5,7 +5,7 @@ public class SC_MouseTracker : MonoBehaviour
 {
     Vector2 defaultPosition;
 
-    float buildingx;
+    float buildingX;
 
     float buildingY;
     private void Start()
@@ -21,15 +21,15 @@ public class SC_MouseTracker : MonoBehaviour
     void Update()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        transform.position = mousePosition;
+        transform.position = new Vector2(mousePosition.x + buildingX, mousePosition.y + buildingY);
 
         //Vector3 screenPoint = Camera.main.WorldToScreenPoint(worldPosition);
         //Mouse.current.WarpCursorPosition(screenPoint);
     }
 
-    public void SetBuildingDimensions(int x, int y)
+    public void SetBuildingDimensions(float x, float y)
     {
-        buildingx = x;
+        buildingX = x;
 
         buildingY = y;
     }
