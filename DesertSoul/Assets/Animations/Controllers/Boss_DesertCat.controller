@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07b7e9581d8dec74982e9e4681fc67dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  windUpTime: 0.1
+  windUpTime: 0.4
 --- !u!114 &-8490374246292708070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f6a6c896f46be94db091d7aaf2640a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  attackSpeed: 15
+  attackSpeed: 20
   dashRange: 50
 --- !u!1101 &-512686882739885072
 AnimatorStateTransition:
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a16c1438fde6b51478506c94ebc591ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  attackSpeed: 27
+  attackSpeed: 23
   maxHeight: 3
   curve:
     serializedVersion: 2
@@ -831,7 +831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   distToAttackClaws: 8
   distToAttackPounce: 12
-  speed: 2.5
+  speed: 4
 --- !u!1102 &8338982567564320122
 AnimatorState:
   serializedVersion: 6
