@@ -382,11 +382,15 @@ public class SC_Player_Move : MonoBehaviour
         {
             Move(context.ReadValue<Vector2>(), currentSpeed, true);
         }
+        else if(GameManager.Instance.GetBuildMode())
+        {
+            GameManager.Instance.BuildMove(context.ReadValue<Vector2>());
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if(playerInControl && paused == false)
+        if(playerInControl && paused == false && !GameManager.Instance.GetBuildMode())
         {
         if(context.performed)
         {
@@ -422,6 +426,10 @@ public class SC_Player_Move : MonoBehaviour
                 stopJump = true;
             }
         }
+        }
+        else if (GameManager.Instance.GetBuildMode() && context.performed)
+        {
+            GameManager.Instance.Confirm();
         }
     }
 
@@ -471,10 +479,10 @@ public class SC_Player_Move : MonoBehaviour
         }
     }
 
-    //this is where the UIbinds start, unaware if I wish to switch this to a seperat script or not, we shall see
+    //this is where the UIbinds start, unaware if I wish to switch this to a seperate script or not, we shall see
     public void OnMenu(InputAction.CallbackContext context)
     {
-        if(context.performed && InUI == false)
+        if(context.performed && InUI == false && !GameManager.Instance.GetBuildMode())
         {
             InUI = true;
             GameManager.Instance.TogglePause();
@@ -494,18 +502,27 @@ public class SC_Player_Move : MonoBehaviour
     //could make these 2 a pos/neg bind instead
     public void OnJournalTabLeft(InputAction.CallbackContext context)
     {
+        if(InUI)
+        {
         Journal.NewTab(true);
+        }
     }
 
     public void OnJournalTabRight(InputAction.CallbackContext context)
     {
+        if(InUI)
+        {
         Journal.NewTab(false);
+        }
     }
 
     //this is in another script, need to move it to this one
     public void OnTownBlueprint(InputAction.CallbackContext context)
     {
-        GameManager.Instance.ToggleBuildMode();
+        if(!paused)
+        {
+            GameManager.Instance.ToggleBuildMode();
+        }
     }
 
     //handles all movement calculations

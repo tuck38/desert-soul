@@ -22,6 +22,7 @@ public class SC_Shop : MonoBehaviour
     [Tooltip("Used when clicking to place a building. This value alters the allowed distance from the center of a cell for the click to be registered")]
     [SerializeField] float distanceFromCenterOfCellAllowance = 1.0f;
 
+
     [SerializeField] GameObject buildingBig;
 
     [SerializeField] GameObject shopUI;
@@ -53,6 +54,8 @@ public class SC_Shop : MonoBehaviour
     static List<SC_Building> buildingsPlaced;
     static List<Vector3> buildingsPlacedLocation;
 
+    bool placing = false;
+
     private void Start()
     {
         if (buildingsPlaced == null) buildingsPlaced = new List<SC_Building>();
@@ -66,7 +69,12 @@ public class SC_Shop : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(0) && buildingToPlace != null) CheckForValidGridCell();
+        //if(Input.GetMouseButtonDown(0) && buildingToPlace != null) CheckForValidGridCell();
+
+        if(placing)
+        {
+            
+        }
     }
 
     /// <summary>
@@ -88,12 +96,19 @@ public class SC_Shop : MonoBehaviour
         resourceY.text = buildingToPlace.MaterialCost.y.ToString();
     }
 
-    public void PlaceObject()
+    public void placeBuilding()
     {
-        //get input from outside
-        if( buildingToPlace != null) 
+        if(buildingToPlace != null && placing) 
         {
             CheckForValidGridCell();
+        }
+    }
+
+    public void MoveCusor(Vector2 move)
+    {
+        if(placing)
+        {
+            purchaseCursor.Move(move);
         }
     }
 
@@ -101,6 +116,8 @@ public class SC_Shop : MonoBehaviour
     {
         //buildmode
         buildingToPlace = selectedBuilding;
+        Debug.Log("build");
+        placing = true;
         purchaseCursor.SetBuildingDimensions(selectedBuilding.GetSpriteDims().x, selectedBuilding.GetSpriteDims().y);
         purchaseCursor.gameObject.SetActive(true);
         shopUI.SetActive(false);
@@ -112,6 +129,7 @@ public class SC_Shop : MonoBehaviour
 
     public void BackToBuildingSelection()
     {
+        placing = false;
         purchaseCursor.gameObject.SetActive(false);
         shopUI.SetActive(true);
         Cursor.visible = true;
@@ -218,16 +236,21 @@ public class SC_Shop : MonoBehaviour
     /// </summary>
     void CheckForValidGridCell()
     {
+        float purchaseX = (purchaseCursor.transform.position.x - buildingToPlace.gameObject.GetComponent<SpriteRenderer>().bounds.extents.x + 0.5f);
+        float purchaseY = (purchaseCursor.transform.position.y - buildingToPlace.gameObject.GetComponent<SpriteRenderer>().bounds.extents.y + 0.5f);
+        Vector3 purchasePos = new Vector3(purchaseX, purchaseY, purchaseCursor.transform.position.x - buildingToPlace.transform.position.z);
         SC_GridCell closestGridCell = null;
         float closestDistance = float.MaxValue;
 
         foreach (SC_GridCell cell in grid.GetGrid())
         {
-            float distance = Vector2.Distance(cell.transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            float distance = Vector2.Distance(cell.transform.position, purchasePos);
             if (distance < closestDistance)
             {
                 closestDistance = distance;
                 closestGridCell = cell;
+                Debug.Log("PurchaseCursor" + purchasePos);
+                //Debug.Log(closestDistance);
             }
         }
 
@@ -235,6 +258,8 @@ public class SC_Shop : MonoBehaviour
         {
             buildingToPlace = null;
             purchaseCursor.gameObject.SetActive(false);
+            Debug.Log("cannot place");
+            //placing = false;
             Cursor.visible = true;
             return;
         }
@@ -261,6 +286,7 @@ public class SC_Shop : MonoBehaviour
                         cell.isOccupied = true;
                         tentativlyAllocatedGridCells.Add(cell);
                     }
+                    //placing = false;
                     purchaseCursor.gameObject.SetActive(false);
                     Cursor.visible = true;
                 }
@@ -276,6 +302,7 @@ public class SC_Shop : MonoBehaviour
                 buildingToPlace = null;
                 closestGridCell.isOccupied = true;
                 tentativlyAllocatedGridCells.Add(closestGridCell);
+                //placing = false;
                 purchaseCursor.gameObject.SetActive(false);
                 Cursor.visible = true;
             }

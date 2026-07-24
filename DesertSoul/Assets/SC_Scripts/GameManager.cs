@@ -422,6 +422,30 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //for controller
+    public void Confirm()
+    {
+        shopManager.placeBuilding();
+    }
+
+    public void BuildMove(Vector2 move)
+    {
+        if(shopManager != null)
+        {
+            shopManager.MoveCusor(move);
+        }
+    }
+
+    public bool GetBuildMode()
+    {
+        return buildMode;
+    }
+
+    public void SetBuildMode(bool mode)
+    {
+        buildMode = mode;
+    }
+
     public void playerDead()
     {
         if(fuckyoumode)
