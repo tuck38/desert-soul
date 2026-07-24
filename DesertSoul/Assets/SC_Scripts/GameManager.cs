@@ -50,6 +50,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] List<bool> unlockedBuildings;
 
+    [SerializeField] List<bool> placedBuildings;
+
     private bool wait = false;
 
     [SerializeField] GameObject UI;
@@ -68,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] SC_Shop shopManager;
 
-    bool buildMode = false;
+    public bool buildMode = false;
 
     private bool drillActive = false;
 
@@ -146,6 +148,12 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("RoomBoss_Area01");
             SetDrillActive(true);
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            SC_Player_Prop prop = player.GetComponent<SC_Player_Prop>();
+            prop.UpdateResources(ResouceTypes.STONE, 99);
+            prop.UpdateResources(ResouceTypes.TWINE, 99);
         }
         else if(Input.GetKeyDown(KeyCode.Escape))
         {
@@ -551,6 +559,8 @@ public class GameManager : MonoBehaviour
         if(shopManager != null)
         {
             unlockedBuildings = shopManager.GetUnlocks();
+
+            placedBuildings = shopManager.GetPlaced();
         }
     }
 
@@ -565,6 +575,7 @@ public class GameManager : MonoBehaviour
             inTown = true;
             shopManager = GameObject.FindGameObjectWithTag("shop").GetComponent<SC_Shop>();
             shopManager.SetUnlocks(unlockedBuildings);
+            shopManager.SetPlaced(placedBuildings);
         }
         else
         {

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(SpriteRenderer))]
 public class SC_Building : MonoBehaviour
 {
-    [SerializeField] string buildingName;
+    [SerializeField] public string buildingName;
     [Tooltip("x = number of brown resource, y = number of purple resource")]
     [SerializeField] Vector2Int materialCost;
     [SerializeField] bool unlocked;

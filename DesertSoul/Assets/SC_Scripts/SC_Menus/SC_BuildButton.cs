@@ -5,9 +5,15 @@ public class SC_BuildButton : MonoBehaviour
 
     [SerializeField] SC_Building building;
 
+    [SerializeField] GameObject X;
+
+    [SerializeField] public string buildName;
+
     public bool IsActive;
 
     public int BuildID;
+
+    public bool disabled = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,5 +35,11 @@ public class SC_BuildButton : MonoBehaviour
     Vector2 GetMats()
     {
         return building.MaterialCost;
+    }
+
+    public void DISABLE()
+    {
+        disabled = true;
+        X.SetActive(true);
     }
 }

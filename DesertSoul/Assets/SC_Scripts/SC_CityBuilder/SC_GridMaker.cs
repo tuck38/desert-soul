@@ -39,6 +39,7 @@ public class SC_GridMaker : MonoBehaviour
 
         yCriteria = UpdateYCritera(yIndex);
 
+        Debug.Log("hmm?");
         for (yIndex = 0; yCriteria;)
         {
             y = gridStartPosition.y + gridCellSize.y * yIndex + spaceBetweenCells.y * yIndex;

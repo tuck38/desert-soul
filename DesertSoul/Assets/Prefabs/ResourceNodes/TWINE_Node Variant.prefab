@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
       propertyPath: type
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
       propertyPath: amountPerHit

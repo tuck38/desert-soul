@@ -92,7 +92,10 @@ public class SC_Interactable : MonoBehaviour
         if(collision.tag == "Player")
         {
             playerInRange = false;
-            interactButton.SetActive(false);
+            if(interactButton != null)
+            {
+                interactButton.SetActive(false);
+            }
             pressing = false;
             currentButtonHoldTime = 0f;
         }

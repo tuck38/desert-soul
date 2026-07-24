@@ -86,10 +86,6 @@ public class SC_Player_Prop : MonoBehaviour
         {
             SunDamageTimer();
         }
-        if (Input.GetKeyDown("p"))
-        {
-            currentHealth -= 1;
-        }
     }
     
     public void TakeDamage(int dmg)
@@ -183,7 +179,7 @@ public class SC_Player_Prop : MonoBehaviour
     /// </summary>
     /// <param name="resourceType"></param>
     /// <param name="amountOfResouceChanged"></param>
-    void UpdateResources(ResouceTypes resourceType, int amountOfResouceChanged)
+    public void UpdateResources(ResouceTypes resourceType, int amountOfResouceChanged)
     {
         switch (resourceType)
         {
@@ -193,10 +189,10 @@ public class SC_Player_Prop : MonoBehaviour
                 break;
             case ResouceTypes.TWINE:
                 twineMaterialCount += amountOfResouceChanged;
+                FruitText.text = twineMaterialCount.ToString();
                 break;
             case ResouceTypes.FRUIT:
                 fruitMaterialCount += amountOfResouceChanged;
-                FruitText.text = fruitMaterialCount.ToString();
                 break;
             case ResouceTypes.ICE:
                 iceMaterialCount += amountOfResouceChanged;

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
+using JetBrains.Annotations;
 
 public class SC_Shop : MonoBehaviour
 {
@@ -16,14 +18,25 @@ public class SC_Shop : MonoBehaviour
     [SerializeField] SC_GridMaker grid;
     [SerializeField] List<SC_Building> buildings;
 
+    //So many bool arrays, bad practice lolol
+
+    [SerializeField] List<bool> placed;
+
+    [SerializeField] List<bool> oneTime;
+
+    [SerializeField] List<GameObject> itemFrames;
     [SerializeField] List<bool> unlocked;
     [SerializeField] List<Button> buttons;
     [SerializeField] KeyCode OpenShopKey;
     [Tooltip("Used when clicking to place a building. This value alters the allowed distance from the center of a cell for the click to be registered")]
     [SerializeField] float distanceFromCenterOfCellAllowance = 1.0f;
 
+    bool inBetween = false;
+
 
     [SerializeField] GameObject buildingBig;
+
+    [SerializeField] Button buttonSelect;
 
     [SerializeField] GameObject shopUI;
 
@@ -63,7 +76,8 @@ public class SC_Shop : MonoBehaviour
 
         for (int i = 0; i < buildingsPlaced.Count; i++)
         {
-            Instantiate(buildingsPlaced[i], buildingsPlacedLocation[i],Quaternion.identity, buildingParent);
+            Vector3 location = new Vector3(buildingsPlacedLocation[i].x, buildingsPlacedLocation[i].y - 0.22f, buildingsPlacedLocation[i].z);
+            Instantiate(buildingsPlaced[i], location, Quaternion.identity, buildingParent);
         }
     }
 
@@ -73,7 +87,13 @@ public class SC_Shop : MonoBehaviour
 
         if(placing)
         {
-            
+            BuildValid();
+        }
+
+        if(!placing && inBetween)
+        {
+            EventSystem.current.SetSelectedGameObject(buildButton);
+            inBetween = false;
         }
     }
 
@@ -116,15 +136,12 @@ public class SC_Shop : MonoBehaviour
     {
         //buildmode
         buildingToPlace = selectedBuilding;
-        Debug.Log("build");
         placing = true;
         purchaseCursor.SetBuildingDimensions(selectedBuilding.GetSpriteDims().x, selectedBuilding.GetSpriteDims().y);
         purchaseCursor.gameObject.SetActive(true);
         shopUI.SetActive(false);
         purchaseCursor.GetComponent<SpriteRenderer>().sprite = buildingToPlace.BuildingSprite;
         Cursor.visible = false;
-        buildButton.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(buildButton);
     }
 
     public void BackToBuildingSelection()
@@ -135,6 +152,7 @@ public class SC_Shop : MonoBehaviour
         Cursor.visible = true;
         buildButton.SetActive(false);
         selectButton.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(firstshopButton);
     }
 
     /// <summary>
@@ -160,7 +178,6 @@ public class SC_Shop : MonoBehaviour
     public void CloseShopUI()
     {
         shopUIParent.SetActive(false);
-        //enableShopButtonParent.SetActive(true);
         grid.gameObject.SetActive(false);
         OnToggleShop?.Invoke(true);
         cameraScript.DefaultView();
@@ -201,6 +218,7 @@ public class SC_Shop : MonoBehaviour
         tentativlyPlacedBuildings.Clear();
         tentativlyPlacedBuildingPrefabs.Clear();
         tentativlyPlacedBuildingSpawnPoint.Clear();
+        GameManager.Instance.buildMode = false;
         CloseShopUI();
     }
 
@@ -209,6 +227,9 @@ public class SC_Shop : MonoBehaviour
     /// </summary>
     void CheckShopUnlocks()
     {
+        int itemsLocked = 0;
+        int itemsUnlocked = 0;
+        int noMats = 0;
         for(int i = 0; i < buttons.Count; i++)
         {
             buttons[i].transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>().text = buildings[i].MaterialCost.x.ToString();
@@ -221,12 +242,80 @@ public class SC_Shop : MonoBehaviour
             }
             else if (buildings[i].MaterialCost.x > SC_Player_Prop.stoneMaterialCount || buildings[i].MaterialCost.y > SC_Player_Prop.twineMaterialCount) 
             {
+                noMats += 1;
+                itemsUnlocked += 1;
+                buttons[i].interactable = false;
+            }
+            else if(placed[i] && oneTime[i])
+            {
+                itemsUnlocked += 1;
+                itemsLocked += 1;
+                itemFrames[i].GetComponent<SC_BuildButton>().DISABLE();
                 buttons[i].interactable = false;
             }
             else 
             {
+                itemsUnlocked += 1;
                 buttons[i].interactable = true;
                 buttons[i].gameObject.SetActive(true);
+            }
+
+            if(itemsLocked == itemsUnlocked)
+            {
+                buttonSelect.interactable = false;
+            }
+            else if(noMats == itemsUnlocked)
+            {
+                buttonSelect.interactable = false;
+            }
+            else
+            {
+                buttonSelect.interactable = true;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Finds grid cell closest to mouse click and check if occupied by another structure or not, used in update to check if current pos is valid
+    /// </summary>
+    void BuildValid()
+    {
+        float purchaseX = (purchaseCursor.transform.position.x - buildingToPlace.gameObject.GetComponent<SpriteRenderer>().bounds.extents.x + 0.5f);
+        float purchaseY = (purchaseCursor.transform.position.y - buildingToPlace.gameObject.GetComponent<SpriteRenderer>().bounds.extents.y + 0.5f);
+        Vector3 purchasePos = new Vector3(purchaseX, purchaseY, purchaseCursor.transform.position.x - buildingToPlace.transform.position.z);
+        SC_GridCell closestGridCell = null;
+        float closestDistance = float.MaxValue;
+
+        foreach (SC_GridCell cell in grid.GetGrid())
+        {
+            float distance = Vector2.Distance(cell.transform.position, purchasePos);
+            if (distance < closestDistance)
+            {
+                closestDistance = distance;
+                closestGridCell = cell;
+                purchaseCursor.cantPlace();
+            }
+        }
+
+        if (closestDistance > distanceFromCenterOfCellAllowance)
+        {
+
+            return;
+        }
+
+        if (!closestGridCell.isOccupied)
+        {
+            if (buildingToPlace.IsMulticell)
+            {
+                List<SC_GridCell> usableCells = CheckAdjacentCells(closestGridCell, buildingToPlace.Dimensions);
+                if (usableCells.Count == buildingToPlace.Dimensions.x * buildingToPlace.Dimensions.y)
+                {
+                    purchaseCursor.canPlace();
+                }
+            }
+            else
+            {
+                purchaseCursor.canPlace();
             }
         }
     }
@@ -249,18 +338,14 @@ public class SC_Shop : MonoBehaviour
             {
                 closestDistance = distance;
                 closestGridCell = cell;
-                Debug.Log("PurchaseCursor" + purchasePos);
-                //Debug.Log(closestDistance);
             }
         }
 
         if (closestDistance > distanceFromCenterOfCellAllowance)
         {
             buildingToPlace = null;
-            purchaseCursor.gameObject.SetActive(false);
-            Debug.Log("cannot place");
             //placing = false;
-            Cursor.visible = true;
+            //Cursor.visible = true;
             return;
         }
 
@@ -273,27 +358,43 @@ public class SC_Shop : MonoBehaviour
                 {
                     //Debug.Log($"{usableCells[usableCells.Count - 1].transform.position - closestGridCell.transform.position}, {closestGridCell.transform.position - usableCells[usableCells.Count - 1].transform.position}");
                     Vector3 spawnPosition = closestGridCell.transform.position + ((usableCells[usableCells.Count - 1].transform.position - closestGridCell.transform.position) / 2.0f);
-
-                    SC_Building spawnedBuilding = Instantiate(buildingToPlace, spawnPosition, Quaternion.identity, buildingParent);
+                    Vector3 spawnedBuildingPos = new Vector3(spawnPosition.x, spawnPosition.y - 0.22f, spawnPosition.z);
+                    SC_Building spawnedBuilding = Instantiate(buildingToPlace, spawnedBuildingPos, Quaternion.identity, buildingParent);
                     tentativlyPlacedBuildings.Add(spawnedBuilding);
                     Color buildingColor = spawnedBuilding.GetComponent<SpriteRenderer>().color;
                     spawnedBuilding.GetComponent<SpriteRenderer>().color = new Color(buildingColor.r, buildingColor.g, buildingColor.b, 0.5f);
                     tentativlyPlacedBuildingPrefabs.Add(buildingToPlace);
                     tentativlyPlacedBuildingSpawnPoint.Add(spawnPosition);
+
+                    //ew ew ew ew ew
+                    for(int i = 0; i < placed.Count; i++)
+                    {
+                        SC_BuildButton buttonThis = itemFrames[i].GetComponent<SC_BuildButton>();
+                        if(buildingToPlace.buildingName == buttonThis.buildName)
+                        {
+                            placed[i] = true;
+                        }
+                    }
+
+
                     buildingToPlace = null;
                     foreach(SC_GridCell cell in usableCells)
                     {
                         cell.isOccupied = true;
                         tentativlyAllocatedGridCells.Add(cell);
                     }
-                    //placing = false;
+                    placing = false;
                     purchaseCursor.gameObject.SetActive(false);
+                    buildButton.SetActive(true);
+                    selectButton.SetActive(true);
                     Cursor.visible = true;
+                    inBetween = true;
                 }
             }
             else
             {
-                SC_Building spawnedBuilding = Instantiate(buildingToPlace, closestGridCell.transform.position, Quaternion.identity, buildingParent);
+                Vector3 spawnedBuildingPos = new Vector3(closestGridCell.transform.position.x, closestGridCell.transform.position.y - 0.22f, closestGridCell.transform.position.z);
+                SC_Building spawnedBuilding = Instantiate(buildingToPlace, spawnedBuildingPos, Quaternion.identity, buildingParent);
                 tentativlyPlacedBuildings.Add(spawnedBuilding);
                 Color buildingColor = spawnedBuilding.GetComponent<SpriteRenderer>().color;
                 spawnedBuilding.GetComponent<SpriteRenderer>().color = new Color(buildingColor.r, buildingColor.g, buildingColor.b, 0.5f);
@@ -302,8 +403,11 @@ public class SC_Shop : MonoBehaviour
                 buildingToPlace = null;
                 closestGridCell.isOccupied = true;
                 tentativlyAllocatedGridCells.Add(closestGridCell);
-                //placing = false;
+                placing = false;
                 purchaseCursor.gameObject.SetActive(false);
+                buildButton.SetActive(true);
+                selectButton.SetActive(true);
+                inBetween = true;
                 Cursor.visible = true;
             }
         }
@@ -355,5 +459,15 @@ public class SC_Shop : MonoBehaviour
     public List<bool> GetUnlocks()
     {
         return unlocked;
+    }
+
+    public List<bool> GetPlaced()
+    {
+        return placed;
+    }
+
+    public void SetPlaced(List<bool> placedd)
+    {
+        placed = placedd;
     }
 }
