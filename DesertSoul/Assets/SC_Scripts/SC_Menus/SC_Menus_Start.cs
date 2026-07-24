@@ -30,6 +30,10 @@ public class SC_Menus_Start : MonoBehaviour
         {
             creditTransform.anchoredPosition += new Vector2(0, +credSpd * Time.deltaTime);
         }
+        else if (!activeCredits)
+        {
+            creditTransform.anchoredPosition = new Vector2(0,0);
+        }
 
         if(fadeOut)
         {
