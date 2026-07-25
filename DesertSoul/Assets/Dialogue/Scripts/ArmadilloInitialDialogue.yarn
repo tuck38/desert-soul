@@ -1,0 +1,40 @@
+﻿title: ArmadilloInitialDialogue
+---
+<<change_camera_target DialogueManager Armadillo>>
+<<disable_player_ui DialogueManager true>>
+
+Armadillo: Ughh, dang it... I knew I should've bought spare tools...
+Armadillo: ...huh!? Who's there!?
+Armadillo: H-hey, stay back! I don't know what you are, but...
+Armadillo: ...
+Armadillo: ...you're not here to hurt me, are you?
+
+Green Soul: ...
+
+Armadillo: Well, I guess if you didn't bite me yet you're probably not gonna bite me at all.
+Armadillo: ...considering how all the other creatures here have been behaving, hahaha...
+
+Green Soul: ...
+
+Amanda Armadillo: A-hem. Guess I'll introduce myself. Name's Amanda. Amanda Armadillo.
+
+Green Soul: ...
+
+Amanda Armadillo: Silence, huh? Since you're still staring at me I'll assume you just can't speak.
+Amanda Armadillo: Say, little Green Guy, have you by any chance seen a drill somewhere around here?
+Amanda Armadillo: I uh... got jumped by a group of snakes and I dropped it as I ran away...
+
+Green Soul: ...
+
+Amanda Armadillo: Well, don't look at me like that! 
+Amanda Armadillo: Actually, I guess that's the only way you look, since you don't really have a face...
+Amanda Armadillo: ANYWAY, if you do see a drill, let me know. I'll probably stay around here.
+Amanda Armadillo: See you around!
+
+<<change_camera_target DialogueManager Player>>
+<<enable_movement RightArmadilloTrigger>>
+<<enable_movement LeftArmadilloTrigger>>
+<<disable_player_ui DialogueManager false>>
+<<disable_dialogue_trigger DialogueManager RightArmadilloTrigger>>
+<<disable_dialogue_trigger DialogueManager LeftArmadilloTrigger>>
+===
