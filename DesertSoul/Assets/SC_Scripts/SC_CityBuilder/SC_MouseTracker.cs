@@ -23,11 +23,15 @@ public class SC_MouseTracker : MonoBehaviour
 
     [SerializeField] SpriteRenderer area;
 
+    [SerializeField] SpriteRenderer rend;
+
     [SerializeField] Transform boundsHigh;
 
     [SerializeField] Transform boundsLow;
 
     Vector3 newPos;
+
+    public float halfWidth, halfHeight;
 
 
     private void Start()

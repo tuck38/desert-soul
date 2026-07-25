@@ -155,6 +155,10 @@ public class GameManager : MonoBehaviour
             prop.UpdateResources(ResouceTypes.STONE, 99);
             prop.UpdateResources(ResouceTypes.TWINE, 99);
         }
+        else if(Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            SetDrillActive(true);
+        }
         else if(Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene("StartMenu");

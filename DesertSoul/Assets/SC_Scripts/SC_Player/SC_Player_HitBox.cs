@@ -23,7 +23,7 @@ public class SC_Player_HitBox : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             SC_Enemy_Base enemy = collision.gameObject.GetComponent<SC_Enemy_Base>();
-            if (enemy != null)
+            if (enemy != null && !player.iFramesActive)
             {
                 prop.TakeDamage(enemy.GetDamage());
                 player.Knockback(collision.gameObject);
@@ -33,13 +33,22 @@ public class SC_Player_HitBox : MonoBehaviour
         else if (collision.gameObject.tag == "Dungball")
         {
             SC_DungBall enemy = collision.gameObject.GetComponent<SC_DungBall>();
-            if (enemy != null)
+            if (enemy != null && !player.iFramesActive)
             {
-                Debug.Log("Balled");
                 prop.TakeDamage(enemy.GetDamage());
                 player.Knockback(collision.transform.gameObject);
                 player.SetIFrames();
                 Destroy(enemy.gameObject);
+            }
+        }
+        else if(collision.gameObject.tag == "Boss")
+        {
+            SC_BossBase boss = collision.gameObject.GetComponent<SC_BossBase>();
+            if(boss != null && !player.iFramesActive)
+            {
+                prop.TakeDamage(boss.GetDamage());
+                player.Knockback(collision.transform.gameObject);
+                player.SetIFrames();
             }
         }
     }

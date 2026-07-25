@@ -160,6 +160,8 @@ public class SC_Player_Move : MonoBehaviour
 
     bool fadeIn = false;
 
+    public bool iFramesActive = false;
+
     bool fadeOut = false;
 
     [SerializeField] bool firstRoom = false;
@@ -767,30 +769,36 @@ public class SC_Player_Move : MonoBehaviour
     {
         Iframes = IframeTotal;
         flickerSpeed = flickerSpeedTotal;
+        iFramesActive = true;
         hitbox.enabled = false;
     }
 
     private void IFramesUpdate()
     {
-        //Iframes stuff
-        if (Iframes > 0)
+        if(iFramesActive == true)
         {
-            if (flickerSpeed > 0)
+            //Iframes stuff
+            if (Iframes > 0)
             {
-                flickerSpeed -= Time.deltaTime;
-            }
-            else if(flickerSpeed <= 0)
-            {
-                sprite.enabled = !sprite.enabled;
-                flickerSpeed = flickerSpeedTotal;
-            }
+                if (flickerSpeed > 0)
+                {
+                    flickerSpeed -= Time.deltaTime;
+                }
+                else if(flickerSpeed <= 0)
+                {
+                    sprite.enabled = !sprite.enabled;
+                    flickerSpeed = flickerSpeedTotal;
+                }
 
-            Iframes -= Time.deltaTime;
-        }
-        else
-        {
-            sprite.enabled = true;
-            hitbox.enabled = true;
+                hitbox.enabled = false;
+                Iframes -= Time.deltaTime;
+            }
+            else
+            {
+                iFramesActive = false;
+                sprite.enabled = true;
+                hitbox.enabled = true;
+            }
         }
     }
 }

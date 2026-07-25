@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Rendering;
 
 public class SC_DungBall : MonoBehaviour
 {
@@ -38,7 +39,7 @@ public class SC_DungBall : MonoBehaviour
     {
         yield return new WaitForSeconds(10f);
 
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     IEnumerator resetBall()
@@ -62,6 +63,11 @@ public class SC_DungBall : MonoBehaviour
             rb.AddForce(transform.up * ballRollSPD);
             StartCoroutine(resetBall());
         }
+    }
+
+    public void Break()
+    {
+        Destroy(gameObject);
     }
 
     public int GetDamage()

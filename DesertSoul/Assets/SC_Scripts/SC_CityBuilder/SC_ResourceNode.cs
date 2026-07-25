@@ -30,7 +30,7 @@ public class SC_ResourceNode : MonoBehaviour
     //takes damage and returns true if the attack killed the enemy
     public void TakeDamage(int dmg)
     {
-        currentHealth -= dmg;
+        currentHealth -= 1;
         SC_Player_Prop.OnResourcesAmountChanged?.Invoke(type, amountPerHit);
         spriteRenderer.color = Color.Lerp(Color.white, Color.black, currentHealth / healthTotal);
         if (currentHealth <= 0) spriteRenderer.enabled = false;

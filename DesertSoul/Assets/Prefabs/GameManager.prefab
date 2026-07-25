@@ -70,6 +70,7 @@ MonoBehaviour:
   placedBuildings: 0000
   UI: {fileID: 0}
   shopManager: {fileID: 0}
+  buildMode: 0
   gameIsPaused: 0
   mapPieces:
   - {fileID: 0}
@@ -240,6 +241,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b7f36406997c02946890a8ca80473c9c, type: 3}
   - {fileID: 8300000, guid: 5ec93f73bece6114f8d793aee996fc80, type: 3}
   - {fileID: 8300000, guid: 2db3103c0ccb54d49ba8e6c4241d5475, type: 3}
+  - {fileID: 8300000, guid: 3ef8cd65a2762a3498ee7568803253bb, type: 3}
   musicSource: {fileID: 1316775377393167063}
   sfxSource: {fileID: 4533859899908029492}
   prioBufferMax: 0.3

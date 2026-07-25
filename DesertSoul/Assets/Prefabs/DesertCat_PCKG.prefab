@@ -4944,7 +4944,7 @@ GameObject:
   - component: {fileID: 1061100552614987308}
   m_Layer: 0
   m_Name: Boss_DesertCat
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5074,16 +5074,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SC_BossBase
   MAXHealth: 200
+  phaseTransThreshold: 100
   damage: 0
-  snake: {fileID: 0}
-  deathCry: {fileID: 0}
-  knockbackDist: 0
-  totalLerpTime: 0
-  isSnake: 0
-  totalLaunchTime: 0
-  launchPower: 0
-  decelerationMult: 0.95
-  bossEnemy: 0
   bossAnim: {fileID: 7583574871159292710}
   beetleSpawn: {fileID: 0}
   beetle: {fileID: 0}
@@ -5096,8 +5088,12 @@ MonoBehaviour:
   baseColor: {r: 0, g: 0, b: 0, a: 0}
   bossTheme: {fileID: 8300000, guid: 964a110ca882e4e42976e67d92a1917e, type: 3}
   actualTransform: {fileID: 0}
+  lastPlayerPos: {fileID: 0}
   halfWidth: 0
   halfHeight: 0
+  hurtColor: {r: 0, g: 0, b: 0, a: 0}
+  colorTime: 0.3
+  hurtSound: {fileID: 8300000, guid: b7f36406997c02946890a8ca80473c9c, type: 3}
 --- !u!212 &4198121723198292843
 SpriteRenderer:
   m_ObjectHideFlags: 0

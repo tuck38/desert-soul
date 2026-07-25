@@ -4,8 +4,14 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.Rendering;
 
-public class SC_BossBase : SC_Enemy_Base
+public class SC_BossBase : MonoBehaviour
 {
+
+    [SerializeField] protected float MAXHealth;
+    protected float currentHealth;
+
+    [SerializeField] protected int phaseTransThreshold = 100;
+    [SerializeField] protected int damage;
     [SerializeField] Animator bossAnim;
     [SerializeField] Transform beetleSpawn;
     [SerializeField] GameObject beetle;
@@ -32,21 +38,32 @@ public class SC_BossBase : SC_Enemy_Base
 
     public float halfHeight;
 
+    private Rigidbody2D rb;
     private bool isFacingRight = true;
 
+    [SerializeField] Color hurtColor;
+
+    [SerializeField] float colorTime = 0.1f;
+
+    float currentTime;
+
+    [SerializeField] AudioClip hurtSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected override void Start()
+    protected void Start()
     {
+        currentTime = colorTime;
+        currentHealth = MAXHealth;
+        rb = GetComponent<Rigidbody2D>();
         playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
         slider = healthBar.GetComponent<Slider>();
         baseColor = sprite.color;
         halfHeight = sprite.bounds.extents.y;
         halfWidth = sprite.bounds.extents.x;
-        base.Start();
     }
 
     // Update is called once per frame
-    protected override void Update()
+    protected void Update()
     {
         //I am so tired and want to go to sleep
         /*if(transform.position.x > player.position.x && isFacingRight)
@@ -61,6 +78,20 @@ public class SC_BossBase : SC_Enemy_Base
             transform.Rotate(new Vector3(0, 180, 0));
         }*/
 
+
+        if(currentTime < colorTime)
+        {
+            currentTime += Time.deltaTime;
+        }
+        else
+        {
+            ChangeColor(baseColor, true);
+        }
+    }
+
+    public int GetDamage()
+    {
+        return damage;
     }
 
     public bool GetDirection()
@@ -101,11 +132,14 @@ public class SC_BossBase : SC_Enemy_Base
     }
 
     //takes damage and returns true if the attack killed the enemy
-    public bool TakeBossDamage(SC_Attack_Base attack, Transform carryPoint)
+    public bool TakeBossDamage(SC_Attack_Base attack)
     {
         currentHealth -= attack.getDamage();
         slider.value = currentHealth / MAXHealth;
-        if (currentHealth <= 100 && phaseTransed == false)
+        ChangeColor(hurtColor, false);
+        currentTime = 0;
+        GameManager.Instance.playSFX(hurtSound.name, true);
+        if (currentHealth <= phaseTransThreshold && phaseTransed == false)
         {
             GameObject obj = Instantiate(beetle, beetleSpawn.position, beetleSpawn.rotation);
             phaseTransed = true;

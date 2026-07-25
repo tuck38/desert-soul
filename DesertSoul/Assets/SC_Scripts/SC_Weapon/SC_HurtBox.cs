@@ -29,40 +29,48 @@ public class SC_HurtBox : MonoBehaviour
 
     public void StopEnemyLock()
     {
-        foreach(SC_Enemy_Base enemy in currentEnemies)
+        /*foreach(SC_Enemy_Base enemy in currentEnemies)
         {
             enemy.setLocked(false);
         }
-        currentEnemies = new List<SC_Enemy_Base>();
+        currentEnemies = new List<SC_Enemy_Base>();*/
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
+            Debug.Log("Enemy");
             PlayerHitParticles.Play();
-            //getting here in build
             SC_RattleBase enemy = collision.gameObject.GetComponent<SC_RattleBase>();
 
 
             if(enemy != null && currentAttack != null)
             {
-
                 if(!enemy.IsBoss())
                 {
                     enemy.TakeDamage(currentAttack, carryPoint, venture, venture2);
                     enemy.SetPlayer(gameObject.gameObject);
                     enemy.Knockback(currentAttack.getAttackType());
                 }
-                else
-                {
-                    SC_BossBase boss = collision.gameObject.GetComponent<SC_BossBase>();
-
-                    boss.TakeBossDamage(currentAttack, carryPoint);
-                }
                 //PlayerHitParticles.Play();
                 //Build getting here, not calling takedamage?
             }
+            else
+            {
+                SC_DungBeetle beetle = collision.gameObject.GetComponent<SC_DungBeetle>();
+
+                if(beetle != null && currentAttack != null)
+                {
+                    beetle.TakeDamage(currentAttack, carryPoint);
+
+                }
+            }
+        }
+        else if(collision.gameObject.tag == "Boss")
+        {
+            SC_BossBase boss = collision.gameObject.GetComponent<SC_BossBase>();
+            boss.TakeBossDamage(currentAttack);
         }
         else if (collision.gameObject.tag == "ResourceNode")
         {
@@ -96,10 +104,10 @@ public class SC_HurtBox : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Dungball")
         {
-            SC_Dungball dungball = collision.gameObject.GetComponent<SC_Dungball>();
+            SC_DungBall dungball = collision.gameObject.GetComponent<SC_DungBall>();
             if (dungball != null && (currentAttack.getAttackType() == AttackType.drillSide || currentAttack.getAttackType() == AttackType.drillDown))
             {
-                dungball.DamageBall();
+                dungball.Break();
             }
         }
     }

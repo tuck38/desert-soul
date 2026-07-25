@@ -85,7 +85,6 @@ public class SC_SanCatJump : StateMachineBehaviour
 
         if(jumperr == true && bossBase.IsGrounded())
         {
-            Debug.Log("gwahgwah");
             animator.SetBool("doAttack2", false);
             rb.linearVelocity = Vector2.zero;
         }

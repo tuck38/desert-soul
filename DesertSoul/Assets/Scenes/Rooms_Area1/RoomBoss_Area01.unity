@@ -319,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.304937
+      value: -10.302954
       objectReference: {fileID: 0}
     - target: {fileID: 3356591657745177984, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_LocalPosition.y
@@ -500,6 +500,10 @@ PrefabInstance:
     - target: {fileID: 5763584823500365033, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: sideDrillSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5960080901514004179, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -17.099731
       objectReference: {fileID: 0}
     - target: {fileID: 6897926676062928177, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: spacing
@@ -1113,6 +1117,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: ff3f870d244679144932b3fd27adf95e, type: 3}
     - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: colorTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 419919636}
@@ -1120,6 +1128,22 @@ PrefabInstance:
       propertyPath: beetleSpawn
       value: 
       objectReference: {fileID: 1619258077}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: hurtColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: hurtColor.b
+      value: 0.21150766
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: hurtColor.g
+      value: 0.21150766
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: hurtColor.r
+      value: 0.9150943
+      objectReference: {fileID: 0}
     - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: actualTransform
       value: 

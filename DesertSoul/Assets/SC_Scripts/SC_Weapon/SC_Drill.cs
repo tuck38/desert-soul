@@ -67,7 +67,6 @@ public class SC_Drill : MonoBehaviour
         if(timeToDrill)
         {
             drillin = true;
-            Debug.Log(drillin);
             attackSide.setTime(timeDrillin);
             hurtbox.currentAttack = attackSide;
             currentTimeDrillin = 0f;

@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 126721860067205480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.900006, y: 0.57965, z: -10}
+  m_LocalPosition: {x: -3.1881962, y: -23.859999, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -268,7 +268,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 4.5
+  orthographic size: 8
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -21219,13 +21219,14 @@ MonoBehaviour:
   - {fileID: 2375571341193911461}
   - {fileID: 533923061901437844}
   map: {fileID: 8862592354526361660}
+  firstButton: {fileID: 1335490710349380470}
   controls: {fileID: 3000563799109608818}
   audioSliders: {fileID: 5697401941187776958}
+  musicSlider: {fileID: 2955886053550538624}
+  sfxSlider: {fileID: 2126674518586880787}
   journalOpen: {fileID: 8300000, guid: fa02ce977a598e345a9241b34077a43f, type: 3}
   journalClose: {fileID: 8300000, guid: 89b5de9028b34ce438831539dc844dc6, type: 3}
   journalPage: {fileID: 0}
-  musicSlider: {fileID: 2955886053550538624}
-  sfxSlider: {fileID: 2126674518586880787}
 --- !u!114 &8862592354526361660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30245,6 +30246,10 @@ PrefabInstance:
       propertyPath: drillSound
       value: 
       objectReference: {fileID: 8300000, guid: 000102a34d457a14ab90cebdbfe4b4a6, type: 3}
+    - target: {fileID: 2448919803125031715, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: sideDrillSpeed
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: UI
       value: 
@@ -30346,6 +30351,10 @@ PrefabInstance:
       value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: flickerSpeedTotal
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: journalTabs.m_Name
       value: Journal Tabs
       objectReference: {fileID: 0}
@@ -30427,7 +30436,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4706023726402285121, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6005027152251848148, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_Sprite

@@ -43,17 +43,41 @@ public class SC_DungBeetle : MonoBehaviour
     //spawner stuff, temp, use events later
     SC_WaveRoom roomSpawned;
 
+    [SerializeField] Color damagedColor;
+
+    public AudioClip deathCry;
+    
+    [SerializeField] AudioClip hurtSound;
+
+    Color defaultColor;
+
+    [SerializeField] SpriteRenderer sprite;
+
+    [SerializeField] float damageTimer = 0.5f;
+
+    float timer = 0;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    protected virtual void Start()
+    protected void Start()
     {
         currentHealth = MAXHealth;
         rb = GetComponent<Rigidbody2D>();
+        defaultColor = sprite.color;
     }
 
     // Update is called once per frame
-    protected virtual void Update()
+    protected void Update()
     {
+
+        if(timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            sprite.color = defaultColor;
+        }
 
         if (currentHealth <= 0)
         {
@@ -106,15 +130,21 @@ public class SC_DungBeetle : MonoBehaviour
     }
 
     //takes damage and returns true if the attack killed the enemy
-    public virtual bool TakeDamage(SC_Attack_Base attack, Transform carryPoint)
+    public bool TakeDamage(SC_Attack_Base attack, Transform carryPoint)
     {
-        Debug.Log("hit");
         if (!locked)
         {
             currentHealth -= attack.getDamage();
+            sprite.color = damagedColor;
+            timer = damageTimer;
             if (currentHealth <= 0)
             {
+                GameManager.Instance.playSFX(deathCry.name, true);
                 return true;
+            }
+            else
+            {
+                GameManager.Instance.playSFX(hurtSound.name, true);
             }
 
             if (attack.shouldCarry() && !lockCooldown)
