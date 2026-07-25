@@ -126,6 +126,8 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private float IframeTotal;
     [SerializeField] private BoxCollider2D hitbox;
 
+    [SerializeField] SC_Player_Prop prop;
+
     //Camera Vars
     [SerializeField] private GameObject cameraFollowGameObject;
     private SC_Camera_FollowObject cameraFollowObject;
@@ -489,6 +491,7 @@ public class SC_Player_Move : MonoBehaviour
             InUI = true;
             GameManager.Instance.TogglePause();
             Journal.OpenJournal();
+            prop.UpdateText();
             //journalOpen.Post(gameObject);
 
         }

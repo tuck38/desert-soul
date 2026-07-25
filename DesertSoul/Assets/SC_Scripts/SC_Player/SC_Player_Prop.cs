@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Runtime.InteropServices.ComTypes;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -38,6 +39,39 @@ public class SC_Player_Prop : MonoBehaviour
 
     private SpriteRenderer sprite;
     private Color originalColor;
+
+    //Resource Bullshit
+
+    [SerializeField] TextMeshProUGUI textRC;
+    [SerializeField] Image imageRC;
+
+    [SerializeField] Image bgRC;
+
+    [SerializeField] Sprite twine;
+
+    [SerializeField] Sprite rock;
+
+    [SerializeField] Sprite money;
+
+    [SerializeField] float fadeTimer;
+
+    float currentFade;
+
+    [SerializeField] float appearTime;
+
+    float currentAppearTime;
+
+    [SerializeField] float fadeOutTime;
+
+    [SerializeField] float currentFadeOutTime;
+
+    bool resourceUIActive = false;
+
+    int stoneUI = 0;
+
+    int twineUI = 0;
+
+    [SerializeField] TextMeshProUGUI plus;
 
     public static int stoneMaterialCount { get; private set; } = 0;
     public static int twineMaterialCount { get; private set; } = 0;
@@ -86,6 +120,33 @@ public class SC_Player_Prop : MonoBehaviour
         {
             SunDamageTimer();
         }
+
+        //this is a suprise tool that will help us later
+        /*if(currentAppearTime < appearTime)
+        {
+            currentAppearTime += Time.deltaTime;
+        }
+        else if(currentAppearTime >= appearTime && resourceUIActive == true)
+        {
+            currentFade = 0;
+        }*/
+
+        if(currentFade < fadeTimer)
+        {
+            currentFade += Time.deltaTime;
+        }
+        else if(resourceUIActive == true)
+        {
+            textRC.color = new Color(textRC.color.r, textRC.color.g, textRC.color.b, 0);
+            imageRC.color = new Color(imageRC.color.r, textRC.color.g, textRC.color.b, 0);
+            bgRC.color = new Color(bgRC.color.r, bgRC.color.g, bgRC.color.b, 0);
+            plus.color = new Color(plus.color.r, plus.color.g, plus.color.b, 0);
+            stoneUI = 0;
+            twineUI = 0;
+            resourceUIActive = false;
+        }
+
+
     }
     
     public void TakeDamage(int dmg)
@@ -167,6 +228,18 @@ public class SC_Player_Prop : MonoBehaviour
         }
     }
 
+    public void UpdateText()
+    {
+        stoneText.text = stoneMaterialCount.ToString();
+        FruitText.text = twineMaterialCount.ToString();
+    }
+
+    private void ResourceUI()
+    {
+        
+    }
+
+
     IEnumerator FlashRed(float duration)
     {
         sprite.color = Color.red;
@@ -185,14 +258,50 @@ public class SC_Player_Prop : MonoBehaviour
         {
             case ResouceTypes.STONE:
                 stoneMaterialCount += amountOfResouceChanged;
+                stoneUI += amountOfResouceChanged;
                 stoneText.text = stoneMaterialCount.ToString();
+                if(resourceUIActive == false)
+                {
+                    currentFade = 0;
+                    resourceUIActive = true;
+                    imageRC.sprite = rock;
+                    textRC.color = new Color(textRC.color.r, textRC.color.g, textRC.color.b, 1);
+                    imageRC.color = Color.white;
+                    bgRC.color = new Color(bgRC.color.r, bgRC.color.g, bgRC.color.b, 1);
+                    plus.color = new Color(plus.color.r, plus.color.g, plus.color.b, 1);
+                    textRC.text = stoneUI.ToString();
+                }
+                else
+                {
+                    currentFade = 0;
+                    textRC.text = stoneUI.ToString();
+                }
                 break;
             case ResouceTypes.TWINE:
                 twineMaterialCount += amountOfResouceChanged;
+                twineUI += amountOfResouceChanged;
                 FruitText.text = twineMaterialCount.ToString();
+
+                if(resourceUIActive == false)
+                {
+                    currentFade = 0;
+                    resourceUIActive = true;
+                    imageRC.sprite = rock;
+                    textRC.text = twineUI.ToString();
+                    textRC.color = new Color(textRC.color.r, textRC.color.g, textRC.color.b, 1);
+                    imageRC.color = Color.white;
+                    bgRC.color = new Color(bgRC.color.r, bgRC.color.g, bgRC.color.b, 1);
+                    plus.color = new Color(plus.color.r, plus.color.g, plus.color.b, 1);
+                }
+                else
+                {
+                    currentFade = 0;
+                    textRC.text = twineUI.ToString();
+                }
                 break;
             case ResouceTypes.FRUIT:
                 fruitMaterialCount += amountOfResouceChanged;
+                Debug.Log("fruit");
                 break;
             case ResouceTypes.ICE:
                 iceMaterialCount += amountOfResouceChanged;
