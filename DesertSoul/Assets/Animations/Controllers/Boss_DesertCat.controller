@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   windUpTime: 0.4
+  windup: {fileID: 0}
 --- !u!114 &-8490374246292708070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -26,6 +27,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   windUpTime: 0.7
+  windup: {fileID: 8300000, guid: dca4f253ba7921c4bb4b8a24df0826af, type: 3}
 --- !u!1101 &-8228643543383978340
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -342,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   attackSpeed: 20
   dashRange: 50
+  scratch: {fileID: 8300000, guid: d0650c011ab3a4646b7db6a4ae317772, type: 3}
 --- !u!1101 &-512686882739885072
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -646,6 +649,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  jump: {fileID: 8300000, guid: a6a27460490598947a354a7c496a783e, type: 3}
+  land: {fileID: 8300000, guid: 466df55e20e851141920db1b028edff0, type: 3}
 --- !u!1101 &3201242921689310249
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

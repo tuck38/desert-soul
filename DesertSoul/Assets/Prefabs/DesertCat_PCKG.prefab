@@ -5086,7 +5086,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   baseColor: {r: 0, g: 0, b: 0, a: 0}
-  bossTheme: {fileID: 8300000, guid: 964a110ca882e4e42976e67d92a1917e, type: 3}
+  bossTheme: {fileID: 8300000, guid: b352a337ea700b642ae5a40a1e476a29, type: 3}
   actualTransform: {fileID: 0}
   lastPlayerPos: {fileID: 0}
   halfWidth: 0
@@ -5094,6 +5094,7 @@ MonoBehaviour:
   hurtColor: {r: 0, g: 0, b: 0, a: 0}
   colorTime: 0.3
   hurtSound: {fileID: 8300000, guid: b7f36406997c02946890a8ca80473c9c, type: 3}
+  bossDeath: {fileID: 8300000, guid: 764be7871c3ab8b4383706000d992855, type: 3}
 --- !u!212 &4198121723198292843
 SpriteRenderer:
   m_ObjectHideFlags: 0

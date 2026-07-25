@@ -7,6 +7,8 @@ public class SC_SanCatClawsWindup : StateMachineBehaviour
     SC_BossBase bossBase;
 
     [SerializeField] float windUpTime;
+
+    [SerializeField] AudioClip windup;
     private float currentWindUpTime = 0;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -18,6 +20,8 @@ public class SC_SanCatClawsWindup : StateMachineBehaviour
         {
             bossBase = animator.GetComponent<SC_BossBase>();
         }
+
+        GameManager.Instance.playSFX(windup.name, true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

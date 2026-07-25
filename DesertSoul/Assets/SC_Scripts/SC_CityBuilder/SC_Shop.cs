@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
-using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
-using JetBrains.Annotations;
 
 public class SC_Shop : MonoBehaviour
 {

@@ -49,6 +49,8 @@ public class SC_BossBase : MonoBehaviour
 
     [SerializeField] AudioClip hurtSound;
 
+    [SerializeField] AudioClip bossDeath;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected void Start()
     {
@@ -166,8 +168,8 @@ public class SC_BossBase : MonoBehaviour
 
     public void enableHPBar(bool enable)
     {
-        healthBar.SetActive(enable);
-        slider.value = 1;
+        //healthBar.SetActive(enable);
+        //slider.value = 1;
     }
 
     public void BossMusic()
@@ -199,6 +201,7 @@ public class SC_BossBase : MonoBehaviour
 
     IEnumerator Die()
     {
+        GameManager.Instance.playSFX(bossDeath.name, true);
         yield return new WaitForSeconds(0.2f);
         Destroy(this);
     }

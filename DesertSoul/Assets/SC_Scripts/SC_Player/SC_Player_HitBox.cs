@@ -29,6 +29,13 @@ public class SC_Player_HitBox : MonoBehaviour
                 player.Knockback(collision.gameObject);
                 player.SetIFrames();
             }
+            SC_RattleBase rattle = collision.gameObject.GetComponent<SC_RattleBase>();
+            if(rattle != null && !player.iFramesActive)
+            {
+                prop.TakeDamage(rattle.GetDamage());
+                player.Knockback(collision.gameObject);
+                player.SetIFrames();
+            }
         }
         else if (collision.gameObject.tag == "Dungball")
         {

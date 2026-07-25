@@ -13,6 +13,8 @@ public class SC_SandCatClaws : StateMachineBehaviour
     private Vector2 target;
     private bool isFacingRight;
 
+    [SerializeField] AudioClip scratch;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

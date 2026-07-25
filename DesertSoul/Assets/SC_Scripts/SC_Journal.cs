@@ -46,7 +46,7 @@ public class SC_Journal : MonoBehaviour
 
     public void NewTab(bool Dir)
     {
-        GameManager.Instance.playSFX(journalOpen.name, true);
+        GameManager.Instance.playSFX(journalPage.name, true);
         if(Dir)
         {
             tabs[current].SetActive(false);
@@ -93,7 +93,7 @@ public class SC_Journal : MonoBehaviour
 
             if(tabs[current].name == "Tab_Settings")
             {
-                GameManager.Instance.GetEventSystem().firstSelectedGameObject = firstButton;
+                EventSystem.current.firstSelectedGameObject = firstButton;
 
                 EventSystem.current.SetSelectedGameObject(firstButton);
             }
@@ -121,7 +121,7 @@ public class SC_Journal : MonoBehaviour
 
     public void OnQuitPressed()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("StartMenu");
     }
 
     public void OnAudioPressed()

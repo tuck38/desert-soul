@@ -20,6 +20,10 @@ public class SC_SanCatJump : StateMachineBehaviour
     Vector3 trajectoryStartPoint;
     Vector3 trajectoryEndPoint;
 
+    [SerializeField] AudioClip jump;
+
+    [SerializeField] AudioClip land;
+
     Vector2 gravityVec = new Vector2(0, -9.8f);
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -60,6 +64,8 @@ public class SC_SanCatJump : StateMachineBehaviour
 
         //bossBase.flipBoss();
         isFacingRight = bossBase.GetDirection();
+
+        GameManager.Instance.playSFX(jump.name, true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -67,7 +73,6 @@ public class SC_SanCatJump : StateMachineBehaviour
     {
         if(jumperr == false && !bossBase.IsGrounded())
         {
-            Debug.Log("no, that aint right");
             jumperr = true;
         }
 
@@ -85,6 +90,7 @@ public class SC_SanCatJump : StateMachineBehaviour
 
         if(jumperr == true && bossBase.IsGrounded())
         {
+            Debug.Log("Ground");
             animator.SetBool("doAttack2", false);
             rb.linearVelocity = Vector2.zero;
         }
@@ -147,6 +153,7 @@ public class SC_SanCatJump : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         bossBase.flipBoss();
+        GameManager.Instance.playSFX(land.name, true);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
