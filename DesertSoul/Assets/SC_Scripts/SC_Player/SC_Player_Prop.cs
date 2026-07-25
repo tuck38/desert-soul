@@ -286,7 +286,7 @@ public class SC_Player_Prop : MonoBehaviour
                 {
                     currentFade = 0;
                     resourceUIActive = true;
-                    imageRC.sprite = rock;
+                    imageRC.sprite = twine;
                     textRC.text = twineUI.ToString();
                     textRC.color = new Color(textRC.color.r, textRC.color.g, textRC.color.b, 1);
                     imageRC.color = Color.white;
@@ -301,7 +301,6 @@ public class SC_Player_Prop : MonoBehaviour
                 break;
             case ResouceTypes.FRUIT:
                 fruitMaterialCount += amountOfResouceChanged;
-                Debug.Log("fruit");
                 break;
             case ResouceTypes.ICE:
                 iceMaterialCount += amountOfResouceChanged;

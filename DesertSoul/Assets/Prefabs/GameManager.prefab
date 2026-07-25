@@ -242,6 +242,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5ec93f73bece6114f8d793aee996fc80, type: 3}
   - {fileID: 8300000, guid: 2db3103c0ccb54d49ba8e6c4241d5475, type: 3}
   - {fileID: 8300000, guid: 3ef8cd65a2762a3498ee7568803253bb, type: 3}
+  - {fileID: 8300000, guid: a6f162df0f02cbd4c82ed01e49dbf856, type: 3}
+  - {fileID: 8300000, guid: 96f62c638dad7a640bcba33fac73e27e, type: 3}
+  - {fileID: 8300000, guid: 2a8c1e8b05f9dca47bdf7505fd1d83e7, type: 3}
+  - {fileID: 8300000, guid: c52d7a38404eb924c9c01286bb2d412a, type: 3}
+  - {fileID: 8300000, guid: dca4f253ba7921c4bb4b8a24df0826af, type: 3}
+  - {fileID: 8300000, guid: 764be7871c3ab8b4383706000d992855, type: 3}
+  - {fileID: 8300000, guid: 466df55e20e851141920db1b028edff0, type: 3}
+  - {fileID: 8300000, guid: a6a27460490598947a354a7c496a783e, type: 3}
+  - {fileID: 8300000, guid: d0650c011ab3a4646b7db6a4ae317772, type: 3}
+  - {fileID: 8300000, guid: c306436f26d730e409ee928a270d09b1, type: 3}
   musicSource: {fileID: 1316775377393167063}
   sfxSource: {fileID: 4533859899908029492}
   prioBufferMax: 0.3

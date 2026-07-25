@@ -49,6 +49,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: box
+      value: 
+      objectReference: {fileID: 697288445329506586}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: hit
+      value: 
+      objectReference: {fileID: 8300000, guid: c52d7a38404eb924c9c01286bb2d412a, type: 3}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
+      propertyPath: breakNode
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a8c1e8b05f9dca47bdf7505fd1d83e7, type: 3}
+    - target: {fileID: 4812237512624563048, guid: 0e036640636962d44a37c21f53603121, type: 3}
       propertyPath: healthTotal
       value: 1
       objectReference: {fileID: 0}
@@ -81,3 +93,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e036640636962d44a37c21f53603121, type: 3}
+--- !u!60 &697288445329506586 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 1115702524366582037, guid: 0e036640636962d44a37c21f53603121, type: 3}
+  m_PrefabInstance: {fileID: 492723790719610895}
+  m_PrefabAsset: {fileID: 0}

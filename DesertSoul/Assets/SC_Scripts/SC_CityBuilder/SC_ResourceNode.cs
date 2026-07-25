@@ -8,6 +8,12 @@ public class SC_ResourceNode : MonoBehaviour
     [SerializeField] int amountPerHit;
     [SerializeField] int healthTotal;
 
+    [SerializeField] AudioClip hit;
+
+    [SerializeField] AudioClip breakNode;
+
+    [SerializeField] PolygonCollider2D box;
+
     int currentHealth;
     SpriteRenderer spriteRenderer;
 
@@ -33,7 +39,14 @@ public class SC_ResourceNode : MonoBehaviour
         currentHealth -= 1;
         SC_Player_Prop.OnResourcesAmountChanged?.Invoke(type, amountPerHit);
         spriteRenderer.color = Color.Lerp(Color.white, Color.black, currentHealth / healthTotal);
-        if (currentHealth <= 0) spriteRenderer.enabled = false;
+        if (currentHealth <= 0) 
+        {
+            spriteRenderer.enabled = false;
+            GameManager.Instance.playSFX(breakNode.name, true);
+            box.enabled = false;
+            return;
+        }
+        GameManager.Instance.playSFX(hit.name, true);
     }
 
     public AttackType AttackTypeToBreakNode()
@@ -47,6 +60,6 @@ public class SC_ResourceNode : MonoBehaviour
 
         currentHealth = healthTotal;
         spriteRenderer.color = Color.white;
-        spriteRenderer.enabled = true;
+        //spriteRenderer.enabled = true;
     }
 }
