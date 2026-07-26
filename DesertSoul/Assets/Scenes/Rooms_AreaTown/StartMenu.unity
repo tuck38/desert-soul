@@ -661,7 +661,7 @@ MonoBehaviour:
   creditsPanel: {fileID: 87734125}
   creditTransform: {fileID: 1830548003}
   mainScreen: {fileID: 515820086}
-  credSpd: 50
+  credSpd: 75
   fadeFromBlack: 2
   screen: {fileID: 1185309789}
   startSound: {fileID: 8300000, guid: f66210173d35c1447932b25720293758, type: 3}
@@ -1556,7 +1556,7 @@ RectTransform:
   m_AnchorMin: {x: 0.52500004, y: 0.5}
   m_AnchorMax: {x: 0.52500004, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 195, y: 50}
+  m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1830548004
 MonoBehaviour:
@@ -1583,9 +1583,23 @@ MonoBehaviour:
     Ashley Tucker
 
 
-    Lead Programmer
+    Ilan Fiarman
 
-    Ashley Tucker'
+
+    Josh Zavadil
+
+
+    Livi
+    DiPrizio
+
+
+    Sam DiMartino
+
+
+    Tyler Mann
+
+
+    An >:3 Production'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e5d96c798a3aa2b41bf829b224a834ed, type: 2}
   m_sharedMaterial: {fileID: 4788331262782826161, guid: e5d96c798a3aa2b41bf829b224a834ed, type: 2}
@@ -1612,7 +1626,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 65.25
+  m_fontSize: 64.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1650,7 +1664,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.92310333, y: 256.73715, z: -1.6993866, w: -834.15857}
+  m_margin: {x: 0.92310333, y: 394.22214, z: -1.6993866, w: -994.0248}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
