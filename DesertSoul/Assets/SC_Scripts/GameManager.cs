@@ -44,6 +44,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip area3;
     [SerializeField] AudioClip area4;
 
+    [SerializeField] SC_Player_Prop prop;
+
     [SerializeField] List<KeyValuePair<string, bool>> mapList;
 
     [SerializeField] EventSystem eventSystem;
@@ -78,7 +80,7 @@ public class GameManager : MonoBehaviour
 
     SC_Enum_Doors newDoor;
 
-    bool fuckyoumode = false;
+    bool fuckyoumode = true;
 
     //door stuff
     bool isDoor = false;
@@ -276,6 +278,8 @@ public class GameManager : MonoBehaviour
 
         map = GameObject.Find("JournalManager").GetComponentInChildren<SC_MapManager>();
 
+        prop = player.GetComponent<SC_Player_Prop>();
+
         move.setHasDrill(drillActive);
 
         fade = move.getFade();
@@ -462,7 +466,11 @@ public class GameManager : MonoBehaviour
     {
         if(fuckyoumode)
         {
+            Save();
             SceneManager.LoadScene("Room01_AreaTown");
+            player = GameObject.Find("Player");
+            player.transform.position = new Vector3(-1.7f, 2.33f, 0f);
+            Load();
         }
         else
         {
@@ -570,6 +578,27 @@ public class GameManager : MonoBehaviour
 
     private void Load()
     {
+
+        move = player.GetComponent<SC_Player_Move>();
+
+        if(SceneManager.GetActiveScene().name == "Town")
+        {
+            inTown = true;
+            shopManager = GameObject.FindGameObjectWithTag("shop").GetComponent<SC_Shop>();
+        }
+        else
+        {
+            inTown = false;
+        }
+
+        map = GameObject.Find("JournalManager").GetComponentInChildren<SC_MapManager>();
+
+        prop = player.GetComponent<SC_Player_Prop>();
+
+        move.setHasDrill(drillActive);
+
+        fade = move.getFade();
+
         map.SetMapPieces(mapPieces, piecesActive);
 
         map.RoomDiscovered();

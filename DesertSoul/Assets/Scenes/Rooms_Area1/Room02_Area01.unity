@@ -617,7 +617,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 115062389750763263, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5658766166095406492, guid: 0e35f1af91c20e14e97c18beaefbbc3f, type: 3}
       propertyPath: dialogueID
