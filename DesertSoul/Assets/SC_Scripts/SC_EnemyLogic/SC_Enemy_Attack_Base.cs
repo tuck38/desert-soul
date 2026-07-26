@@ -30,8 +30,8 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
 
     [SerializeField] protected SpriteRenderer spriteRenderer;
     //Raycast vars
-    protected float halfWidth;
-    protected float halfHeight;
+    public float halfWidth;
+    public float halfHeight;
 
     //allows us to have a local, unchaging version of these vars - Ashley
     protected Vector3 realP1;
@@ -99,8 +99,6 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
 
     public virtual void PlayerLost()
     {
-        Debug.Log("Player lost");
-        player = null;
         //nextPoint = preLockOnPoint;
         if (isGoingLeft)
         {

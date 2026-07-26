@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: 900d74c4e853ecb4a9c44e10bf4a9e05
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1339935655635331765
+    second: DesertSoulDrillDownspirtesheet_0
+  - first:
+      213: -721935623421978625
+    second: DesertSoulDrillDownspirtesheet_1
+  - first:
+      213: 8536824033782398473
+    second: DesertSoulDrillDownspirtesheet_2
+  - first:
+      213: -7195156665536157461
+    second: DesertSoulDrillDownspirtesheet_3
+  - first:
+      213: -6845685719743386010
+    second: DesertSoulDrillDownspirtesheet_4
+  - first:
+      213: 2056930850071883497
+    second: DesertSoulDrillDownspirtesheet_5
+  - first:
+      213: 5691527924074644706
+    second: DesertSoulDrillDownspirtesheet_6
+  - first:
+      213: -1882741652393658917
+    second: DesertSoulDrillDownspirtesheet_7
+  - first:
+      213: 7971051859367206122
+    second: DesertSoulDrillDownspirtesheet_8
+  - first:
+      213: 5315865739853931521
+    second: DesertSoulDrillDownspirtesheet_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DesertSoulDrillDownspirtesheet_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 1
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ba26082168689210800000000000000
+      internalID: 1339935655635331765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesertSoulDrillDownspirtesheet_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 2
+        width: 12
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff79b3f106b2bf5f0800000000000000
+      internalID: -721935623421978625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesertSoulDrillDownspirtesheet_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90efd9b8a34e87670800000000000000
+      internalID: 8536824033782398473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesertSoulDrillDownspirtesheet_3
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 0
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be8ee6f522ba52c90800000000000000
+      internalID: -7195156665536157461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesertSoulDrillDownspirtesheet_4
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 2
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66e2bbe9b1d3ff0a0800000000000000
+      internalID: -6845685719743386010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesertSoulDrillDownspirtesheet_5
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 4
+        width: 26
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9eea316c5bfab8c10800000000000000
+      internalID: 2056930850071883497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesertSoulDrillDownspirtesheet_6
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 2
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e48fafed7e5cfe40800000000000000
+      internalID: 5691527924074644706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesertSoulDrillDownspirtesheet_7
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 0
+        width: 20
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd57e3d31782fd5e0800000000000000
+      internalID: -1882741652393658917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesertSoulDrillDownspirtesheet_8
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 0
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aec9cc30f6dde9e60800000000000000
+      internalID: 7971051859367206122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DesertSoulDrillDownspirtesheet_9
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 0
+        width: 22
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 104a9a9c9bfb5c940800000000000000
+      internalID: 5315865739853931521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 2c6334477c5360d4b9af85e8b95412b7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DesertSoulDrillDownspirtesheet_0: 1339935655635331765
+      DesertSoulDrillDownspirtesheet_1: -721935623421978625
+      DesertSoulDrillDownspirtesheet_2: 8536824033782398473
+      DesertSoulDrillDownspirtesheet_3: -7195156665536157461
+      DesertSoulDrillDownspirtesheet_4: -6845685719743386010
+      DesertSoulDrillDownspirtesheet_5: 2056930850071883497
+      DesertSoulDrillDownspirtesheet_6: 5691527924074644706
+      DesertSoulDrillDownspirtesheet_7: -1882741652393658917
+      DesertSoulDrillDownspirtesheet_8: 7971051859367206122
+      DesertSoulDrillDownspirtesheet_9: 5315865739853931521
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -27,6 +27,7 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     new void Start()
     {
         base.Start();
+        player = GameObject.Find("Player");
         currentState = EnemyState.WANDERING;
         nextPoint = new Vector3(transform.position.x - 1f, transform.position.y, transform.position.z);
         isGoingLeft = true;
@@ -185,6 +186,27 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
             //SpriteRotation(newXPosition.x);
             //Debug.Log(newXPosition);
             transform.position = new Vector2(newXPosition.x, initialY);
+        }
+    }
+
+    public void ApproachPlayer()
+    {
+        if (player.transform.position.x >= transform.position.x)
+        {
+            //look right
+            if(isGoingLeft)
+            {
+                SpriteRotation();
+            }
+
+        }
+        else if (player.transform.position.x < transform.position.x)
+        {
+            //look left
+            if(!isGoingLeft)
+            {
+                SpriteRotation();
+            }
         }
     }
 }

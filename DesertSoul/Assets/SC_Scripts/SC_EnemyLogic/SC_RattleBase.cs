@@ -118,6 +118,22 @@ public class SC_RattleBase : MonoBehaviour
         //this is for knockback lerping, just doing a quick dirty implementation
         if(lerping)
         {
+
+            if(Physics2D.Raycast(transform.position, Vector2.right, snake.halfWidth + 0.1f, LayerMask.GetMask("Ground")))
+            {
+                //We are hitting Le wall
+                lerping = false;
+                snake.SetCanMove(true);
+            }
+
+            if(Physics2D.Raycast(transform.position, Vector2.left, snake.halfWidth + 0.1f, LayerMask.GetMask("Ground")))
+            {
+                //We are hitting Le wall
+                lerping = false;
+                snake.SetCanMove(true);
+            }
+
+
             elapsedLerpTime += Time.deltaTime;
             float percentageComplete = elapsedLerpTime / totalLerpTime;
 
@@ -150,6 +166,7 @@ public class SC_RattleBase : MonoBehaviour
             currentHealth -= attack.getDamage();
 
             GameManager.Instance.playSFX(hurtSound.name, true);
+            snake.ApproachPlayer();
             if (currentHealth <= 0)
             {
                 return true;
