@@ -77,8 +77,8 @@ public class SC_RattleBase : MonoBehaviour
             {
                 GameManager.Instance.playSFX(deathCry.name, true);
                 canDie = false;
+                Die();
             }
-            StartCoroutine(Die());
         }
 
         if(currentLockTimer > 0)
@@ -272,18 +272,19 @@ public class SC_RattleBase : MonoBehaviour
         }
     }
 
-    IEnumerator Die()
+    void Die()
     {
-        
+        Debug.Log("???");
         if(roomSpawned != null)
         {
             
             roomSpawned.checkWave();
         }
 
-        yield return new WaitForSeconds(0.2f);
+        //yield return new WaitForSeconds(0.2f);
         SC_SnakeDead dead = Instantiate(snakeDead, gameObject.transform.position, gameObject.transform.rotation).GetComponent<SC_SnakeDead>();
         dead.knockBack(launchFromRight);
         Destroy(gameObject);
+        
     }
 }

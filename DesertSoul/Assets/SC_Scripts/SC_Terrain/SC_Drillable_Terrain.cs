@@ -54,7 +54,7 @@ public class SC_Drillable_Terrain : MonoBehaviour
     {
         col.enabled = false;
         breakParticles.Play();
-        sprite.enabled = false;
+        Destroy(gameObject);
     }
 
     public void FixTerrain()

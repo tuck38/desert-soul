@@ -107,6 +107,7 @@ public class SC_Player_Prop : MonoBehaviour
         originalColor = sprite.color;
 
         HUD.UpdateHealthUI(currentHealth, maxHealth, false);
+        HUD.UpdateHealthUI(currentHealth, maxHealth, false);
     }
 
     // Update is called once per frame

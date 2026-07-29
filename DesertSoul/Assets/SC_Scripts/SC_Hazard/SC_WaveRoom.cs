@@ -53,6 +53,7 @@ public class SC_WaveRoom : MonoBehaviour
         Debug.Log("spawning wave");
         for(int i = 0; i < waves[currentWave].enemies.Count; i++)
         {
+            Debug.Log("Enemy spawning");
             Transform spawnTransform = null;
             //this sucks
             for(int j = 0; j < spawners.Count; j++)
@@ -67,12 +68,23 @@ public class SC_WaveRoom : MonoBehaviour
                 }
             }
 
-            Debug.Log("herm");
             GameObject enemy = Instantiate(waves[currentWave].enemies[i], new Vector3(spawnTransform.position.x, spawnTransform.position.y, spawnTransform.position.z), Quaternion.identity);
             currentEnemies++;
 
             //give enemy item
-            enemy.GetComponent<SC_Enemy_Base>().setMommaSpawner(this);
+
+            //horrible system, use inheritence
+            SC_RattleBase script = enemy.GetComponent<SC_RattleBase>();
+            if(script == null)
+            {
+                SC_DungBeetle beetle = enemy.GetComponent<SC_DungBeetle>();
+                beetle.setMommaSpawner(this);
+            }
+            else
+            {
+                script.setMommaSpawner(this);
+            }
+
         }
     }
 
@@ -83,6 +95,8 @@ public class SC_WaveRoom : MonoBehaviour
         if(currentEnemies < 1)
         {
             Debug.Log("wave over");
+            Debug.Log(currentWave);
+            Debug.Log(waves.Count);
             currentWave++;
             if(waves.Count <= currentWave)
             {

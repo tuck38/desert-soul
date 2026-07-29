@@ -2,6 +2,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Runtime.Serialization;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class SC_Menus_Start : MonoBehaviour
 {
@@ -10,6 +13,8 @@ public class SC_Menus_Start : MonoBehaviour
     [SerializeField] GameObject creditsPanel;
     [SerializeField] RectTransform creditTransform;
     [SerializeField] GameObject mainScreen;
+
+    [SerializeField] GameObject main;
     public float credSpd;
     //[Header("Wwise Events")]
     //public AK.Wwise.Event mainMenuButtons;
@@ -24,6 +29,11 @@ public class SC_Menus_Start : MonoBehaviour
 
     [SerializeField] AudioClip startSound;
 
+
+    void Start()
+    {
+        EventSystem.current.SetSelectedGameObject(main);
+    }
     void Update()
     {
         if (activeCredits)
@@ -49,7 +59,7 @@ public class SC_Menus_Start : MonoBehaviour
             else
             {
                 fadeOut = false; 
-                SceneManager.LoadScene(LastScene);
+                SceneManager.LoadScene("Room01_AreaTown");
             }
         }
     }
@@ -57,6 +67,7 @@ public class SC_Menus_Start : MonoBehaviour
     public void StartGame ()
     {
        // mainMenuButtons.Post(gameObject);
+        currentFadeBlackTimer = 0;
         GameManager.Instance.playSFX(startSound.name);
         fadeOut = true;
     }
