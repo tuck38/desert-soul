@@ -9,6 +9,8 @@ public class SC_Attack_Base : ScriptableObject
 
     [SerializeField] protected List<AttackType> requirments;
     [SerializeField] private int damage;
+    [SerializeField] private int staggerDamage;
+    [SerializeField] private int staminaCost;
     [SerializeField] private float atkTime;
     [SerializeField] private AttackType type;
     [SerializeField] private int attackID;
@@ -45,6 +47,16 @@ public class SC_Attack_Base : ScriptableObject
     public int getDamage()
     {
         return damage;
+    }
+
+    public int getStagger()
+    {
+        return staggerDamage;
+    }
+
+    public int getStam()
+    {
+        return staminaCost;
     }
 
     public bool shouldCarry()

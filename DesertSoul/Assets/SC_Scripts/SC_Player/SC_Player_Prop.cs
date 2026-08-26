@@ -23,6 +23,25 @@ public class SC_Player_Prop : MonoBehaviour
     [SerializeField] private Text stoneText;
     [SerializeField] private Text FruitText;
 
+    //stamin vars
+
+    [SerializeField] private int maxStamina = 20;
+
+    [SerializeField] private int currentStamia;
+
+    //how much time of inaction should pass before stamina begins to regen
+    [SerializeField] float staminaRegenTimer = 4;
+
+    float currentStamRegenTimer = 0;
+
+    [SerializeField] int staminaRegenAmnt = 1;
+
+    //when stamina is regening, how fast the bar should go up
+    [SerializeField] float staminaRegenInterval = .5f;
+    float currentStamInterval = 0;
+
+    bool stamRegenPaused = false;
+
     //Sun Beam Variables, putting here for now
     [SerializeField] private int maxSunStacks;
     [SerializeField] private int sunStacksBeforeDamage;
@@ -41,7 +60,6 @@ public class SC_Player_Prop : MonoBehaviour
     private Color originalColor;
 
     //Resource Bullshit
-
     [SerializeField] TextMeshProUGUI textRC;
     [SerializeField] Image imageRC;
 
@@ -106,6 +124,8 @@ public class SC_Player_Prop : MonoBehaviour
         sprite = gameObject.GetComponent<SpriteRenderer>();
         originalColor = sprite.color;
 
+        currentStamia = maxStamina;
+
         HUD.UpdateHealthUI(currentHealth, maxHealth, false);
         HUD.UpdateHealthUI(currentHealth, maxHealth, false);
     }
@@ -148,6 +168,33 @@ public class SC_Player_Prop : MonoBehaviour
         }
 
 
+
+        //stamina timers
+
+        //stamina regen
+        if(maxStamina > currentStamia)
+        {
+            if(currentStamInterval < staminaRegenInterval && stamRegenPaused == false)
+            {
+                currentStamInterval += Time.deltaTime;
+            }
+            else if(stamRegenPaused == false)
+            {
+                currentStamInterval = 0;
+                IncreaseStamina(staminaRegenAmnt);
+            }
+        }
+
+        //stamina regen cooldown
+        if(stamRegenPaused == true && staminaRegenTimer > currentStamRegenTimer)
+        {
+            currentStamRegenTimer += Time.deltaTime;
+        }
+        else if(stamRegenPaused == true)
+        {
+            currentStamRegenTimer = 0;
+            stamRegenPaused = false;
+        }
     }
     
     public void TakeDamage(int dmg)
@@ -187,6 +234,40 @@ public class SC_Player_Prop : MonoBehaviour
         currentHealth += 1;
         HUD.UpdateHealthUI(currentHealth, maxHealth, true, 1);
     }
+
+    public void DoStaminaMove(SC_Attack_Base attack)
+    {
+        //calculation of if player has enought stamina should be done outside this script
+        currentStamia -= attack.getStam();
+        if(currentStamia < 0)
+        {
+            currentStamia = 0;
+        }
+        UpdateStamBar();
+        stamRegenPaused = true;
+        currentStamRegenTimer = 0;
+    }
+
+    public void IncreaseStamina(int amount)
+    {
+        currentStamia += amount;
+        if(currentStamia > maxStamina)
+        {
+            currentStamia = maxStamina;
+        }
+        UpdateStamBar();
+    }
+
+    public int getCurrentStamina()
+    {
+        return currentStamia;
+    }
+
+    private void UpdateStamBar()
+    {
+        //TODO
+    }
+
     public void giveSunStack(int damage)
     {
         inSunlight = true;
