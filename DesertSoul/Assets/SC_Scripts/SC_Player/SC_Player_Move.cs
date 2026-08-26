@@ -441,9 +441,9 @@ public class SC_Player_Move : MonoBehaviour
     {
         if(paused == false)
         {
+            
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             sythe.AddAttack(AttackType.primary);
-            GameManager.Instance.playSFX(sytheSwingAUD[0].name, true);
         }
     } 
 

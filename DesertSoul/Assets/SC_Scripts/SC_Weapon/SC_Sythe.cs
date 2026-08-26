@@ -9,6 +9,8 @@ public class SC_Sythe : MonoBehaviour
     /*Script originally created to allow player to engage with a combat system, changed to allow for simple 1 off 
     attacks until combat sysem is more nailed down*/
     
+    [SerializeField] SC_Player_Prop prop;
+
     //Script where the attacks are executed, and communication with the animator occures
 
     [SerializeField] private Animator animator;
@@ -101,19 +103,25 @@ public class SC_Sythe : MonoBehaviour
                 }
             }
         }*/
-        animator.SetInteger("Attack", Attacks[0].getID());
-        HurtBox.currentAttack = Attacks[0];
-        isAttacking = true;
-        //attackTimer = 0f;
-        //currentAttackLength = Attacks[0].getTime();
-        animator.SetTrigger("doAttack");
-        //Attacks[0].doAttack(projectileSpawn.transform);
-        //HurtBox.enabled = true;
-        // Sythe sound attack
 
-        //if no moves are found that equal the current combo, clear the combo and run the function again to preform a basic move
-        //EndCombo();
-        //AddAttack(attack, anim);
+        if(Attacks[0].getStam() < prop.getCurrentStamina())
+        {
+            animator.SetInteger("Attack", Attacks[0].getID());
+            HurtBox.currentAttack = Attacks[0];
+            prop.DoStaminaMove(Attacks[0]);
+            GameManager.Instance.playSFX(Attacks[0].getClip().name, true);
+            isAttacking = true;
+            //attackTimer = 0f;
+            //currentAttackLength = Attacks[0].getTime();
+            animator.SetTrigger("doAttack");
+            //Attacks[0].doAttack(projectileSpawn.transform);
+            //HurtBox.enabled = true;
+            // Sythe sound attack
+
+            //if no moves are found that equal the current combo, clear the combo and run the function again to preform a basic move
+            //EndCombo();
+            //AddAttack(attack, anim);
+        }
         return;
     }
 

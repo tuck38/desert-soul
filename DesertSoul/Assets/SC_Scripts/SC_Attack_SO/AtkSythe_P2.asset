@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: AtkSythe_P2
   m_EditorClassIdentifier: 
   requirments: 00000000
-  damage: 1
+  damage: 13
+  staggerDamage: 6
+  staminaCost: 2
   atkTime: 0
   type: 0
   attackID: 1

@@ -25,9 +25,9 @@ public class SC_Player_Prop : MonoBehaviour
 
     //stamin vars
 
-    [SerializeField] private int maxStamina = 20;
+    [SerializeField] private float maxStamina = 20;
 
-    [SerializeField] private int currentStamia;
+    private float currentStamia;
 
     //how much time of inaction should pass before stamina begins to regen
     [SerializeField] float staminaRegenTimer = 4;
@@ -192,7 +192,6 @@ public class SC_Player_Prop : MonoBehaviour
         }
         else if(stamRegenPaused == true)
         {
-            currentStamRegenTimer = 0;
             stamRegenPaused = false;
         }
     }
@@ -258,7 +257,7 @@ public class SC_Player_Prop : MonoBehaviour
         UpdateStamBar();
     }
 
-    public int getCurrentStamina()
+    public float getCurrentStamina()
     {
         return currentStamia;
     }
@@ -266,6 +265,7 @@ public class SC_Player_Prop : MonoBehaviour
     private void UpdateStamBar()
     {
         //TODO
+        HUD.UpdateStamUI(currentStamia, maxStamina);
     }
 
     public void giveSunStack(int damage)

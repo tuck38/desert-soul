@@ -11,6 +11,11 @@ public class SC_Player_HUD : MonoBehaviour
     [SerializeField] private GameObject healthNode;
 
     [SerializeField] private GameObject momma;
+
+    [SerializeField] private Slider stamSlider;
+
+    [SerializeField] private Slider flowSlider;
+
     [SerializeField] private float spacing;
     public int mapPart;
 
@@ -65,5 +70,16 @@ public class SC_Player_HUD : MonoBehaviour
                 activeHealth++;
             }
         }
+    }
+
+    public void UpdateStamUI(float current, float max)
+    {
+        float per = current / max;
+        stamSlider.value = per;
+    }
+
+    public void UpdateFlowUI()
+    {
+        
     }
 }

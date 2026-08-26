@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requirments: 
   damage: 1
+  staggerDamage: 8
+  staminaCost: 5
   atkTime: 0.5
   type: 3
   attackID: 0

@@ -17,6 +17,8 @@ public class SC_Attack_Base : ScriptableObject
     [SerializeField] private GameObject projectile;
     [SerializeField] private AnimationClip clip;
 
+    [SerializeField] private AudioClip attackAudio;
+
     [SerializeField] private bool carry;
 
 
@@ -47,6 +49,11 @@ public class SC_Attack_Base : ScriptableObject
     public int getDamage()
     {
         return damage;
+    }
+
+    public AudioClip getClip()
+    {
+        return attackAudio;
     }
 
     public int getStagger()
