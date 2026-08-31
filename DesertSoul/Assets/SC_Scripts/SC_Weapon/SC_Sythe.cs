@@ -33,6 +33,23 @@ public class SC_Sythe : MonoBehaviour
 
     private bool isAttacking;
 
+    //Block Vars
+
+    bool isBlocking;
+    bool isParrying;
+
+    [SerializeField] float blockInitialStamina;
+
+    [SerializeField] float blockStaminaDrainAmnt;
+
+    [SerializeField] float blockStaminaDrainRate;
+
+    private float currentStamDrainRate = 0;
+
+    [SerializeField] float parryTimer;
+
+    private float currentParryTime = 0;
+
 
     private void OnEnable()
     {
@@ -48,7 +65,12 @@ public class SC_Sythe : MonoBehaviour
     void Start()
     {
         isAttacking = false;
-         HurtBox.enabled = false;
+        HurtBox.enabled = false;
+
+        isBlocking = false;
+        isParrying = false;
+
+        currentParryTime = parryTimer;
     }
 
     // Update is called once per frame
@@ -57,6 +79,23 @@ public class SC_Sythe : MonoBehaviour
         if(isAttacking == true)
         {
             //AttackTimer();
+        }
+
+        if(isBlocking == true && isParrying == true)
+        {
+            if(parryTimer > currentParryTime)
+            {
+                currentParryTime += Time.deltaTime;
+            }
+            else if(parryTimer <= currentParryTime)
+            {
+                isParrying = false;
+            }
+        }
+
+        if(isBlocking)
+        {
+            
         }
     }
 
@@ -108,7 +147,7 @@ public class SC_Sythe : MonoBehaviour
         {
             animator.SetInteger("Attack", Attacks[0].getID());
             HurtBox.currentAttack = Attacks[0];
-            prop.DoStaminaMove(Attacks[0]);
+            prop.DoStaminaMove(Attacks[0].getStam());
             GameManager.Instance.playSFX(Attacks[0].getClip().name, true);
             isAttacking = true;
             //attackTimer = 0f;
@@ -123,6 +162,40 @@ public class SC_Sythe : MonoBehaviour
             //AddAttack(attack, anim);
         }
         return;
+    }
+
+    public void Block(bool active)
+    {
+        if(active == true && prop.getCurrentStamina() > blockInitialStamina)
+        {
+            isBlocking = true;
+            isParrying = true;
+
+            currentParryTime = 0;
+
+            prop.DoStaminaMove(blockInitialStamina);
+
+            //Animation Switch
+
+        }
+        else if(active == false)
+        {
+            isBlocking = false;
+            isParrying = false; 
+
+            //Animation Switch
+
+        }
+    }
+
+    public bool getParry()
+    {
+        return isParrying;
+    }
+
+    public bool getBlocking()
+    {
+        return isBlocking;
     }
 
     public void EndCombo()
@@ -149,6 +222,11 @@ public class SC_Sythe : MonoBehaviour
     public List<AttackType> GetCombo()
     {
         return combo;
+    }
+
+    public float getBlockStamina()
+    {
+        return blockInitialStamina;
     }
 
     /// <summary>

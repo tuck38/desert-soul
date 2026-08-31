@@ -234,10 +234,10 @@ public class SC_Player_Prop : MonoBehaviour
         HUD.UpdateHealthUI(currentHealth, maxHealth, true, 1);
     }
 
-    public void DoStaminaMove(SC_Attack_Base attack)
+    public void DoStaminaMove(float stam)
     {
         //calculation of if player has enought stamina should be done outside this script
-        currentStamia -= attack.getStam();
+        currentStamia -= stam;
         if(currentStamia < 0)
         {
             currentStamia = 0;

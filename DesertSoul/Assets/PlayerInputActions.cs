@@ -199,6 +199,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""149484e8-3524-4bef-b3fd-54586058cd68"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -705,6 +714,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""JournalRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3f7cb203-261e-44ea-ba1d-b56463a58fcd"",
+                    ""path"": ""<Keyboard>/rightBracket"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""467bbf75-1fa6-4e66-a284-592c2bab195d"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Block"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1304,6 +1335,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Blueprint = m_Player.FindAction("Blueprint", throwIfNotFound: true);
         m_Player_JournalLeft = m_Player.FindAction("JournalLeft", throwIfNotFound: true);
         m_Player_JournalRight = m_Player.FindAction("JournalRight", throwIfNotFound: true);
+        m_Player_Block = m_Player.FindAction("Block", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1409,6 +1441,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Blueprint;
     private readonly InputAction m_Player_JournalLeft;
     private readonly InputAction m_Player_JournalRight;
+    private readonly InputAction m_Player_Block;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1468,6 +1501,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/JournalRight".
         /// </summary>
         public InputAction @JournalRight => m_Wrapper.m_Player_JournalRight;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Block".
+        /// </summary>
+        public InputAction @Block => m_Wrapper.m_Player_Block;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1530,6 +1567,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @JournalRight.started += instance.OnJournalRight;
             @JournalRight.performed += instance.OnJournalRight;
             @JournalRight.canceled += instance.OnJournalRight;
+            @Block.started += instance.OnBlock;
+            @Block.performed += instance.OnBlock;
+            @Block.canceled += instance.OnBlock;
         }
 
         /// <summary>
@@ -1577,6 +1617,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @JournalRight.started -= instance.OnJournalRight;
             @JournalRight.performed -= instance.OnJournalRight;
             @JournalRight.canceled -= instance.OnJournalRight;
+            @Block.started -= instance.OnBlock;
+            @Block.performed -= instance.OnBlock;
+            @Block.canceled -= instance.OnBlock;
         }
 
         /// <summary>
@@ -1961,6 +2004,13 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJournalRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Block" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBlock(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

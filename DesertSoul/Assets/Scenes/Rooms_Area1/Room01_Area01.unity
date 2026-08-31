@@ -1089,6 +1089,14 @@ PrefabInstance:
       propertyPath: Composition.HardLimits.Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4444036802002266888, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444036802002266888, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4567069116890979532, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -1837,6 +1845,10 @@ PrefabInstance:
       propertyPath: roomManager
       value: 
       objectReference: {fileID: 140875425}
+    - target: {fileID: 7707950079859245996, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7938439708496888254, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_Enabled
       value: 1

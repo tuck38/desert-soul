@@ -96,6 +96,7 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] private InputAction journal;
     [SerializeField] private InputAction journalTabs;
     [SerializeField] private InputAction interact;
+    [SerializeField] private InputAction block;
 
     [SerializeField] AudioClip[] sytheSwingAUD;
     [SerializeField] AudioClip[] movementAUD;
@@ -170,6 +171,15 @@ public class SC_Player_Move : MonoBehaviour
 
     bool paused = false;
 
+    //Block Vars
+
+    bool isBlocking;
+    bool isParrying;
+
+    [SerializeField] float parryTimer;
+
+    private float currentParryTime = 0;
+
     private void Awake()
     {
         //initial decloration
@@ -188,6 +198,8 @@ public class SC_Player_Move : MonoBehaviour
         //Attacks
         playerControls.Player.PrimaryAttack.performed += OnPrimary;
         playerControls.Player.SecondaryAttack.performed += OnSecondary;
+        playerControls.Player.Block.performed += OnBlock;
+        playerControls.Player.Block.canceled += OnBlock;
 
         //UI
         playerControls.Player.Interact.performed += OnInteract;
@@ -454,6 +466,11 @@ public class SC_Player_Move : MonoBehaviour
             SC_DustCloud.OnPlayerTakeAnAction?.Invoke();
             drill.Drill(IsGrounded(), isFacingRight);
         }
+    }
+
+    public void OnBlock(InputAction.CallbackContext context)
+    {
+        
     }
 
     public void setHasDrill(bool drill)
