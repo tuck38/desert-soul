@@ -19,6 +19,8 @@ public class SC_Attack_Base : ScriptableObject
 
     [SerializeField] private AudioClip attackAudio;
 
+    [SerializeField] private float knockBackMult = 1.25f;
+
     [SerializeField] private bool carry;
 
 
@@ -54,6 +56,11 @@ public class SC_Attack_Base : ScriptableObject
     public AudioClip getClip()
     {
         return attackAudio;
+    }
+
+    public float GetkbMult()
+    {
+        return knockBackMult;
     }
 
     public int getStagger()

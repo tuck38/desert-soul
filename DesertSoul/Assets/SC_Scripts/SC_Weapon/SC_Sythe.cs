@@ -38,7 +38,7 @@ public class SC_Sythe : MonoBehaviour
     bool isBlocking;
     bool isParrying;
 
-    [SerializeField] float blockInitialStamina;
+    [SerializeField] public float blockInitialStamina;
 
     [SerializeField] float blockStaminaDrainAmnt;
 
@@ -49,6 +49,9 @@ public class SC_Sythe : MonoBehaviour
     [SerializeField] float parryTimer;
 
     private float currentParryTime = 0;
+
+    [SerializeField] public float parryKB = 1.25f;
+    [SerializeField] public float blockKB = 1;
 
 
     private void OnEnable()
@@ -95,7 +98,21 @@ public class SC_Sythe : MonoBehaviour
 
         if(isBlocking)
         {
-            
+
+            if(prop.getCurrentStamina() < blockStaminaDrainAmnt)
+            {
+                Block(false);
+            }
+
+
+            if(blockStaminaDrainRate > currentStamDrainRate)
+            {
+                currentStamDrainRate += Time.deltaTime;
+            }
+            else if(blockStaminaDrainRate <= currentStamDrainRate)
+            {
+                prop.DoStaminaMove(blockStaminaDrainAmnt);
+            }
         }
     }
 
@@ -168,10 +185,12 @@ public class SC_Sythe : MonoBehaviour
     {
         if(active == true && prop.getCurrentStamina() > blockInitialStamina)
         {
+            Debug.Log("Start Block");
             isBlocking = true;
             isParrying = true;
 
             currentParryTime = 0;
+            currentStamDrainRate = 0;
 
             prop.DoStaminaMove(blockInitialStamina);
 
@@ -180,6 +199,7 @@ public class SC_Sythe : MonoBehaviour
         }
         else if(active == false)
         {
+            Debug.Log("Stop Block");
             isBlocking = false;
             isParrying = false; 
 

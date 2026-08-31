@@ -40,7 +40,6 @@ public class SC_HurtBox : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Enemy");
             PlayerHitParticles.Play();
             SC_RattleBase enemy = collision.gameObject.GetComponent<SC_RattleBase>();
 
@@ -51,7 +50,7 @@ public class SC_HurtBox : MonoBehaviour
                 {
                     enemy.TakeDamage(currentAttack, carryPoint, venture, venture2);
                     enemy.SetPlayer(gameObject.gameObject);
-                    enemy.Knockback(currentAttack.getAttackType());
+                    enemy.Knockback(currentAttack.getAttackType(), currentAttack.GetkbMult());
                 }
                 //PlayerHitParticles.Play();
                 //Build getting here, not calling takedamage?

@@ -1,3 +1,4 @@
+using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 
 public class SC_Player_HitBox : MonoBehaviour
@@ -5,6 +6,10 @@ public class SC_Player_HitBox : MonoBehaviour
 
     [SerializeField] private SC_Player_Prop prop;
     [SerializeField] private SC_Player_Move player;
+    [SerializeField] private SC_Sythe scythe;
+
+    [SerializeField] private Vector2 fixedLaunchVector;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,16 +30,43 @@ public class SC_Player_HitBox : MonoBehaviour
             SC_Enemy_Base enemy = collision.gameObject.GetComponent<SC_Enemy_Base>();
             if (enemy != null && !player.iFramesActive)
             {
-                prop.TakeDamage(enemy.GetDamage());
-                player.Knockback(collision.gameObject);
-                player.SetIFrames();
+                if(scythe.getParry())
+                {
+                    
+                }
+                else if(scythe.getBlocking())
+                {
+                    prop.TakeDamage(enemy.GetDamage() / 2);
+                    //enemy KB and player KB
+                }
+                else
+                {
+                    //when enemies "do" attacks instead of a fixed contact value, this will be changed to be based on their code
+                    prop.TakeDamage(enemy.GetDamage());
+                    player.Knockback(collision.gameObject, fixedLaunchVector);
+                    player.SetIFrames();
+                }
             }
             SC_RattleBase rattle = collision.gameObject.GetComponent<SC_RattleBase>();
             if(rattle != null && !player.iFramesActive)
             {
-                prop.TakeDamage(rattle.GetDamage());
-                player.Knockback(collision.gameObject);
-                player.SetIFrames();
+                if(scythe.getParry())
+                {
+                    rattle.Knockback(AttackType.primary, scythe.parryKB);
+                    prop.Parry(scythe.blockInitialStamina);
+                }
+                else if(scythe.getBlocking())
+                {
+                    prop.TakeDamage(rattle.GetDamage() / 2);
+                    rattle.Knockback(AttackType.primary, scythe.blockKB);
+                    player.Knockback(collision.gameObject, new Vector2(fixedLaunchVector.x / 2, 0));
+                }
+                else
+                {
+                    prop.TakeDamage(rattle.GetDamage());
+                    player.Knockback(collision.gameObject, fixedLaunchVector);
+                    player.SetIFrames();
+                }
             }
         }
         else if (collision.gameObject.tag == "Dungball")
@@ -42,10 +74,24 @@ public class SC_Player_HitBox : MonoBehaviour
             SC_DungBall enemy = collision.gameObject.GetComponent<SC_DungBall>();
             if (enemy != null && !player.iFramesActive)
             {
-                prop.TakeDamage(enemy.GetDamage());
-                player.Knockback(collision.transform.gameObject);
-                player.SetIFrames();
-                Destroy(enemy.gameObject);
+                if(scythe.getParry())
+                {
+                    prop.Parry(scythe.blockInitialStamina);
+                    Destroy(enemy.gameObject);
+                }
+                else if(scythe.getBlocking())
+                {
+                    prop.TakeDamage(enemy.GetDamage() / 2);
+                    player.Knockback(collision.gameObject, new Vector2(fixedLaunchVector.x / 2, 0));
+                    Destroy(enemy.gameObject);
+                }
+                else
+                {
+                    prop.TakeDamage(enemy.GetDamage());
+                    player.Knockback(collision.transform.gameObject, fixedLaunchVector);
+                    player.SetIFrames();
+                    Destroy(enemy.gameObject);
+                }
             }
         }
         else if(collision.gameObject.tag == "Boss")
@@ -53,9 +99,21 @@ public class SC_Player_HitBox : MonoBehaviour
             SC_BossBase boss = collision.gameObject.GetComponent<SC_BossBase>();
             if(boss != null && !player.iFramesActive)
             {
-                prop.TakeDamage(boss.GetDamage());
-                player.Knockback(collision.transform.gameObject);
-                player.SetIFrames();
+                if(scythe.getParry())
+                {
+                    prop.Parry(scythe.blockInitialStamina);
+                }
+                else if(scythe.getBlocking())
+                {
+                    prop.TakeDamage(boss.GetDamage() / 2);
+                    player.Knockback(collision.gameObject, new Vector2(fixedLaunchVector.x / 2, 0));
+                }
+                else
+                {
+                    prop.TakeDamage(boss.GetDamage());
+                    player.Knockback(collision.transform.gameObject, fixedLaunchVector);
+                    player.SetIFrames();
+                }
             }
         }
     }

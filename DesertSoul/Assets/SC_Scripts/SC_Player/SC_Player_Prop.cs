@@ -247,7 +247,7 @@ public class SC_Player_Prop : MonoBehaviour
         currentStamRegenTimer = 0;
     }
 
-    public void IncreaseStamina(int amount)
+    public void IncreaseStamina(float amount)
     {
         currentStamia += amount;
         if(currentStamia > maxStamina)
@@ -255,6 +255,12 @@ public class SC_Player_Prop : MonoBehaviour
             currentStamia = maxStamina;
         }
         UpdateStamBar();
+    }
+
+    public void Parry(float stamRegen, float flowAmnt = 0)
+    {
+        //special damage bar
+        IncreaseStamina(stamRegen);
     }
 
     public float getCurrentStamina()

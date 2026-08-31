@@ -189,7 +189,7 @@ public class SC_RattleBase : MonoBehaviour
     }
 
 
-    public void Knockback(AttackType atkType)
+    public void Knockback(AttackType atkType, float kbDist)
     {
         //TEMPORARY IF STATMENT
         if(isSnake)
@@ -257,7 +257,7 @@ public class SC_RattleBase : MonoBehaviour
         {
             lockCooldown = true;
             currentLockTimer = lockTimer;
-            Knockback(AttackType.drillSide);
+            Knockback(AttackType.drillSide, knockbackDist);
         }
     }
 

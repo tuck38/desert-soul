@@ -113,7 +113,7 @@ public class SC_Player_Move : MonoBehaviour
      private SC_Drill drill;
 
     //Knockback Vars
-    [SerializeField] private float launchPower;
+    private Vector2 launchPower;
     private float launchTime;
     [SerializeField] private float launchTotalTime;
     [SerializeField] private bool launchFromRight;
@@ -170,15 +170,6 @@ public class SC_Player_Move : MonoBehaviour
     [SerializeField] bool firstRoom = false;
 
     bool paused = false;
-
-    //Block Vars
-
-    bool isBlocking;
-    bool isParrying;
-
-    [SerializeField] float parryTimer;
-
-    private float currentParryTime = 0;
 
     private void Awake()
     {
@@ -470,7 +461,14 @@ public class SC_Player_Move : MonoBehaviour
 
     public void OnBlock(InputAction.CallbackContext context)
     {
-        
+        if(context.performed && sythe.getBlocking() == false)
+        {
+            sythe.Block(true);
+        }
+        else if(context.canceled && sythe.getBlocking() == true)
+        {
+            sythe.Block(false);
+        }
     }
 
     public void setHasDrill(bool drill)
@@ -526,7 +524,7 @@ public class SC_Player_Move : MonoBehaviour
     {
         if(InUI)
         {
-        Journal.NewTab(true);
+            Journal.NewTab(true);
         }
     }
 
@@ -534,7 +532,7 @@ public class SC_Player_Move : MonoBehaviour
     {
         if(InUI)
         {
-        Journal.NewTab(false);
+            Journal.NewTab(false);
         }
     }
 
@@ -714,7 +712,7 @@ public class SC_Player_Move : MonoBehaviour
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
-    public void Knockback(GameObject enemy)
+    public void Knockback(GameObject enemy, Vector2 launchVector)
     {
 
         //method 1
@@ -725,6 +723,9 @@ public class SC_Player_Move : MonoBehaviour
 
         //method 2
         launchTime = launchTotalTime;
+
+        launchPower = launchVector;
+        
 
         if (enemy.transform.position.x >= transform.position.x)
         {
@@ -768,11 +769,11 @@ public class SC_Player_Move : MonoBehaviour
             //This system works for now, but doesent use gravity and feels floaty
             if(launchFromRight)
             {
-                rb.linearVelocity = new Vector2(-launchPower, launchPower);
+                rb.linearVelocity = new Vector2(-launchPower.x, launchPower.y);
             }
             else
             {
-                rb.linearVelocity = new Vector2(launchPower, launchPower);
+                rb.linearVelocity = new Vector2(launchPower.x, launchPower.y);
             }
 
             launchTime -= Time.deltaTime;

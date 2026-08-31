@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 126721860067205480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.56633, y: 3.27316, z: -10}
+  m_LocalPosition: {x: -15.9, y: 0.54084, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31119,6 +31119,10 @@ PrefabInstance:
       value: Jump
       objectReference: {fileID: 0}
     - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: block.m_Name
+      value: Block
+      objectReference: {fileID: 0}
+    - target: {fileID: 3151976702978925430, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: fallGravMult
       value: 1.5
       objectReference: {fileID: 0}
@@ -31294,6 +31298,22 @@ PrefabInstance:
       propertyPath: prop
       value: 
       objectReference: {fileID: 6410392765866644530}
+    - target: {fileID: 5643392107775045682, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: parryTimer
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643392107775045682, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: blockInitialStamina
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643392107775045682, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: blockStaminaDrainAmnt
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643392107775045682, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: blockStaminaDrainRate
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 6005027152251848148, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -31394,6 +31414,18 @@ PrefabInstance:
       propertyPath: PlayerHitParticles
       value: 
       objectReference: {fileID: 4809186640204831006}
+    - target: {fileID: 7286416919150859386, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: scythe
+      value: 
+      objectReference: {fileID: 2328723240212566008}
+    - target: {fileID: 7286416919150859386, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: fixedLaunchVector.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7286416919150859386, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: fixedLaunchVector.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7767278961558348056, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: m_GravityScale
       value: 1
@@ -31424,6 +31456,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3366755237181995076}
   m_SourcePrefab: {fileID: 100100000, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+--- !u!114 &2328723240212566008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5643392107775045682, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+  m_PrefabInstance: {fileID: 7926355454035083210}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9170100189900558771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 640422bc61716a74ba303357c007fb87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4435905006718356002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6021192115620328936, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
