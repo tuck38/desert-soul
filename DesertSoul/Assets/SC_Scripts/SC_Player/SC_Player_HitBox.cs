@@ -52,11 +52,13 @@ public class SC_Player_HitBox : MonoBehaviour
             {
                 if(scythe.getParry())
                 {
+                    rattle.SetPlayer(player.gameObject);
                     rattle.Knockback(AttackType.primary, scythe.parryKB);
                     prop.Parry(scythe.blockInitialStamina);
                 }
                 else if(scythe.getBlocking())
                 {
+                    rattle.SetPlayer(player.gameObject);
                     prop.TakeDamage(rattle.GetDamage() / 2);
                     rattle.Knockback(AttackType.primary, scythe.blockKB);
                     player.Knockback(collision.gameObject, new Vector2(fixedLaunchVector.x / 2, 0));

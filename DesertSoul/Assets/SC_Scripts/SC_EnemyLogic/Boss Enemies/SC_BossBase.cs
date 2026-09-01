@@ -3,9 +3,20 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using UnityEngine.Rendering;
+using Unity.VisualScripting;
 
 public class SC_BossBase : MonoBehaviour
 {
+
+    //TODO
+
+   //ANIMATOR SWITCH, cancel attacks
+
+   //stun time getter
+
+   //hitbox hook up
+
+   //parry player feedback
 
     [SerializeField] protected float MAXHealth;
     protected float currentHealth;
@@ -17,7 +28,7 @@ public class SC_BossBase : MonoBehaviour
     [SerializeField] GameObject beetle;
     private bool phaseTransed = false;
      [SerializeField] private Transform groundCheck;
-    private Transform playerTrans;
+    private GameObject player;
 
     [SerializeField] GameObject healthBar;
     private Slider slider;
@@ -51,13 +62,39 @@ public class SC_BossBase : MonoBehaviour
 
     [SerializeField] AudioClip bossDeath;
 
+    bool lerping = false;
+
+    bool canMove = true;
+
+    [SerializeField] float parryStunTime = 0.5f;
+
+    [SerializeField] float breakStunTime = 3f;
+
+    float stunTime = 0.5f;
+
+    float currentStunTime;
+
+    float launchTime = 0;
+
+    [SerializeField] float totalLaunchTime = 1f;
+
+    float knockbackDist = 1f;
+
+    bool launchFromRight;
+
+    Vector3 kbEndPoint;
+
+    float totalLerpTime;
+
+    float elapsedLerpTime;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected void Start()
     {
         currentTime = colorTime;
         currentHealth = MAXHealth;
         rb = GetComponent<Rigidbody2D>();
-        playerTrans = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player");
         slider = healthBar.GetComponent<Slider>();
         baseColor = sprite.color;
         halfHeight = sprite.bounds.extents.y;
@@ -89,6 +126,38 @@ public class SC_BossBase : MonoBehaviour
         {
             ChangeColor(baseColor, true);
         }
+
+        if(lerping)
+        {
+
+            if(Physics2D.Raycast(transform.position, Vector2.right, halfWidth + 0.1f, LayerMask.GetMask("Ground")))
+            {
+                //We are hitting Le wall
+                lerping = false;
+                //SET CAN MOVE
+            }
+
+            if(Physics2D.Raycast(transform.position, Vector2.left, halfWidth + 0.1f, LayerMask.GetMask("Ground")))
+            {
+                //We are hitting Le wall
+                lerping = false;
+                //SET CAN MOVE
+            }
+
+
+            elapsedLerpTime += Time.deltaTime;
+            float percentageComplete = elapsedLerpTime / totalLerpTime;
+
+            transform.position = Vector3.Lerp(transform.position, kbEndPoint, percentageComplete);
+
+            //if statment of doom and dispair
+            if(transform.position == kbEndPoint)
+            {
+                lerping = false;
+                //set can move
+            }
+        }
+
     }
 
     public int GetDamage()
@@ -98,7 +167,7 @@ public class SC_BossBase : MonoBehaviour
 
     public bool GetDirection()
     {
-        if(transform.position.x > playerTrans.position.x)
+        if(transform.position.x > player.transform.position.x)
         {
             return false;
         }
@@ -110,7 +179,7 @@ public class SC_BossBase : MonoBehaviour
 
     public void flipBoss()
     {
-        if (transform.position.x > playerTrans.position.x && isFacingRight || transform.position.x < playerTrans.position.x && !isFacingRight)
+        if (transform.position.x > player.transform.position.x && isFacingRight || transform.position.x < player.transform.position.x && !isFacingRight)
         {
             isFacingRight = !isFacingRight;
             transform.Rotate(new Vector3(0, 180, 0));
@@ -120,7 +189,7 @@ public class SC_BossBase : MonoBehaviour
 
     public Transform GetPlayerPos()
     {
-        return playerTrans;
+        return player.transform;
     }
 
     public Transform GetLastPlayePos()
@@ -130,7 +199,7 @@ public class SC_BossBase : MonoBehaviour
 
     public void SetLastPlayerPos()
     {
-        lastPlayerPos = playerTrans;
+        lastPlayerPos = player.transform;
     }
 
     //takes damage and returns true if the attack killed the enemy
@@ -186,6 +255,38 @@ public class SC_BossBase : MonoBehaviour
     {
         return actualTransform;
     }
+
+    public void Knockback(AttackType atkType, float kbDist)
+    {
+        if(atkType == AttackType.drillSide)
+        {
+            launchTime = totalLaunchTime;
+        }
+
+        knockbackDist = kbDist;
+
+        Vector3 target = transform.position;
+
+        if (player.transform.position.x >= transform.position.x)
+        {
+            launchFromRight = true;
+            target = new Vector3(transform.position.x - knockbackDist, transform.position.y, transform.position.z);
+        }
+        else if (player.transform.position.x < transform.position.x)
+        {
+            launchFromRight = false;
+            target = new Vector3(transform.position.x + knockbackDist, transform.position.y, transform.position.z);
+        }
+
+        if(atkType == AttackType.primary)
+        {
+                lerping = true;
+                kbEndPoint = target;
+
+                //Cancel current attack
+        }
+    }
+
 
     public void ChangeColor(Color color, bool originalColor)
     {

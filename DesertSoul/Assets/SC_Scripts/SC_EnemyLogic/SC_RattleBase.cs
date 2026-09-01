@@ -207,6 +207,8 @@ public class SC_RattleBase : MonoBehaviour
             launchTime = totalLaunchTime;
         }
 
+        knockbackDist = kbDist;
+
         Vector3 target = transform.position;
 
         if (player.transform.position.x >= transform.position.x)
