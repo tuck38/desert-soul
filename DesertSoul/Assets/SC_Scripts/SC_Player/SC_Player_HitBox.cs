@@ -104,11 +104,14 @@ public class SC_Player_HitBox : MonoBehaviour
                 if(scythe.getParry())
                 {
                     prop.Parry(scythe.blockInitialStamina);
+                    boss.Parried(AttackType.primary, scythe.parryKB);
+                    Debug.Log("Parry!");
                 }
                 else if(scythe.getBlocking())
                 {
                     prop.TakeDamage(boss.GetDamage() / 2);
                     player.Knockback(collision.gameObject, new Vector2(fixedLaunchVector.x / 2, 0));
+                    Debug.Log("block!");
                 }
                 else
                 {

@@ -37,6 +37,8 @@ public class SC_SandCatRun : StateMachineBehaviour
         }
 
         bossBase.flipBoss();
+
+        bossBase.SetParryable(true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -59,7 +61,7 @@ public class SC_SandCatRun : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        bossBase.SetParryable(false);
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

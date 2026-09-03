@@ -91,6 +91,8 @@ public class SC_Player_Prop : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI plus;
 
+    [SerializeField] public AudioClip parrySound;
+
     public static int stoneMaterialCount { get; private set; } = 0;
     public static int twineMaterialCount { get; private set; } = 0;
     public static int fruitMaterialCount { get; private set; } = 0;

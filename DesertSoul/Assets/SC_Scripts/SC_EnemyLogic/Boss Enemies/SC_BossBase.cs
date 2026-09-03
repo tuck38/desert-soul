@@ -10,11 +10,11 @@ public class SC_BossBase : MonoBehaviour
 
     //TODO
 
-   //ANIMATOR SWITCH, cancel attacks
+   //ANIMATOR SWITCH, cancel attacks - done
 
-   //stun time getter
+   //stun time getter - done
 
-   //hitbox hook up
+   //hitbox hook up - done
 
    //parry player feedback
 
@@ -84,9 +84,11 @@ public class SC_BossBase : MonoBehaviour
 
     Vector3 kbEndPoint;
 
-    float totalLerpTime;
+    [SerializeField] float totalLerpTime;
 
     float elapsedLerpTime;
+
+    private bool parryable = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected void Start()
@@ -135,6 +137,7 @@ public class SC_BossBase : MonoBehaviour
                 //We are hitting Le wall
                 lerping = false;
                 //SET CAN MOVE
+                bossAnim.SetBool("doStun", false);
             }
 
             if(Physics2D.Raycast(transform.position, Vector2.left, halfWidth + 0.1f, LayerMask.GetMask("Ground")))
@@ -142,6 +145,7 @@ public class SC_BossBase : MonoBehaviour
                 //We are hitting Le wall
                 lerping = false;
                 //SET CAN MOVE
+                bossAnim.SetBool("doStun", false);
             }
 
 
@@ -155,6 +159,7 @@ public class SC_BossBase : MonoBehaviour
             {
                 lerping = false;
                 //set can move
+                bossAnim.SetBool("doStun", false);
             }
         }
 
@@ -175,6 +180,11 @@ public class SC_BossBase : MonoBehaviour
         {
             return true;
         }
+    }
+
+    public float GetStunTime()
+    {
+        return stunTime;
     }
 
     public void flipBoss()
@@ -233,6 +243,11 @@ public class SC_BossBase : MonoBehaviour
     public Animator GetAnimator()
     {
         return bossAnim;
+    }
+
+    public void SetParryable(bool parry)
+    {
+        parryable = parry;
     }
 
     public void enableHPBar(bool enable)
@@ -298,6 +313,19 @@ public class SC_BossBase : MonoBehaviour
         {
             sprite.color = color;
         }
+    }
+
+    public bool Parried(AttackType atk, float kbDist)
+    {
+        if(parryable)
+        {
+            Knockback(atk, kbDist);
+            stunTime = parryStunTime;
+            bossAnim.SetBool("doStun", true);
+            bossAnim.SetBool("doAttack1", false);
+            bossAnim.SetBool("doAttack2", false);
+        }
+        return parryable;
     }
 
     IEnumerator Die()
