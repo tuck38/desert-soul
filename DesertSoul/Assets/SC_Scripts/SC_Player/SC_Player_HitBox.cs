@@ -55,6 +55,7 @@ public class SC_Player_HitBox : MonoBehaviour
                     rattle.SetPlayer(player.gameObject);
                     rattle.Knockback(AttackType.primary, scythe.parryKB);
                     prop.Parry(scythe.blockInitialStamina);
+                    prop.IncreaseFlow(scythe.parryFlow);
                 }
                 else if(scythe.getBlocking())
                 {
@@ -62,6 +63,7 @@ public class SC_Player_HitBox : MonoBehaviour
                     prop.TakeDamage(rattle.GetDamage() / 2);
                     rattle.Knockback(AttackType.primary, scythe.blockKB);
                     player.Knockback(collision.gameObject, new Vector2(fixedLaunchVector.x / 2, 0));
+                    prop.IncreaseFlow(scythe.blockFlow);
                 }
                 else
                 {
@@ -80,11 +82,13 @@ public class SC_Player_HitBox : MonoBehaviour
                 {
                     prop.Parry(scythe.blockInitialStamina);
                     Destroy(enemy.gameObject);
+                    prop.IncreaseFlow(scythe.parryFlow);
                 }
                 else if(scythe.getBlocking())
                 {
                     prop.TakeDamage(enemy.GetDamage() / 2);
                     player.Knockback(collision.gameObject, new Vector2(fixedLaunchVector.x / 2, 0));
+                    prop.IncreaseFlow(scythe.blockFlow);
                     Destroy(enemy.gameObject);
                 }
                 else
@@ -103,15 +107,18 @@ public class SC_Player_HitBox : MonoBehaviour
             {
                 if(scythe.getParry())
                 {
-                    prop.Parry(scythe.blockInitialStamina);
-                    boss.Parried(AttackType.primary, scythe.parryKB);
-                    Debug.Log("Parry!");
+                    if(boss.Parried(AttackType.primary, scythe.parryKB))
+                    {
+                        prop.Parry(scythe.blockInitialStamina);
+                        prop.IncreaseFlow(scythe.parryFlow);
+                    }
                 }
                 else if(scythe.getBlocking())
                 {
                     prop.TakeDamage(boss.GetDamage() / 2);
                     player.Knockback(collision.gameObject, new Vector2(fixedLaunchVector.x / 2, 0));
-                    Debug.Log("block!");
+                    prop.IncreaseFlow(scythe.blockFlow);
+
                 }
                 else
                 {

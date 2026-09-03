@@ -53,6 +53,10 @@ public class SC_Sythe : MonoBehaviour
     [SerializeField] public float parryKB = 1.25f;
     [SerializeField] public float blockKB = 1;
 
+    [SerializeField] public float parryFlow = 10f;
+
+    [SerializeField] public float blockFlow = 5f;
+
 
     private void OnEnable()
     {

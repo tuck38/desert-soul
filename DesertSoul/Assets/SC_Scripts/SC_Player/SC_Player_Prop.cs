@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Runtime.InteropServices.ComTypes;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -41,6 +42,18 @@ public class SC_Player_Prop : MonoBehaviour
     float currentStamInterval = 0;
 
     bool stamRegenPaused = false;
+
+    //flow vars
+
+    [SerializeField] private float maxFlow = 20;
+
+    private float currentFlow = 0;
+
+    [SerializeField] float flowDecayRate = 1f;
+
+    [SerializeField] float flowDecayInterval = 0.2f;
+
+    float currentFlowDecay = 0;
 
     //Sun Beam Variables, putting here for now
     [SerializeField] private int maxSunStacks;
@@ -196,6 +209,29 @@ public class SC_Player_Prop : MonoBehaviour
         {
             stamRegenPaused = false;
         }
+
+        //flow decay timer
+
+        if(currentFlow > 0)
+        {
+            if(flowDecayInterval > currentFlowDecay)
+            {
+                currentFlowDecay += Time.deltaTime;
+            }
+            else
+            {
+                if(currentFlow - flowDecayRate <= 0)
+                {
+                    currentFlow = 0;
+                }
+                else
+                {
+                    currentFlow -= flowDecayRate;
+                }
+                UpdateFlowBar();
+                currentFlowDecay = 0;
+            }
+        }
     }
     
     public void TakeDamage(int dmg)
@@ -259,6 +295,16 @@ public class SC_Player_Prop : MonoBehaviour
         UpdateStamBar();
     }
 
+    public void IncreaseFlow(float amount)
+    {
+        currentFlow += amount;
+        if(maxFlow > currentFlow)
+        {
+            currentFlow = maxFlow;
+        }
+        UpdateFlowBar();
+    }
+
     public void Parry(float stamRegen, float flowAmnt = 0)
     {
         //special damage bar
@@ -268,6 +314,17 @@ public class SC_Player_Prop : MonoBehaviour
     public float getCurrentStamina()
     {
         return currentStamia;
+    }
+
+    public float getCurrentFlow()
+    {
+        return currentFlow;
+    }
+
+    private void UpdateFlowBar()
+    {
+        //TODO
+        HUD.UpdateFlowUI(currentFlow, maxFlow);
     }
 
     private void UpdateStamBar()

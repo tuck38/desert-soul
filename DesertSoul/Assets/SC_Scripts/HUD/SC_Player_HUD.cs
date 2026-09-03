@@ -78,8 +78,9 @@ public class SC_Player_HUD : MonoBehaviour
         stamSlider.value = per;
     }
 
-    public void UpdateFlowUI()
+    public void UpdateFlowUI(float current, float max)
     {
-        
+        float per = current / max;
+        flowSlider.value = per;
     }
 }
