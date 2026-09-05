@@ -213,9 +213,9 @@ public class SC_BossBase : MonoBehaviour
     }
 
     //takes damage and returns true if the attack killed the enemy
-    public bool TakeBossDamage(SC_Attack_Base attack)
+    public bool TakeBossDamage(SC_Attack_Base attack, float damage)
     {
-        currentHealth -= attack.getDamage();
+        currentHealth -= damage;
         slider.value = currentHealth / MAXHealth;
         ChangeColor(hurtColor, false);
         currentTime = 0;

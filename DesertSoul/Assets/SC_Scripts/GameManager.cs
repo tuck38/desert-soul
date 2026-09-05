@@ -99,6 +99,8 @@ public class GameManager : MonoBehaviour
     List<string> disabledDialogueTriggers = new List<string>();
 
     [SerializeField] int frameCap = 60;
+
+    private bool waiting = false;
    
     private void Awake()
     {
@@ -557,6 +559,25 @@ public class GameManager : MonoBehaviour
     public float GetSFXVol()
     {
         return audioManager.GetSFX();
+    }
+
+    public void HitStop(float duration, float timeScale = 0.0f)
+    {
+        if(waiting)
+        {
+            return;
+        }
+        Time.timeScale = timeScale;
+        StartCoroutine(Wait(duration));
+
+    }
+
+    private System.Collections.IEnumerator Wait(float duration)
+    {
+        waiting = true;
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = 1.0f;
+        waiting = false;
     }
 
     private void Save()

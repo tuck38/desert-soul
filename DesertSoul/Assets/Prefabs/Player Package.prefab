@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 126721860067205480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.01, y: 0, z: -10}
+  m_LocalPosition: {x: 1.56633, y: 3.27316, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3907,7 +3907,7 @@ MonoBehaviour:
   healthNode: {fileID: 3633452647941952023, guid: ab51724e10085cd4da1536ec637b0d04, type: 3}
   momma: {fileID: 4737435606306412371}
   stamSlider: {fileID: 1988528165502678441}
-  flowSlider: {fileID: 0}
+  flowSlider: {fileID: 8534441981718495670}
   spacing: 60
   mapPart: 0
 --- !u!1 &1571350736357192007
@@ -31615,6 +31615,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6897926676062928177}
     - target: {fileID: 3960449730630822904, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2848419747854362908}
+    - target: {fileID: 3960449730630822904, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: bgRC
       value: 
       objectReference: {fileID: 3181762906831749821}
@@ -31634,6 +31638,10 @@ PrefabInstance:
       propertyPath: twine
       value: 
       objectReference: {fileID: -2023691563, guid: 69b8c7910408c9d41a6b4be24ff483be, type: 3}
+    - target: {fileID: 3960449730630822904, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: scythe
+      value: 
+      objectReference: {fileID: 2328723240212566008}
     - target: {fileID: 3960449730630822904, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: textRC
       value: 
@@ -31669,6 +31677,14 @@ PrefabInstance:
     - target: {fileID: 3960449730630822904, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: fadeOutTime
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960449730630822904, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: staminaRegenTimer
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3960449730630822904, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: staminaRegenInterval
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3960449730630822904, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: PlayerDamagedParticles
@@ -31803,6 +31819,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6557361794270610141, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+      propertyPath: sythe
+      value: 
+      objectReference: {fileID: 2328723240212566008}
+    - target: {fileID: 6557361794270610141, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
       propertyPath: PlayerHitParticles
       value: 
       objectReference: {fileID: 4809186640204831006}
@@ -31859,6 +31879,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640422bc61716a74ba303357c007fb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &2848419747854362908 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5298358386686727894, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}
+  m_PrefabInstance: {fileID: 7926355454035083210}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4435905006718356002 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6021192115620328936, guid: 2d3e55ff863d5b94ca90900bd8a18ca3, type: 3}

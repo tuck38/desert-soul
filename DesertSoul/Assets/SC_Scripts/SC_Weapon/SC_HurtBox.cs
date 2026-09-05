@@ -17,6 +17,8 @@ public class SC_HurtBox : MonoBehaviour
     [SerializeField] private Transform carryPoint;
     [SerializeField] private ParticleSystem PlayerHitParticles;
 
+    [SerializeField] SC_Sythe sythe;
+
     private void Start()
     {
         currentEnemies = new List<SC_Enemy_Base>();
@@ -48,7 +50,7 @@ public class SC_HurtBox : MonoBehaviour
             {
                 if(!enemy.IsBoss())
                 {
-                    enemy.TakeDamage(currentAttack, carryPoint, venture, venture2);
+                    enemy.TakeDamage(currentAttack, sythe.GetDamage(), carryPoint, venture, venture2);
                     enemy.SetPlayer(gameObject.gameObject);
                     enemy.Knockback(currentAttack.getAttackType(), currentAttack.GetkbMult());
                 }
@@ -69,7 +71,7 @@ public class SC_HurtBox : MonoBehaviour
         else if(collision.gameObject.tag == "Boss")
         {
             SC_BossBase boss = collision.gameObject.GetComponent<SC_BossBase>();
-            boss.TakeBossDamage(currentAttack);
+            boss.TakeBossDamage(currentAttack, sythe.GetDamage());
         }
         else if (collision.gameObject.tag == "ResourceNode")
         {

@@ -26,6 +26,8 @@ public class SC_Sythe : MonoBehaviour
 
     [SerializeField] private SC_HurtBox HurtBox;
 
+    private SC_Attack_Base currentAttack;
+
     //each attack has a timer assosiated with them that is set as soon as the attack is executed
     private float currentAttackLength;
     //Timer that counts up until the attack animation should be concluded
@@ -56,6 +58,8 @@ public class SC_Sythe : MonoBehaviour
     [SerializeField] public float parryFlow = 10f;
 
     [SerializeField] public float blockFlow = 5f;
+
+    [SerializeField] private float flowDMGMult = 1.5f;
 
 
     private void OnEnable()
@@ -96,6 +100,7 @@ public class SC_Sythe : MonoBehaviour
             }
             else if(parryTimer <= currentParryTime)
             {
+                Debug.Log("Don't parry it");
                 isParrying = false;
             }
         }
@@ -167,6 +172,7 @@ public class SC_Sythe : MonoBehaviour
         if(Attacks[0].getStam() < prop.getCurrentStamina())
         {
             animator.SetInteger("Attack", Attacks[0].getID());
+            currentAttack = Attacks[0];
             HurtBox.currentAttack = Attacks[0];
             prop.DoStaminaMove(Attacks[0].getStam());
             GameManager.Instance.playSFX(Attacks[0].getClip().name, true);
@@ -185,13 +191,25 @@ public class SC_Sythe : MonoBehaviour
         return;
     }
 
+    public float GetDamage()
+    {
+        float dmg = currentAttack.getDamage();
+        if(prop.getCurrentFlow() > 0)
+        {
+            dmg = dmg * flowDMGMult;
+        }
+
+        return dmg;
+    }
+
     public void Block(bool active)
     {
         if(active == true && prop.getCurrentStamina() > blockInitialStamina)
         {
-            Debug.Log("Start Block");
+            animator.SetBool("isBlock", true);
             isBlocking = true;
             isParrying = true;
+            Debug.Log("Parry it!");
 
             currentParryTime = 0;
             currentStamDrainRate = 0;
@@ -203,7 +221,8 @@ public class SC_Sythe : MonoBehaviour
         }
         else if(active == false)
         {
-            Debug.Log("Stop Block");
+            animator.SetBool("isBlock", false);
+            animator.SetBool("isParry", false);
             isBlocking = false;
             isParrying = false; 
 
@@ -215,6 +234,11 @@ public class SC_Sythe : MonoBehaviour
     public bool getParry()
     {
         return isParrying;
+    }
+
+    public void SetParrying(bool parry)
+    {
+        isParrying = parry;
     }
 
     public bool getBlocking()

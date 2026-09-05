@@ -158,12 +158,12 @@ public class SC_RattleBase : MonoBehaviour
     }
 
     //takes damage and returns true if the attack killed the enemy
-    public bool TakeDamage(SC_Attack_Base attack, Transform carryPoint, GameObject debug, GameObject debug2)
+    public bool TakeDamage(SC_Attack_Base attack, float damage, Transform carryPoint, GameObject debug, GameObject debug2)
     {
         if (!locked)
         {
             
-            currentHealth -= attack.getDamage();
+            currentHealth -= damage;
 
             GameManager.Instance.playSFX(hurtSound.name, true);
             snake.ApproachPlayer();

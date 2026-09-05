@@ -52,10 +52,10 @@ public class SC_Player_HitBox : MonoBehaviour
             {
                 if(scythe.getParry())
                 {
+                    Debug.Log("???");
+                    prop.Parry(scythe.blockInitialStamina, scythe.parryFlow);
                     rattle.SetPlayer(player.gameObject);
                     rattle.Knockback(AttackType.primary, scythe.parryKB);
-                    prop.Parry(scythe.blockInitialStamina);
-                    prop.IncreaseFlow(scythe.parryFlow);
                 }
                 else if(scythe.getBlocking())
                 {
@@ -80,9 +80,8 @@ public class SC_Player_HitBox : MonoBehaviour
             {
                 if(scythe.getParry())
                 {
-                    prop.Parry(scythe.blockInitialStamina);
+                    prop.Parry(scythe.blockInitialStamina, scythe.parryFlow);
                     Destroy(enemy.gameObject);
-                    prop.IncreaseFlow(scythe.parryFlow);
                 }
                 else if(scythe.getBlocking())
                 {
@@ -109,8 +108,7 @@ public class SC_Player_HitBox : MonoBehaviour
                 {
                     if(boss.Parried(AttackType.primary, scythe.parryKB))
                     {
-                        prop.Parry(scythe.blockInitialStamina);
-                        prop.IncreaseFlow(scythe.parryFlow);
+                        prop.Parry(scythe.blockInitialStamina, scythe.parryFlow);
                     }
                 }
                 else if(scythe.getBlocking())

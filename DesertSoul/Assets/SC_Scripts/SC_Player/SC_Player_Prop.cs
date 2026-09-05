@@ -106,6 +106,10 @@ public class SC_Player_Prop : MonoBehaviour
 
     [SerializeField] public AudioClip parrySound;
 
+    [SerializeField] Animator anim;
+
+    [SerializeField] SC_Sythe scythe;
+
     public static int stoneMaterialCount { get; private set; } = 0;
     public static int twineMaterialCount { get; private set; } = 0;
     public static int fruitMaterialCount { get; private set; } = 0;
@@ -302,13 +306,24 @@ public class SC_Player_Prop : MonoBehaviour
         {
             currentFlow = maxFlow;
         }
+        scythe.SetParrying(false);
         UpdateFlowBar();
     }
 
-    public void Parry(float stamRegen, float flowAmnt = 0)
+    public void Block()
+    {
+        
+    }
+
+    public void Parry(float stamRegen, float flowAmnt)
     {
         //special damage bar
+        GameManager.Instance.playSFX(parrySound.name, true);
+        anim.SetBool("isParry", true);
+        IncreaseFlow(flowAmnt);
         IncreaseStamina(stamRegen);
+        
+        GameManager.Instance.HitStop(0.3f);
     }
 
     public float getCurrentStamina()
