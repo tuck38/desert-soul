@@ -118,7 +118,6 @@ public class SC_RattleBase : MonoBehaviour
         //this is for knockback lerping, just doing a quick dirty implementation
         if(lerping)
         {
-
             if(Physics2D.Raycast(transform.position, Vector2.right, snake.halfWidth + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //We are hitting Le wall
@@ -227,6 +226,7 @@ public class SC_RattleBase : MonoBehaviour
             if(bossEnemy != true)
             {
                 //ima make this a lerp
+                Debug.Log("I have a lerp to say");
                 lerping = true;
                 sprite.color = damagedColor;
                 kbEndPoint = target;

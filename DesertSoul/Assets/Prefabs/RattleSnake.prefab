@@ -5478,6 +5478,8 @@ MonoBehaviour:
   point1: {fileID: 0}
   point2: {fileID: 0}
   spriteRenderer: {fileID: 0}
+  halfWidth: 0
+  halfHeight: 0
   timeBetweenAttacks: 0.2
   chasePlayerSpeed: 6
   stopDistancePlayer: 0

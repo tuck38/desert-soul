@@ -323,7 +323,7 @@ public class SC_Player_Prop : MonoBehaviour
         IncreaseFlow(flowAmnt);
         IncreaseStamina(stamRegen);
         
-        GameManager.Instance.HitStop(0.3f);
+        GameManager.Instance.HitStop(1f);
     }
 
     public float getCurrentStamina()

@@ -567,6 +567,7 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+        Debug.Log("STOP FIGHTING");
         Time.timeScale = timeScale;
         StartCoroutine(Wait(duration));
 
