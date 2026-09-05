@@ -65,6 +65,7 @@ MonoBehaviour:
   area2: {fileID: 0}
   area3: {fileID: 0}
   area4: {fileID: 0}
+  prop: {fileID: 0}
   eventSystem: {fileID: 2953033830583378413}
   unlockedBuildings: 0100
   placedBuildings: 0000
@@ -253,6 +254,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a6a27460490598947a354a7c496a783e, type: 3}
   - {fileID: 8300000, guid: d0650c011ab3a4646b7db6a4ae317772, type: 3}
   - {fileID: 8300000, guid: c306436f26d730e409ee928a270d09b1, type: 3}
+  - {fileID: 8300000, guid: d2c766ffa86228e46924aca33d2e3f86, type: 3}
   musicSource: {fileID: 1316775377393167063}
   sfxSource: {fileID: 4533859899908029492}
   prioBufferMax: 0.3
