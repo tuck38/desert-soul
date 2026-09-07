@@ -209,7 +209,6 @@ public class SC_Sythe : MonoBehaviour
             animator.SetBool("isBlock", true);
             isBlocking = true;
             isParrying = true;
-            Debug.Log("Parry it!");
 
             currentParryTime = 0;
             currentStamDrainRate = 0;

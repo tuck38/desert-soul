@@ -1532,6 +1532,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 518559423}
     - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: baseColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: baseColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: baseColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: hurtColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: hurtColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
+      propertyPath: hurtColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055189932705234800, guid: 8f368a94f0b418c42a160e5f4177773d, type: 3}
       propertyPath: totalLerpTime
       value: 2.5
       objectReference: {fileID: 0}

@@ -124,7 +124,7 @@ public class SC_Player_Move : MonoBehaviour
     private float flickerSpeed = 0;
     [SerializeField] private float flickerSpeedTotal;
     private float Iframes = 0;
-    [SerializeField] private float IframeTotal;
+    [SerializeField] private float hitIframes;
     [SerializeField] private BoxCollider2D hitbox;
 
     [SerializeField] SC_Player_Prop prop;
@@ -786,10 +786,15 @@ public class SC_Player_Move : MonoBehaviour
         }
     }
 
-    public void SetIFrames()
+    //this should be in player prop
+    public void SetIFrames(float InIframes, bool hit)
     {
-        Iframes = IframeTotal;
-        flickerSpeed = flickerSpeedTotal;
+        Iframes = InIframes;
+        if(hit)
+        {
+            flickerSpeed = flickerSpeedTotal;
+            Iframes = hitIframes;
+        }
         iFramesActive = true;
         hitbox.enabled = false;
     }

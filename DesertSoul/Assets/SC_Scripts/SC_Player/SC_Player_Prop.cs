@@ -247,7 +247,7 @@ public class SC_Player_Prop : MonoBehaviour
             currentHealth = currentHealth - dmg;
             currentHealthProxy = currentHealth;
             HUD.UpdateHealthUI(currentHealth, maxHealth, false);
-            move.SetIFrames();
+            move.SetIFrames(2, true);
             
             //playerDamaged.Post(gameObject);
         }
@@ -323,7 +323,7 @@ public class SC_Player_Prop : MonoBehaviour
         IncreaseFlow(flowAmnt);
         IncreaseStamina(stamRegen);
         
-        GameManager.Instance.HitStop(1f);
+        GameManager.Instance.HitStop(0.3f);
     }
 
     public float getCurrentStamina()

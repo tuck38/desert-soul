@@ -276,7 +276,6 @@ public class SC_RattleBase : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("???");
         if(roomSpawned != null)
         {
             

@@ -32,7 +32,8 @@ public class SC_Player_HitBox : MonoBehaviour
             {
                 if(scythe.getParry())
                 {
-                    
+                    prop.Parry(scythe.blockInitialStamina, scythe.parryFlow);
+                    player.SetIFrames(1, false);
                 }
                 else if(scythe.getBlocking())
                 {
@@ -44,7 +45,6 @@ public class SC_Player_HitBox : MonoBehaviour
                     //when enemies "do" attacks instead of a fixed contact value, this will be changed to be based on their code
                     prop.TakeDamage(enemy.GetDamage());
                     player.Knockback(collision.gameObject, fixedLaunchVector);
-                    player.SetIFrames();
                 }
             }
             SC_RattleBase rattle = collision.gameObject.GetComponent<SC_RattleBase>();
@@ -52,9 +52,9 @@ public class SC_Player_HitBox : MonoBehaviour
             {
                 if(scythe.getParry())
                 {
-                    Debug.Log("???");
                     prop.Parry(scythe.blockInitialStamina, scythe.parryFlow);
                     rattle.SetPlayer(player.gameObject);
+                    player.SetIFrames(1, false);
                     rattle.Knockback(AttackType.primary, scythe.parryKB);
                 }
                 else if(scythe.getBlocking())
@@ -69,7 +69,6 @@ public class SC_Player_HitBox : MonoBehaviour
                 {
                     prop.TakeDamage(rattle.GetDamage());
                     player.Knockback(collision.gameObject, fixedLaunchVector);
-                    player.SetIFrames();
                 }
             }
         }
@@ -81,6 +80,7 @@ public class SC_Player_HitBox : MonoBehaviour
                 if(scythe.getParry())
                 {
                     prop.Parry(scythe.blockInitialStamina, scythe.parryFlow);
+                    player.SetIFrames(1, false);
                     Destroy(enemy.gameObject);
                 }
                 else if(scythe.getBlocking())
@@ -94,7 +94,7 @@ public class SC_Player_HitBox : MonoBehaviour
                 {
                     prop.TakeDamage(enemy.GetDamage());
                     player.Knockback(collision.transform.gameObject, fixedLaunchVector);
-                    player.SetIFrames();
+                    player.SetIFrames(2, true);
                     Destroy(enemy.gameObject);
                 }
             }
@@ -109,6 +109,7 @@ public class SC_Player_HitBox : MonoBehaviour
                     if(boss.Parried(AttackType.primary, scythe.parryKB))
                     {
                         prop.Parry(scythe.blockInitialStamina, scythe.parryFlow);
+                        player.SetIFrames(1, false);
                     }
                 }
                 else if(scythe.getBlocking())
@@ -122,7 +123,6 @@ public class SC_Player_HitBox : MonoBehaviour
                 {
                     prop.TakeDamage(boss.GetDamage());
                     player.Knockback(collision.transform.gameObject, fixedLaunchVector);
-                    player.SetIFrames();
                 }
             }
         }
