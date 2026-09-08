@@ -222,7 +222,7 @@ public class SC_BossBase : MonoBehaviour
         GameManager.Instance.playSFX(hurtSound.name, true);
         if (currentHealth <= phaseTransThreshold && phaseTransed == false)
         {
-            GameObject obj = Instantiate(beetle, beetleSpawn.position, beetleSpawn.rotation);
+            //GameObject obj = Instantiate(beetle, beetleSpawn.position, beetleSpawn.rotation);
             phaseTransed = true;
         }
         if (currentHealth <= 1)
