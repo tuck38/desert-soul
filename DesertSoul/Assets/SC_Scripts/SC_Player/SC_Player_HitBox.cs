@@ -44,6 +44,7 @@ public class SC_Player_HitBox : MonoBehaviour
                 {
                     //when enemies "do" attacks instead of a fixed contact value, this will be changed to be based on their code
                     prop.TakeDamage(enemy.GetDamage());
+                    player.SetIFrames(2, true);
                     player.Knockback(collision.gameObject, fixedLaunchVector);
                 }
             }
@@ -68,6 +69,7 @@ public class SC_Player_HitBox : MonoBehaviour
                 else
                 {
                     prop.TakeDamage(rattle.GetDamage());
+                    player.SetIFrames(2, true);
                     player.Knockback(collision.gameObject, fixedLaunchVector);
                 }
             }
@@ -114,14 +116,18 @@ public class SC_Player_HitBox : MonoBehaviour
                 }
                 else if(scythe.getBlocking())
                 {
-                    prop.TakeDamage(boss.GetDamage() / 2);
-                    player.Knockback(collision.gameObject, new Vector2(fixedLaunchVector.x / 2, 0));
-                    prop.IncreaseFlow(scythe.blockFlow);
+                    if(boss.Blocked(AttackType.primary, scythe.blockKB))
+                    {
+                        prop.TakeDamage(boss.GetDamage() / 2);
+                        player.Knockback(collision.gameObject, new Vector2(fixedLaunchVector.x / 2, 0));
+                        prop.IncreaseFlow(scythe.blockFlow);
+                    }
 
                 }
                 else
                 {
                     prop.TakeDamage(boss.GetDamage());
+                    player.SetIFrames(2, true);
                     player.Knockback(collision.transform.gameObject, fixedLaunchVector);
                 }
             }

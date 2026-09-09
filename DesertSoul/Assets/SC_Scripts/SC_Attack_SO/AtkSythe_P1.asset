@@ -15,11 +15,12 @@ MonoBehaviour:
   requirments: 
   damage: 13
   staggerDamage: 2
-  staminaCost: 4
+  staminaCost: 0
   atkTime: 0.01
   type: 0
   attackID: 0
   projectile: {fileID: 0}
   clip: {fileID: 7400000, guid: 890f8b8f2f5f3914aa163d9b917a64d8, type: 2}
   attackAudio: {fileID: 8300000, guid: ba5a6ff1cf0ba6b4f9a36f3d3c344d1a, type: 3}
+  knockBackMult: 1.25
   carry: 0

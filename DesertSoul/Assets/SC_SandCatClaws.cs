@@ -15,6 +15,8 @@ public class SC_SandCatClaws : StateMachineBehaviour
 
     [SerializeField] AudioClip scratch;
 
+    bool rangeMaxxed;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
@@ -40,15 +42,14 @@ public class SC_SandCatClaws : StateMachineBehaviour
         {
             target = new Vector2(rb.position.x - dashRange, rb.position.y);   
         }
-
         bossBase.SetParryable(true);
+        rangeMaxxed = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //move
-
         Vector2 newPos = Vector2.MoveTowards(rb.position, target, attackSpeed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
         //raycast to see if hit player or wall
@@ -63,11 +64,13 @@ public class SC_SandCatClaws : StateMachineBehaviour
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
-            else if(bossBase.transform.position.x <= target.x)
+            else if(bossBase.transform.position.x >= target.x)
             {
                 //range maxxed out
-
-                //Debug.Log("huh");
+                if(rangeMaxxed == false)
+                {
+                    rangeMaxxed = true;
+                }
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
@@ -79,15 +82,17 @@ public class SC_SandCatClaws : StateMachineBehaviour
                 //We are hitting Le wall
 
                 //stun timer, i dont wanna make it rn tho
-
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
-            else if(rb.position.x >= target.x)
+            else if(rb.position.x <= target.x)
             {
                 //range maxxed out
 
-                //Debug.Log("huhwuh");
+                if(rangeMaxxed == false)
+                {
+                    rangeMaxxed = true;
+                }
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }

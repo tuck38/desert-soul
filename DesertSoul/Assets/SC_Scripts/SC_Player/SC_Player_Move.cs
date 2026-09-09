@@ -793,7 +793,7 @@ public class SC_Player_Move : MonoBehaviour
         if(hit)
         {
             flickerSpeed = flickerSpeedTotal;
-            Iframes = hitIframes;
+            Iframes = 2;
         }
         iFramesActive = true;
         hitbox.enabled = false;

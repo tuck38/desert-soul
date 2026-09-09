@@ -227,7 +227,6 @@ public class SC_BossBase : MonoBehaviour
         }
         if (currentHealth <= 1)
         {
-            //Debug.Log("Works");
             SceneManager.LoadScene("DemoOverScene");
             StartCoroutine(Die());
             return true;
@@ -252,8 +251,8 @@ public class SC_BossBase : MonoBehaviour
 
     public void enableHPBar(bool enable)
     {
-        //healthBar.SetActive(enable);
-        //slider.value = 1;
+        healthBar.SetActive(enable);
+        slider.value = 1;
     }
 
     public void BossMusic()
@@ -322,6 +321,17 @@ public class SC_BossBase : MonoBehaviour
             Knockback(atk, kbDist);
             stunTime = parryStunTime;
             bossAnim.SetBool("doStun", true);
+            bossAnim.SetBool("doAttack1", false);
+            bossAnim.SetBool("doAttack2", false);
+        }
+        return parryable;
+    }
+
+    public bool Blocked(AttackType atk, float kbDist)
+    {
+        if(parryable)
+        {
+            Knockback(atk, kbDist);
             bossAnim.SetBool("doAttack1", false);
             bossAnim.SetBool("doAttack2", false);
         }
