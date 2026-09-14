@@ -62,7 +62,7 @@ AnimatorStateTransition:
     m_ConditionEvent: Attack
     m_EventTreshold: 0
   - m_ConditionMode: 1
-    m_ConditionEvent: doAttack
+    m_ConditionEvent: isAttacking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7953741753547897435}
@@ -401,6 +401,18 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!114 &-4127820681047531187
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa792afa64e3c1c4b9a4a0a711470572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::sc_PlayerAttack
 --- !u!1102 &-3948878240056659449
 AnimatorState:
   serializedVersion: 6
@@ -414,7 +426,8 @@ AnimatorState:
   m_Transitions:
   - {fileID: -690112535009379151}
   - {fileID: 3549790881845334376}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: -4127820681047531187}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -604,9 +617,6 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 2
-    m_ConditionEvent: isAttacking
-    m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: isWalking
     m_EventTreshold: 0
@@ -1011,9 +1021,6 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: isAttacking
-    m_EventTreshold: 0
-  - m_ConditionMode: 2
     m_ConditionEvent: isWalking
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
@@ -1103,10 +1110,10 @@ AnimatorStateMachine:
     m_Position: {x: 450, y: 730, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7953741753547897435}
-    m_Position: {x: 1200, y: -170, z: 0}
+    m_Position: {x: 1280, y: -340, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3948878240056659449}
-    m_Position: {x: 1110, y: 390, z: 0}
+    m_Position: {x: 1680, y: 220, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1441527926291672617}
     m_Position: {x: -110, y: 830, z: 0}

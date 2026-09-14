@@ -29,9 +29,9 @@ public class SC_Sythe : MonoBehaviour
     private SC_Attack_Base currentAttack;
 
     //each attack has a timer assosiated with them that is set as soon as the attack is executed
-    private float currentAttackLength;
+    private float currentComboTime = 0;
     //Timer that counts up until the attack animation should be concluded
-    private float attackTimer;
+    [SerializeField] private float comboTime = 2f;
 
     private bool isAttacking;
 
@@ -87,10 +87,7 @@ public class SC_Sythe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isAttacking == true)
-        {
-            //AttackTimer();
-        }
+        ComboTimer();
 
         if(isBlocking == true && isParrying == true)
         {
@@ -100,7 +97,6 @@ public class SC_Sythe : MonoBehaviour
             }
             else if(parryTimer <= currentParryTime)
             {
-                Debug.Log("Don't parry it");
                 isParrying = false;
             }
         }
@@ -128,12 +124,12 @@ public class SC_Sythe : MonoBehaviour
     //upon input by player, executes an attack based on the current combo and attack input
     public void AddAttack(AttackType attack)
     {
-        //bool match = true;
+        bool match = true;
 
         //iterates through the weapons list of attacks on the weapon, and tests their
         //requirments against the current combo list to find the correct attack to be
         //executed based on the next input
-        /*for(int i = 0; i < Attacks.Count; i++)
+        for(int i = 0; i < Attacks.Count; i++)
         {
             if (Attacks[i].getAttackType() == attack)
             {
@@ -143,6 +139,7 @@ public class SC_Sythe : MonoBehaviour
                     {
                         if (combo[j] != Attacks[i].getRequire()[j])
                         {
+                            Debug.Log("No combo found");
                             //If no next attack is found, break out of the function
                             //Need to change this to execute a basic attack based on the input,
                             //instead of doing nothing
@@ -154,11 +151,12 @@ public class SC_Sythe : MonoBehaviour
                     //matching attack and sets the attack timer
                     if (match)
                     {
+                        Debug.Log("got attack");
                         animator.SetInteger("Attack", Attacks[i].getID());
                         HurtBox.currentAttack = Attacks[i];
                         isAttacking = true;
-                        attackTimer = 0f;
-                        currentAttackLength = Attacks[i].getTime();
+                        currentAttack = Attacks[i];
+                        currentComboTime = comboTime;
                         animator.SetBool("isAttacking", isAttacking);
                         Attacks[i].doAttack(projectileSpawn.transform);
                         combo.Add(attack);
@@ -167,9 +165,9 @@ public class SC_Sythe : MonoBehaviour
                     }
                 }
             }
-        }*/
+        }
 
-        if(Attacks[0].getStam() < prop.getCurrentStamina())
+        /*if(Attacks[0].getStam() < prop.getCurrentStamina())
         {
             animator.SetInteger("Attack", Attacks[0].getID());
             currentAttack = Attacks[0];
@@ -187,7 +185,12 @@ public class SC_Sythe : MonoBehaviour
             //if no moves are found that equal the current combo, clear the combo and run the function again to preform a basic move
             //EndCombo();
             //AddAttack(attack, anim);
-        }
+        }*/
+
+        //if no moves are found that equal the current combo, clear the combo and run the function again to preform a basic move
+        EndCombo();
+        AddAttack(attack);
+        
         return;
     }
 
@@ -250,18 +253,17 @@ public class SC_Sythe : MonoBehaviour
         combo.Clear();
     }
 
-    private void AttackTimer()
+    private void ComboTimer()
     {
-        if (attackTimer < currentAttackLength)
+        if (0 < currentComboTime)
         {
-            attackTimer += Time.deltaTime;
+            currentComboTime -= Time.deltaTime;
         }
         else
         {
-            isAttacking = false;
             HurtBox.enabled = false;
             EndCombo();
-            animator.SetBool("isAttacking", isAttacking);
+            //animator.SetBool("isAttacking", isAttacking);
         }
 
     }
