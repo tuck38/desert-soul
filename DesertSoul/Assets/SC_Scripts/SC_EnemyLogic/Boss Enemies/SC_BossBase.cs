@@ -93,6 +93,7 @@ public class SC_BossBase : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected void Start()
     {
+        sprite = gameObject.GetComponent<SpriteRenderer>();
         currentTime = colorTime;
         currentHealth = MAXHealth;
         rb = GetComponent<Rigidbody2D>();
@@ -126,7 +127,7 @@ public class SC_BossBase : MonoBehaviour
         }
         else
         {
-            ChangeColor(baseColor, true);
+            //ChangeColor(baseColor, true);
         }
 
         if(lerping)

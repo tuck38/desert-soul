@@ -151,7 +151,11 @@ public class SC_Sythe : MonoBehaviour
                     //matching attack and sets the attack timer
                     if (match)
                     {
-                        Debug.Log("got attack");
+                        Debug.Log("begining for");
+                        for(int k = 0; k < combo.Count; k++)
+                        {
+                            Debug.Log(combo[k]);
+                        }
                         animator.SetInteger("Attack", Attacks[i].getID());
                         HurtBox.currentAttack = Attacks[i];
                         isAttacking = true;
