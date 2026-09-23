@@ -72,7 +72,7 @@ public class SC_Player_Prop : MonoBehaviour
     private SpriteRenderer sprite;
     private Color originalColor;
 
-    //Resource Bullshit
+    //Resource Vars
     [SerializeField] TextMeshProUGUI textRC;
     [SerializeField] Image imageRC;
 
@@ -103,6 +103,15 @@ public class SC_Player_Prop : MonoBehaviour
     int twineUI = 0;
 
     [SerializeField] TextMeshProUGUI plus;
+
+    //Health system vars
+
+
+    //need to make this a serialized field and get a system in to create UI sprites like how the health nodes work 
+    private int maxFlaskCharges = 3;
+    int currentFlaskCharges;
+
+    [SerializeField] int flaskHealAmnt = 2;
 
     [SerializeField] public AudioClip parrySound;
 
@@ -136,6 +145,8 @@ public class SC_Player_Prop : MonoBehaviour
             currentHealth = maxHealth;
             currentHealthProxy = currentHealth;
         }
+        currentFlaskCharges = maxFlaskCharges;
+
         sunStackDamageTimer = sunStackDamageFrequency;
         sunStackTimer = sunStackRemovalFrequency;
         GameManager.Instance.newScene();
@@ -260,6 +271,37 @@ public class SC_Player_Prop : MonoBehaviour
         }
     }
 
+    public void ConsumeFlaskCharge()
+    {
+        if(currentFlaskCharges > 0 && currentHealth < maxHealth)
+        {
+            currentFlaskCharges -= 1; 
+            int missingHealth = maxHealth - currentHealth; 
+            if(missingHealth < flaskHealAmnt)
+            {
+                IncreaseHP(missingHealth);
+            }
+            else
+            {
+                IncreaseHP(flaskHealAmnt);
+            }
+            Debug.Log("Remaining flasks: " + currentFlaskCharges);
+            //TODO: UI CHANGE
+        }
+    }
+
+    public void RechargeFlasks(int flasksToFill)
+    {
+        currentFlaskCharges += flasksToFill; 
+        if(currentFlaskCharges < maxFlaskCharges)
+        {
+            currentFlaskCharges = maxFlaskCharges;
+        }
+        Debug.Log("flasks refilled");
+        Debug.Log("Remaining flasks: " + currentFlaskCharges);
+        //TODO: UI change
+    }
+
     public bool can_heal()
     {
         if (currentHealth < maxHealth)
@@ -269,10 +311,9 @@ public class SC_Player_Prop : MonoBehaviour
         return false;
     }
     
-
-    public void IncreaseHP()
+    public void IncreaseHP(int amnt)
     {
-        currentHealth += 1;
+        currentHealth += amnt;
         HUD.UpdateHealthUI(currentHealth, maxHealth, true, 1);
     }
 

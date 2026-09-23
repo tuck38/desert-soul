@@ -193,6 +193,8 @@ public class SC_Player_Move : MonoBehaviour
         playerControls.Player.Block.canceled += OnBlock;
 
         //UI
+        playerControls.Player.Heal.performed += OnHeal;
+        playerControls.Player.Heal.canceled += OnHeal;
         playerControls.Player.Interact.performed += OnInteract;
         playerControls.Player.Interact.canceled += OnInteract;
         playerControls.Player.Journal.performed += OnMenu;
@@ -495,6 +497,15 @@ public class SC_Player_Move : MonoBehaviour
             {
                 interacting = false;
             }
+        }
+    }
+
+    public void OnHeal(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+        {
+            Debug.Log("preformed");
+            prop.ConsumeFlaskCharge();
         }
     }
 
