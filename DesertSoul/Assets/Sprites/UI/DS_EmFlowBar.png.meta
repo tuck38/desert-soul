@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: fb41f23d22defff449dc8d3ead7d95d2
+guid: 4c6227a6d4ee78f48b639174eae7c050
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1364972020769666879
-    second: DS_FlowBarEmptyl_0
+      213: -7633830650945682937
+    second: DS_EmFlowBar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DS_FlowBarEmptyl_0
+      name: DS_EmFlowBar_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 64
-        height: 13
+        x: 2
+        y: 5
+        width: 62
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f37b25a22da51f210800000000000000
-      internalID: 1364972020769666879
+      spriteID: 702c4eef77f2f0690800000000000000
+      internalID: -7633830650945682937
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      DS_FlowBarEmptyl_0: 1364972020769666879
+      DS_EmFlowBar_0: -7633830650945682937
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
