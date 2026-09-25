@@ -8,6 +8,7 @@ public class SC_Player_HUD : MonoBehaviour
 {
     [SerializeField] private List<GameObject> Health;
 
+    //Health UI Creation
     [SerializeField] private GameObject healthNode;
 
     [SerializeField] private GameObject momma;
@@ -22,6 +23,12 @@ public class SC_Player_HUD : MonoBehaviour
     private int createdHealth = 1;
 
     private int activeHealth = 1;
+
+    //Flask UI Creation
+
+    [SerializeField] private List<GameObject> flasks;
+
+    [SerializeField] private GameObject flask;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
