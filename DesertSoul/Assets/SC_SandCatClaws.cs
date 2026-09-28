@@ -64,7 +64,7 @@ public class SC_SandCatClaws : StateMachineBehaviour
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
-            else if(bossBase.transform.position.x >= target.x)
+            else if(bossBase.transform.position.x + 0.1f >= target.x)
             {
                 //range maxxed out
                 if(rangeMaxxed == false)
@@ -77,7 +77,7 @@ public class SC_SandCatClaws : StateMachineBehaviour
         }
         else if (!isFacingRight)
         {
-            if(Physics2D.Raycast(rb.position, Vector2.left, bossBase.halfWidth + 0.1f, LayerMask.GetMask("Ground")))
+            if(Physics2D.Raycast(bossBase.gameObject.transform.position, Vector2.left, bossBase.halfWidth + 0.1f, LayerMask.GetMask("Ground")))
             {
                 //We are hitting Le wall
 
@@ -85,7 +85,8 @@ public class SC_SandCatClaws : StateMachineBehaviour
                 animator.SetBool("doAttack1", false);
                 animator.SetBool("Moving", true);
             }
-            else if(rb.position.x <= target.x)
+            //magic number if the else if
+            else if(bossBase.gameObject.transform.position.x - 0.1f <= target.x)
             {
                 //range maxxed out
 

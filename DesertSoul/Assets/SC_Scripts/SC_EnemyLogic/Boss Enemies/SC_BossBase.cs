@@ -127,7 +127,7 @@ public class SC_BossBase : MonoBehaviour
         }
         else
         {
-            //ChangeColor(baseColor, true);
+            ChangeColor(baseColor, true);
         }
 
         if(lerping)
@@ -228,7 +228,7 @@ public class SC_BossBase : MonoBehaviour
         }
         if (currentHealth <= 1)
         {
-            SceneManager.LoadScene("DemoOverScene");
+            //SceneManager.LoadScene("DemoOverScene");
             StartCoroutine(Die());
             return true;
         }

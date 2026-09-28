@@ -11,13 +11,13 @@ public class SC_Player_HUD : MonoBehaviour
     //Health UI Creation
     [SerializeField] private GameObject healthNode;
 
-    [SerializeField] private GameObject momma;
+    [SerializeField] private GameObject healthParent;
 
     [SerializeField] private Slider stamSlider;
 
     [SerializeField] private Slider flowSlider;
 
-    [SerializeField] private float spacing;
+    [SerializeField] private float healthSpacing;
     public int mapPart;
 
     private int createdHealth = 1;
@@ -29,6 +29,16 @@ public class SC_Player_HUD : MonoBehaviour
     [SerializeField] private List<GameObject> flasks;
 
     [SerializeField] private GameObject flask;
+
+    [SerializeField] private GameObject flaskParent;
+
+    [SerializeField] private float flaskSpacing;
+
+    private int createdFlasks = 1;
+
+    private int activeFlasks = 1;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -51,8 +61,8 @@ public class SC_Player_HUD : MonoBehaviour
             for(int i = 0; i < maxHealth - createdHealth; i++)
             {
                 Transform trans = Health[Health.Count - 1].transform;
-                Vector3 pos = new Vector3(trans.position.x + spacing, trans.position.y, trans.position.z);
-                GameObject node = Instantiate(healthNode, pos, Quaternion.identity, momma.transform);
+                Vector3 pos = new Vector3(trans.position.x + healthSpacing, trans.position.y, trans.position.z);
+                GameObject node = Instantiate(healthNode, pos, Quaternion.identity, healthParent.transform);
                 healthOfCreation++;
                 Health.Add(node);
             }
@@ -62,11 +72,13 @@ public class SC_Player_HUD : MonoBehaviour
         //taking damage
         else if (currentHealth < activeHealth)
         {
-            for(int i = currentHealth; i < maxHealth; i++)
+            int healthActive = activeHealth;
+            for(int i = currentHealth; i < healthActive; i++)
             {
                 Health[i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
-                activeHealth --;
+                healthActive --;
             }
+            activeHealth = healthActive;
         }
         //healing
         else if(healing)
@@ -78,6 +90,47 @@ public class SC_Player_HUD : MonoBehaviour
             }
         }
     }
+
+    public void UpdateFlaskUI(int currentFlasks, int maxFlasks, bool recharge, int flasksRegained = 0)
+    {
+        int flasksCreated = 0;
+
+        //creating the flask nodes at the begining
+        if(createdFlasks < maxFlasks)
+        {
+            for(int i = 0; i < maxFlasks - createdFlasks; i++)
+            {
+                Transform trans = flasks[flasks.Count - 1].transform;
+                Vector3 pos = new Vector3(trans.position.x + flaskSpacing, trans.position.y, trans.position.z);
+                GameObject node = Instantiate(flask, pos, Quaternion.identity, flaskParent.transform);
+                flasksCreated++;
+                flasks.Add(node);
+            }
+            createdFlasks += flasksCreated;
+            activeFlasks = createdFlasks;
+        }
+        //consuming flask
+        else if (currentFlasks < activeFlasks)
+        {
+            int flaskActive = activeFlasks;
+            for(int i = currentFlasks; i < flaskActive; i++)
+            {
+                flasks[i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
+                flaskActive --;
+            }
+            activeFlasks = flaskActive;
+        }
+        //restore flask
+        else if(recharge)
+        {
+            for(int i = activeFlasks; i < currentFlasks; i++)
+            {
+                flasks[i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
+                activeFlasks++;
+            }
+        }
+    }
+    
 
     public void UpdateStamUI(float current, float max)
     {

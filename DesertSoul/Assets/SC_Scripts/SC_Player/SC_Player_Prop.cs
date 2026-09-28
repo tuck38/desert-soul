@@ -108,7 +108,7 @@ public class SC_Player_Prop : MonoBehaviour
 
 
     //need to make this a serialized field and get a system in to create UI sprites like how the health nodes work 
-    private int maxFlaskCharges = 3;
+    [SerializeField] private int maxFlaskCharges = 3;
     int currentFlaskCharges;
 
     [SerializeField] int flaskHealAmnt = 2;
@@ -158,6 +158,7 @@ public class SC_Player_Prop : MonoBehaviour
 
         HUD.UpdateHealthUI(currentHealth, maxHealth, false);
         HUD.UpdateHealthUI(currentHealth, maxHealth, false);
+        HUD.UpdateFlaskUI(currentFlaskCharges, maxFlaskCharges, false);
     }
 
     // Update is called once per frame
@@ -285,8 +286,7 @@ public class SC_Player_Prop : MonoBehaviour
             {
                 IncreaseHP(flaskHealAmnt);
             }
-            Debug.Log("Remaining flasks: " + currentFlaskCharges);
-            //TODO: UI CHANGE
+            HUD.UpdateFlaskUI(currentFlaskCharges, maxFlaskCharges, false);
         }
     }
 

@@ -129,6 +129,7 @@ public class SC_Sythe : MonoBehaviour
         //iterates through the weapons list of attacks on the weapon, and tests their
         //requirments against the current combo list to find the correct attack to be
         //executed based on the next input
+        
         for(int i = 0; i < Attacks.Count; i++)
         {
             if (Attacks[i].getAttackType() == attack)
@@ -139,7 +140,6 @@ public class SC_Sythe : MonoBehaviour
                     {
                         if (combo[j] != Attacks[i].getRequire()[j])
                         {
-                            Debug.Log("No combo found");
                             //If no next attack is found, break out of the function
                             //Need to change this to execute a basic attack based on the input,
                             //instead of doing nothing
@@ -151,7 +151,6 @@ public class SC_Sythe : MonoBehaviour
                     //matching attack and sets the attack timer
                     if (match)
                     {
-                        Debug.Log("begining for");
                         for(int k = 0; k < combo.Count; k++)
                         {
                             Debug.Log(combo[k]);
@@ -170,8 +169,9 @@ public class SC_Sythe : MonoBehaviour
                 }
             }
         }
-
-        /*if(Attacks[0].getStam() < prop.getCurrentStamina())
+        
+        /*
+        if(Attacks[0].getStam() < prop.getCurrentStamina())
         {
             animator.SetInteger("Attack", Attacks[0].getID());
             currentAttack = Attacks[0];
@@ -181,7 +181,7 @@ public class SC_Sythe : MonoBehaviour
             isAttacking = true;
             //attackTimer = 0f;
             //currentAttackLength = Attacks[0].getTime();
-            animator.SetTrigger("doAttack");
+            animator.SetBool("isAttacking", true);
             //Attacks[0].doAttack(projectileSpawn.transform);
             //HurtBox.enabled = true;
             // Sythe sound attack

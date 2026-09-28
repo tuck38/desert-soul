@@ -3906,13 +3906,16 @@ MonoBehaviour:
   Health:
   - {fileID: 158468705288927270}
   healthNode: {fileID: 3633452647941952023, guid: ab51724e10085cd4da1536ec637b0d04, type: 3}
-  momma: {fileID: 4737435606306412371}
+  healthParent: {fileID: 4737435606306412371}
   stamSlider: {fileID: 1988528165502678441}
   flowSlider: {fileID: 8534441981718495670}
-  spacing: 60
+  healthSpacing: 18.5
   mapPart: 0
-  flasks: []
-  flask: {fileID: 0}
+  flasks:
+  - {fileID: 7608455327425088796}
+  flask: {fileID: 7608455327425088796}
+  flaskParent: {fileID: 1998778920962543976}
+  flaskSpacing: 18.5
 --- !u!1 &1571350736357192007
 GameObject:
   m_ObjectHideFlags: 0
@@ -8003,7 +8006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3863429268419645373
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10020,7 +10023,7 @@ RectTransform:
   m_Father: {fileID: 3863429268419645373}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 2.644989, y: -183.99765}
   m_SizeDelta: {x: -55.2633, y: -76.7123}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21572,7 +21575,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &976170819577436533
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31393,7 +31396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1809609851704300315, guid: ab51724e10085cd4da1536ec637b0d04, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -43.1
+      value: -46.3
       objectReference: {fileID: 0}
     - target: {fileID: 1809609851704300315, guid: ab51724e10085cd4da1536ec637b0d04, type: 3}
       propertyPath: m_LocalPosition.y
@@ -31650,6 +31653,11 @@ PrefabInstance:
 --- !u!224 &6747868031724184917 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1344220488971981512, guid: b50a24b705116424ab8ab7313f2a9840, type: 3}
+  m_PrefabInstance: {fileID: 5693288047963568029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7608455327425088796 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2779906929445681793, guid: b50a24b705116424ab8ab7313f2a9840, type: 3}
   m_PrefabInstance: {fileID: 5693288047963568029}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7926355454035083210
