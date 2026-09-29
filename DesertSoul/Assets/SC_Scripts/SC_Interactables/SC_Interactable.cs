@@ -36,6 +36,7 @@ public class SC_Interactable : MonoBehaviour
         {
             if(needsHold)
             {
+                Debug.Log("holding");
                 HoldTimer();
             }
             else

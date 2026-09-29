@@ -8,7 +8,7 @@ public class SC_Heal : SC_Interactable
     protected override void DoAction()
     {
         //if interacted with for a set amount of time it despawns
-        if (playerProp.can_heal())
+        if (playerProp.canRechargeFlask())
         {
             playerProp.RechargeFlasks(flasksToFill);
             this.gameObject.SetActive(false);

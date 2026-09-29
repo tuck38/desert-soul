@@ -106,10 +106,10 @@ public class SC_Player_Prop : MonoBehaviour
 
     //Health system vars
 
-
-    //need to make this a serialized field and get a system in to create UI sprites like how the health nodes work 
     [SerializeField] private int maxFlaskCharges = 3;
-    int currentFlaskCharges;
+
+    [SerializeField] private int currentFlaskProxy;
+    public static int currentFlaskCharges { get; private set; } = int.MinValue;
 
     [SerializeField] int flaskHealAmnt = 2;
 
@@ -145,7 +145,12 @@ public class SC_Player_Prop : MonoBehaviour
             currentHealth = maxHealth;
             currentHealthProxy = currentHealth;
         }
-        currentFlaskCharges = maxFlaskCharges;
+
+        if(currentFlaskCharges == int.MinValue)
+        {
+            currentFlaskCharges = maxFlaskCharges;
+            currentFlaskProxy = currentFlaskCharges;
+        }
 
         sunStackDamageTimer = sunStackDamageFrequency;
         sunStackTimer = sunStackRemovalFrequency;
@@ -158,6 +163,7 @@ public class SC_Player_Prop : MonoBehaviour
 
         HUD.UpdateHealthUI(currentHealth, maxHealth, false);
         HUD.UpdateHealthUI(currentHealth, maxHealth, false);
+        HUD.UpdateFlaskUI(currentFlaskCharges, maxFlaskCharges, false);
         HUD.UpdateFlaskUI(currentFlaskCharges, maxFlaskCharges, false);
     }
 
@@ -293,18 +299,17 @@ public class SC_Player_Prop : MonoBehaviour
     public void RechargeFlasks(int flasksToFill)
     {
         currentFlaskCharges += flasksToFill; 
-        if(currentFlaskCharges < maxFlaskCharges)
+        if(currentFlaskCharges > maxFlaskCharges)
         {
+            flasksToFill = maxFlaskCharges - currentFlaskCharges;
             currentFlaskCharges = maxFlaskCharges;
         }
-        Debug.Log("flasks refilled");
-        Debug.Log("Remaining flasks: " + currentFlaskCharges);
-        //TODO: UI change
+        HUD.UpdateFlaskUI(currentFlaskCharges, maxFlaskCharges, true, flasksToFill);
     }
 
-    public bool can_heal()
+    public bool canRechargeFlask()
     {
-        if (currentHealth < maxHealth)
+        if (currentFlaskCharges < maxFlaskCharges)
         {
             return true;
         }
