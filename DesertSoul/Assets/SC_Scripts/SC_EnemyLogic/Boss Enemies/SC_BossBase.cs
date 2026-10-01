@@ -21,6 +21,8 @@ public class SC_BossBase : MonoBehaviour
     [SerializeField] protected float MAXHealth;
     protected float currentHealth;
 
+    [SerializeField] SC_BossTrigger trigger;
+
     [SerializeField] protected int phaseTransThreshold = 100;
     [SerializeField] protected int damage;
     [SerializeField] Animator bossAnim;
@@ -268,7 +270,7 @@ public class SC_BossBase : MonoBehaviour
 
     public Transform GetBossTransform()
     {
-        return actualTransform;
+        return gameObject.transform;
     }
 
     public void Knockback(AttackType atkType, float kbDist)
@@ -342,8 +344,12 @@ public class SC_BossBase : MonoBehaviour
     IEnumerator Die()
     {
         GameManager.Instance.playSFX(bossDeath.name, true);
+        Time.timeScale = 0.2f;
+        Knockback(AttackType.primary, 3.0f);
         yield return new WaitForSeconds(0.2f);
-        Destroy(this);
+        Time.timeScale = 1f;
+        trigger.fightOver();
+        Destroy(gameObject);
     }
 
 }

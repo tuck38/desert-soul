@@ -129,7 +129,7 @@ public class SC_Sythe : MonoBehaviour
         //iterates through the weapons list of attacks on the weapon, and tests their
         //requirments against the current combo list to find the correct attack to be
         //executed based on the next input
-        
+        /*
         for(int i = 0; i < Attacks.Count; i++)
         {
             if (Attacks[i].getAttackType() == attack)
@@ -169,8 +169,8 @@ public class SC_Sythe : MonoBehaviour
                 }
             }
         }
+        */
         
-        /*
         if(Attacks[0].getStam() < prop.getCurrentStamina())
         {
             animator.SetInteger("Attack", Attacks[0].getID());
@@ -189,11 +189,11 @@ public class SC_Sythe : MonoBehaviour
             //if no moves are found that equal the current combo, clear the combo and run the function again to preform a basic move
             //EndCombo();
             //AddAttack(attack, anim);
-        }*/
+        }
 
         //if no moves are found that equal the current combo, clear the combo and run the function again to preform a basic move
-        EndCombo();
-        AddAttack(attack);
+        //EndCombo();
+        //AddAttack(attack);
         
         return;
     }

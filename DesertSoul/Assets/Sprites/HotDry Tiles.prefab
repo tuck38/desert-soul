@@ -6146,6 +6146,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5355733217868949303, guid: 8742fd948a8bd594b87f482790d0763a, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5355733217868949303, guid: 8742fd948a8bd594b87f482790d0763a, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6348979482361039176, guid: 8742fd948a8bd594b87f482790d0763a, type: 3}
       propertyPath: m_Name
       value: SunBeam
@@ -6160,7 +6168,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1485692525345651225, guid: 8742fd948a8bd594b87f482790d0763a, type: 3}
   m_PrefabInstance: {fileID: 6296108398923905932}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4308573396429022115
+--- !u!114 &6236517538255969905
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

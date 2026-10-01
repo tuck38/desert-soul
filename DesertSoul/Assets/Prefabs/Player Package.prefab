@@ -227,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 126721860067205480}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.9, y: 0.54084, z: -10}
+  m_LocalPosition: {x: -20.989998, y: 1.01298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3909,13 +3909,13 @@ MonoBehaviour:
   healthParent: {fileID: 4737435606306412371}
   stamSlider: {fileID: 1988528165502678441}
   flowSlider: {fileID: 8534441981718495670}
-  healthSpacing: 18.5
+  healthSpacing: 37
   mapPart: 0
   flasks:
   - {fileID: 7608455327425088796}
   flask: {fileID: 7608455327425088796}
   flaskParent: {fileID: 1998778920962543976}
-  flaskSpacing: 18.5
+  flaskSpacing: 34
 --- !u!1 &1571350736357192007
 GameObject:
   m_ObjectHideFlags: 0

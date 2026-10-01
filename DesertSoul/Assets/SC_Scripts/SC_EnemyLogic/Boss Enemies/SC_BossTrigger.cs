@@ -8,7 +8,7 @@ public class SC_BossTrigger : MonoBehaviour
     [SerializeField] SpriteRenderer sprite;
 
     [SerializeField] BoxCollider2D box;
-    [SerializeField] GameObject BossDoor;
+    [SerializeField] GameObject[] BossDoors;
     bool active = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,14 +28,20 @@ public class SC_BossTrigger : MonoBehaviour
         if(active)
         {
             bossBase.StartFight();
-            BossDoor.SetActive(true);
+            for(int i = 0; i < BossDoors.Length; i++)
+            {
+                BossDoors[i].SetActive(true);
+            }
             sprite.enabled = true;
         }
     }
 
     public void fightOver()
     {
-        BossDoor.SetActive(false);
+        for(int i = 0; i < BossDoors.Length; i++)
+        {
+            BossDoors[i].SetActive(false);
+        }
         sprite.enabled = true;
         //active = false;
     }
