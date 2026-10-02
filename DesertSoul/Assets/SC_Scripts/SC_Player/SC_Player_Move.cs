@@ -463,13 +463,16 @@ public class SC_Player_Move : MonoBehaviour
 
     public void OnBlock(InputAction.CallbackContext context)
     {
-        if(context.performed && sythe.getBlocking() == false)
+        if(InUI == false)
         {
-            sythe.Block(true);
-        }
-        else if(context.canceled && sythe.getBlocking() == true)
-        {
-            sythe.Block(false);
+            if(context.performed && sythe.getBlocking() == false)
+            {
+                sythe.Block(true);
+            }
+            else if(context.canceled && sythe.getBlocking() == true)
+            {
+                sythe.Block(false);
+            }
         }
     }
 
@@ -504,7 +507,6 @@ public class SC_Player_Move : MonoBehaviour
     {
         if(context.performed)
         {
-            Debug.Log("preformed");
             prop.ConsumeFlaskCharge();
         }
     }
