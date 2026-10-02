@@ -73,6 +73,7 @@ public class SC_Player_Prop : MonoBehaviour
     private Color originalColor;
 
     //Resource Vars
+    //MOVE THIS TO UI SCRIPT
     [SerializeField] TextMeshProUGUI textRC;
     [SerializeField] Image imageRC;
 
@@ -103,6 +104,14 @@ public class SC_Player_Prop : MonoBehaviour
     int twineUI = 0;
 
     [SerializeField] TextMeshProUGUI plus;
+
+    bool burnUIActive = false;
+
+    [SerializeField] TextMeshProUGUI burnStacks;
+
+    [SerializeField] Image burnBG;
+
+    [SerializeField] Image burnIcon;
 
     //Health system vars
 
@@ -174,9 +183,15 @@ public class SC_Player_Prop : MonoBehaviour
         {
             depleteSunStacks();
         }
-        if(currentSunStacks >= sunStacksBeforeDamage)
+
+        if(currentSunStacks >= sunStacksBeforeDamage && burnUIActive)
         {
+            burnStacks.color = Color.red;
             SunDamageTimer();
+        }
+        else if(currentSunStacks < sunStacksBeforeDamage && burnUIActive)
+        {
+            burnStacks.color = Color.black;
         }
 
         //this is a suprise tool that will help us later
@@ -204,6 +219,19 @@ public class SC_Player_Prop : MonoBehaviour
             resourceUIActive = false;
         }
 
+        if(burnUIActive == true)
+        {
+            burnBG.color = new Color(burnBG.color.r, burnBG.color.g, burnBG.color.b, 1);
+            burnIcon.color = new Color(burnIcon.color.r, burnIcon.color.g, burnIcon.color.b, 1);
+            burnStacks.color = new Color(burnStacks.color.r, burnStacks.color.g, burnStacks.color.b, 1);
+            burnStacks.text = currentSunStacks.ToString();
+        }
+        else
+        {
+            burnBG.color = new Color(burnBG.color.r, burnBG.color.g, burnBG.color.b, 0);
+            burnIcon.color = new Color(burnIcon.color.r, burnIcon.color.g, burnIcon.color.b, 0);
+            burnStacks.color = new Color(burnStacks.color.r, burnStacks.color.g, burnStacks.color.b, 0);    
+        }
 
 
         //stamina timers
@@ -396,6 +424,7 @@ public class SC_Player_Prop : MonoBehaviour
 
     public void giveSunStack(int damage)
     {
+        burnUIActive = true;
         inSunlight = true;
         sunDamage = damage;
         if (currentSunStacks < maxSunStacks)
@@ -417,6 +446,10 @@ public class SC_Player_Prop : MonoBehaviour
             if (sunStackTimer <= 0)
             {
                 currentSunStacks--;
+                if(currentSunStacks <= 0)
+                {
+                    burnUIActive = false;
+                }
                 sunStackTimer = sunStackRemovalFrequency;
             }
         }
