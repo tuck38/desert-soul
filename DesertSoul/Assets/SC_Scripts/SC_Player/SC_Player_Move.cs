@@ -559,7 +559,7 @@ public class SC_Player_Move : MonoBehaviour
     }
 
     //handles all movement calculations
-    public void Move(Vector2 movement, float speed, bool useGravity)
+    public void Move(Vector2 movement, float speed, bool useGravity, bool drilling = false)
     {
         usingGravity = useGravity;
         spriteRotation(movement);
@@ -599,6 +599,13 @@ public class SC_Player_Move : MonoBehaviour
                 currentMoveAccelerationTimer = 0;
             }
         }
+
+        //lol
+        if(drilling == true)
+        {
+            currentSpeed = speed;
+        }
+
         moveVector = movement;
     }
 

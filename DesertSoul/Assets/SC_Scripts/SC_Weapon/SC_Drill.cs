@@ -90,11 +90,11 @@ public class SC_Drill : MonoBehaviour
                 currentTimeDrillin += Time.deltaTime;
                 if (drillinDown)
                 {
-                    playerMove.Move(shmovement, downDrillSpeed, false);
+                    playerMove.Move(shmovement, downDrillSpeed, false, true);
                 }
                 else
                 {
-                    playerMove.Move(shmovement, sideDrillSpeed, false);
+                    playerMove.Move(shmovement, sideDrillSpeed, false, true);
                 }
             }
             else
@@ -123,6 +123,7 @@ public class SC_Drill : MonoBehaviour
     public void Yeah()
     {
         timeToDrill = true;
+        Debug.Log("drill");
     }
     
 
@@ -135,6 +136,7 @@ public class SC_Drill : MonoBehaviour
         {
             animator.SetBool("DrillSide", true);
             facingRight = isFacingRight;
+            Debug.Log("drill check 2");
         }
         else if (!isGrounded && currentDrillCooldown <= 0)
         {

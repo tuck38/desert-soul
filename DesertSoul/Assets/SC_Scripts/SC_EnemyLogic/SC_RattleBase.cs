@@ -226,7 +226,6 @@ public class SC_RattleBase : MonoBehaviour
             if(bossEnemy != true)
             {
                 //ima make this a lerp
-                Debug.Log("I have a lerp to say");
                 lerping = true;
                 sprite.color = damagedColor;
                 kbEndPoint = target;
