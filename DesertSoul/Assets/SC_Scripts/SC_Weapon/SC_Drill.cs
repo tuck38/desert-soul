@@ -109,6 +109,7 @@ public class SC_Drill : MonoBehaviour
                 currentDrillCooldown = drillCooldown;
                 playerMove.SetCanMove(true);
                 hurtbox.StopEnemyLock();
+                playerMove.ReMove();
             }
         }
         else
@@ -123,7 +124,6 @@ public class SC_Drill : MonoBehaviour
     public void Yeah()
     {
         timeToDrill = true;
-        Debug.Log("drill");
     }
     
 

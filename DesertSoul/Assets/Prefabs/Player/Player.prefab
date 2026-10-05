@@ -191,6 +191,10 @@ MonoBehaviour:
   fallGravMult: 0
   fallingGravLimit: 10
   coyoteTime: 0.2
+  peakJumpClamp: 0
+  peakJumpGravMult: 0.5
+  velocityPeakCut: 0.4
+  velocityReleaseCut: 0.5
   isFacingRight: 1
   rb: {fileID: 7767278961558348056}
   groundCheck: {fileID: 8727176915732031999}
@@ -252,23 +256,32 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
+  block:
+    m_Name: Block
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: be3da367-5ee0-48ef-9242-aed1637eca2d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   sytheSwingAUD: []
   movementAUD: []
   stepSoundFrequency: 0
   jumpAUD: {fileID: 0}
   landAUD: {fileID: 0}
-  launchPower: 6
   launchTotalTime: 0.2
   launchFromRight: 0
   knockbackActive: 0
   flickerSpeedTotal: 0.5
-  IframeTotal: 2
+  hitIframes: 0
   hitbox: {fileID: 1691440002245027248}
+  prop: {fileID: 0}
   cameraFollowGameObject: {fileID: 0}
   Journal: {fileID: 0}
   stoneAmount: {fileID: 0}
-  playerSource: {fileID: 0}
   fadeTime: 0
+  iFramesActive: 0
   firstRoom: 0
 --- !u!50 &7767278961558348056
 Rigidbody2D:
@@ -335,7 +348,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.59, y: 0.55}
+    oldSize: {x: 3, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -377,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640422bc61716a74ba303357c007fb87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prop: {fileID: 0}
   animator: {fileID: 5298358386686727894}
   Attacks:
   - {fileID: 11400000, guid: 41bbf6f51f680684dbd8f03b1a70cf49, type: 2}
@@ -384,6 +398,16 @@ MonoBehaviour:
   combo: 
   projectileSpawn: {fileID: 768154965916438980}
   HurtBox: {fileID: 6557361794270610141}
+  comboTime: 2
+  blockInitialStamina: 0
+  blockStaminaDrainAmnt: 0
+  blockStaminaDrainRate: 0
+  parryTimer: 0
+  parryKB: 1.25
+  blockKB: 1
+  parryFlow: 10
+  blockFlow: 5
+  flowDMGMult: 1.5
 --- !u!114 &3960449730630822904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,10 +427,37 @@ MonoBehaviour:
   HUD: {fileID: 0}
   stoneText: {fileID: 0}
   FruitText: {fileID: 0}
+  maxStamina: 20
+  staminaRegenTimer: 4
+  staminaRegenAmnt: 1
+  staminaRegenInterval: 0.5
+  maxFlow: 20
+  flowDecayRate: 1
+  flowDecayInterval: 0.2
   maxSunStacks: 100
   sunStacksBeforeDamage: 50
   sunStackRemovalFrequency: 0.2
   sunStackDamageFrequency: 1
+  textRC: {fileID: 0}
+  imageRC: {fileID: 0}
+  bgRC: {fileID: 0}
+  twine: {fileID: 0}
+  rock: {fileID: 0}
+  money: {fileID: 0}
+  fadeTimer: 0
+  appearTime: 0
+  fadeOutTime: 0
+  currentFadeOutTime: 0
+  plus: {fileID: 0}
+  burnStacks: {fileID: 0}
+  burnBG: {fileID: 0}
+  burnIcon: {fileID: 0}
+  maxFlaskCharges: 3
+  currentFlaskProxy: 0
+  flaskHealAmnt: 2
+  parrySound: {fileID: 0}
+  anim: {fileID: 0}
+  scythe: {fileID: 0}
 --- !u!114 &2448919803125031715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +478,7 @@ MonoBehaviour:
   hurtbox: {fileID: 6557361794270610141}
   attackSide: {fileID: 11400000, guid: 10d518c8f2bbea9438963b037798ab3e, type: 2}
   attackDown: {fileID: 11400000, guid: 1cc43f3d653ac3d4f978853a40dc7042, type: 2}
+  drillSound: {fileID: 0}
 --- !u!1 &3659587814947956846
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +572,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prop: {fileID: 3960449730630822904}
   player: {fileID: 3151976702978925430}
+  scythe: {fileID: 0}
+  fixedLaunchVector: {x: 0, y: 0}
 --- !u!1 &4065219306024451000
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,8 +667,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentAttack: {fileID: 0}
+  venture: {fileID: 0}
+  venture2: {fileID: 0}
   carryPoint: {fileID: 602430137304831808}
   PlayerHitParticles: {fileID: 0}
+  sythe: {fileID: 0}
 --- !u!1 &4343856675345002891
 GameObject:
   m_ObjectHideFlags: 0

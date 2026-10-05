@@ -12,6 +12,10 @@ public class SC_RattleBase : MonoBehaviour
     public AudioClip deathCry;
     
     [SerializeField] AudioClip hurtSound;
+
+    [SerializeField] private Transform groundCheck;
+
+    [SerializeField] LayerMask groundLayer;
     //kb vars
     [SerializeField] protected float knockbackDist;
     [SerializeField] protected float totalLerpTime;
@@ -31,7 +35,13 @@ public class SC_RattleBase : MonoBehaviour
 
     protected float lockTimer = 0.5f;
     protected float currentLockTimer = 0f;
+
+    protected float lockCDTimer = .5f;
+
+    protected float currentLockCDTimer = 0f;
     protected bool lockCooldown;
+
+    protected bool wasLocked = false;
 
     //Launch Vars
     protected bool launchFromRight = true;
@@ -71,6 +81,13 @@ public class SC_RattleBase : MonoBehaviour
     void Update()
     {
 
+        if(wasLocked && IsGrounded())
+        {
+            Debug.Log("sdgfsdfs");
+            wasLocked = false;
+            snake.SetCanMove(true);
+        }
+
         if (currentHealth <= 0)
         {
             if(canDie)
@@ -86,6 +103,15 @@ public class SC_RattleBase : MonoBehaviour
             currentLockTimer -= Time.deltaTime;
             if (currentLockTimer <= 0)
             {
+                setLocked(false);
+            }
+        }
+
+        if(currentLockCDTimer > 0)
+        {
+            currentLockCDTimer -= Time.deltaTime;
+            if(currentLockCDTimer <= 0)
+            {
                 lockCooldown = false;
             }
         }
@@ -97,7 +123,7 @@ public class SC_RattleBase : MonoBehaviour
 
         //drill knockback timer 
         if(launchTime > 0)
-        {         
+        {
             //This system works for now, but doesent use gravity and feels floaty
             if (launchFromRight)
             {
@@ -152,12 +178,12 @@ public class SC_RattleBase : MonoBehaviour
 
         if (decelerationEnabled)
         {
-            decelerate();
+            //decelerate();
         }
     }
 
     //takes damage and returns true if the attack killed the enemy
-    public bool TakeDamage(SC_Attack_Base attack, float damage, Transform carryPoint, GameObject debug, GameObject debug2)
+    public bool TakeDamage(SC_Attack_Base attack, float damage, Transform carryPoint)
     {
         if (!locked)
         {
@@ -173,6 +199,7 @@ public class SC_RattleBase : MonoBehaviour
 
             if (attack.shouldCarry() && !lockCooldown)
             {
+                currentLockTimer = attack.getTime();
                 locked = true;
                 lockPoint = carryPoint;
             }
@@ -203,6 +230,8 @@ public class SC_RattleBase : MonoBehaviour
         //method 2
         if(atkType == AttackType.drillSide)
         {
+            snake.SetCanMove(false);
+            wasLocked = true;
             launchTime = totalLaunchTime;
         }
 
@@ -257,7 +286,7 @@ public class SC_RattleBase : MonoBehaviour
         if (!locked)
         {
             lockCooldown = true;
-            currentLockTimer = lockTimer;
+            currentLockCDTimer = lockCDTimer;
             Knockback(AttackType.drillSide, knockbackDist);
         }
     }
@@ -271,6 +300,11 @@ public class SC_RattleBase : MonoBehaviour
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
             decelerationEnabled = false;
         }
+    }
+
+    public bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
 
     void Die()

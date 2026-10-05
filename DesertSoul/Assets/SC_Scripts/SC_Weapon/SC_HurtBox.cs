@@ -10,10 +10,6 @@ public class SC_HurtBox : MonoBehaviour
     //The enemy that is currently being affected by some attack EX:the drills carry
     private List<SC_Enemy_Base> currentEnemies;
 
-    [SerializeField] GameObject venture;
-
-    [SerializeField] GameObject venture2;
-
     [SerializeField] private Transform carryPoint;
     [SerializeField] private ParticleSystem PlayerHitParticles;
 
@@ -50,7 +46,7 @@ public class SC_HurtBox : MonoBehaviour
             {
                 if(!enemy.IsBoss())
                 {
-                    enemy.TakeDamage(currentAttack, sythe.GetDamage(), carryPoint, venture, venture2);
+                    enemy.TakeDamage(currentAttack, sythe.GetDamage(), carryPoint);
                     enemy.SetPlayer(gameObject.gameObject);
                     enemy.Knockback(currentAttack.getAttackType(), currentAttack.GetkbMult());
                 }

@@ -26,6 +26,10 @@ public class SC_Player_Move : MonoBehaviour
     private float currentSpeed;
     bool moving = false;
 
+    bool moveInput = false;
+
+    Vector2 lastMove;
+
     [SerializeField] UnityEngine.UI.Image fade;
 
     //lets me save this for the knockback calc
@@ -387,9 +391,20 @@ public class SC_Player_Move : MonoBehaviour
     {
         //while this function is called when move inputs are read, movement calculation is still handled in the move function
         //due to outside sources calling it when player must be moved (drill)
+
+        if(context.performed)
+        {
+            moveInput = true;
+        }
+        else if(context.canceled)
+        {
+            moveInput = false;
+        }
+
         if(playerInControl && paused == false)
         {
             Move(context.ReadValue<Vector2>(), currentSpeed, true);
+            lastMove = context.ReadValue<Vector2>();
         }
         else if(GameManager.Instance.GetBuildMode())
         {
@@ -609,6 +624,14 @@ public class SC_Player_Move : MonoBehaviour
         moveVector = movement;
     }
 
+    public void ReMove()
+    {
+        if(moveInput)
+        {
+            Move(lastMove, currentSpeed, true);
+        }
+    }
+
     private void StepSound()
     {
         if(stepSoundFrequency > currentStepSound)
@@ -622,8 +645,6 @@ public class SC_Player_Move : MonoBehaviour
             currentStepSound = 0;
         }
     }
-
-
 
     private void spriteRotation(Vector2 movement)
     {
