@@ -23,6 +23,8 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     [SerializeField] protected Transform point1;
     [SerializeField] protected Transform point2;
 
+    protected bool canMove = true;
+
     //Raycasts
     protected Rigidbody2D rigidbody;
 
@@ -83,7 +85,6 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
     {
         if(currentState == EnemyState.WANDERING)
         {
-            Debug.Log("Player detected");
             player = playerObj;
             preLockOnPoint = nextPoint;
             nextPoint = player.transform.position;
@@ -93,8 +94,11 @@ public class SC_Enemy_Attack_Base : MonoBehaviour
 
     protected virtual void SpriteRotation()
     {
-        isFacingRight = !isFacingRight;
-        transform.Rotate(new Vector3(0, 180, 0));
+        if(canMove)
+        {
+            isFacingRight = !isFacingRight;
+            transform.Rotate(new Vector3(0, 180, 0));
+        }
     }
 
     public virtual void PlayerLost()

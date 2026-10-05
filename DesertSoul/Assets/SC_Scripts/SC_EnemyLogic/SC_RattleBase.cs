@@ -83,7 +83,6 @@ public class SC_RattleBase : MonoBehaviour
 
         if(wasLocked && IsGrounded())
         {
-            Debug.Log("sdgfsdfs");
             wasLocked = false;
             snake.SetCanMove(true);
         }
@@ -137,7 +136,8 @@ public class SC_RattleBase : MonoBehaviour
             launchTime -= Time.deltaTime;
             if(launchTime <= 0)
             {
-               decelerationEnabled = true;
+                wasLocked = true;
+                decelerationEnabled = true;
             }
         }
 
@@ -231,7 +231,6 @@ public class SC_RattleBase : MonoBehaviour
         if(atkType == AttackType.drillSide)
         {
             snake.SetCanMove(false);
-            wasLocked = true;
             launchTime = totalLaunchTime;
         }
 

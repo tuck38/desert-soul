@@ -15,8 +15,6 @@ public class SC_RattleSnake : SC_Enemy_Attack_Base
     
     [SerializeField] float detectionTime;
 
-    private bool canMove = true;
-
     float currentDetectionTime = 0f;
 
     [SerializeField] private Animator animator;

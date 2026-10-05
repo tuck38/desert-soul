@@ -136,7 +136,6 @@ public class SC_Drill : MonoBehaviour
         {
             animator.SetBool("DrillSide", true);
             facingRight = isFacingRight;
-            Debug.Log("drill check 2");
         }
         else if (!isGrounded && currentDrillCooldown <= 0)
         {
