@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -7,7 +9,7 @@ public class SC_Camera : MonoBehaviour
 out the new cinemachine*/
     [SerializeField] Transform player;
     [SerializeField] Vector3 camOffset;
-    [SerializeField] CinemachineCamera cinemachineCamera;
+    [SerializeField] CinemachineCamera currentCamera;
     [SerializeField] float defaultOrthographicSize;
 
     Transform activeTarget;
@@ -23,6 +25,8 @@ out the new cinemachine*/
         transform.position = activeTarget.position + camOffset;
     }
 
+
+    //SET SHOP VIEW CHANGE TO NEW SYSTEM WHEN SET UP
     /// <summary>
     /// Switches camera to shop view
     /// </summary>
@@ -30,7 +34,7 @@ out the new cinemachine*/
     /// <param name="cameraZoom"></param>
     public void SetShopView(Transform newTarget, float cameraZoom)
     {
-        cinemachineCamera.Lens.OrthographicSize = cameraZoom;
+        currentCamera.Lens.OrthographicSize = cameraZoom;
         activeTarget = newTarget;
     }
 
@@ -39,7 +43,8 @@ out the new cinemachine*/
     /// </summary>
     public void DefaultView()
     {
-        cinemachineCamera.Lens.OrthographicSize = defaultOrthographicSize;
+        currentCamera.Lens.OrthographicSize = defaultOrthographicSize;
         activeTarget = player;
     }
+    // SHOP END
 }

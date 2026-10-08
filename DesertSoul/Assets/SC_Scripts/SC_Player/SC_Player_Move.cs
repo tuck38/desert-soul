@@ -175,6 +175,8 @@ public class SC_Player_Move : MonoBehaviour
 
     bool paused = false;
 
+    [SerializeField] private float fallDampThresh;
+
     private void Awake()
     {
         //initial decloration
@@ -235,11 +237,25 @@ public class SC_Player_Move : MonoBehaviour
         flickerSpeed = flickerSpeedTotal;
         currentSpeed = minSpeed;
         currentMoveAccelerationTimer = 0;
+
+        fallDampThresh = SC_CameraManager.instance.fallDampChangeTresh;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(rb.linearVelocityY < fallDampThresh && !SC_CameraManager.instance.isLerpingY && !SC_CameraManager.instance.isLerpingFromFall)
+        {
+            SC_CameraManager.instance.LerpYDampening(true);
+        }
+
+        if(rb.linearVelocityY >= 0f && !SC_CameraManager.instance.isLerpingY && SC_CameraManager.instance.isLerpingFromFall)
+        {
+            SC_CameraManager.instance.isLerpingFromFall = false;
+
+            SC_CameraManager.instance.LerpYDampening(false);
+        }
+
         if(firstRoom)
         {
             transform.position = spawnPos;

@@ -1,51 +1,103 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
+using NUnit.Framework;
 
 public class SC_CameraManager : MonoBehaviour
 {
-    public static SC_CameraManager instance;
+/*This Script is for the camera to follow the player with sprite rotation, most likely will be deprecated when we figure 
+out the new cinemachine*/
 
-    [SerializeField] private CinemachineCamera[] allCams;
+    public static SC_CameraManager instance {get; private set; }
+    [SerializeField] CinemachineCamera[] allCams;
+    [SerializeField] Transform player;
+    [SerializeField] Vector3 camOffset;
+    [SerializeField] CinemachineCamera currentCamera;
 
-    [SerializeField] private float fallPanAmount = 0.25f;
-    [SerializeField] private float fallPanTime = 0.25f;
-    [SerializeField] private float fallPanChangeTreshold = -15f;
+    [SerializeField]  CinemachinePositionComposer composer;
+    [SerializeField] float defaultOrthographicSize;
 
-    public bool IsLerpingYDampening { get; private set; }
+    [SerializeField] float fallPanAmnt = 0.25f;
 
-    public bool LerpedFromPlayerFalling { get; private set; }
+    [SerializeField] float fallPanTime = 0.35f;
 
-    private Coroutine lerpYPanCoroutine;
+    [SerializeField] public float fallDampChangeTresh = -15f; 
 
-    private CinemachineCamera currentCam;
-    private CinemachinePositionComposer framingTransposer;
+    public bool isLerpingY;
+
+    public bool isLerpingFromFall;
+
+    Coroutine lerpYCoroutine;
+
+    Transform activeTarget;
+
+    private float normYPanAmnt;
 
     private void Awake()
     {
-        if (instance == null)
+        if(instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         for(int i = 0; i < allCams.Length; i++)
         {
-            if (allCams[i].enabled)
+            if(allCams[i].enabled)
             {
-                currentCam = allCams[i];
+                currentCamera = allCams[i];
 
-                currentCam.GetCinemachineComponent(framingTransposer.Stage);
+                composer = currentCamera.GetComponent<CinemachinePositionComposer>();
             }
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void LerpYDampening(bool isPlayerFalling)
     {
-        
+        lerpYCoroutine = StartCoroutine(LerpYAction(isPlayerFalling));
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator<Type> LerpYAction(bool isPlayerFalling)
+    {
+        isLerpingY = true;
+
+        float startDampAmnt = composer.Damping.y;
+        float endDampAmnt = 0f;
+
+        if(isPlayerFalling)
+        {
+            endDampAmnt = fallPanAmnt;
+            isLerpingFromFall = true;
+        }
+
+        else
+        {
+            endDampAmnt = normYPanAmnt;
+        }
+
+        float elapsedTime = 0f;
+
+        while(elapsedTime < fallPanTime)
+        {
+            elapsedTime += Time.deltaTime;
+
+            float lerpedPanAmnt = Mathf.Lerp(startDampAmnt, endDampAmnt, (elapsedTime / fallPanTime));
+
+            composer.Damping.y = lerpedPanAmnt;
+
+            yield return null;
+        }
+
+        isLerpingFromFall = false;
+        isLerpingY = false;
+    }
+
+    public void CameraSwitch(CinemachineCamera camFromLeft, CinemachineCamera camFromRight, Vector2 triggerExitDir)
     {
         
     }
