@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using Yarn.Unity.Attributes;
@@ -27,11 +28,6 @@ public class SC_CameraSwitch : MonoBehaviour
                 SC_CameraManager.instance.PanCameraOnContact(customInspectorObjects.panDist, customInspectorObjects.panTime, 
                 customInspectorObjects.panDir, false);
             }
-
-            if(customInspectorObjects.swapCam)
-            {
-                //Swap Cam
-            }
         }
     }
 
@@ -39,15 +35,17 @@ public class SC_CameraSwitch : MonoBehaviour
     {
         if(col.CompareTag("Player"))
         {
+            Vector2 exitDir = (col.transform.position - collider2D.bounds.center).normalized;
+
             if(customInspectorObjects.panCam)
             {
                 SC_CameraManager.instance.PanCameraOnContact(customInspectorObjects.panDist, customInspectorObjects.panTime, 
                 customInspectorObjects.panDir, true);
             }
 
-            if(customInspectorObjects.swapCam)
+            if(customInspectorObjects.swapCam && customInspectorObjects.leftCam != null && customInspectorObjects.rightCam != null)
             {
-                //Swap Cam
+                SC_CameraManager.instance.CameraSwitch(customInspectorObjects.leftCam, customInspectorObjects.rightCam, exitDir);
             }
         }
     }

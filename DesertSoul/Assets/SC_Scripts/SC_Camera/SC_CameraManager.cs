@@ -166,8 +166,32 @@ out the new cinemachine*/
 
     #endregion
 
+    #region camera switch
+    //DOES NOT ACCOUNT FOR UP AND DOWN YET
     public void CameraSwitch(CinemachineCamera camFromLeft, CinemachineCamera camFromRight, Vector2 triggerExitDir)
     {
-        
+        if(camFromLeft == currentCamera && triggerExitDir.x > 0f)
+        {
+            camFromRight.enabled = true;
+
+            camFromLeft.enabled = false;
+
+            currentCamera = camFromRight;
+
+            composer = currentCamera.GetComponent<CinemachinePositionComposer>();
+        }
+        else if(camFromRight == currentCamera && triggerExitDir.x < 0f)
+        {
+            camFromLeft.enabled = true;
+
+            camFromRight.enabled = false;
+
+            currentCamera = camFromLeft;
+
+            composer = currentCamera.GetComponent<CinemachinePositionComposer>();
+
+        }
     }
+
+    #endregion
 }
