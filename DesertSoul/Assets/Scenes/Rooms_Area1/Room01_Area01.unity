@@ -1091,7 +1091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4439581690282352453, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: Composition.HardLimits.Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4444036802002266888, guid: d7312b21663c32f4e8d19e49241cc873, type: 3}
       propertyPath: m_AnchorMax.x

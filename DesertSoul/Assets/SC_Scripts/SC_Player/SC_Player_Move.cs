@@ -244,6 +244,7 @@ public class SC_Player_Move : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if the player is falling, lower camera dampening
         if(rb.linearVelocityY < fallDampThresh && !SC_CameraManager.instance.isLerpingY && !SC_CameraManager.instance.isLerpingFromFall)
         {
             SC_CameraManager.instance.LerpYDampening(true);

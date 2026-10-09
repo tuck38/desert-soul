@@ -101,6 +101,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] int frameCap = 60;
 
     private bool waiting = false;
+
+    //static vars arent working
    
     private void Awake()
     {

@@ -3,6 +3,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using NUnit.Framework;
+using System.Diagnostics;
 
 public class SC_CameraManager : MonoBehaviour
 {
@@ -29,10 +30,13 @@ out the new cinemachine*/
     public bool isLerpingFromFall;
 
     Coroutine lerpYCoroutine;
+    Coroutine camPanCoroutine;
 
     Transform activeTarget;
 
     private float normYPanAmnt;
+
+    Vector2 trackedObjOffset;
 
     private void Awake()
     {
@@ -53,9 +57,15 @@ out the new cinemachine*/
                 currentCamera = allCams[i];
 
                 composer = currentCamera.GetComponent<CinemachinePositionComposer>();
+
+                normYPanAmnt = composer.Damping.y;
             }
         }
+
+        trackedObjOffset = composer.TargetOffset;
     }
+
+    #region fall dampening
 
     public void LerpYDampening(bool isPlayerFalling)
     {
@@ -74,7 +84,6 @@ out the new cinemachine*/
             endDampAmnt = fallPanAmnt;
             isLerpingFromFall = true;
         }
-
         else
         {
             endDampAmnt = normYPanAmnt;
@@ -93,9 +102,69 @@ out the new cinemachine*/
             yield return null;
         }
 
-        isLerpingFromFall = false;
         isLerpingY = false;
     }
+
+    #endregion
+
+    #region camera panning
+        
+    public void PanCameraOnContact(float panDist, float panTime, PanDir panDir,  bool panToStart)
+    {
+        camPanCoroutine = StartCoroutine(PanCam(panDist, panTime, panDir, panToStart));
+    }
+
+    private IEnumerator<Type> PanCam(float panDist, float panTime, PanDir panDir,  bool panToStart)
+    {
+        Vector2 endPos = Vector2.zero;
+        Vector2 startingPos = Vector2.zero;
+
+        if(!panToStart)
+        {
+            switch (panDir)
+            {
+                case PanDir.Up:
+                    endPos = Vector2.up;
+                    break;
+                case PanDir.Down:
+                    endPos = Vector2.down;
+                    break;
+                case PanDir.Left:
+                    endPos = Vector2.left;
+                    break;
+                case PanDir.Right:
+                    endPos = Vector2.right;
+                    break;
+            }
+
+            endPos *= panDist;
+
+            startingPos = trackedObjOffset;
+
+            endPos += startingPos;
+        }
+        else
+        {
+            startingPos = composer.TargetOffset;
+
+            endPos = trackedObjOffset;
+        }
+
+        float elapsedTime = 0f;
+
+        while(elapsedTime < panTime)
+        {
+            elapsedTime += Time.deltaTime;
+
+            Vector3 panLerp = Vector3.Lerp(startingPos, endPos, (elapsedTime/ panTime));
+
+            composer.TargetOffset = panLerp;
+
+            yield return null;
+        }
+    }
+
+    #endregion
 
     public void CameraSwitch(CinemachineCamera camFromLeft, CinemachineCamera camFromRight, Vector2 triggerExitDir)
     {
