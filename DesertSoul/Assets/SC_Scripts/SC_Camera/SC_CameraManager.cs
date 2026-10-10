@@ -168,28 +168,55 @@ out the new cinemachine*/
 
     #region camera switch
     //DOES NOT ACCOUNT FOR UP AND DOWN YET
-    public void CameraSwitch(CinemachineCamera camFromLeft, CinemachineCamera camFromRight, Vector2 triggerExitDir)
+    public void CameraSwitch(CinemachineCamera camFromLeft, CinemachineCamera camFromRight, Vector2 triggerExitDir, bool horizontal)
     {
-        if(camFromLeft == currentCamera && triggerExitDir.x > 0f)
+        if(horizontal == true)
         {
-            camFromRight.enabled = true;
+            if(camFromLeft == currentCamera && triggerExitDir.x > 0f)
+            {
+                camFromRight.enabled = true;
 
-            camFromLeft.enabled = false;
+                camFromLeft.enabled = false;
 
-            currentCamera = camFromRight;
+                currentCamera = camFromRight;
 
-            composer = currentCamera.GetComponent<CinemachinePositionComposer>();
+                composer = currentCamera.GetComponent<CinemachinePositionComposer>();
+            }
+            else if(camFromRight == currentCamera && triggerExitDir.x < 0f)
+            {
+                camFromLeft.enabled = true;
+
+                camFromRight.enabled = false;
+
+                currentCamera = camFromLeft;
+
+                composer = currentCamera.GetComponent<CinemachinePositionComposer>();
+            }
         }
-        else if(camFromRight == currentCamera && triggerExitDir.x < 0f)
+        else if(horizontal == false)
         {
-            camFromLeft.enabled = true;
+            if(camFromLeft == currentCamera && triggerExitDir.y > 0f)
+            {
+                UnityEngine.Debug.Log("up");
+                camFromRight.enabled = true;
 
-            camFromRight.enabled = false;
+                camFromLeft.enabled = false;
 
-            currentCamera = camFromLeft;
+                currentCamera = camFromRight;
 
-            composer = currentCamera.GetComponent<CinemachinePositionComposer>();
+                composer = currentCamera.GetComponent<CinemachinePositionComposer>();
+            }
+            else if(camFromRight == currentCamera && triggerExitDir.y < 0f)
+            {
+                UnityEngine.Debug.Log("down");
+                camFromLeft.enabled = true;
 
+                camFromRight.enabled = false;
+
+                currentCamera = camFromLeft;
+
+                composer = currentCamera.GetComponent<CinemachinePositionComposer>();
+            }
         }
     }
 

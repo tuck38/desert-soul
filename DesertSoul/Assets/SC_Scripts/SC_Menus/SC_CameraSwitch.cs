@@ -45,7 +45,7 @@ public class SC_CameraSwitch : MonoBehaviour
 
             if(customInspectorObjects.swapCam && customInspectorObjects.leftCam != null && customInspectorObjects.rightCam != null)
             {
-                SC_CameraManager.instance.CameraSwitch(customInspectorObjects.leftCam, customInspectorObjects.rightCam, exitDir);
+                SC_CameraManager.instance.CameraSwitch(customInspectorObjects.leftCam, customInspectorObjects.rightCam, exitDir, customInspectorObjects.horizSwap);
             }
         }
     }
@@ -58,6 +58,8 @@ public class CustomInspectorObjects
     public bool swapCam = false;
 
     public bool panCam = false;
+
+    [HideInInspector] public bool horizSwap = true;
 
     [HideInInspector] public CinemachineCamera leftCam;
 
@@ -101,6 +103,8 @@ public class MyScriptEditor : Editor
 
             camSwitch.customInspectorObjects.rightCam = EditorGUILayout.ObjectField("Camera on Right", 
             camSwitch.customInspectorObjects.rightCam, typeof(CinemachineCamera), true) as CinemachineCamera;
+
+            camSwitch.customInspectorObjects.horizSwap = EditorGUILayout.Toggle("Is swap Horizontal", camSwitch.customInspectorObjects.horizSwap);
         }
 
         if(camSwitch.customInspectorObjects.panCam)
